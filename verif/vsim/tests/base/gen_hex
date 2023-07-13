@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# %.elf: %.c $(FIRMWARE_PATH)/sections.lds $(FIRMWARE_PATH)/start.s check-env
+#         ${GCC_PATH}/${GCC_PREFIX}-gcc -march=$(RISCV_TYPE) -mabi=ilp32 -Wl,-Bstatic,-T,$(FIRMWARE_PATH)/sections.lds,--strip-debug -ffreestanding -nostdlib -o $@ $(FIRMWARE_PATH)/start.s $<
+
+# %.hex: %.elf
+#        ${GCC_PATH}/${GCC_PREFIX}-objcopy -O verilog $< $@ 
+#        # to fix flash base address
+#        sed -i 's/@10000000/@00000000/g' $@
+
+# %.bin: %.elf
+#        ${GCC_PATH}/${GCC_PREFIX}-objcopy -O binary $< /dev/stdout | tail -c +1048577 > $@
+
+# riscv32-unknown-elf-gcc -Wl,--no-warn-rwx-segments -g \
+#                         -I../../firmware \
+#                         -march=rv32i      -mabi=ilp32 -D__vexriscv__ \
+#                         -Wl,-Bstatic,-T,../../firmware/sections.lds,--strip-discarded \
+#                         -ffreestanding -nostdlib -o counter_la.elf ../../firmware/crt0_vex.S ../../firmware/isr.c counter_la.c
+
+pwdn=`pwd`
+tstn=`basename $pwdn`
+
+#                         -D__vexriscv__ \
+#
+
+if [ -e $tstn.c ]; then
+  riscv32-unknown-elf-gcc -march=rv32i \
+                          -mabi=ilp32 \
+                          -I../base \
+                          -I../../../../../../fork/caravel_mgmt_soc_litex/verilog/dv \
+                          -I../../../../../../fork/caravel_mgmt_soc_litex/verilog/dv/generated \
+                          -I../../../../../../fork/caravel_mgmt_soc_litex/verilog/dv/firmware \
+                          -Wa,-g \
+                          -Wl,-Bstatic,-T,../base/sections.lds,--strip-discarded,--no-warn-rwx-segments \
+                          -ffreestanding \
+                          -nostdlib \
+                          -o $tstn.elf \
+                          ../base/crt0_vex.S ../base/isr.c $tstn.c
+else
+  if [ -e $tstn.asm ]; then
+    riscv32-unknown-elf-as --use-non-free --out-fmt-ihx -m$FAMILY --verbose ./$tstn.c
+  else
+    echo "Error, cound not find $tstn.c or $tstn.asm"
+    exit
+  fi
+fi
+
+
+if [ -e $tstn.elf ]; then
+  riscv32-unknown-elf-objcopy -O verilog $tstn.elf $tstn.hex
+  # to fix flash base address
+  sed -ie 's/@10/@00/g' $tstn.hex
+else
+  echo "Error, $tstn.elf file not found"
+  exit
+fi

@@ -1,0 +1,109 @@
+#!/bin/bash 
+
+# source /mnt/sdb2/CAD/Xilinx/Vivado/2021.2/settings64.sh
+source /home/CAD/Xilinx/Vitis/Vivado/2022.2/settings64.sh
+
+
+
+if [ $# -lt 1 ]; then
+  echo "No test name!"
+  echo "Example:"
+  echo "  run_simv basic"
+  exit 1
+fi
+
+# rm -f risc_v.hex
+# rm -rf xsim.dir/ *.log *.pb *.jou *.wdb
+
+# riscv32-unknown-elf-gcc -Wl,--no-warn-rwx-segments -g \
+#	-I../../firmware \
+#	-march=rv32i \
+#       -mabi=ilp32 \
+#       -D__vexriscv__ \
+#	-Wl,-Bstatic,-T,../../firmware/sections.lds,--strip-discarded \
+#	-ffreestanding -nostdlib -o counter_la.elf ../../firmware/crt0_vex.S ../../firmware/isr.c counter_la.c
+
+# riscv32-unknown-elf-objcopy -O verilog counter_la.elf risc_v.hex
+
+# to fix flash base address
+# sed -ie 's/@10/@00/g' risc_v.hex
+
+# rm -f counter_la.elf
+
+
+pushd . ; cd ../../../src ; ./gen_rtl ; popd
+
+# chg_fp down ../../../rtl/rtl.f  ./rtl.f
+sed -e "s/\.\.\//..\/..\/..\//" ../../../rtl/rtl.f > ./rtl.f
+
+#     -sourcelibdir ../../../ \
+#     -sourcelibext .v \
+
+# copy test case environment setting
+if [ -e ../tests/$1/bench_ini.svh ]; then
+ cp ../tests/$1/bench_ini.svh ./
+else
+ echo "File: ../tests/$1/bench_ini.svh not found"
+ exit
+fi
+
+if [ -e ../tests/$1/bench_vec.svh ]; then
+ cp ../tests/$1/bench_vec.svh ./
+else
+ echo "File: ../tests/$1/bench_vec.svh not found"
+ exit
+fi
+
+# FUNCTIONAL, USE_POWER_PINS : defined macro flag used in I/O Library
+
+xvlog -d SIM \
+      -d CPU_TRACE \
+      -d DUNIT_DELAY=#1 \
+      -d  UNIT_DELAY=#1 \
+      -d FUNCTIONAL \
+      -d USE_POWER_PINS \
+      -f ../env/bfm.lib.f \
+      -f ../env/bfm.sys.f \
+      -f ../env/bfm.dsn.f \
+      -f ./rtl.f \
+      -i ../../../rtl \
+      -i ../env \
+      -sv \
+      ../env/top_bench.sv -log xvlog.log
+
+ss_name=caravel_asic
+
+xelab --timescale 1ns/10ps -debug typical -top top_bench -snapshot $ss_name
+
+# generate CPU boot image
+if [ -e ../tests/$1/$1.c ]; then
+ rm ../tests/$1/$1.hex
+ pushd . ; cd ../tests/$1 ; ./gen_hex ; popd
+else
+ echo "File: ../tests/$1/$1.c not found"
+ exit
+fi
+
+if [ -e ../tests/$1/$1.hex ]; then
+ # loaded by BFM: spiflash
+ cp ../tests/$1/$1.hex  ./riscv.hex
+else
+ echo "File: ../tests/$1/$1.hex not found, CPU image compile failed"
+ exit
+fi
+
+# run RTL simulation
+# add --tl for zero simulation time debug
+if [ -e ./xsim.dir/$ss_name/xsimk ]; then
+  if [ -e riscv.hex ]; then
+  # xsim $ss_name --wdb caravel_asic.wdb -R
+    xsim $ss_name -R --tclbatch log_wave.tcl
+    mv xsim.log xsim.$1.log
+  else
+    echo "File: riscv.hex not found, failed at last stage"
+  fi
+else
+  echo "XSIM snapshot $ss_name not found"
+fi
+
+# xsim caravel_tb_elab -R

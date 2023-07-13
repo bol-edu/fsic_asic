@@ -1,0 +1,206 @@
+#!/bin/bash
+
+year=`date +%Y`
+mont=`date +%m`
+days=`date +%d`
+date=$mont$days$year
+
+
+function help() {
+ echo "if no argument provided, default file list name is src.f"
+ echo "Usage:"
+ echo "   gen_rtl src_another.f"
+}
+
+
+
+# $1 source file list
+# $2 target directory
+function cp_file_list() {
+  src_fl=$1
+  trg_dr=$2
+  while read -r line
+  do
+    if [[ "$line" =~ ^\s*\/\/ ]] ; then
+      continue
+    fi
+
+    if [ "$line" == "" ] ; then
+      continue
+    fi
+
+    if [[ "$line" =~ '-f' ]]; then
+    # echo "Found -f"
+      flst=`echo $line | sed -e 's/-f//'`
+      if [ ! -f $flst ]; then
+        curd=`pwd`
+        echo "Filelist: $flst not exist at $curd"
+        exit
+      fi
+
+      dos2unix $flst
+ 
+    # echo "===="
+      dirn=`dirname $flst`
+    # echo $flst
+      filn=`basename $flst`
+    # echo $dirn 
+    # rtld=`pwd`
+    # $rtld=$rtld
+      pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $trg_dr ; popd > /dev/null
+    # echo "===="
+    else
+    # if [ ! -e $line ]; then
+    #   echo "File: $line not exist"
+    #   exit
+    # fi
+    # echo "Not Found -f"
+    # src=`eval echo $line`
+      src=`eval echo $line`
+      curd=`pwd`
+      # echo $src $curd
+      if [ ! -f $src ]; then
+        echo "+++++++"
+        echo $line
+        curd=`pwd`
+        echo $src
+	ls -al
+	ls $src
+	ls $line
+      # echo "File: $src not exist at $curd"
+        echo -n "File: "
+        echo -n $src
+        echo "not exist at $curd"
+        echo "+++++++"
+        exit
+      fi
+    # echo $src
+    # echo "++++++++++++++"
+      srf=`basename $src`
+    # echo "++++++++++++++"
+    # echo $srf
+      cp -f $src $trg_dr
+      sed -i -e "/Release/s/MMDDYYYY/$date/" $trg_dr/$srf
+      # do post-processing here
+      chmod 0444 $trg_dr/$srf
+    fi
+  done < $src_fl
+}
+
+
+
+
+if [ $# -lt 1 ]; then
+  srcf=src.f
+  # make a real copy to the "../rtl" directory
+  if [ ! -e ../rtl ]; then
+    mkdir ../rtl
+  fi
+else
+  if [[ "$1" =~ '-h' ]]; then
+    help
+    exit
+  else
+    srcf=$1
+  fi
+fi
+
+if [ ! -f $srcf ]; then
+  echo "File: $srcf not exist"
+  exit
+fi
+
+
+
+
+# -----------------------------------------------
+# remove comment out file
+# src_f=`cat $srcf | sed -e '/\/\//d ; s/-v//'`
+
+# echo $srcf
+# echo "====================================="
+
+
+while read -r line
+do
+# echo "-------------------------------------"
+# echo $line
+# echo $line | grep '^\s*\/\/'
+# status=$?
+# echo $status
+# if [ $status -eq 0 ]; then
+#   echo "//"
+# fi
+  if [[ "$line" =~ ^\s*\/\/ ]] ; then
+  # echo "+++++++++++++"
+    continue
+  fi
+
+  if [ "$line" == "" ] ; then
+    continue
+  fi
+
+
+
+# else
+#   echo "\\\\"
+# fi
+
+# echo "=============="
+
+# echo $line | grep '\-f'
+# status=$?
+# echo $status
+# if [ $status -eq 0 ]; then
+  if [[ "$line" =~ '-f' ]]; then
+  # echo "Found -f"
+    flst=`echo $line | sed -e 's/-f//'`
+  # echo "===="
+
+    if [ ! -f $flst ]; then
+      curd=`pwd`
+      echo "Filelist: $flst not exist at $curd"
+      exit
+    fi
+
+    dos2unix $flst
+
+    dirn=`dirname $flst`
+  # echo $flst
+    filn=`basename $flst`
+  # echo $dirn 
+    rtld=`pwd`
+    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld/../rtl ; popd > /dev/null
+  # echo "===="
+  else
+  # if [ ! -f $line ]; then
+  #   echo "File: $line not exist"
+  #   exit
+  # fi
+  # echo "Not Found -f"
+    src=`eval echo $line`
+    if [ ! -f $src ]; then
+      curd=`pwd`
+      echo "File: $src not exist at $curd"
+      exit
+    fi
+  # echo $src
+  # echo "---------"
+    srf=`basename $src`
+  # echo "---------"
+  # echo $srf
+    cp -f $src ../rtl
+    sed -i -e "/Release/s/MMDDYYYY/$date/" ../rtl/$srf
+    #+ do post-processing here
+    chmod 0444 ../rtl/$srf
+  fi
+
+# src=`eval echo $line`
+# echo $src
+# srf=`basename $src`
+# echo $srf
+
+done < $srcf
+
+
+echo Release Date: $mont $days

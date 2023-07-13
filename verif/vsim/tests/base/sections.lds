@@ -1,0 +1,1 @@
+sections.aravel_mgmt_soc_litex.lds
