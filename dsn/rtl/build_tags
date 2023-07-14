@@ -1,0 +1,25 @@
+#!/bin/bash -f
+
+# /mnt/sdb1/CAD/VCS/bin/vcs
+# /EDA/Synopsys/VCS-MX/O-2018.09-SP2-3/bin/vcs
+
+# cd ../../src ; ./gen_rtl ; cd ../verif/env
+
+# chg_fp down ../../rtl/rtl.f ./rtl.f
+
+#   -P ${VERDI_HOME}/share/PLI/VCS/LINUX64/novas.tab 
+
+# cp ../tests/$1/*.vec ./
+
+#                             +incdir+../env \
+#                             +incdir+../../src \
+
+python3 ~/vtags-3.11/vtags.py \
+                              +incdir+../../rtl/header \
+                              +incdir+../../rtl/soc \
+                              +incdir+../../rtl/user \
+                              +incdir+../../vip \
+                              -f ./include.rtl.list.xsim \
+                              -v ./counter_la_tb.v
+
+echo "Build vtags Database Done"

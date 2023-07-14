@@ -94,9 +94,9 @@ function cp_file_list() {
 
 if [ $# -lt 1 ]; then
   srcf=src.f
-  # make a real copy to the "../rtl" directory
-  if [ ! -e ../rtl ]; then
-    mkdir ../rtl
+  # make a real copy to the "../dsn/rtl" directory
+  if [ ! -e ../dsn/rtl ]; then
+    mkdir ../dsn/rtl
   fi
 else
   if [[ "$1" =~ '-h' ]]; then
@@ -172,7 +172,7 @@ do
     filn=`basename $flst`
   # echo $dirn 
     rtld=`pwd`
-    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld/../rtl ; popd > /dev/null
+    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld/../dsn/rtl ; popd > /dev/null
   # echo "===="
   else
   # if [ ! -f $line ]; then
@@ -191,12 +191,12 @@ do
     srf=`basename $src`
   # echo "---------"
   # echo $srf
-    cp -f $src ../rtl
+    cp -f $src ../dsn/rtl
     #+ do post-processing here
-    sed -i -e "/Release/s/MMDDYYYY/$date/"  ../rtl/$srf
-  # sed -i -e "/default_nettype/s/^/\/\/ /" ../rtl/$srf
+    sed -i -e "/Release/s/MMDDYYYY/$date/"  ../dsn/rtl/$srf
+  # sed -i -e "/default_nettype/s/^/\/\/ /" ../dsn/rtl/$srf
     #- do post-processing here
-    chmod 0444 ../rtl/$srf
+    chmod 0444 ../dsn/rtl/$srf
   fi
 
 # src=`eval echo $line`

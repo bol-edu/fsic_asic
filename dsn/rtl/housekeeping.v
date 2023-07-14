@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype none
+`default_nettype wire
 
 //-----------------------------------------------------------
 // Housekeeping interface for Caravel
@@ -490,8 +490,8 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
     /* (see doc/memory_map.txt)						  */
 
     wire [11:0] gpio_adr = GPIO_BASE_ADR[23:12];
-    wire [11:0] sys_adr = SYS_BASE_ADR[23:12];
-    wire [11:0] spi_adr = SPI_BASE_ADR[23:12];
+    wire [11:0] sys_adr  = SYS_BASE_ADR[23:12];
+    wire [11:0] spi_adr  = SPI_BASE_ADR[23:12];
 
     function [7:0] spiaddr(input [31:0] wbaddress);
 	begin
@@ -777,16 +777,18 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
     // GPIO data handling to and from the management SoC
 
     assign mgmt_gpio_out[37] = (qspi_enabled) ? spimemio_flash_io3_do :
-		mgmt_gpio_data[37];
+                                                mgmt_gpio_data[37];
     assign mgmt_gpio_out[36] = (qspi_enabled) ? spimemio_flash_io2_do :
-		mgmt_gpio_data[36];
+                                                mgmt_gpio_data[36];
 
     assign mgmt_gpio_oeb[37] = (qspi_enabled) ? spimemio_flash_io3_oeb :
-		~gpio_configure[37][INP_DIS];
+                                                ~gpio_configure[37][INP_DIS];
     assign mgmt_gpio_oeb[36] = (qspi_enabled) ? spimemio_flash_io2_oeb :
-		~gpio_configure[36][INP_DIS];
+                                                ~gpio_configure[36][INP_DIS];
+
+
     assign mgmt_gpio_oeb[35] = (spi_enabled) ? spi_sdoenb :
-		~gpio_configure[35][INP_DIS];
+                                               ~gpio_configure[35][INP_DIS];
 
     // NOTE:  Ignored by spimemio module when QSPI disabled, so they do not
     // need any exception when qspi_enabled == 1.

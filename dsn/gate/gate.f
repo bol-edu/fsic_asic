@@ -1,8 +1,8 @@
-  ../rtl/project_define.svh
+// ../rtl/project_define.svh
 
 // files from Efabless Caravel SOC
-  ../rtl/defines.v
-  ../rtl/user_defines.v
+// ../rtl/defines.v
+// ../rtl/user_defines.v
   
 // ------------------------------------------------
 // User Project
@@ -96,4 +96,4 @@
   ../rtl/caravel_logo.v
   ../rtl/open_source.v
   ../rtl/user_id_textblock.v
-  ../rtl/caravel.v
+  ../gate/caravel.v

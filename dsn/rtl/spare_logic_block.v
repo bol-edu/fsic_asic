@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype none
+`default_nettype wire
 
 // Spare logic block.  This block can be used for metal mask fixes to
 // a design.  It is much larger and more comprehensive than the simple

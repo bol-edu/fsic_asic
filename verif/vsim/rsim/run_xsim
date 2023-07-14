@@ -31,13 +31,14 @@ fi
 # rm -f counter_la.elf
 
 
-# pushd . ; cd ../../../src ; ./gen_rtl            ; popd
-  pushd . ; cd ../../../src ; ./gen_rtl src.rtl.f  ; popd
+  pushd . ; cd ../../../src ; ./gen_rtl            ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl src.rtl.f  ; popd
 # pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ; popd
  
 
 # chg_fp down ../../../rtl/rtl.f  ./rtl.f
-sed -e "s/\.\.\//..\/..\/..\//" ../../../rtl/rtl.f > ./rtl.f
+  sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.f      > ./rtl.f
+# sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.user.f > ./rtl.f
 
 #     -sourcelibdir ../../../ \
 #     -sourcelibext .v \
@@ -72,7 +73,7 @@ xvlog -d SIM \
       -f ../env/bfm.sys.f \
       -f ../env/bfm.dsn.f \
       -f ./rtl.f \
-      -i ../../../rtl \
+      -i ../../../dsn/rtl \
       -i ../env \
       ../env/top_bench.sv -log xvlog.log
 
