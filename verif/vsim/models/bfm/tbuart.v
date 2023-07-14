@@ -1,4 +1,4 @@
-`default_nettype none
+// `default_nettype none
 /*
  *  SPDX-FileCopyrightText: 2017 Clifford Wolf
  *

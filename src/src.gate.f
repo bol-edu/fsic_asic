@@ -39,7 +39,9 @@
    ../../../fork/caravel/verilog/gl/gpio_signal_buffering.v
   
 // ../../../fork/caravel/verilog/rtl/defines.v
-   ../../../fork/caravel/verilog/rtl/ibex_all.v
+
+// ../../../fork/caravel/verilog/rtl/ibex_all.v
+// ../../../fork/caravel/verilog/gl/ibex.v
   
    ../../../fork/caravel/verilog/rtl/picorv32.v
 // ../../../fork/caravel/verilog/rtl/VexRiscv_LiteDebug.v

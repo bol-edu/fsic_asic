@@ -31,7 +31,7 @@
   ../../../fork/caravel/rtl/gpio_signal_buffering.v
   
 //../../../fork/caravel/rtl/defines.v
-  ../../../fork/caravel/rtl/ibex_all.v
+//../../../fork/caravel/rtl/ibex_all.v
   
   ../../../fork/caravel/rtl/picorv32.v
 //../../../fork/caravel/rtl/VexRiscv_LiteDebug.v

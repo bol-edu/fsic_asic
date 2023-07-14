@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype none
+// `default_nettype none
 
 //-----------------------------------------------------------
 // Housekeeping interface for Caravel
@@ -1442,4 +1442,4 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
     end
 endmodule	// housekeeping
 
-`default_nettype wire
+// `default_nettype wire

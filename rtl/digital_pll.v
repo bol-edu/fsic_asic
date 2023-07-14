@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype none
+// `default_nettype none
 // Digital PLL (ring oscillator + controller)
 // Technically this is a frequency locked loop, not a phase locked loop.
 
@@ -102,4 +102,4 @@ module digital_pll
     );
 
 endmodule
-`default_nettype wire
+// `default_nettype wire

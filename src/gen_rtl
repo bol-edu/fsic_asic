@@ -80,7 +80,8 @@ function cp_file_list() {
     # echo "++++++++++++++"
     # echo $srf
       cp -f $src $trg_dr
-      sed -i -e "/Release/s/MMDDYYYY/$date/" $trg_dr/$srf
+      sed -i -e "/Release/s/MMDDYYYY/$date/"  $trg_dr/$srf
+      sed -i -e "/default_nettype/s/^/\/\/ /" $trg_dr/$srf
       # do post-processing here
       chmod 0444 $trg_dr/$srf
     fi
@@ -190,7 +191,8 @@ do
   # echo "---------"
   # echo $srf
     cp -f $src ../rtl
-    sed -i -e "/Release/s/MMDDYYYY/$date/" ../rtl/$srf
+    sed -i -e "/Release/s/MMDDYYYY/$date/"  ../rtl/$srf
+    sed -i -e "/default_nettype/s/^/\/\/ /" ../rtl/$srf
     #+ do post-processing here
     chmod 0444 ../rtl/$srf
   fi

@@ -42,18 +42,20 @@ sed -e "s/\.\.\//..\/..\/..\//" ../../../rtl/rtl.f > ./rtl.f
 #     -sourcelibdir ../../../ \
 #     -sourcelibext .v \
 
+testname=$1
+
 # copy test case environment setting
-if [ -e ../tests/$1/bench_ini.svh ]; then
- cp ../tests/$1/bench_ini.svh ./
+if [ -e ../tests/$testname/bench_ini.svh ]; then
+ cp ../tests/$testname/bench_ini.svh ./
 else
- echo "File: ../tests/$1/bench_ini.svh not found"
+ echo "File: ../tests/$testname/bench_ini.svh not found"
  exit
 fi
 
-if [ -e ../tests/$1/bench_vec.svh ]; then
- cp ../tests/$1/bench_vec.svh ./
+if [ -e ../tests/$testname/bench_vec.svh ]; then
+ cp ../tests/$testname/bench_vec.svh ./
 else
- echo "File: ../tests/$1/bench_vec.svh not found"
+ echo "File: ../tests/$testname/bench_vec.svh not found"
  exit
 fi
 
@@ -65,13 +67,13 @@ xvlog -d SIM \
       -d  UNIT_DELAY=#1 \
       -d FUNCTIONAL \
       -d USE_POWER_PINS \
+      -sv \
       -f ../env/bfm.lib.f \
       -f ../env/bfm.sys.f \
       -f ../env/bfm.dsn.f \
       -f ./rtl.f \
       -i ../../../rtl \
       -i ../env \
-      -sv \
       ../env/top_bench.sv -log xvlog.log
 
 ss_name=caravel_asic
@@ -79,19 +81,19 @@ ss_name=caravel_asic
 xelab --timescale 1ns/10ps -debug typical -top top_bench -snapshot $ss_name
 
 # generate CPU boot image
-if [ -e ../tests/$1/$1.c ]; then
- rm ../tests/$1/$1.hex
- pushd . ; cd ../tests/$1 ; ./gen_hex ; popd
+if [ -e ../tests/$testname/$testname.c ]; then
+ rm ../tests/$testname/$testname.hex
+ pushd . ; cd ../tests/$testname ; ./gen_hex ; popd
 else
- echo "File: ../tests/$1/$1.c not found"
+ echo "File: ../tests/$testname/$testname.c not found"
  exit
 fi
 
-if [ -e ../tests/$1/$1.hex ]; then
+if [ -e ../tests/$testname/$testname.hex ]; then
  # loaded by BFM: spiflash
- cp ../tests/$1/$1.hex  ./riscv.hex
+ cp ../tests/$testname/$testname.hex  ./riscv.hex
 else
- echo "File: ../tests/$1/$1.hex not found, CPU image compile failed"
+ echo "File: ../tests/$testname/$testname.hex not found, CPU image compile failed"
  exit
 fi
 
@@ -103,7 +105,7 @@ if [ -e ./xsim.dir/$ss_name/xsimk ]; then
   # -R means run all;quit
   # xsim $ss_name -R --tclbatch log_wave.tcl
     xsim $ss_name    --tclbatch log_wave.tcl
-    mv xsim.log xsim.$1.log
+    mv xsim.log xsim.$testname.log
   else
     echo "File: riscv.hex not found, failed at last stage"
   fi

@@ -31,17 +31,24 @@
    ../../../fork/caravel/verilog/rtl/gpio_signal_buffering.v
    
 // ../../../fork/caravel/verilog/rtl/defines.v
-   ../../../fork/caravel/verilog/rtl/ibex_all.v
+// ../../../fork/caravel/verilog/rtl/ibex_all.v
    
-   ../../../fork/caravel/verilog/rtl/picorv32.v
+// copy from caravel_mgmt_soc_litex
+// ../src/picorv32.v
+
+// copy from caravel_mgmt_soc_litex
 // ../../../fork/caravel/verilog/rtl/VexRiscv_LiteDebug.v
 // ../../../fork/caravel/verilog/rtl/VexRiscv_MinDebugCache.v
-   ../../../fork/caravel/verilog/rtl/VexRiscv_MinDebug.v
+// ../../../fork/caravel/verilog/rtl/VexRiscv_MinDebug.v
+   ../src/VexRiscv_MinDebug.v
    
    ../../../fork/caravel/verilog/rtl/mprj_logic_high.v
    ../../../fork/caravel/verilog/rtl/mprj2_logic_high.v
-   ../../../fork/caravel/verilog/rtl/mgmt_core.v
-   ../../../fork/caravel/verilog/rtl/mgmt_core_wrapper.v
+
+// ../../../fork/caravel/verilog/rtl/mgmt_core.v
+   ../src/mgmt_core.v
+// ../../../fork/caravel/verilog/rtl/mgmt_core_wrapper.v
+   ../src/mgmt_core_wrapper.v
    
    ../../../fork/caravel/verilog/rtl/pads.v
    
