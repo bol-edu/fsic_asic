@@ -13,6 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
+`default_nettype none
 
 `ifndef __GLOBAL_DEFINE_H
 // Global parameters
@@ -49,22 +50,17 @@
 
 // not really parameterized but just to easily keep track of the number
 // of ram_block across different modules
-`define RAM_BLOCKS 2
+`define RAM_BLOCKS 1
 
 // Clock divisor default value
 `define CLK_DIV 3'b010
 
 // GPIO control default mode and enable for most I/Os
-// Most I/Os set to be user bidirectional pins on power-up.
+// Most I/Os set to be user input pins on startup.
+// NOTE:  To be modified, with GPIOs 5 to 35 being set from a build-time-
+// programmable block.
 `define MGMT_INIT 1'b0
 `define OENB_INIT 1'b0
-`define DM_INIT 3'b110
-
-
-`define LA_SIZE 'd128
-`define USER_SPACE_ADDR 32'h30000000 
-`define USER_SPACE_SIZE 'hFFFFC // sum with USER_SPACE_ADDR is the address of last address
-`define IO_CTRL_BITS 'd13 // size of gpio_control_reg
-`define POWER_DOMAINS 'd3 // size of gpio_control_reg
+`define DM_INIT 3'b001
 
 `endif // __GLOBAL_DEFINE_H

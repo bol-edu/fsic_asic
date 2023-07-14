@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype wire
+`default_nettype none
 
 //-----------------------------------------------------------
 // SPI controller for Caravel

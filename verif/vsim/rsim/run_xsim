@@ -31,7 +31,10 @@ fi
 # rm -f counter_la.elf
 
 
-pushd . ; cd ../../../src ; ./gen_rtl ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl            ; popd
+  pushd . ; cd ../../../src ; ./gen_rtl src.rtl.f  ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ; popd
+ 
 
 # chg_fp down ../../../rtl/rtl.f  ./rtl.f
 sed -e "s/\.\.\//..\/..\/..\//" ../../../rtl/rtl.f > ./rtl.f
@@ -97,7 +100,9 @@ fi
 if [ -e ./xsim.dir/$ss_name/xsimk ]; then
   if [ -e riscv.hex ]; then
   # xsim $ss_name --wdb caravel_asic.wdb -R
-    xsim $ss_name -R --tclbatch log_wave.tcl
+  # -R means run all;quit
+  # xsim $ss_name -R --tclbatch log_wave.tcl
+    xsim $ss_name    --tclbatch log_wave.tcl
     mv xsim.log xsim.$1.log
   else
     echo "File: riscv.hex not found, failed at last stage"

@@ -1,0 +1,1 @@
+/home/patrick/wrk/github/sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/sky130_fd_sc_hd.v

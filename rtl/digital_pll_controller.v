@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype wire
+`default_nettype none
 // (True) digital PLL
 //
 // Output goes to a trimmable ring oscillator (see documentation).
