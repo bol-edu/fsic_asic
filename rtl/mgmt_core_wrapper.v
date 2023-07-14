@@ -27,7 +27,7 @@
  */
 
 
-// `default_nettype wire
+`default_nettype wire
 
 `ifndef _MGMT_CORE_WRAPPER_
 `define _MGMT_CORE_WRAPPER_
@@ -256,6 +256,6 @@ module mgmt_core_wrapper (
 
 
 endmodule
-// `default_nettype wire
+`default_nettype wire
 
 `endif

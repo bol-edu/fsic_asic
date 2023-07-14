@@ -1,5 +1,5 @@
  `ifdef SIM
-//  `default_nettype wire
+ `default_nettype wire
  `endif
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
 //
@@ -1641,4 +1641,4 @@ module caravel (
     `endif
 
 endmodule
-// // `default_nettype wire
+// `default_nettype wire

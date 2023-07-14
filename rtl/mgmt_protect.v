@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-// `default_nettype none
+`default_nettype none
 /*----------------------------------------------------------------------*/
 /* Buffers protecting the management region from the user region.	*/
 /* This mainly consists of tristate buffers that are enabled by a	*/
@@ -259,4 +259,4 @@ module mgmt_protect (
 	assign user2_vdd_powergood = mprj2_vdd_logic1;
 
 endmodule
-// `default_nettype wire
+`default_nettype wire

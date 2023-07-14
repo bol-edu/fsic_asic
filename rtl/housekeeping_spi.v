@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-// `default_nettype none
+`default_nettype none
 
 //-----------------------------------------------------------
 // SPI controller for Caravel
@@ -253,4 +253,4 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     end			// always @ SCK
 
 endmodule // housekeeping_spi
-// `default_nettype wire
+`default_nettype wire

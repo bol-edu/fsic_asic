@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-// `default_nettype none
+`default_nettype none
 /*----------------------------------------------------------------------*/
 /* mgmt_protect_hv:							*/
 /*									*/
@@ -100,4 +100,4 @@ module mgmt_protect_hv
     );
 endmodule
 
-// `default_nettype wire
+`default_nettype wire
