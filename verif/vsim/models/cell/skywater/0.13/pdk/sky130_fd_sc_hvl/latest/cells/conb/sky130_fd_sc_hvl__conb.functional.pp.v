@@ -30,8 +30,12 @@
 `default_nettype wire
 
 // Import user defined primitives.
+/*
 `include "../../models/udp_pwrgood_pp_g/sky130_fd_sc_hvl__udp_pwrgood_pp_g.v"
 `include "../../models/udp_pwrgood_pp_p/sky130_fd_sc_hvl__udp_pwrgood_pp_p.v"
+*/
+`include "sky130_fd_sc_hvl__udp_pwrgood_pp_g.v"
+`include "sky130_fd_sc_hvl__udp_pwrgood_pp_p.v"
 
 `celldefine
 module sky130_fd_sc_hvl__conb (

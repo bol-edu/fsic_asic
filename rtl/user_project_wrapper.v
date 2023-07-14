@@ -29,9 +29,8 @@
  *-------------------------------------------------------------
  */
 
-module user_project_wrapper #(
-    parameter BITS = 32
-) (
+module user_project_wrapper #(parameter BITS = 32)
+(
 `ifdef USE_POWER_PINS
     inout vdda1,	// User area 1 3.3V supply
     inout vdda2,	// User area 2 3.3V supply
@@ -121,7 +120,7 @@ user_proj_example mprj (
 );
 */
 
-FSIC #(.BITS( BITS ))  (
+FSIC #(.BITS( BITS )) u_fsic  (
 
                       `ifdef USE_POWER_PINS
                       .vccd1       (vccd1),                   // I

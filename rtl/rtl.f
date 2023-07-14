@@ -21,10 +21,10 @@
 ../rtl/axis_switch.v
 
 // config_ctrl
-../rtl/cfg_ctrl.dummy_io.vd
+../rtl/config_ctrl.v
 
 // fsic_clkrst
-../rtl/fsic_clkrst.dummy_io.vd
+../rtl/fsic_clkrst.v
 
 // io_serdes
 ../rtl/io_serdes.v

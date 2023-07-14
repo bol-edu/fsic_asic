@@ -2,10 +2,6 @@
 
    -sourcelibext .v
 
-   --sourcelibdir ../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_power_hvc_wpadv2
-   --include      ../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_power_hvc_wpadv2
-
-
    --sourcelibdir ../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_power_hvc_wpadv2  
    --include      ../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_power_hvc_wpadv2  
 
@@ -56,6 +52,12 @@
 
    --sourcelibdir ../models/cell/skywater/0.13/pdk/sky130_fd_sc_hvl/latest/cells/schmittbuf 
    --include      ../models/cell/skywater/0.13/pdk/sky130_fd_sc_hvl/latest/cells/schmittbuf 
+
+   --sourcelibdir ../models/cell/skywater/0.13/pdk/sky130_fd_sc_hvl/latest/models/udp_pwrgood_pp_p
+   --include      ../models/cell/skywater/0.13/pdk/sky130_fd_sc_hvl/latest/models/udp_pwrgood_pp_p
+
+   --sourcelibdir ../models/cell/skywater/0.13/pdk/sky130_fd_sc_hvl/latest/models/udp_pwrgood_pp_g
+   --include      ../models/cell/skywater/0.13/pdk/sky130_fd_sc_hvl/latest/models/udp_pwrgood_pp_g
 
 
    -sourcelibfile ../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v
