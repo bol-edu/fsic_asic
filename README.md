@@ -10,6 +10,6 @@
 
    top bench file is located at REPO/verif/vsim/env.  All models and library reference path are also placed there
 
-   Please modify **src.f** or **src.rtl.f** to reflect your fsic_fpga repository path of your working environment.
+   Please modify **REPO/src/src.f** or **REPO/src/src.rtl.f** to reflect your fsic_fpga repository path of your working environment.
    
    Efabless's repo https://github.com/efabless/caravel also need to clone first.
