@@ -31,9 +31,9 @@ fi
 # rm -f counter_la.elf
 
 
-  pushd . ; cd ../../../src ; ./gen_rtl            ; popd
-# pushd . ; cd ../../../src ; ./gen_rtl src.rtl.f  ; popd
-# pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ; popd
+  pushd . ; cd ../../../src ; ./gen_rtl src.f      ../dsn/rtl  ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl src.rtl.f  ../dsn/rtl  ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ../dsn/gate ; popd
  
 
 # chg_fp down ../../../rtl/rtl.f  ./rtl.f

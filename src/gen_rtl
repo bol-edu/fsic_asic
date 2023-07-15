@@ -7,9 +7,9 @@ date=$mont$days$year
 
 
 function help() {
- echo "if no argument provided, default file list name is src.f"
+ echo "if no argument provided, default file list name is src.f and default target directory is ../rtl"
  echo "Usage:"
- echo "   gen_rtl src_another.f"
+ echo "   gen_rtl src_another.f target_dir"
 }
 
 
@@ -94,9 +94,10 @@ function cp_file_list() {
 
 if [ $# -lt 1 ]; then
   srcf=src.f
+  tdir=../rtl
   # make a real copy to the "../dsn/rtl" directory
-  if [ ! -e ../dsn/rtl ]; then
-    mkdir ../dsn/rtl
+  if [ ! -e $tdir ]; then
+    mkdir $tdir
   fi
 else
   if [[ "$1" =~ '-h' ]]; then
@@ -104,6 +105,7 @@ else
     exit
   else
     srcf=$1
+    tdir=$2
   fi
 fi
 
@@ -171,8 +173,8 @@ do
   # echo $flst
     filn=`basename $flst`
   # echo $dirn 
-    rtld=`pwd`
-    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld/../dsn/rtl ; popd > /dev/null
+  # rtld=`pwd`
+    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $tdir ; popd > /dev/null
   # echo "===="
   else
   # if [ ! -f $line ]; then
@@ -191,12 +193,12 @@ do
     srf=`basename $src`
   # echo "---------"
   # echo $srf
-    cp -f $src ../dsn/rtl
+    cp -f $src $tdir
     #+ do post-processing here
-    sed -i -e "/Release/s/MMDDYYYY/$date/"  ../dsn/rtl/$srf
-  # sed -i -e "/default_nettype/s/^/\/\/ /" ../dsn/rtl/$srf
+    sed -i -e "/Release/s/MMDDYYYY/$date/"  $tdir/$srf
+  # sed -i -e "/default_nettype/s/^/\/\/ /" $tdir/$srf
     #- do post-processing here
-    chmod 0444 ../dsn/rtl/$srf
+    chmod 0444 $tdir/$srf
   fi
 
 # src=`eval echo $line`
