@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype wire
+`default_nettype none
 
 `ifndef __USER_DEFINES_H
 // User GPIO initial configuration parameters

@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype wire
+`default_nettype none
 // (True) digital PLL
 //
 // Output goes to a trimmable ring oscillator (see documentation).
@@ -47,10 +47,10 @@
 //
 
 module digital_pll_controller(reset, clock, osc, div, trim);
-    input reset;
-    input clock;
-    input osc;
-    input [4:0] div;
+ input wire reset;
+ input wire clock;
+ input wire osc;
+ input wire [4:0] div;
     output [25:0] trim;		// Use ring_osc2x13, with 26 trim bits
 
     wire [25:0] trim;

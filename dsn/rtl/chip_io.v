@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-// `default_nettype wire
+// `default_nettype none
 module chip_io(
 	// Package Pins
 	inout  vddio_pad,		// Common padframe/ESD supply
@@ -306,30 +306,21 @@ module chip_io(
 	sky130_fd_io__top_xres4v2 resetb_pad (
 		`MGMT_ABUTMENT_PINS
 		`ifndef	TOP_ROUTING
-		.PAD(resetb),
+		    .PAD(resetb),
 		`endif
-		.TIE_WEAK_HI_H     (xresloop),            // Loop-back connection to pad through pad_a_esd_h
-		.TIE_HI_ESD        (),
-		.TIE_LO_ESD        (xres_vss_loop),       // O, strong0
-		.PAD_A_ESD_H       (xresloop),
-		.XRES_H_N          (resetb_core_h),
-                
-		.DISABLE_PULLUP_H  (xres_vss_loop),       // I, 0 = enable pull-up on reset pad
-                
-                /*
-                // always keep pull-high
-                .DISABLE_PULLUP_H  ( 1'b0 ),              // I, 0 = enable pull-up on reset pad
-                */
-
-		.ENABLE_H          (porb_h),	 	  // Power-on-reset
-   		.EN_VDDIO_SIG_H    (xres_vss_loop),	  // I,  No idea.
-   		.INP_SEL_H         (xres_vss_loop),	  // I,  1 = use filt_in_h else filter the pad input
-   		.FILT_IN_H         (xres_vss_loop),	  // I,  Alternate input for glitch filter
-
-              // TBD, break lookback which cause "xres_vss_loop" unknown
-                .PULLUP_H          (xres_vss_loop),	  // IO, Pullup connection for alternate filter input
-
-		.ENABLE_VDDIO      (vccd_const_one[6]) );
+		.TIE_WEAK_HI_H(xresloop),   // Loop-back connection to pad through pad_a_esd_h
+		.TIE_HI_ESD(),
+		.TIE_LO_ESD(xres_vss_loop),
+		.PAD_A_ESD_H(xresloop),
+		.XRES_H_N(resetb_core_h),
+		.DISABLE_PULLUP_H(xres_vss_loop), // 0 = enable pull-up on reset pad
+		.ENABLE_H(porb_h),	 	  // Power-on-reset
+   		.EN_VDDIO_SIG_H(xres_vss_loop),	  // No idea.
+   		.INP_SEL_H(xres_vss_loop),	  // 1 = use filt_in_h else filter the pad input
+   		.FILT_IN_H(xres_vss_loop),	  // Alternate input for glitch filter
+   		.PULLUP_H(xres_vss_loop),	  // Pullup connection for alternate filter input
+		.ENABLE_VDDIO(vccd_const_one[6])
+    	);
 
 	// Corner cells (These are overlay cells;  it is not clear what is normally
     	// supposed to go under them.)

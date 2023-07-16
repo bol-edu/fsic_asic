@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="caravel_asic.wdb" id="1">
+         <top_modules>
+            <top_module name="top_bench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="551,367.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="552,294.001 ns"></ZoomEndTime>
+      <Cursor1Time time="551,710.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="427"></NameColumnWidth>
+      <ValueColumnWidth column_width="170"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="37" />
+   <wvobject type="group" fp_name="group77">
+      <obj_property name="label">Chip_Top</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/top_bench/uut/gpio">
+         <obj_property name="ElementShortName">gpio</obj_property>
+         <obj_property name="ObjectShortName">gpio</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/clock">
+         <obj_property name="ElementShortName">clock</obj_property>
+         <obj_property name="ObjectShortName">clock</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/resetb">
+         <obj_property name="ElementShortName">resetb</obj_property>
+         <obj_property name="ObjectShortName">resetb</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj_io">
+         <obj_property name="ElementShortName">mprj_io[37:0]</obj_property>
+         <obj_property name="ObjectShortName">mprj_io[37:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/flash_clk">
+         <obj_property name="ElementShortName">flash_clk</obj_property>
+         <obj_property name="ObjectShortName">flash_clk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/flash_csb">
+         <obj_property name="ElementShortName">flash_csb</obj_property>
+         <obj_property name="ObjectShortName">flash_csb</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/flash_io0">
+         <obj_property name="ElementShortName">flash_io0</obj_property>
+         <obj_property name="ObjectShortName">flash_io0</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/flash_io1">
+         <obj_property name="ElementShortName">flash_io1</obj_property>
+         <obj_property name="ObjectShortName">flash_io1</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group147">
+      <obj_property name="label">Flash_Model</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/top_bench/spiflash/powered_up">
+         <obj_property name="ElementShortName">powered_up</obj_property>
+         <obj_property name="ObjectShortName">powered_up</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/spiflash/spi_cmd">
+         <obj_property name="ElementShortName">spi_cmd[7:0]</obj_property>
+         <obj_property name="ObjectShortName">spi_cmd[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/spiflash/bytecount">
+         <obj_property name="ElementShortName">bytecount[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bytecount[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/spiflash/spi_addr">
+         <obj_property name="ElementShortName">spi_addr[23:0]</obj_property>
+         <obj_property name="ObjectShortName">spi_addr[23:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/spiflash/buffer">
+         <obj_property name="ElementShortName">buffer[7:0]</obj_property>
+         <obj_property name="ObjectShortName">buffer[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group78">
+      <obj_property name="label">New Group 3</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/flash_io0_di">
+      <obj_property name="ElementShortName">flash_io0_di</obj_property>
+      <obj_property name="ObjectShortName">flash_io0_di</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/flash_io1_di">
+      <obj_property name="ElementShortName">flash_io1_di</obj_property>
+      <obj_property name="ObjectShortName">flash_io1_di</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/flash_io2_di">
+      <obj_property name="ElementShortName">flash_io2_di</obj_property>
+      <obj_property name="ObjectShortName">flash_io2_di</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/flash_io3_di">
+      <obj_property name="ElementShortName">flash_io3_di</obj_property>
+      <obj_property name="ObjectShortName">flash_io3_di</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group83">
+      <obj_property name="label">CPU_IBUS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_adr">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_adr[29:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_adr[29:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_we">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_we</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_we</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_stb">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_stb</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_stb</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_dat_w">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_dat_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_dat_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_sel">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_sel[3:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_sel[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_cyc">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_cyc</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_cyc</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_cti">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_cti[2:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_cti[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_bte">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_bte[1:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_bte[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_dat_r">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_dat_r[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_dat_r[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_err">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_err</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_err</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_ibus_ibus_ack">
+         <obj_property name="ElementShortName">mgmtsoc_ibus_ibus_ack</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_ibus_ibus_ack</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="group" fp_name="group95">
+      <obj_property name="label">CPU_DBUS</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_adr">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_adr[29:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_adr[29:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_we">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_we</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_we</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_stb">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_stb</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_stb</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_sel">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_sel[3:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_sel[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_dat_w">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_dat_w[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_dat_w[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_cyc">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_cyc</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_cyc</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_cti">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_cti[2:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_cti[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_bte">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_bte[1:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_bte[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_dat_r">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_dat_r[31:0]</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_dat_r[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_err">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_err</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_err</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_ack">
+         <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_ack</obj_property>
+         <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_ack</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/slave_sel_r">
+      <obj_property name="ElementShortName">slave_sel_r[6:0]</obj_property>
+      <obj_property name="ObjectShortName">slave_sel_r[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/slave_sel">
+      <obj_property name="ElementShortName">slave_sel[6:0]</obj_property>
+      <obj_property name="ObjectShortName">slave_sel[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/done">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_litespisdrphycore_dq_i">
+      <obj_property name="ElementShortName">mgmtsoc_litespisdrphycore_dq_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_litespisdrphycore_dq_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_litespisdrphycore_sr_in_shift">
+      <obj_property name="ElementShortName">mgmtsoc_litespisdrphycore_sr_in_shift</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_litespisdrphycore_sr_in_shift</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_litespisdrphycore_sr_in">
+      <obj_property name="ElementShortName">mgmtsoc_litespisdrphycore_sr_in[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_litespisdrphycore_sr_in[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/litespi_state">
+      <obj_property name="ElementShortName">litespi_state[3:0]</obj_property>
+      <obj_property name="ObjectShortName">litespi_state[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_litespimmap_sink_payload_data">
+      <obj_property name="ElementShortName">mgmtsoc_litespimmap_sink_payload_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_litespimmap_sink_payload_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/mgmtsoc_litespimmap_bus_dat_r">
+      <obj_property name="ElementShortName">mgmtsoc_litespimmap_bus_dat_r[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_litespimmap_bus_dat_r[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/spiflash/spi_cmd">
+      <obj_property name="ElementShortName">spi_cmd[7:0]</obj_property>
+      <obj_property name="ObjectShortName">spi_cmd[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/checkbits">
+      <obj_property name="ElementShortName">checkbits[15:0]</obj_property>
+      <obj_property name="ObjectShortName">checkbits[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/padframe/mprj_io_out">
+      <obj_property name="ElementShortName">mprj_io_out[37:0]</obj_property>
+      <obj_property name="ObjectShortName">mprj_io_out[37:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/padframe/mprj_io_oeb">
+      <obj_property name="ElementShortName">mprj_io_oeb[37:0]</obj_property>
+      <obj_property name="ObjectShortName">mprj_io_oeb[37:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/padframe/mprj_io_in">
+      <obj_property name="ElementShortName">mprj_io_in[37:0]</obj_property>
+      <obj_property name="ObjectShortName">mprj_io_in[37:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/padframe/mprj_pads/oeb">
+      <obj_property name="ElementShortName">oeb[37:0]</obj_property>
+      <obj_property name="ObjectShortName">oeb[37:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/padframe/mprj_pads/io_out">
+      <obj_property name="ElementShortName">io_out[37:0]</obj_property>
+      <obj_property name="ObjectShortName">io_out[37:0]</obj_property>
+   </wvobject>
+   <wvobject type="group" fp_name="group101">
+      <obj_property name="label">MPRJ_IO[16]</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /OUT">
+         <obj_property name="ElementShortName">OUT</obj_property>
+         <obj_property name="ObjectShortName">OUT</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /OE_N">
+         <obj_property name="ElementShortName">OE_N</obj_property>
+         <obj_property name="ObjectShortName">OE_N</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /IN">
+         <obj_property name="ElementShortName">IN</obj_property>
+         <obj_property name="ObjectShortName">IN</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /PAD">
+         <obj_property name="ElementShortName">PAD</obj_property>
+         <obj_property name="ObjectShortName">PAD</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/dm_final">
+         <obj_property name="ElementShortName">dm_final[2:0]</obj_property>
+         <obj_property name="ObjectShortName">dm_final[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/enable_pad_amuxbus_a">
+         <obj_property name="ElementShortName">enable_pad_amuxbus_a</obj_property>
+         <obj_property name="ObjectShortName">enable_pad_amuxbus_a</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/enable_pad_amuxbus_b">
+         <obj_property name="ElementShortName">enable_pad_amuxbus_b</obj_property>
+         <obj_property name="ObjectShortName">enable_pad_amuxbus_b</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/enable_pad_vssio_q">
+         <obj_property name="ElementShortName">enable_pad_vssio_q</obj_property>
+         <obj_property name="ObjectShortName">enable_pad_vssio_q</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/enable_pad_vddio_q">
+         <obj_property name="ElementShortName">enable_pad_vddio_q</obj_property>
+         <obj_property name="ObjectShortName">enable_pad_vddio_q</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/out_final">
+         <obj_property name="ElementShortName">out_final</obj_property>
+         <obj_property name="ObjectShortName">out_final</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/x_on_pad">
+         <obj_property name="ElementShortName">x_on_pad</obj_property>
+         <obj_property name="ObjectShortName">x_on_pad</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/padframe/mprj_pads/\area1_io_pad[16] /gpiov2_base/pad_tristate">
+         <obj_property name="ElementShortName">pad_tristate</obj_property>
+         <obj_property name="ObjectShortName">pad_tristate</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/\gpio_control_in_1[8] /mgmt_ena">
+         <obj_property name="ElementShortName">mgmt_ena</obj_property>
+         <obj_property name="ObjectShortName">mgmt_ena</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/\gpio_control_in_1[8] /mgmt_gpio_oeb">
+         <obj_property name="ElementShortName">mgmt_gpio_oeb</obj_property>
+         <obj_property name="ObjectShortName">mgmt_gpio_oeb</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/\gpio_control_in_1[8] /gpio_outenb">
+         <obj_property name="ElementShortName">gpio_outenb</obj_property>
+         <obj_property name="ObjectShortName">gpio_outenb</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/\gpio_control_in_1[8] /shift_register">
+         <obj_property name="ElementShortName">shift_register[12:0]</obj_property>
+         <obj_property name="ObjectShortName">shift_register[12:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/\gpio_control_in_1[8] /serial_clock">
+         <obj_property name="ElementShortName">serial_clock</obj_property>
+         <obj_property name="ObjectShortName">serial_clock</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/housekeeping/serial_bb_enable">
+         <obj_property name="ElementShortName">serial_bb_enable</obj_property>
+         <obj_property name="ObjectShortName">serial_bb_enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/housekeeping/serial_clock_pre">
+         <obj_property name="ElementShortName">serial_clock_pre</obj_property>
+         <obj_property name="ObjectShortName">serial_clock_pre</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/housekeeping/xfer_state">
+         <obj_property name="ElementShortName">xfer_state[1:0]</obj_property>
+         <obj_property name="ObjectShortName">xfer_state[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/housekeeping/caddr">
+         <obj_property name="ElementShortName">caddr[7:0]</obj_property>
+         <obj_property name="ObjectShortName">caddr[7:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/housekeeping/cwstb">
+         <obj_property name="ElementShortName">cwstb</obj_property>
+         <obj_property name="ObjectShortName">cwstb</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/housekeeping/cdata">
+         <obj_property name="ElementShortName">cdata[7:0]</obj_property>
+         <obj_property name="ObjectShortName">cdata[7:0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/housekeeping/wbbd_addr">
+      <obj_property name="ElementShortName">wbbd_addr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">wbbd_addr[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/housekeeping/GPIO_BASE_ADR">
+      <obj_property name="ElementShortName">GPIO_BASE_ADR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">GPIO_BASE_ADR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/housekeeping/SPI_BASE_ADR">
+      <obj_property name="ElementShortName">SPI_BASE_ADR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SPI_BASE_ADR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/housekeeping/SYS_BASE_ADR">
+      <obj_property name="ElementShortName">SYS_BASE_ADR[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SYS_BASE_ADR[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/shared_ack">
+      <obj_property name="ElementShortName">shared_ack</obj_property>
+      <obj_property name="ObjectShortName">shared_ack</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/soc/core/grant">
+      <obj_property name="ElementShortName">grant[1:0]</obj_property>
+      <obj_property name="ObjectShortName">grant[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_dbus_dbus_ack">
+      <obj_property name="ElementShortName">mgmtsoc_dbus_dbus_ack</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_dbus_dbus_ack</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_wishbone_cyc">
+      <obj_property name="ElementShortName">mgmtsoc_wishbone_cyc</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_wishbone_cyc</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/mgmtsoc_wishbone_stb">
+      <obj_property name="ElementShortName">mgmtsoc_wishbone_stb</obj_property>
+      <obj_property name="ObjectShortName">mgmtsoc_wishbone_stb</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/next_state">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/soc/core/state">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+</wave_config>

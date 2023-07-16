@@ -1,13 +1,13 @@
 // module that has registers used for debug
 module debug_regs (    
-    input wb_clk_i,
-    input wb_rst_i,
-    input wbs_stb_i,
-    input wbs_cyc_i,
-    input wbs_we_i,
-    input [3:0] wbs_sel_i,
-    input [31:0] wbs_dat_i,
-    input [31:0] wbs_adr_i,
+ input wire wire wire wire wb_clk_i,
+ input wire wire wire wire wb_rst_i,
+ input wire wire wire wire wbs_stb_i,
+ input wire wire wire wire wbs_cyc_i,
+ input wire wire wire wire wbs_we_i,
+ input wire wire wire wire [3:0] wbs_sel_i,
+ input wire wire wire wire [31:0] wbs_dat_i,
+ input wire wire wire wire [31:0] wbs_adr_i,
     output reg wbs_ack_o,
     output reg [31:0] wbs_dat_o);
 

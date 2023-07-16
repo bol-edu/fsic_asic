@@ -60,26 +60,31 @@ function cp_file_list() {
       curd=`pwd`
       # echo $src $curd
       if [ ! -f $src ]; then
-        echo "+++++++"
-        echo $line
+      # echo "+++++++"
+      # echo $line
         curd=`pwd`
-        echo $src
-	ls -al
-	ls $src
-	ls $line
+      # echo $src
+      # ls -al
+      # ls $src
+      # ls $line
       # echo "File: $src not exist at $curd"
         echo -n "File: "
         echo -n $src
         echo "not exist at $curd"
-        echo "+++++++"
+      # echo "+++++++"
         exit
       fi
     # echo $src
     # echo "++++++++++++++"
       srf=`basename $src`
-    # echo "++++++++++++++"
     # echo $srf
+    # echo "++++++++++++++"
       cp -f $src $trg_dr
+    # curd=`pwd`
+    # echo "++++++++++++++"
+    # ls -al $src
+    # echo "$curd"
+    # echo "++++++++++++++"
       #+ do post-processing here
       sed -i -e "/Release/s/MMDDYYYY/$date/"  $trg_dr/$srf
     # sed -i -e "/default_nettype/s/^/\/\/ /" $trg_dr/$srf
@@ -93,6 +98,7 @@ function cp_file_list() {
 
 
 if [ $# -lt 1 ]; then
+  # default source file list and target folder
   srcf=src.f
   tdir=../rtl
   # make a real copy to the "../dsn/rtl" directory
@@ -173,8 +179,8 @@ do
   # echo $flst
     filn=`basename $flst`
   # echo $dirn 
-  # rtld=`pwd`
-    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $tdir ; popd > /dev/null
+    rtld=`pwd`
+    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld/$tdir ; popd > /dev/null
   # echo "===="
   else
   # if [ ! -f $line ]; then

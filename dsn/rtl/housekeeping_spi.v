@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype wire
+`default_nettype none
 
 //-----------------------------------------------------------
 // SPI controller for Caravel
@@ -78,13 +78,13 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
 	pass_thru_user, pass_thru_user_delay,
 	pass_thru_mgmt_reset, pass_thru_user_reset);
 
-    input reset;
-    input SCK;
-    input SDI;
-    input CSB;
-    output SDO;
+ input wire reset;
+ input wire SCK;
+ input wire SDI;
+ input wire CSB;
+ output wire SDO;
     output sdoenb;
-    input [7:0] idata;
+ input wire [7:0] idata;
     output [7:0] odata;
     output [7:0] oaddr;
     output rdstb;
@@ -93,8 +93,8 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     output pass_thru_mgmt_delay;
     output pass_thru_user;
     output pass_thru_user_delay;
-    output pass_thru_mgmt_reset;
-    output pass_thru_user_reset;
+ output wire pass_thru_mgmt_reset;
+ output wire pass_thru_user_reset;
 
     reg  [7:0]  addr;
     reg		wrstb;

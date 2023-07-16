@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-`default_nettype wire
+`default_nettype none
 /* 
  *---------------------------------------------------------------------
  * A simple module that generates buffered high and low outputs
@@ -23,12 +23,12 @@
 
 module constant_block (
     `ifdef USE_POWER_PINS
-         inout vccd,
-         inout vssd,
+ inout wire vccd,
+ inout wire vssd,
     `endif
 
-    output	 one,
-    output	 zero
+ output wire one,
+ output wire zero
 );
 
     wire	one_unbuf;

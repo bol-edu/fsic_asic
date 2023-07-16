@@ -1,1 +1,1 @@
-sections.aravel_mgmt_soc_litex.lds
+sections.caravel_mgmt_soc_litex.lds
