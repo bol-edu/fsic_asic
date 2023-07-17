@@ -30,7 +30,6 @@
    ../../dsn/rtl/io_serdes.v
    ../../dsn/rtl/fsic_coreclk_phase_cnt.v
    ../../dsn/rtl/fsic_io_serdes_rx.v
-   ../../dsn/rtl/fsic_io_serdes_tx.v
 
 // logic_analyzer
    ../../dsn/rtl/logic_anlz.dummy_io.vd
