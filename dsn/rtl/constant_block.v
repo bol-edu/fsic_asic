@@ -23,12 +23,12 @@
 
 module constant_block (
     `ifdef USE_POWER_PINS
- inout wire vccd,
- inout wire vssd,
+         inout vccd,
+         inout vssd,
     `endif
 
- output wire one,
- output wire zero
+    output	 one,
+    output	 zero
 );
 
     wire	one_unbuf;

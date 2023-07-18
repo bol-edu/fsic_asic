@@ -54,54 +54,54 @@ module gpio_control_block #(
     parameter PAD_CTRL_BITS = 13
 ) (
     `ifdef USE_POWER_PINS
-         inout wire vccd,
-         inout wire vssd,
-         inout wire vccd1,
-         inout wire vssd1,
+         inout vccd,
+         inout vssd,
+         inout vccd1,
+         inout vssd1,
     `endif
 
     // Power-on defaults
-    input  wire [PAD_CTRL_BITS-1:0] gpio_defaults,
+    input [PAD_CTRL_BITS-1:0] gpio_defaults,
 
     // Management Soc-facing signals
-    input  wire  	 resetn,		// Global reset, locally propagated
-    output wire       resetn_out,
-    input  wire  	 serial_clock,		// Global clock, locally propatated
-    output wire  	 serial_clock_out,
-    input  wire  serial_load,		// Register load strobe
-    output wire  serial_load_out,
+    input  	 resetn,		// Global reset, locally propagated
+    output       resetn_out,
+    input  	 serial_clock,		// Global clock, locally propatated
+    output  	 serial_clock_out,
+    input	 serial_load,		// Register load strobe
+    output	 serial_load_out,
 
-    output wire       mgmt_gpio_in,		// Management from pad (input  wire only)
-    input  wire        mgmt_gpio_out,		// Management to pad (output wire only)
-    input  wire        mgmt_gpio_oeb,		// Management to pad (output wire only)
+    output       mgmt_gpio_in,		// Management from pad (input only)
+    input        mgmt_gpio_out,		// Management to pad (output only)
+    input        mgmt_gpio_oeb,		// Management to pad (output only)
 
     // Serial data chain for pad configuration
-    input  wire  	 serial_data_in,
+    input  	 serial_data_in,
     output reg   serial_data_out,
 
     // User-facing signals
-    input  wire        user_gpio_out,		// User space to pad
-    input  wire        user_gpio_oeb,		// Output enable (user)
-    output wire  user_gpio_in,		// Pad to user space
+    input        user_gpio_out,		// User space to pad
+    input        user_gpio_oeb,		// Output enable (user)
+    output	 user_gpio_in,		// Pad to user space
 
     // Pad-facing signals (Pad GPIOv2)
-    output wire  pad_gpio_holdover,
-    output wire  pad_gpio_slow_sel,
-    output wire  pad_gpio_vtrip_sel,
-    output wire       pad_gpio_inenb,
-    output wire       pad_gpio_ib_mode_sel,
-    output wire  pad_gpio_ana_en,
-    output wire  pad_gpio_ana_sel,
-    output wire  pad_gpio_ana_pol,
-    output wire [2:0] pad_gpio_dm,
-    output wire       pad_gpio_outenb,
-    output wire  pad_gpio_out,
-    input  wire  pad_gpio_in,
+    output	 pad_gpio_holdover,
+    output	 pad_gpio_slow_sel,
+    output	 pad_gpio_vtrip_sel,
+    output       pad_gpio_inenb,
+    output       pad_gpio_ib_mode_sel,
+    output	 pad_gpio_ana_en,
+    output	 pad_gpio_ana_sel,
+    output	 pad_gpio_ana_pol,
+    output [2:0] pad_gpio_dm,
+    output       pad_gpio_outenb,
+    output	 pad_gpio_out,
+    input	 pad_gpio_in,
 
     // to provide a way to automatically disable/enable output
     // from the outside with needing a conb cell
-    output wire  one,
-    output wire  zero
+    output	 one,
+    output	 zero
 );
 
     /* Parameters defining the bit offset of each function in the chain */
@@ -150,9 +150,16 @@ module gpio_control_block #(
 
     /* Propagate the clock and reset signals so that they aren't wired	*/
     /* all over the chip, but are just wired between the blocks.	*/
-    assign serial_clock_out = serial_clock;
-    assign resetn_out = resetn;
-    assign serial_load_out = serial_load;
+    (* keep *) sky130_fd_sc_hd__clkbuf_8 BUF[2:0] (
+    `ifdef USE_POWER_PINS
+            .VPWR(vccd),
+            .VGND(vssd),
+            .VPB(vccd),
+            .VNB(vssd),
+    `endif
+        .A({serial_clock, resetn, serial_load}),
+        .X({serial_clock_out, resetn_out, serial_load_out})
+    );
 
     always @(posedge serial_clock or negedge resetn) begin
 	if (resetn == 1'b0) begin
@@ -245,28 +252,27 @@ module gpio_control_block #(
 
     (* keep *)
     sky130_fd_sc_hd__macro_sparecell spare_cell (
-            `ifdef USE_POWER_PINS
+`ifdef USE_POWER_PINS
             .VPWR(vccd),
             .VGND(vssd),
             .VPB(vccd),
-            .VNB(vssd),
-            `endif
-            .LO()
-            );
+            .VNB(vssd)
+`endif
+    );
 
     sky130_fd_sc_hd__conb_1 const_source (
-            `ifdef USE_POWER_PINS
+`ifdef USE_POWER_PINS
             .VPWR(vccd),
             .VGND(vssd),
             .VPB(vccd),
             .VNB(vssd),
-            `endif
+`endif
             .HI(one_unbuf),
             .LO(zero_unbuf)
-            );
+    );
 
     assign zero = zero_unbuf;
-    assign one  = one_unbuf;
+    assign one = one_unbuf;
 
 endmodule
 `default_nettype wire

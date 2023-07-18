@@ -24,19 +24,19 @@
 /* whole management protection method.					*/
 /*----------------------------------------------------------------------*/
 
-module mgmt_protect_hv
-(
-    `ifdef USE_POWER_PINS
-    inout  wire vccd,
-    inout  wire vssd,
-    inout  wire vdda1,
-    inout  wire vssa1,
-    inout  wire vdda2,
-    inout  wire vssa2,
-    `endif
+module mgmt_protect_hv (
+`ifdef USE_POWER_PINS
+    inout	vccd,
+    inout	vssd,
+    inout	vdda1,
+    inout	vssa1,
+    inout	vdda2,
+    inout	vssa2,
+`endif
 
-    output wire mprj_vdd_logic1,
-    output wire mprj2_vdd_logic1
+    output	mprj_vdd_logic1,
+    output	mprj2_vdd_logic1
+
 );
 
     wire mprj_vdd_logic1_h;

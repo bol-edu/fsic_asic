@@ -38,65 +38,65 @@
 /*----------------------------------------------------------------------*/
 
 module mgmt_protect (
-    `ifdef USE_POWER_PINS
-    inout  wire   vccd,
-    inout  wire   vssd,
-    inout  wire   vccd1,
-    inout  wire   vssd1,
-    inout  wire   vccd2,
-    inout  wire   vssd2,
-    inout  wire   vdda1,
-    inout  wire   vssa1,
-    inout  wire   vdda2,
-    inout  wire   vssa2,
-    `endif
+`ifdef USE_POWER_PINS
+    inout	  vccd,
+    inout	  vssd,
+    inout	  vccd1,
+    inout	  vssd1,
+    inout	  vccd2,
+    inout	  vssd2,
+    inout	  vdda1,
+    inout	  vssa1,
+    inout	  vdda2,
+    inout	  vssa2,
+`endif
 
-    input  wire    caravel_clk,
-    input  wire    caravel_clk2,
-    input  wire   caravel_rstn,
-    input  wire    mprj_cyc_o_core,
-    input  wire    mprj_stb_o_core,
-    input  wire         mprj_we_o_core,
-    input  wire [3:0]   mprj_sel_o_core,
-    input  wire [31:0]  mprj_adr_o_core,
-    input  wire [31:0]  mprj_dat_o_core,
-    input  wire [2:0]   user_irq_core,
+    input 	  caravel_clk,
+    input 	  caravel_clk2,
+    input	  caravel_rstn,
+    input 	  mprj_cyc_o_core,
+    input 	  mprj_stb_o_core,
+    input         mprj_we_o_core,
+    input [3:0]   mprj_sel_o_core,
+    input [31:0]  mprj_adr_o_core,
+    input [31:0]  mprj_dat_o_core,
+    input [2:0]	  user_irq_core,
 
-    output wire [31:0] mprj_dat_i_core,
-    output wire   mprj_ack_i_core,
+    output [31:0] mprj_dat_i_core,
+    output	  mprj_ack_i_core,
 
-    input  wire     mprj_iena_wb,  // Enable wishbone from user project
+    input  	  mprj_iena_wb,		// Enable wishbone from user project
 
     // All signal in/out directions are the reverse of the signal
     // names at the buffer intrface.
 
-    output wire [127:0] la_data_in_mprj,
-    input  wire  [127:0] la_data_out_mprj,
-    input  wire  [127:0] la_oenb_mprj,
-    input  wire  [127:0] la_iena_mprj,
+    output [127:0] la_data_in_mprj,
+    input  [127:0] la_data_out_mprj,
+    input  [127:0] la_oenb_mprj,
+    input  [127:0] la_iena_mprj,
 
-    input  wire  [127:0] la_data_out_core,
-    output wire [127:0] la_data_in_core,
-    output wire [127:0] la_oenb_core,
+    input  [127:0] la_data_out_core,
+    output [127:0] la_data_in_core,
+    output [127:0] la_oenb_core,
 
-    input  wire  [2:0]  user_irq_ena,
+    input  [2:0]  user_irq_ena,
 
-    output wire    user_clock,
-    output wire    user_clock2,
-    output wire    user_reset,
-    output wire    mprj_cyc_o_user,
-    output wire    mprj_stb_o_user,
-    output wire    mprj_we_o_user,
-    output wire [3:0]  mprj_sel_o_user,
-    output wire [31:0] mprj_adr_o_user,
-    output wire [31:0] mprj_dat_o_user,
-    input  wire  [31:0] mprj_dat_i_user,
-    input  wire   mprj_ack_i_user,
-    output wire [2:0]  user_irq,
-    output wire   user1_vcc_powergood,
-    output wire   user2_vcc_powergood,
-    output wire   user1_vdd_powergood,
-    output wire   user2_vdd_powergood
+    output 	  user_clock,
+    output 	  user_clock2,
+    output 	  user_reset,
+    output 	  mprj_cyc_o_user,
+    output 	  mprj_stb_o_user,
+    output 	  mprj_we_o_user,
+    output [3:0]  mprj_sel_o_user,
+    output [31:0] mprj_adr_o_user,
+    output [31:0] mprj_dat_o_user,
+    input  [31:0] mprj_dat_i_user,
+    input	  mprj_ack_i_user,
+    output [2:0]  user_irq,
+    output	  user1_vcc_powergood,
+    output	  user2_vcc_powergood,
+    output	  user1_vdd_powergood,
+    output	  user2_vdd_powergood
 );
 
 	wire [462:0] mprj_logic1;
@@ -109,30 +109,31 @@ module mgmt_protect (
 
 
 	wire [127:0] la_data_in_mprj_bar;
-	wire   [2:0] user_irq_bar;
+	wire [2:0] user_irq_bar;
 
 	wire [127:0] la_data_in_enable;
 	wire [127:0] la_data_out_enable;
-	wire   [2:0] user_irq_enable;
-	wire         wb_in_enable;
+	wire [2:0] user_irq_enable;
+	wire 	   wb_in_enable;
 
-	wire  [31:0] mprj_dat_i_core_bar;
-	wire         mprj_ack_i_core_bar;
+	wire [31:0] mprj_dat_i_core_bar;
+	wire 	    mprj_ack_i_core_bar;
 
-        mprj_logic_high  mprj_logic_high_inst (
-                                               `ifdef USE_POWER_PINS
-                                               .vccd1(vccd1),
-                                               .vssd1(vssd1),
-                                               `endif
-                                               .HI(mprj_logic1));
+        mprj_logic_high mprj_logic_high_inst (
+`ifdef USE_POWER_PINS
+                .vccd1(vccd1),
+                .vssd1(vssd1),
+`endif
+                .HI(mprj_logic1)
+        );
 
         mprj2_logic_high mprj2_logic_high_inst (
-                                                `ifdef USE_POWER_PINS
-                                                .vccd2(vccd2),
-                                                .vssd2(vssd2),
-                                                `endif
-                                                .HI(mprj2_logic1));
-
+`ifdef USE_POWER_PINS
+                .vccd2(vccd2),
+                .vssd2(vssd2),
+`endif
+                .HI(mprj2_logic1)
+        );
 
 	// Logic high in the VDDA (3.3V) domains
 

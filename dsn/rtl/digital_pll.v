@@ -22,32 +22,26 @@
 `include "ring_osc2x13.v"
 `endif
 
-module digital_pll
-/*
-(
-    `ifdef USE_POWER_PINS
+module digital_pll(
+`ifdef USE_POWER_PINS
     VPWR,
     VGND,
-    `endif
-
+`endif
     resetb, enable, osc, clockp, div, dco, ext_trim);
-*/
 
-(
 `ifdef USE_POWER_PINS
-    input wire        VPWR,
-    input wire        VGND,
+    input VPWR;
+    input VGND;
 `endif
 
-    input wire        resetb,	// Sense negative reset
-    input wire        enable,	// Enable PLL
-    input wire        osc,		// Input oscillator to match
-    input wire  [4:0] div,		// PLL feedback division ratio
-    input wire        dco,		// Run in DCO mode
-    input wire [25:0] ext_trim,	// External trim for DCO mode
+    input	 resetb;	// Sense negative reset
+    input	 enable;	// Enable PLL
+    input	 osc;		// Input oscillator to match
+    input [4:0]	 div;		// PLL feedback division ratio
+    input 	 dco;		// Run in DCO mode
+    input [25:0] ext_trim;	// External trim for DCO mode
 
-    output wire [1:0] clockp 	// Two 90 degree clock phases
-);
+    output [1:0] clockp;	// Two 90 degree clock phases
 
     wire [1:0]   clockp_buffer_in;	// Input wires to clockp buffers
     wire [25:0]  itrim;		// Internally generated trim bits

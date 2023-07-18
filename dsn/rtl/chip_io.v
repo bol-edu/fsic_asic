@@ -325,25 +325,24 @@ module chip_io(
 	// Corner cells (These are overlay cells;  it is not clear what is normally
     	// supposed to go under them.)
 
-sky130_ef_io__corner_pad mgmt_corner [1:0] (
-					`ifndef TOP_ROUTING
-					.VSSIO(vssio),
-					.VDDIO(vddio),
-					.VDDIO_Q(vddio_q),
-					.VSSIO_Q(vssio_q),
-					.AMUXBUS_A(analog_a),
-					.AMUXBUS_B(analog_b),
-					.VSSD(vssd),
-					.VSSA(vssa),
-					.VSWITCH(vddio),
-					.VDDA(vdda),
-					.VCCD(vccd),
-					.VCCHIB(vccd)
-					`endif
-					   );
-
-sky130_ef_io__corner_pad user1_corner (
-                `ifndef TOP_ROUTING
+	    sky130_ef_io__corner_pad mgmt_corner [1:0] (
+`ifndef TOP_ROUTING
+		.VSSIO(vssio),
+		.VDDIO(vddio),
+		.VDDIO_Q(vddio_q),
+		.VSSIO_Q(vssio_q),
+		.AMUXBUS_A(analog_a),
+		.AMUXBUS_B(analog_b),
+		.VSSD(vssd),
+		.VSSA(vssa),
+		.VSWITCH(vddio),
+		.VDDA(vdda),
+		.VCCD(vccd),
+		.VCCHIB(vccd)
+`endif
+    	    );
+	    sky130_ef_io__corner_pad user1_corner (
+`ifndef TOP_ROUTING
 		.VSSIO(vssio),
 		.VDDIO(vddio),
 		.VDDIO_Q(vddio_q),
@@ -356,11 +355,10 @@ sky130_ef_io__corner_pad user1_corner (
 		.VDDA(vdda1),
 		.VCCD(vccd),
 		.VCCHIB(vccd)
-                `endif
-    	        );
-
-sky130_ef_io__corner_pad user2_corner (
-                `ifndef TOP_ROUTING
+`endif
+    	    );
+	    sky130_ef_io__corner_pad user2_corner (
+`ifndef TOP_ROUTING
 		.VSSIO(vssio),
 		.VDDIO(vddio),
 		.VDDIO_Q(vddio_q),
@@ -373,17 +371,12 @@ sky130_ef_io__corner_pad user2_corner (
 		.VDDA(vdda2),
 		.VCCD(vccd),
 		.VCCHIB(vccd)
-                `endif
-    	        );
-
-	wire [`MPRJ_IO_PADS-1:0]  mprj_io_in_3v3;
-	wire [`MPRJ_IO_PADS-10:0] mprj_analog_noesd_io;
+`endif
+    	    );
 
 	mprj_io mprj_pads(
 		.vddio(vddio),
 		.vssio(vssio),
-		.vdda(vdda),
-		.vssa(vssa),
 		.vccd(vccd),
 		.vssd(vssd),
 		.vdda1(vdda1),
@@ -404,15 +397,13 @@ sky130_ef_io__corner_pad user2_corner (
 		.ib_mode_sel(mprj_io_ib_mode_sel),
 		.vtrip_sel(mprj_io_vtrip_sel),
 		.holdover(mprj_io_holdover),
-		.slow_sel         (mprj_io_slow_sel),
-		.analog_en        (mprj_io_analog_en),
-		.analog_sel       (mprj_io_analog_sel),
-		.analog_pol       (mprj_io_analog_pol),
-		.dm               (mprj_io_dm),               // I
-		.io_in            (mprj_io_in),               // O
-		.io_in_3v3        (mprj_io_in_3v3),           // O
-		.analog_io        (mprj_analog_io),           // IO
-		.analog_noesd_io  (mprj_analog_noesd_io)      // IO
+		.slow_sel(mprj_io_slow_sel),
+		.analog_en(mprj_io_analog_en),
+		.analog_sel(mprj_io_analog_sel),
+		.analog_pol(mprj_io_analog_pol),
+		.dm(mprj_io_dm),
+		.io_in(mprj_io_in),
+		.analog_io(mprj_analog_io)
 	);
 
 endmodule

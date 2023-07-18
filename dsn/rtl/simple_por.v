@@ -15,17 +15,18 @@
 
 `default_nettype none
 `timescale 1 ns / 1 ps
-
+ 
+/// sta-blackbox
 module simple_por(
-    `ifdef USE_POWER_PINS
-    inout  wire vdd3v3,
-    inout  wire vdd1v8,
-    inout  wire vss3v3,
-    inout  wire vss1v8,
-    `endif
-    output wire porb_h,
-    output wire porb_l,
-    output wire por_l
+`ifdef USE_POWER_PINS
+    inout vdd3v3,
+    inout vdd1v8,
+    inout vss3v3,
+    inout vss1v8,
+`endif
+    output porb_h,
+    output porb_l,
+    output por_l
 );
 
     wire mid;

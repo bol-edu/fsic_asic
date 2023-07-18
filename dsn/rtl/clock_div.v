@@ -17,20 +17,14 @@
 `default_nettype none
  
 module clock_div #(
-                    parameter SIZE = 3		// Number of bits for the divider value
-                  )
-(
-    input  wire            in,
-    output wire            out,
-    input  wire [SIZE-1:0] N,
-    input  wire            resetb
+    parameter SIZE = 3		// Number of bits for the divider value
+) (
+    in, out, N, resetb
 );
-    /*
     input in;			// input clock
     input [SIZE-1:0] N;		// the number to be divided by
     input resetb;		// asynchronous reset (sense negative)
     output out;			// divided output clock
-    */
  
     wire out_odd;		// output of odd divider
     wire out_even;		// output of even divider
@@ -67,20 +61,16 @@ endmodule // clock_div
  
 /* Odd divider */
 
-module odd #(parameter SIZE = 3)
-/*
-(
+module odd #(
+    parameter SIZE = 3
+) (
     clk, out, N, resetb, enable
 );
-*/
-
-(
-    input  wire            clk,		// slow clock
-    output wire            out,		// fast output clock
-    input  wire [SIZE-1:0] N,		// division factor
-    input  wire            resetb,	// synchronous reset
-    input  wire            enable 	// odd enable
-);
+    input clk;			// slow clock
+    output out;			// fast output clock
+    input [SIZE-1:0] N;		// division factor
+    input resetb;		// synchronous reset
+    input enable;		// odd enable
  
     reg [SIZE-1:0] counter;	// these 2 counters are used
     reg [SIZE-1:0] counter2;	// to non-overlapping signals
@@ -180,20 +170,17 @@ endmodule // odd
 
 /* Even divider */
 
-module even #( parameter SIZE = 3)
-/*
-(
+module even #(
+    parameter SIZE = 3
+) (
     clk, out, N, resetb, not_zero, enable
 );
-*/
-(
-    input  wire            clk,	// fast input clock
-    output wire            out,	// slower divided clock
-    input  wire [SIZE-1:0] N,	// divide by factor 'N'
-    input  wire            resetb,	// asynchronous reset
-    input  wire            not_zero,	// if !not_zero divide by 1
-    input  wire            enable	// enable the even divider
-);
+    input clk;		// fast input clock
+    output out;		// slower divided clock
+    input [SIZE-1:0] N;	// divide by factor 'N'
+    input resetb;	// asynchronous reset
+    input not_zero;	// if !not_zero divide by 1
+    input enable;	// enable the even divider
  
     reg [SIZE-1:0] counter;
     reg out_counter;

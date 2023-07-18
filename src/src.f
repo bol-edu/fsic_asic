@@ -11,7 +11,8 @@
    ../../../fork/caravel/verilog/rtl/__user_project_wrapper.v
 //-f../../fsic_fpga/rtl/user/rtl/rtl.f
 
-   ../../../fork/caravel/verilog/rtl/housekeeping_spi.v
+// ../../../fork/caravel/verilog/rtl/housekeeping_spi.v
+   ../src/housekeeping_spi.v
    ../../../fork/caravel/verilog/rtl/housekeeping.v
 
    ../../../fork/caravel/verilog/rtl/mgmt_protect_hv.v

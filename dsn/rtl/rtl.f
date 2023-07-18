@@ -45,8 +45,8 @@
 // ../../dsn/rtl/user_project_wrapper.v
 // -------------------------------------------------
   
-   ../../dsn/rtl/housekeeping_spi.v
-   ../../dsn/rtl/housekeeping.v
+   ../../dsn/rtl/housekeeping_spi.wire.v
+   ../../dsn/rtl/housekeeping.wire.v
   
    ../../dsn/rtl/mgmt_protect_hv.v
    ../../dsn/rtl/mgmt_protect.v

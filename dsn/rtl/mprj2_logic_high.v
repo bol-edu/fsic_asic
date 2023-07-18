@@ -13,23 +13,21 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-module mprj2_logic_high
-(
-    `ifdef USE_POWER_PINS
+module mprj2_logic_high (
+`ifdef USE_POWER_PINS
     inout	   vccd2,
     inout	   vssd2,
-    `endif
+`endif
     output         HI
 );
-
 sky130_fd_sc_hd__conb_1 inst (
-                `ifdef USE_POWER_PINS
+`ifdef USE_POWER_PINS
                 .VPWR(vccd2),
                 .VGND(vssd2),
                 .VPB(vccd2),
                 .VNB(vssd2),
-                `endif
+`endif
                 .HI(HI),
-                .LO());
-
+                .LO()
+        );
 endmodule

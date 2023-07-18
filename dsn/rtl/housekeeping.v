@@ -55,31 +55,30 @@
 //------------------------------------------------------------
 
 module housekeeping #(
-                      parameter GPIO_BASE_ADR = 32'h2600_0000,
-                      parameter SPI_BASE_ADR  = 32'h2610_0000,
-                      parameter SYS_BASE_ADR  = 32'h2620_0000,
-                      parameter IO_CTRL_BITS  = 13
-                     )
-(
-    `ifdef USE_POWER_PINS
-    inout  wire     VPWR,
-    inout  wire     VGND, 
-    `endif
+    parameter GPIO_BASE_ADR = 32'h2600_0000,
+    parameter SPI_BASE_ADR = 32'h2610_0000,
+    parameter SYS_BASE_ADR = 32'h2620_0000,
+    parameter IO_CTRL_BITS = 13
+) (
+`ifdef USE_POWER_PINS
+    inout VPWR,
+    inout VGND, 
+`endif
 
     // Wishbone interface to management SoC
-    input  wire wb_clk_i,
-    input  wire wb_rstn_i,
-    input  wire [31:0] wb_adr_i,
-    input  wire [31:0] wb_dat_i,
-    input  wire [3:0] wb_sel_i,
-    input  wire wb_we_i,
-    input  wire wb_cyc_i,
-    input  wire wb_stb_i,
+    input wb_clk_i,
+    input wb_rstn_i,
+    input [31:0] wb_adr_i,
+    input [31:0] wb_dat_i,
+    input [3:0] wb_sel_i,
+    input wb_we_i,
+    input wb_cyc_i,
+    input wb_stb_i,
     output reg wb_ack_o,
     output reg [31:0] wb_dat_o,
 
     // Primary reset
-    input  wire porb,
+    input porb,
 
     // Clocking control parameters
     output reg pll_ena,
@@ -91,98 +90,98 @@ module housekeeping #(
     output reg pll_bypass,
 
     // Module enable status from SoC
-    input  wire  qspi_enabled,	// Flash SPI is in quad mode
-    input  wire  uart_enabled,	// UART is enabled
-    input  wire  spi_enabled,		// SPI master is enabled
-    input  wire  debug_mode,		// Debug mode enabled
+    input  qspi_enabled,	// Flash SPI is in quad mode
+    input  uart_enabled,	// UART is enabled
+    input  spi_enabled,		// SPI master is enabled
+    input  debug_mode,		// Debug mode enabled
 
     // UART interface to/from SoC
-    input  wire  ser_tx,
-    output wire ser_rx,
+    input  ser_tx,
+    output ser_rx,
 
     // SPI master interface to/from SoC
-    output wire spi_sdi,
-    input  wire  spi_csb,
-    input  wire  spi_sck,
-    input  wire  spi_sdo,
-    input  wire  spi_sdoenb,
+    output spi_sdi,
+    input  spi_csb,
+    input  spi_sck,
+    input  spi_sdo,
+    input  spi_sdoenb,
 
     // External (originating from SPI and pad) IRQ and reset
-    output wire [2:0] irq,
-    output wire reset,
+    output [2:0] irq,
+    output reset,
 
     // GPIO serial loader programming interface
-    output wire serial_clock,
-    output wire serial_load,
-    output wire serial_resetn,
-    output wire serial_data_1,
-    output wire serial_data_2,
+    output serial_clock,
+    output serial_load,
+    output serial_resetn,
+    output serial_data_1,
+    output serial_data_2,
 
     // GPIO data management (to padframe)---three-pin interface
-    input  wire  [`MPRJ_IO_PADS-1:0] mgmt_gpio_in,
-    output wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out,
-    output wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_oeb,
+    input  [`MPRJ_IO_PADS-1:0] mgmt_gpio_in,
+    output [`MPRJ_IO_PADS-1:0] mgmt_gpio_out,
+    output [`MPRJ_IO_PADS-1:0] mgmt_gpio_oeb,
 
-    // Power control output wire (reserved for future use with LDOs)
-    output reg  [`MPRJ_PWR_PADS-1:0] pwr_ctrl_out,
+    // Power control output (reserved for future use with LDOs)
+    output reg [`MPRJ_PWR_PADS-1:0] pwr_ctrl_out,
 
     // CPU trap state status (for system monitoring)
-    input  wire trap,
+    input trap,
 
     // User clock (for system monitoring)
-    input  wire user_clock,
+    input user_clock,
 
     // Mask revision/User project ID
-    input  wire [31:0] mask_rev_in,
+    input [31:0] mask_rev_in,
 
     // SPI flash management (management SoC side)
-    input  wire spimemio_flash_csb,
-    input  wire spimemio_flash_clk,
-    input  wire spimemio_flash_io0_oeb,
-    input  wire spimemio_flash_io1_oeb,
-    input  wire spimemio_flash_io2_oeb,
-    input  wire spimemio_flash_io3_oeb,
-    input  wire spimemio_flash_io0_do,
-    input  wire spimemio_flash_io1_do,
-    input  wire spimemio_flash_io2_do,
-    input  wire spimemio_flash_io3_do,
-    output wire spimemio_flash_io0_di,
-    output wire spimemio_flash_io1_di,
-    output wire spimemio_flash_io2_di,
-    output wire spimemio_flash_io3_di,
+    input spimemio_flash_csb,
+    input spimemio_flash_clk,
+    input spimemio_flash_io0_oeb,
+    input spimemio_flash_io1_oeb,
+    input spimemio_flash_io2_oeb,
+    input spimemio_flash_io3_oeb,
+    input spimemio_flash_io0_do,
+    input spimemio_flash_io1_do,
+    input spimemio_flash_io2_do,
+    input spimemio_flash_io3_do,
+    output spimemio_flash_io0_di,
+    output spimemio_flash_io1_di,
+    output spimemio_flash_io2_di,
+    output spimemio_flash_io3_di,
 
     // Debug interface (routes to first GPIO) from management SoC
-    output wire debug_in,
-    input  wire debug_out,
-    input  wire debug_oeb,
+    output debug_in,
+    input debug_out,
+    input debug_oeb,
 
     // SPI flash management (padframe side)
     // (io2 and io3 are part of GPIO array, not dedicated pads)
-    output wire pad_flash_csb,
-    output wire pad_flash_csb_oeb,
-    output wire pad_flash_clk,
-    output wire pad_flash_clk_oeb,
-    output wire pad_flash_io0_oeb,
-    output wire pad_flash_io1_oeb,
-    output wire pad_flash_io0_ieb,
-    output wire pad_flash_io1_ieb,
-    output wire pad_flash_io0_do,
-    output wire pad_flash_io1_do,
-    input  wire pad_flash_io0_di,
-    input  wire pad_flash_io1_di,
+    output pad_flash_csb,
+    output pad_flash_csb_oeb,
+    output pad_flash_clk,
+    output pad_flash_clk_oeb,
+    output pad_flash_io0_oeb,
+    output pad_flash_io1_oeb,
+    output pad_flash_io0_ieb,
+    output pad_flash_io1_ieb,
+    output pad_flash_io0_do,
+    output pad_flash_io1_do,
+    input pad_flash_io0_di,
+    input pad_flash_io1_di,
 
-    `ifdef USE_SRAM_RO_INTERFACE
-    output wire sram_ro_clk,
-    output wire sram_ro_csb,
-    output wire [7:0] sram_ro_addr,
-    input  wire [31:0] sram_ro_data,
-    `endif
+`ifdef USE_SRAM_RO_INTERFACE
+    output sram_ro_clk,
+    output sram_ro_csb,
+    output [7:0] sram_ro_addr,
+    input [31:0] sram_ro_data,
+`endif
 
     // System signal monitoring
-    input  wire  usr1_vcc_pwrgood,
-    input  wire  usr2_vcc_pwrgood,
-    input  wire  usr1_vdd_pwrgood,
-    input  wire  usr2_vdd_pwrgood
+    input  usr1_vcc_pwrgood,
+    input  usr2_vcc_pwrgood,
+    input  usr1_vdd_pwrgood,
+    input  usr2_vdd_pwrgood
 );
 
     localparam OEB = 1;		// Offset of output enable (bar) in shift register
@@ -804,22 +803,21 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
 
     assign mgmt_gpio_out[10] = (pass_thru_user_delay) ? mgmt_gpio_in[2]
 			: mgmt_gpio_data[10];
-
-    assign mgmt_gpio_out_9_prebuff = (pass_thru_user) ? mgmt_gpio_in[4] : mgmt_gpio_data[9];
-
+    assign mgmt_gpio_out_9_prebuff = (pass_thru_user) ? mgmt_gpio_in[4]
+			: mgmt_gpio_data[9];
 
 (* keep *) sky130_fd_sc_hd__clkbuf_8 mgmt_gpio_9_buff_inst (
-                                                             `ifdef USE_POWER_PINS
-                                                             .VPWR(VPWR),
-                                                             .VGND(VGND),
-                                                             .VPB(VPWR),
-                                                             .VNB(VGND),
-                                                             `endif
-                                                             .A(mgmt_gpio_out_9_prebuff),
-                                                             .X(mgmt_gpio_out[9]));
+`ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+`endif
+	.A(mgmt_gpio_out_9_prebuff),
+    .X(mgmt_gpio_out[9]));
 
-
-    assign mgmt_gpio_out[8] = (pass_thru_user_delay) ? mgmt_gpio_in[3] : mgmt_gpio_data[8];
+    assign mgmt_gpio_out[8] = (pass_thru_user_delay) ? mgmt_gpio_in[3]
+			: mgmt_gpio_data[8];
 
     assign mgmt_gpio_out[7] = mgmt_gpio_data[7];
     assign mgmt_gpio_out[6] = (uart_enabled) ? ser_tx : mgmt_gpio_data[6];
@@ -856,33 +854,34 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
     // so the pad being under control of the user area takes precedence
     // over the system monitoring function.
 
-    assign mgmt_gpio_out_15_prebuff = (clk2_output_dest == 1'b1) ? user_clock : mgmt_gpio_data[15];
+    assign mgmt_gpio_out_15_prebuff = (clk2_output_dest == 1'b1) ? user_clock
+		: mgmt_gpio_data[15];
 
 (* keep *) sky130_fd_sc_hd__clkbuf_8 mgmt_gpio_15_buff_inst (
-                                                             `ifdef USE_POWER_PINS
-                                                             .VPWR(VPWR),
-                                                             .VGND(VGND),
-                                                             .VPB(VPWR),
-                                                             .VNB(VGND),
-                                                             `endif
-                                                             .A(mgmt_gpio_out_15_prebuff),
-                                                             .X(mgmt_gpio_out[15]));
+`ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+`endif
+	.A(mgmt_gpio_out_15_prebuff),
+    .X(mgmt_gpio_out[15]));
 
-    assign mgmt_gpio_out_14_prebuff = (clk1_output_dest == 1'b1) ? wb_clk_i : mgmt_gpio_data[14];
-
+    assign mgmt_gpio_out_14_prebuff = (clk1_output_dest == 1'b1) ? wb_clk_i
+		: mgmt_gpio_data[14];
 
 (* keep *) sky130_fd_sc_hd__clkbuf_8 mgmt_gpio_14_buff_inst (
-                                                             `ifdef USE_POWER_PINS
-                                                             .VPWR(VPWR),
-                                                             .VGND(VGND),
-                                                             .VPB(VPWR),
-                                                             .VNB(VGND),
-                                                             `endif
-                                                             .A(mgmt_gpio_out_14_prebuff),
-                                                             .X(mgmt_gpio_out[14]));
+`ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+`endif
+	.A(mgmt_gpio_out_14_prebuff),
+    .X(mgmt_gpio_out[14]));
 
-
-    assign mgmt_gpio_out[13] = (trap_output_dest == 1'b1) ? trap : mgmt_gpio_data[13];
+    assign mgmt_gpio_out[13] = (trap_output_dest == 1'b1) ? trap
+		: mgmt_gpio_data[13];
 
     assign irq[0] = irq_spi;
     assign irq[1] = (irq_1_inputsrc == 1'b1) ? mgmt_gpio_in[7] : 1'b0;

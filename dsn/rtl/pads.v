@@ -63,15 +63,15 @@
 `endif
 
 `define HVCLAMP_PINS(H,L) \
-					.DRN_HVC(H), \
-					.SRC_BDY_HVC(L)
+	.DRN_HVC(H), \
+	.SRC_BDY_HVC(L)
 
 `define LVCLAMP_PINS(H1,L1,H2,L2,L3) \
-					.BDY2_B2B(L3), \
-					.DRN_LVC1(H1), \
-					.DRN_LVC2(H2), \
-					.SRC_BDY_LVC1(L1), \
-					.SRC_BDY_LVC2(L2)
+	.BDY2_B2B(L3), \
+	.DRN_LVC1(H1), \
+	.DRN_LVC2(H2), \
+	.SRC_BDY_LVC1(L1), \
+	.SRC_BDY_LVC2(L2)
 
 `define INPUT_PAD(X,Y,CONB_ONE,CONB_ZERO) \
 	wire loop_zero_``X; \

@@ -18,9 +18,7 @@
 // the 3.3V domain while the signal goes to the digital circuitry in the
 // 1.8V domain.
 
-module xres_buf
-/*
-(
+module xres_buf (
 	X    ,
 	A    ,
 `ifdef USE_POWER_PINS
@@ -30,18 +28,15 @@ module xres_buf
 	LVGND,
 `endif
 );
-*/
 
-(
+output X    ;
+input  A    ;
 `ifdef USE_POWER_PINS
-inout  wire VPWR ,
-inout  wire VGND ,
-inout  wire LVPWR,
-inout  wire LVGND,
+inout  VPWR ;
+inout  VGND ;
+inout  LVPWR;
+inout  LVGND;
 `endif
-output wire X    ,
-input  wire A    
-);
 
 sky130_fd_sc_hvl__lsbufhv2lv_1 lvlshiftdown (
 `ifdef USE_POWER_PINS

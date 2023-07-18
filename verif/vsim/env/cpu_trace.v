@@ -1,7 +1,7 @@
 // -------------------------------------------------
 // CPU trace dump
 // at most 5 characters in abi reg name
-`define  CPU_INST  uut.soc.core.VexRiscv
+`define  CPU_INST  uut.chip_core.soc.core.VexRiscv
 
 
 reg [(8*5)-1:0] abi_reg[32]; // ABI register names

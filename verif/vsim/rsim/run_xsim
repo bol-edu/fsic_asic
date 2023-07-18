@@ -35,6 +35,20 @@ function add_output_wire {
   rm /tmp/tmp.v
 }
 
+function add_io_wire {
+  trgf=$1
+  fnam=`basename -s .v $trgf`
+  if [ -e $trgf ]; then
+    ./add_wire.pl $fnam.v  > $fnam.wire.v
+  else
+    curd=`pwd`
+    echo "File: $trgf not found at $curd"
+    exit
+  fi
+}
+
+
+
 # rm -f risc_v.hex
 # rm -rf xsim.dir/ *.log *.pb *.jou *.wdb
 
@@ -58,20 +72,63 @@ function add_output_wire {
   pushd . ; cd ../../../src ; ./gen_rtl src.user.f ../dsn/rtl  ; popd
 # pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ../dsn/gate ; popd
 
+
 # ----------------------------------------------------------------------
 # do some massage to collected code here
-add_input_wire  ../../../dsn/rtl/debug_regs.v
+# add_input_wire  ../../../dsn/rtl/debug_regs.v
 
-add_input_wire  ../../../dsn/rtl/housekeeping_spi.v
-add_output_wire ../../../dsn/rtl/housekeeping_spi.v SDO
-add_output_wire ../../../dsn/rtl/housekeeping_spi.v pass_thru_mgmt_reset
-add_output_wire ../../../dsn/rtl/housekeeping_spi.v pass_thru_user_reset
+# add_input_wire  ../../../dsn/rtl/housekeeping_spi.v
+# add_output_wire ../../../dsn/rtl/housekeeping_spi.v SDO
+# add_output_wire ../../../dsn/rtl/housekeeping_spi.v pass_thru_mgmt_reset
+# add_output_wire ../../../dsn/rtl/housekeeping_spi.v pass_thru_user_reset
  
-add_input_wire  ../../../dsn/rtl/digital_pll_controller.v
+# add_input_wire  ../../../dsn/rtl/digital_pll_controller.v
+# add_input_wire  ../../../dsn/rtl/ring_osc2x13.v
+# add_output_wire ../../../dsn/rtl/ring_osc2x13.v out
 
-add_inout_wire  ../../../dsn/rtl/constant_block.v
-add_output_wire ../../../dsn/rtl/constant_block.v one
-add_output_wire ../../../dsn/rtl/constant_block.v zero
+# add_input_wire  ../../../dsn/rtl/clock_div.v
+# add_output_wire ../../../dsn/rtl/clock_div.v out
+
+# add_inout_wire  ../../../dsn/rtl/constant_block.v
+# add_output_wire ../../../dsn/rtl/constant_block.v one
+# add_output_wire ../../../dsn/rtl/constant_block.v zero
+
+  cd ../../../dsn/rtl
+# add_io_wire housekeeping_spi.v
+  add_io_wire housekeeping.v
+  add_io_wire mgmt_protect_hv.v
+  add_io_wire mgmt_protect.v
+  add_io_wire clock_div.v
+  add_io_wire caravel_clocking.v
+  add_io_wire buff_flash_clkrst.v
+# add_io_wire ring_osc2x13.v
+# add_io_wire digital_pll_controller.v
+  add_io_wire digital_pll.v
+  add_io_wire gpio_logic_high.v
+  add_io_wire gpio_signal_buffering.v
+  add_io_wire mprj_logic_high.v
+  add_io_wire mprj2_logic_high.v
+  add_io_wire pads.v
+  add_io_wire mprj_io_buffer.v
+  add_io_wire mprj_io.v
+  add_io_wire chip_io.v
+  add_io_wire gpio_defaults_block.v
+  add_io_wire gpio_control_block.v
+  add_io_wire constant_block.v
+  add_io_wire user_id_programming.v
+  add_io_wire simple_por.v
+  add_io_wire xres_buf.v
+  add_io_wire spare_logic_block.v
+  add_io_wire caravel_power_routing.v
+  add_io_wire copyright_block.v
+  add_io_wire caravel_motto.v
+  add_io_wire caravel_logo.v
+  add_io_wire open_source.v
+  add_io_wire user_id_textblock.v
+  add_io_wire caravel_core.v
+  add_io_wire caravel.v
+
+  cd ../../verif/vsim/rsim
 
 # ----------------------------------------------------------------------
 # chg_fp down ../../../rtl/rtl.f  ./rtl.f

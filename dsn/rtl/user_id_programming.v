@@ -19,14 +19,15 @@
 // chip top level.  This value is passed to the block as
 // a parameter
 
+/// sta-blackbox
 module user_id_programming #(
     parameter USER_PROJECT_ID = 32'h0
 ) (
 `ifdef USE_POWER_PINS
-    inout  wire VPWR,
-    inout  wire VGND,
+    inout VPWR,
+    inout VGND,
 `endif
-    output wire [31:0] mask_rev
+    output [31:0] mask_rev
 );
     wire [31:0] user_proj_id_high;
     wire [31:0] user_proj_id_low;
