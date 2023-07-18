@@ -58,11 +58,13 @@
    ../../../fork/caravel/verilog/rtl/pads.v
 
    ../../../fork/caravel/verilog/rtl/mprj_io_buffer.v
-   ../../../fork/caravel/verilog/rtl/mprj_io.v
+// ../../../fork/caravel/verilog/rtl/mprj_io.v
+   ../src/mprj_io.v
    ../../../fork/caravel/verilog/rtl/chip_io.v
 
    ../../../fork/caravel/verilog/rtl/gpio_defaults_block.v
-   ../../../fork/caravel/verilog/rtl/gpio_control_block.v
+// ../../../fork/caravel/verilog/rtl/gpio_control_block.v
+   ../src/gpio_control_block.v
 
    ../../../fork/caravel/verilog/rtl/constant_block.v
    ../../../fork/caravel/verilog/rtl/user_id_programming.v
@@ -78,5 +80,6 @@
 
    ../../../fork/caravel/verilog/rtl/empty_macro.v
    ../../../fork/caravel/verilog/rtl/manual_power_connections.v
-   ../../../fork/caravel/verilog/rtl/caravel_core.v
+// ../../../fork/caravel/verilog/rtl/caravel_core.v
+   ../src/caravel_core.v
    ../../../fork/caravel/verilog/rtl/caravel.v
