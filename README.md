@@ -11,5 +11,25 @@
    top bench file is located at REPO/verif/vsim/env.  All models and library reference path are also placed there
 
    Please modify **REPO/src/src.f** or **REPO/src/src.user.f** to reflect your fsic_fpga repository path of your working environment.     
-   please modidy line `57`,`58` and `78`,`79` of `run_xsim` script to decide to run default FSIC demo project or with user project replaced.  
-   Efabless's repo **https://github.com/efabless/caravel**, **https://github.com/efabless/caravel_mgmt_soc_litex** also need to clone first.
+   please modidy line `71`,`72` and `138`,`139` of `run_xsim` script to decide to run default FSIC demo project or with user project replaced.  
+   Efabless's repo also need to clone first. 
+   **https://github.com/efabless/caravel**  
+   **https://github.com/efabless/caravel_user_project**
+
+   About How to setup user project of efabless, please refer this link first
+   **https://github.com/bol-edu/caravel-lab#2-caravel-user-flow**  
+
+   Expect Repo Hierarchy
+
+   <pre>
+   --+--fork---+--`caravel`  
+     |  
+     |  
+     |  
+     |  
+     +--clone--+--`fsic_fpga`  
+               |  
+               +--`fsic_asic`  
+               |  
+               +--`caravel_user_project`  
+</pre>
