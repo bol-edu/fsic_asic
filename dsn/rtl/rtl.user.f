@@ -74,8 +74,8 @@
    ../../dsn/rtl/mprj_logic_high.wire.v
    ../../dsn/rtl/mprj2_logic_high.wire.v
 
-   ../../dsn/rtl/mgmt_core.v
-   ../../dsn/rtl/mgmt_core_wrapper.v
+   ../../dsn/rtl/mgmt_core.patrick.v
+   ../../dsn/rtl/mgmt_core_wrapper.wire.v
   
    ../../dsn/rtl/pads.wire.v
   

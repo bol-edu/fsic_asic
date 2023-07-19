@@ -103,6 +103,7 @@ function add_io_wire {
   add_io_wire buff_flash_clkrst.v
 # add_io_wire ring_osc2x13.v
 # add_io_wire digital_pll_controller.v
+  add_io_wire mgmt_core_wrapper.v
   add_io_wire digital_pll.v
   add_io_wire gpio_logic_high.v
   add_io_wire gpio_signal_buffering.v
@@ -127,6 +128,8 @@ function add_io_wire {
   add_io_wire user_id_textblock.v
   add_io_wire caravel_core.v
   add_io_wire caravel.v
+
+  sed -i "s/^\s*X\s*,// ; 29s/endif/endif\n        X/" xres_buf.wire.v
 
   cd ../../verif/vsim/rsim
 

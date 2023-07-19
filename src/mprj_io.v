@@ -59,10 +59,17 @@ module mprj_io #(
     input [TOTAL_PADS-1:0] analog_pol,
     input [TOTAL_PADS*3-1:0] dm,
     output [TOTAL_PADS-1:0] io_in,
-    output [TOTAL_PADS-1:0] io_in_3v3,
-    inout [TOTAL_PADS-10:0] analog_io,
-    inout [TOTAL_PADS-10:0] analog_noesd_io
+// patrick
+//  output [TOTAL_PADS-1:0] io_in_3v3,
+    inout [TOTAL_PADS-10:0] analog_io
+// patrick
+//  inout [TOTAL_PADS-10:0] analog_noesd_io
 );
+
+//+ patrick
+    wire [TOTAL_PADS-1:0] io_in_3v3;
+    wire [TOTAL_PADS-10:0] analog_noesd_io;
+//- patrick
 
     wire [TOTAL_PADS-1:0] loop0_io;	// Internal loopback to 3.3V domain ground
     wire [TOTAL_PADS-1:0] loop1_io;	// Internal loopback to 3.3V domain power

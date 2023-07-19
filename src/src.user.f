@@ -51,9 +51,13 @@
    ../../../fork/caravel/verilog/rtl/mprj2_logic_high.v
 
 // ../../../fork/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core.v
-   ../src/mgmt_core.v
+// ../src/mgmt_core.v
+// ../../caravel_user_project/mgmt_core_wrapper/verilog/rtl/mgmt_core.v
+   ../src/mgmt_core.patrick.v
+//
 // ../../../fork/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core_wrapper.v
-   ../src/mgmt_core_wrapper.v
+// ../src/mgmt_core_wrapper.v
+   ../../caravel_user_project/mgmt_core_wrapper/verilog/rtl/mgmt_core_wrapper.v
 
    ../../../fork/caravel/verilog/rtl/pads.v
 

@@ -15,7 +15,7 @@ open (FH, '<', $file) or die $!;
 while (<FH>) {
  $line = $_;
 
- if( $line =~ /^\s*input\s*([\d|\w]+)([,|;])/) {
+ if( $line =~ /^[\s|\t]*input\s*([\d|\w]+)\s*([,|;])/) {
    print "input wire $1"."$2\n";
    next;
  } 
@@ -25,7 +25,7 @@ while (<FH>) {
    next;
  } 
 
- if( $line =~ /^\s*input\s*(\[.*\])\s*([\d|\w]+)([,|;])/) {
+ if( $line =~ /^\s*input\s*(\[.*\])\s*([\d|\w]+)\s*([,|;])/) {
    print "input wire $1 $2"."$3\n";
    next;
  } 
@@ -35,7 +35,7 @@ while (<FH>) {
    next;
  } 
 
- if( $line =~ /^\s*output\s*([\d|\w]+)([,|;])/) {
+ if( $line =~ /^[\s|\t]*output\s*([\d|\w]+)\s*([,|;])/) {
    print "output wire $1"."$2\n";
    next;
  } 
@@ -50,7 +50,7 @@ while (<FH>) {
    next;
  }
 
- if( $line =~ /^\s*output\s*(\[.*\])\s*([\d|\w]+)([,|;])/) {
+ if( $line =~ /^\s*output\s*(\[.*\])\s*([\d|\w]+)\s*([,|;])/) {
    print "output wire $1 $2"."$3\n";
    next;
  } 
@@ -65,7 +65,7 @@ while (<FH>) {
    next;
  } 
 
- if( $line =~ /^\s*inout\s*([\d|\w]+)([,|;])/) {
+ if( $line =~ /^[\s|\t]*inout\s*([\d|\w]+)\s*([,|;])/) {
    print "inout wire $1"."$2\n";
    next;
  }
@@ -75,7 +75,7 @@ while (<FH>) {
    next;
  }
 
- if( $line =~ /^\s*inout\s*(\[.*\])\s*([\d|\w]+)([,|;])/) {
+ if( $line =~ /^\s*inout\s*(\[.*\])\s*([\d|\w]+)\s*([,|;])/) {
    print "inout wire $1 $2"."$3\n";
    next;
  }
