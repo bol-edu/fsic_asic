@@ -94,8 +94,8 @@ function add_io_wire {
 # add_output_wire ../../../dsn/rtl/constant_block.v zero
 
   cd ../../../dsn/rtl
-  add_io_wire debug_regs.v
-  add_io_wire __user_project_wrapper.v
+# add_io_wire debug_regs.v
+# add_io_wire __user_project_wrapper.v
 # add_io_wire housekeeping_spi.v
   add_io_wire housekeeping.v
   add_io_wire mgmt_protect_hv.v
