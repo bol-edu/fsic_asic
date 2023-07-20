@@ -19,7 +19,7 @@
    About How to setup user project of efabless, please refer this link first
    **https://github.com/bol-edu/caravel-lab#2-caravel-user-flow**  
 
-   Expect Repo Hierarchy  
+   Expected Repo Hierarchy  
    <pre>
    --+--fork---+--`caravel`  
      |  
