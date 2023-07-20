@@ -68,8 +68,8 @@ function add_io_wire {
 # rm -f counter_la.elf
 
 
-# pushd . ; cd ../../../src ; ./gen_rtl src.f      ../dsn/rtl  ; popd
-  pushd . ; cd ../../../src ; ./gen_rtl src.user.f ../dsn/rtl  ; popd
+  pushd . ; cd ../../../src ; ./gen_rtl src.f      ../dsn/rtl  ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl src.user.f ../dsn/rtl  ; popd
 # pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ../dsn/gate ; popd
 
 
@@ -94,6 +94,8 @@ function add_io_wire {
 # add_output_wire ../../../dsn/rtl/constant_block.v zero
 
   cd ../../../dsn/rtl
+  add_io_wire debug_regs.v
+  add_io_wire __user_project_wrapper.v
 # add_io_wire housekeeping_spi.v
   add_io_wire housekeeping.v
   add_io_wire mgmt_protect_hv.v
@@ -135,8 +137,8 @@ function add_io_wire {
 
 # ----------------------------------------------------------------------
 # chg_fp down ../../../rtl/rtl.f  ./rtl.f
-# sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.f      > ./rtl.f
-  sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.user.f > ./rtl.f
+  sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.f      > ./rtl.f
+# sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.user.f > ./rtl.f
 
 #     -sourcelibdir ../../../ \
 #     -sourcelibext .v \
