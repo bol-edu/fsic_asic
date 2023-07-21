@@ -15,6 +15,7 @@
    Efabless's repo also need to clone first.  
    **https://github.com/efabless/caravel**  
    **https://github.com/efabless/caravel_user_project**  
+   **https://github.com/efabless/caravel_mgmt_soc_litex**
 
    About How to setup user project of efabless, please refer this link first
    **https://github.com/bol-edu/caravel-lab#2-caravel-user-flow**  
@@ -22,8 +23,8 @@
    Expected Repo Hierarchy  
    <pre>
    --+--fork---+--`caravel`  
-     |  
-     |  
+     |         |
+     |         +--`caravel_mgmt_soc_litex`
      |  
      |  
      +--clone--+--`fsic_fpga`  
