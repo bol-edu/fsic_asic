@@ -70,7 +70,7 @@ function cp_file_list() {
       # echo "File: $src not exist at $curd"
         echo -n "File: "
         echo -n $src
-        echo "not exist at $curd"
+        echo " not exist at $curd"
       # echo "+++++++"
         exit
       fi

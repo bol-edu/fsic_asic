@@ -1,9 +1,16 @@
 #!/bin/bash 
 
 # source /mnt/sdb2/CAD/Xilinx/Vivado/2021.2/settings64.sh
-source /home/CAD/Xilinx/Vitis/Vivado/2022.2/settings64.sh
+# source /home/CAD/Xilinx/Vitis/Vivado/2022.2/settings64.sh
 
-
+xpath=`which xvlog`
+if [ "$xpath" == "" ]; then
+  echo "Could not found xvlog in current path environment"
+else
+  xpath=`echo $xpath | sed -e 's/bin\/xvlog/settings64.sh/'`
+# echo $xpath
+  source $xpath
+fi
 
 if [ $# -lt 1 ]; then
   echo "No test name!"
