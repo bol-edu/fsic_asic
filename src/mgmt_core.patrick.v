@@ -61,27 +61,25 @@ module mgmt_core(
 	output wire spi_enabled,
 	output wire trap,
 	output wire [2:0] user_irq_ena,
-	input wire [5:0] user_irq
-     //+ pass through signal
-     // input wire clk_in,
-     // output wire clk_out,
-     // input wire resetn_in,
-     // output wire resetn_out,
-     // input wire serial_load_in,
-     // output wire serial_load_out,
-     // input wire serial_data_2_in,
-     // output wire serial_data_2_out,
-     // input wire serial_resetn_in,
-     // output wire serial_resetn_out,
-     // input wire serial_clock_in,
-     // output wire serial_clock_out,
-     // input wire rstb_l_in,
-     // output wire rstb_l_out,
-     // input wire por_l_in,
-     // output wire por_l_out,
-     // input wire porb_h_in,
-     // output wire porb_h_out
-     //- pass through signal
+	input wire [5:0] user_irq,
+        input wire clk_in,
+        output wire clk_out,
+        input wire resetn_in,
+        output wire resetn_out,
+        input wire serial_load_in,
+        output wire serial_load_out,
+        input wire serial_data_2_in,
+        output wire serial_data_2_out,
+        input wire serial_resetn_in,
+        output wire serial_resetn_out,
+        input wire serial_clock_in,
+        output wire serial_clock_out,
+        input wire rstb_l_in,
+        output wire rstb_l_out,
+        input wire por_l_in,
+        output wire por_l_out,
+        input wire porb_h_in,
+        output wire porb_h_out
 );
 
 wire core_rst;
@@ -1817,8 +1815,6 @@ assign uart_enabled = (uart_enabled_o | debug_in);
 assign qspi_enabled = 1'd0;
 assign trap = 1'd0;
 
-//+ pass through signal
-/*
 assign clk_out = clk_in;
 assign resetn_out = resetn_in;
 assign serial_load_out = serial_load_in;
@@ -1828,8 +1824,6 @@ assign serial_clock_out = serial_clock_in;
 assign rstb_l_out = rstb_l_in;
 assign por_l_out = por_l_in;
 assign porb_h_out = porb_h_in;
-*/
-//- pass through signal
 
 assign mgmtsoc_bus_error = error;
 always @(*) begin

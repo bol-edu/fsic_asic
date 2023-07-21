@@ -19,7 +19,8 @@
    ../../../fork/caravel/verilog/rtl/mgmt_protect.v
 
    ../../../fork/caravel/verilog/rtl/clock_div.v
-   ../../../fork/caravel/verilog/rtl/caravel_clocking.v
+// ../../../fork/caravel/verilog/rtl/caravel_clocking.v
+   ../../caravel_user_project/caravel/verilog/rtl/caravel_clocking.v
 
    ../../../fork/caravel/verilog/rtl/buff_flash_clkrst.v
 
@@ -85,5 +86,6 @@
    ../../../fork/caravel/verilog/rtl/empty_macro.v
    ../../../fork/caravel/verilog/rtl/manual_power_connections.v
 // ../../../fork/caravel/verilog/rtl/caravel_core.v
-   ../src/caravel_core.v
-   ../../../fork/caravel/verilog/rtl/caravel.v
+// ../src/caravel_core.v
+// ../../../fork/caravel/verilog/rtl/caravel.v
+   ../../caravel_user_project/caravel/verilog/rtl/caravel.v
