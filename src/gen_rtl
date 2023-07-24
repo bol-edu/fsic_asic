@@ -112,15 +112,24 @@ else
   else
     srcf=$1
     tdir=$2
+    dirn=`dirname  $srcf`
+    fnam=`basename $srcf`
+    cd $dirn
+    pwd
+#   if [ "$dirn" != "." ]; then
+#     echo "source file can only be local"
+#     exit
+#   fi
   fi
 fi
 
-if [ ! -f $srcf ]; then
+# if [ ! -f $srcf ]; then
+if [ -f $fnam ]; then
+  srcf=$fnam
+else
   echo "File: $srcf not exist"
   exit
 fi
-
-
 
 
 # -----------------------------------------------
@@ -179,8 +188,15 @@ do
   # echo $flst
     filn=`basename $flst`
   # echo $dirn 
-    rtld=`pwd`
-    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld/$tdir ; popd > /dev/null
+    # check absolute path of target path
+    if [[ "$tdir" =~ ^/.* ]]; then
+      rtld=$tdir
+    else
+      rtld=`pwd`
+      rtld=$rtld/$tdir
+    fi
+  # pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld/$tdir ; popd > /dev/null
+    pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $rtld       ; popd > /dev/null
   # echo "===="
   else
   # if [ ! -f $line ]; then
