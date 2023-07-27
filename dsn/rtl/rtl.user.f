@@ -35,7 +35,7 @@
    ../../dsn/rtl/logic_anlz.dummy_io.vd
 
 // mprj_io
-   ../../dsn/rtl/mprj_io.dummy_io.vd
+   ../../dsn/rtl/mprj_io.sv
 
 // user_subsys
    ../../dsn/rtl/user_subsys.all.v

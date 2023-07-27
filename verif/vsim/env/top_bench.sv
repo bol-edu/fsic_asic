@@ -68,17 +68,53 @@ module top_bench;
   wire  [7:0] spivalue;
   assign      spivalue  = mprj_io[15: 8];
 
+  reg         power1;  // 3.3V
+  reg         power2;  // 1.8V
+
   // External clock is used by default.  Make this artificially fast for the
   // simulation.  Normally this would be a slow clock and the digital PLL
   // would be the fast clock.
   //
   reg clock;
+  reg io_clk;   // generated from FPGA in real system
+
+  localparam pSOC_FREQ = 10.0;                 // 10 MHz
+  localparam pIOS_FREQ = (pSOC_FREQ * 4.0);    // 40 MHz
+
+  // Timing Order
+  // POWER ==> CLOCK ==> RESET
+
   initial begin
-    clock = 0;
+    clock  = 0;
+    wait(power2);
+    #100;
+    forever begin
+      #(500.0 / pSOC_FREQ);
+      clock = ~clock;
+    end
   end
 
-  always #10 clock <= (clock === 1'b0);
+  initial begin
+    io_clk  = 0;
+    wait(power2);
+    #100;
+    forever begin
+      #(500.0 / pIOS_FREQ);
+      io_clk = ~io_clk;
+    end
+  end
 
+  wire [11:0] rx_dat;
+  wire        rx_clk;
+  // TBD
+  assign #1 rx_clk = io_clk;
+  // TBD
+  assign #2 rx_dat = 12'h000;
+
+  assign mprj_io[   37] = io_clk;
+  assign mprj_io[19: 8] = rx_dat;
+  assign mprj_io[   20] = rx_clk;
+ 
 
   initial begin
     $timeformat (-9, 3, " ns", 13);
@@ -176,18 +212,17 @@ module top_bench;
       $finish;
   end
   */
-
   reg RSTB;
+
   initial begin
     RSTB <= 1'b0;
-    #1000;
+    wait(power2);
+    #400;
     $display("%t MSG %m, Chip Reset# is released ", $time);
     RSTB <= 1'b1;      // Release reset
     #2000;
   end
 
-  reg         power1;
-  reg         power2;
   initial begin
     power1 <= 1'b0;
     power2 <= 1'b0;

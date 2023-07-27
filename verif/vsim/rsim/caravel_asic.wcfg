@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="551,367.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="552,294.001 ns"></ZoomEndTime>
-      <Cursor1Time time="551,710.000 ns"></Cursor1Time>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,260.001 ns"></ZoomEndTime>
+      <Cursor1Time time="625.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="427"></NameColumnWidth>
-      <ValueColumnWidth column_width="170"></ValueColumnWidth>
+      <ValueColumnWidth column_width="162"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="37" />
+   <WVObjectSize size="40" />
    <wvobject type="group" fp_name="group77">
       <obj_property name="label">Chip_Top</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -404,5 +404,18 @@
    <wvobject type="logic" fp_name="/top_bench/uut/soc/core/state">
       <obj_property name="ElementShortName">state</obj_property>
       <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/wb_rst">
+      <obj_property name="ElementShortName">wb_rst</obj_property>
+      <obj_property name="ObjectShortName">wb_rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/top_bench/uut/mprj/wb_rst_i">
+      <obj_property name="ElementShortName">wb_rst_i</obj_property>
+      <obj_property name="ObjectShortName">wb_rst_i</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/io_in">
+      <obj_property name="ElementShortName">io_in[37:0]</obj_property>
+      <obj_property name="ObjectShortName">io_in[37:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

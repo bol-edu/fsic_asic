@@ -22,6 +22,7 @@ module FSIC_CLKRST (
   input  wire         axis_clk,
   output wire         axis_rst_n,
 
+  input  wire         io_clk,
   output wire         ioclk
 );
 
@@ -31,8 +32,8 @@ module FSIC_CLKRST (
 // ----------------------------------------------------------
 // AXI-Lite
 reg [2:0] axi_reset_nr; 
-always @(posedge axi_clk or negedge wb_rst)
-  if( ~wb_rst )
+always @(posedge axi_clk or posedge wb_rst)
+  if( wb_rst )
     axi_reset_nr <= 3'b000;
   else
     axi_reset_nr <= {axi_reset_nr[1:0], 1'b1};
@@ -43,8 +44,8 @@ assign axi_reset_n = axi_reset_nr[2];
 // ----------------------------------------------------------
 // AXIS
 reg [2:0] axis_rst_nr; 
-always @(posedge axis_clk or negedge wb_rst)
-  if( ~wb_rst )
+always @(posedge axis_clk or posedge wb_rst)
+  if( wb_rst )
     axis_rst_nr <= 3'b000;
   else
     axis_rst_nr <= {axis_rst_nr[1:0], 1'b1};
@@ -55,8 +56,8 @@ assign axis_rst_n = axis_rst_nr[2];
 // ----------------------------------------------------------
 // user_clock2
 reg [2:0] uck2_rst_nr; 
-always @(posedge user_clock2 or negedge wb_rst)
-  if( ~wb_rst )
+always @(posedge user_clock2 or posedge wb_rst)
+  if( wb_rst )
     uck2_rst_nr <= 3'b000;
   else
     uck2_rst_nr <= {uck2_rst_nr[1:0], 1'b1};
@@ -84,7 +85,7 @@ always @(posedge user_clock2 or negedge uck2_rst_n)
     div2_clk <= ~div2_clk; 
 */
 
-
-assign ioclk = user_clock2;
+// TBD
+assign ioclk = io_clk;
 
 endmodule // FSIC_CLKRST
