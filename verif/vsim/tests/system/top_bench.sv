@@ -84,6 +84,7 @@ module top_bench #( parameter BITS=32,
 		localparam TID_UP_UP = 2'b00;
 		localparam TID_UP_AA = 2'b01;
 		localparam TID_UP_LA = 2'b10;
+		localparam AREA2_IO_PAD_BASE = 19;
 
   wire        gpio;
   wire [37:0] mprj_io;
@@ -201,15 +202,39 @@ module top_bench #( parameter BITS=32,
   // TBD
   assign #2 rx_dat = 12'h000;
 
-  assign soc_txclk = uut.mprj_io_out[   33];
-  assign soc_serial_txd = uut.mprj_io_out[32: 21];
+    genvar pad_idx;
+
+  // assign soc_txclk = uut.mprj_io_out[   33];
+  // assign soc_serial_txd = uut.mprj_io_out[32: 21];
+
+    //soc_txclk
+    assign soc_txclk = uut.padframe.mprj_pads.area2_io_pad[33-AREA2_IO_PAD_BASE].gpiov2_base.PAD;
+    
+    //soc_txd[11:0]
+    generate
+      for (pad_idx=0; pad_idx<pSERIALIO_WIDTH; pad_idx=pad_idx+1 ) begin
+        assign soc_serial_txd[pad_idx] = uut.padframe.mprj_pads.area2_io_pad[pad_idx+21-AREA2_IO_PAD_BASE].gpiov2_base.PAD;
+      end
+    endgenerate
+
+    assign  uut.padframe.mprj_pads.area2_io_pad[37-AREA2_IO_PAD_BASE].gpiov2_base.PAD = io_clk;     //use assign to connect io_clk from fpga to soc's PAD
+    assign  uut.padframe.mprj_pads.area2_io_pad[20-AREA2_IO_PAD_BASE].gpiov2_base.PAD = fpga_txclk;     
+
+    //soc_rxd[11]
+    assign  uut.padframe.mprj_pads.area2_io_pad[19-AREA2_IO_PAD_BASE].gpiov2_base.PAD = fpga_serial_txd[11];
+
+    //soc_rxd[10:0]
+    generate
+      for (pad_idx=0; pad_idx<pSERIALIO_WIDTH-1; pad_idx=pad_idx+1 ) begin
+        assign uut.padframe.mprj_pads.area1_io_pad[pad_idx+8].gpiov2_base.PAD = fpga_serial_txd[pad_idx];
+      end
+    endgenerate
 
 
    initial begin
-    force uut.mprj_io_in[   37] = io_clk;     //use force for rx in soc to override the input path
-   
-    force uut.mprj_io_in[   20] = fpga_txclk;
-    force uut.mprj_io_in[19: 8] = fpga_serial_txd;
+    //force uut.mprj_io_in[   37] = io_clk;     //use force for rx in soc to override the input path
+    //force uut.mprj_io_in[   20] = fpga_txclk;
+    //force uut.mprj_io_in[19: 8] = fpga_serial_txd;
     
     test002();
     end
