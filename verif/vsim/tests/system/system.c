@@ -19,6 +19,9 @@
 // This include is relative to $CARAVEL_PATH (see Makefile)
 #include <defs.h>
 #include <stub.c>
+#define UP_BASE (0x30000000)
+#define AA_BASE (0x30002000)
+#define IS_BASE (0x30003000)
 #define REG_UP_BASE (*(volatile uint32_t*)0x30000000)
 #define REG_AA_BASE (*(volatile uint32_t*)0x30002000)
 #define REG_IS_BASE (*(volatile uint32_t*)0x30003000)
@@ -124,9 +127,13 @@ void main()
     REG_IS_BASE = 3;    
     //print("Monitor: set REG_IS_BASE = 3\n\n");	// Makes simulation very long!
     
-    for (int i=0; i<100; i++) {
-      REG_AA_BASE = i;
+    int mailbox_base = AA_BASE;
+    
+    for (int i=0; i< 0x10 ; i=i+4) {
+      *(volatile uint32_t*)(mailbox_base + i )= 0x5a5a5a5a;
+      *(volatile uint32_t*)(mailbox_base + i )= 0xa5a5a5a5;
     }
+
     //print("Monitor: set MialBox write\n\n");	// Makes simulation very long!
 
 

@@ -151,8 +151,15 @@ module top_bench #( parameter BITS=32,
 	wire [1:0] fpga_is_as_tuser;
 	wire fpga_is_as_tready;		//when remote side axis switch Rxfifo size <= threshold then is_as_tready=0, this flow control mechanism is for notify local side do not provide data with as_is_tvalid=1
 
+	reg[27:0] soc_to_fpga_mailbox_write_addr_expect_value;
+	reg[3:0] soc_to_fpga_mailbox_write_addr_BE_expect_value;
+	reg[31:0] soc_to_fpga_mailbox_write_data_expect_value;
+	reg [31:0] soc_to_fpga_mailbox_write_addr_captured;
+	reg [31:0] soc_to_fpga_mailbox_write_data_captured;
+	event soc_to_fpga_mailbox_write_event;
 
-
+	reg [31:0] error_cnt;
+  
   wire [11:0] checkbits;
   assign      checkbits = uut.mprj_io_out[32:21];
 
@@ -236,7 +243,7 @@ module top_bench #( parameter BITS=32,
     //force uut.mprj_io_in[   20] = fpga_txclk;
     //force uut.mprj_io_in[19: 8] = fpga_serial_txd;
     
-    test002();
+    test001();
     end
 
   wire ioclk;
@@ -246,6 +253,7 @@ module top_bench #( parameter BITS=32,
     $timeformat (-9, 3, " ns", 13);
   //$dumpfile("top_bench.vcd");
   //$dumpvars(0, top_bench);
+    error_cnt = 0;
 
 
     repeat (50) begin
@@ -253,9 +261,24 @@ module top_bench #( parameter BITS=32,
     //$display("+1000 cycles");
     end
 
-    $display("%c[1;31m",27);
-    $display ("Monitor: Timeout, Test Failed");
-    $display("%c[0m",27);
+		$display("=============================================================================================");
+		$display("=============================================================================================");
+		$display("=============================================================================================");
+		if (error_cnt != 0 ) begin
+      $display("%c[1;31m",27);
+			$display($time, "=> Final result [FAILED], error_cnt = %x, please search [ERROR] in the log", error_cnt);
+      $display("%c[0m",27);
+    end
+		else begin
+			$display($time, "=> Final result [PASS], error_cnt = %x", error_cnt);
+    end
+		$display("=============================================================================================");
+		$display("=============================================================================================");
+		$display("=============================================================================================");
+
+    //$display("%c[1;31m",27);
+    //$display ("Monitor: Timeout, Test Failed");
+    //$display("%c[0m",27);
     $finish;
   end
 
@@ -285,6 +308,72 @@ module top_bench #( parameter BITS=32,
     #1 $display("%t IOCLK = %b, TX_CLK=%b, TXD=%b, RX_CLK=%b, RXD=%b,  ", $time, uut.mprj_io_in[37], uut.mprj_io_out[33], uut.mprj_io_out[32:21], uut.mprj_io_in[20], uut.mprj_io_in[19:8]);
   end
 */
+
+
+	initial begin		//when soc cfg write to AA, then AA in soc generate soc_to_fpga_mailbox_write, 
+		while (1) begin
+			@(posedge fpga_coreclk);
+			if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_AA && fpga_is_as_tuser == TUSER_AXILITE_WRITE && fpga_is_as_tlast == 0) begin
+				$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
+				soc_to_fpga_mailbox_write_addr_captured = fpga_is_as_tdata ;		//use block assignment
+				$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
+				@(posedge fpga_coreclk);
+				$display($time, "=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
+				soc_to_fpga_mailbox_write_data_captured = fpga_is_as_tdata ;		//use block assignment
+				$display($time, "=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
+				->> soc_to_fpga_mailbox_write_event;
+				$display($time, "=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event");
+
+			end	
+		end
+	end
+
+  reg [31:0] idx5;
+
+	initial begin		//when soc cfg write to AA, then AA in soc generate soc_to_fpga_mailbox_write, 
+
+    for (idx5 = 0 ; idx5 < 32'h10 ; idx5=idx5+4) begin
+      soc_to_fpga_mailbox_write_addr_expect_value = 28'h000_2000 + idx5;
+      soc_to_fpga_mailbox_write_addr_BE_expect_value = 4'b1111;
+      soc_to_fpga_mailbox_write_data_expect_value = 32'h5a5a_5a5a; 
+      
+      wait_and_check_soc_to_fpga_mailbox_write_event();
+      soc_to_fpga_mailbox_write_data_expect_value = 32'ha5a5_a5a5; 
+      wait_and_check_soc_to_fpga_mailbox_write_event();
+    end
+
+	end
+
+  task wait_and_check_soc_to_fpga_mailbox_write_event;
+    begin
+      wait(soc_to_fpga_mailbox_write_event.triggered);
+			$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event");
+			//Address part
+			if ( soc_to_fpga_mailbox_write_addr_expect_value !== soc_to_fpga_mailbox_write_addr_captured[27:0]) begin
+				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_addr_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[27:0]=%x", soc_to_fpga_mailbox_write_addr_expect_value, soc_to_fpga_mailbox_write_addr_captured[27:0]);
+				error_cnt = error_cnt + 1;
+			end	
+			else
+				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[27:0]=%x", soc_to_fpga_mailbox_write_addr_expect_value, soc_to_fpga_mailbox_write_addr_captured[27:0]);
+			//BE part
+			if ( soc_to_fpga_mailbox_write_addr_BE_expect_value !== soc_to_fpga_mailbox_write_addr_captured[31:28]) begin
+				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_addr_BE_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[31:28]=%x", soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_addr_captured[31:28]);
+				error_cnt = error_cnt + 1;
+			end	
+			else
+				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[31:28]=%x", soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_addr_captured[31:28]);
+			//data part
+			if (soc_to_fpga_mailbox_write_data_expect_value !== soc_to_fpga_mailbox_write_data_captured) begin
+				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_data_expect_value=%x, soc_to_fpga_mailbox_write_data_captured=%x", soc_to_fpga_mailbox_write_data_expect_value, soc_to_fpga_mailbox_write_data_captured);
+				error_cnt = error_cnt + 1;
+			end	
+			else
+				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=%x, soc_to_fpga_mailbox_write_data_captured=%x", soc_to_fpga_mailbox_write_data_expect_value, soc_to_fpga_mailbox_write_data_captured);
+			$display("-----------------");
+      @(posedge fpga_coreclk);
+        
+    end
+  endtask
 
   wire VDD3V3;
   wire VDD1V8;
@@ -432,12 +521,12 @@ module top_bench #( parameter BITS=32,
 		end
 	endtask
 
-	task test002;		//test002_fpga_axis_req
+	task test001;		//test001_soc_to_fpga_mailbox_write
 		//input [7:0] compare_data;
 
 		begin
 			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
-				$display("test002: fpga_axis_req - loop %02d", i);
+				$display("test001: fpga_axis_req - loop %02d", i);
 				fork 
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
@@ -472,8 +561,6 @@ module top_bench #( parameter BITS=32,
 				#40;
 				#200;
 
-				//test002_fpga_axis_req();		//target to Axis Switch
-
 				#200;
 			end
 		end
@@ -481,7 +568,7 @@ module top_bench #( parameter BITS=32,
 
 	reg[31:0]idx3;
 
-	task test002_fpga_axis_req;
+	task test001_fpga_axis_req;
 		//input [7:0] compare_data;
 
 		//FPGA to SOC Axilite test
@@ -497,7 +584,7 @@ module top_bench #( parameter BITS=32,
 			end
 			//tony_Debug release dut.AXIS_SW0.up_as_tready;
 			
-			$display($time, "=> test002_fpga_axis_req done");
+			$display($time, "=> test001_fpga_axis_req done");
 		end
 	endtask
 
