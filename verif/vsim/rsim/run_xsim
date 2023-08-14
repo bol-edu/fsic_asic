@@ -19,6 +19,10 @@ if [ $# -lt 1 ]; then
   exit 1
 fi
 
+on_error(){
+  echo "error occurred run_xsim"
+  exit 1
+}
 
 function add_input_wire {
   trgf=$1
@@ -167,6 +171,9 @@ else
  exit
 fi
 
+# enable trap for detect error in xvlog, xelab, gen_hex 
+trap 'on_error' ERR
+
 # FUNCTIONAL, USE_POWER_PINS : defined macro flag used in I/O Library
 
 xvlog -d SIM \
@@ -190,7 +197,9 @@ xelab --timescale 1ns/10ps -debug typical -top top_bench -snapshot $ss_name
 
 # generate CPU boot image
 if [ -e ../tests/$testname/$testname.c ]; then
- rm ../tests/$testname/$testname.hex
+ if [ -e ../tests/$testname/$testname.hex ]; then
+  rm ../tests/$testname/$testname.hex
+ fi 
  pushd . ; cd ../tests/$testname ; ./gen_hex ; popd
 else
  echo "File: ../tests/$testname/$testname.c not found"

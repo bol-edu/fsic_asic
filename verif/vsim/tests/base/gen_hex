@@ -22,6 +22,12 @@ tstn=`basename $pwdn`
 
 #                         -D__vexriscv__ \
 #
+on_error(){
+  echo "error occurred in gen_hex"
+  exit 1
+}
+
+trap 'on_error' ERR
 
 if [ -e $tstn.c ]; then
   riscv32-unknown-elf-gcc -march=rv32i \
