@@ -26,6 +26,9 @@
 #define REG_AA_BASE (*(volatile uint32_t*)0x30002000)
 #define REG_IS_BASE (*(volatile uint32_t*)0x30003000)
 
+#define  AA_MailBox_Reg_Offset (0x000)
+#define  AA_Internal_Reg_Offset (0x100)
+
 // --------------------------------------------------------
 
 /*
@@ -103,7 +106,7 @@ void main()
 
         
         //mprj_io_0 ~ mprj_io_7 CANNOT control here
-        
+        /*
         reg_mprj_io_7  = GPIO_MODE_USER_STD_OUTPUT;
         reg_mprj_io_5  = GPIO_MODE_USER_STD_OUTPUT;
         reg_mprj_io_4  = GPIO_MODE_USER_STD_OUTPUT;
@@ -113,6 +116,7 @@ void main()
         reg_mprj_io_0  = GPIO_MODE_USER_STD_OUTPUT;
 
         reg_mprj_io_6  = GPIO_MODE_MGMT_STD_OUTPUT;
+		*/
 
 	// Set UART clock to 64 kbaud (enable before I/O configuration)
 	// reg_uart_clkdiv = 625;
@@ -122,20 +126,83 @@ void main()
 	reg_mprj_xfer = 1;
 	while (reg_mprj_xfer == 1);
 
+    // test110 - [FW] soc CFG write to internal register - target to REG_IS_BASE
     REG_IS_BASE = 1;
     //print("Monitor: set REG_IS_BASE = 1\n\n");	// Makes simulation very long!
     REG_IS_BASE = 3;    
     //print("Monitor: set REG_IS_BASE = 3\n\n");	// Makes simulation very long!
     
-    int mailbox_base = AA_BASE;
+    uint32_t aa_base = AA_BASE;
+    uint32_t value;
+    uint32_t io_serdes_base = IS_BASE;
+
+    /*
+    // test111 - for soc CFG write to mailbox 
+    // 1. [FW] SOC CFG write to mailbox 
+    // 1.A [testbech] check soc_to_fpga_mailbox_write 
     
     for (int i=0; i< 0x10 ; i=i+4) {
-      *(volatile uint32_t*)(mailbox_base + i )= 0x5a5a5a5a;
-      *(volatile uint32_t*)(mailbox_base + i )= 0xa5a5a5a5;
+      *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + i )= 0x5a5a5a5a;
+      *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + i )= 0xa5a5a5a5;
     }
+    */
+    
 
-    //print("Monitor: set MialBox write\n\n");	// Makes simulation very long!
+
+    /*
+    // test112 - for soc CFG read and write to mailbox then send to fpga
+    // 1. [FW] SOC CFG read and write to mailbox 
+    // 1.A [testbech] check soc_to_fpga_mailbox_write 
+    //SOC internal register read/write test and update the result to mailbox, testbench check the data when received the mail box write.
+
+    //AA_Internal_Reg_Offset test
+    //Step 1. read AA_Internal_Reg_Offset + 0 default value
+    value = *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0);
+    *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 0 )= value;        //write to AA_MailBox_Reg_Offset + 0 
+
+    //Step 2. write AA_Internal_Reg_Offset + 0 
+    *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0) = 0x1;
+    
+    //Step 3. read AA_Internal_Reg_Offset + 0
+    value = *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0);
+    *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 0 )= value;        //write to AA_MailBox_Reg_Offset + 0
 
 
+    //io_serdes_base test
+    //Step 1. read io_serdes_base + 0
+    value = *(volatile uint32_t*)(io_serdes_base + 0);
+    *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 0 )= value;        //write to AA_MailBox_Reg_Offset + 0
+    */
+    
+    /*
+    // test104 - fpga to soc mailbox loopback test
+    // 1. [testbech] fpga to soc mialbox write to offset 0
+    // 2. [FW] soc read mailbox offset 0, if non zero then write the read_value to mailbox offset 4
+    // 2.A [testbech] check soc to fpga mailbox write to offset 4 in fpga
+    
+    do {
+      value = *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 0 );
+      if ( value !=0 ) {
+        *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 4 ) = value;
+      }
+    }
+    while(value==0);
+    */
+    
+    // test113 - fpga to soc CFG write test
+    // 1. [testbech] fpga to soc CFG write to AA_Internal_Reg_Offset + 0
+    // 2. [FW] soc read AA_Internal_Reg_Offset + 0, if non zero then write the read_value to mailbox offset 4
+    // 2.A [testbech] check soc to fpga mailbox write to offset 4 in fpga
+    do {
+      value = *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 );
+      if ( value !=0 ) {
+        *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 4 ) = value;
+      }
+    }
+    while(value==0);
+
+
+    while(1);
 }
+
 
