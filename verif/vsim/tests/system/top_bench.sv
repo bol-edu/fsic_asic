@@ -244,7 +244,7 @@ module top_bench #( parameter BITS=32,
 
     repeat (50) begin
       repeat (1000) @(posedge clock);
-    //$display("+1000 cycles");
+      $display("%t MSG %m, +1000 cycles ", $time);
     end
 
 		$display("=============================================================================================");
@@ -269,6 +269,8 @@ module top_bench #( parameter BITS=32,
   end
 
   reg RSTB;
+
+
 
   initial begin
     RSTB <= 1'b0;
@@ -992,5 +994,6 @@ module top_bench #( parameter BITS=32,
 endmodule // top_bench
 
 `default_nettype wire
+
 
 
