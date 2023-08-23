@@ -238,12 +238,12 @@ module top_bench #( parameter BITS=32,
 
   initial begin
     $timeformat (-9, 3, " ns", 13);
-  //$dumpfile("top_bench.vcd");
-  //$dumpvars(0, top_bench);
+  $dumpfile("top_bench.vcd");
+  $dumpvars(0, top_bench);
     error_cnt = 0;
 
 
-    repeat (50) begin
+    repeat (100) begin
       repeat (1000) @(posedge clock);
       $display("%t MSG %m, +1000 cycles ", $time);
     end
