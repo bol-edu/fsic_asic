@@ -238,8 +238,8 @@ module top_bench #( parameter BITS=32,
 
   initial begin
     $timeformat (-9, 3, " ns", 13);
-  $dumpfile("top_bench.vcd");
-  $dumpvars(0, top_bench);
+  //$dumpfile("top_bench.vcd");
+  //$dumpvars(0, top_bench);
     error_cnt = 0;
 
 

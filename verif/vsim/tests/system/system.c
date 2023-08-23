@@ -226,7 +226,11 @@ void main()
       mask |= 1 << USER_IRQ_0_INTERRUPT;
       irq_setmask(mask);
       // enable user_irq_0_ev_enable
-      user_irq_0_ev_enable_write(1);	
+      user_irq_0_ev_enable_write(1);
+      
+      //set user_irq_ena for user_irq[0]
+      value = 1;
+      user_irq_ena_out_write(value);
       
       //REG_IS_BASE = 3;    
       //value = *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 );
