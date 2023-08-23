@@ -823,6 +823,8 @@ module top_bench #( parameter BITS=32,
 			fpga_axilite_write(fpga_axilite_write_addr, soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_data_expect_value);
 			$display($time, "=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = %x, be=%x, data = %x", fpga_axilite_write_addr, soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_data_expect_value);
       wait_and_check_soc_to_fpga_mailbox_write_event();
+			$display($time, "=> test114_fpga_to_soc_CFG_write wait 320us");
+      			repeat(8000) @(posedge fpga_coreclk); //wait 320us
 
       fpga_axilite_write_addr = FPGA_to_SOC_AA_BASE + AA_MailBox_Reg_Offset + 0;
       soc_to_fpga_mailbox_write_addr_expect_value = FPGA_to_SOC_AA_BASE + AA_MailBox_Reg_Offset + 4;
