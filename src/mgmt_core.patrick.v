@@ -1776,7 +1776,7 @@ assign mprj_cyc_o = mprj_cyc;
 assign mprj_stb_o = mprj_stb;
 assign mprj_we_o = mprj_we;
 assign mprj_sel_o = mprj_sel;
-always @(*) begin
+always_comb begin
 	mprj_adr_o = 32'd0;
 	mprj_adr_o[31:2] = mprj_adr;
 	mprj_adr_o[1:0] = 1'd0;
@@ -1789,21 +1789,21 @@ assign hk_cyc_o = hk_cyc;
 assign hk_dat_r = hk_dat_i;
 assign hk_ack = hk_ack_i;
 assign debug_out = 1'd0;
-always @(*) begin
+always_comb begin
 	sys_uart_rx = 1'd0;
 	if ((debug_in == 1'd1)) begin
 	end else begin
 		sys_uart_rx = serial_rx;
 	end
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_dbg_uart_rx = 1'd0;
 	if ((debug_in == 1'd1)) begin
 		dbg_uart_dbg_uart_rx = serial_rx;
 	end else begin
 	end
 end
-always @(*) begin
+always_comb begin
 	serial_tx = 1'd0;
 	if ((debug_in == 1'd1)) begin
 		serial_tx = dbg_uart_dbg_uart_tx;
@@ -1826,7 +1826,7 @@ assign por_l_out = por_l_in;
 assign porb_h_out = porb_h_in;
 
 assign mgmtsoc_bus_error = error;
-always @(*) begin
+always_comb begin
 	mgmtsoc_interrupt = 32'd0;
 	mgmtsoc_interrupt[0] = mgmtsoc_irq;
 	mgmtsoc_interrupt[1] = uart_irq;
@@ -1844,7 +1844,7 @@ assign mgmtsoc_bus_errors_status = mgmtsoc_bus_errors;
 assign mgmtsoc_zero_trigger = (mgmtsoc_value == 1'd0);
 assign mgmtsoc_zero0 = mgmtsoc_zero_status;
 assign mgmtsoc_zero1 = mgmtsoc_zero_pending;
-always @(*) begin
+always_comb begin
 	mgmtsoc_zero_clear = 1'd0;
 	if ((mgmtsoc_pending_re & mgmtsoc_pending_r)) begin
 		mgmtsoc_zero_clear = 1'd1;
@@ -1853,7 +1853,7 @@ end
 assign mgmtsoc_irq = (mgmtsoc_pending_status & mgmtsoc_enable_storage);
 assign mgmtsoc_zero_status = mgmtsoc_zero_trigger;
 assign dff_di = dff_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	dff_we = 4'd0;
 	dff_we[0] = (((dff_bus_sel[0] & dff_bus_we) & dff_bus_stb) & dff_bus_cyc);
 	dff_we[1] = (((dff_bus_sel[1] & dff_bus_we) & dff_bus_stb) & dff_bus_cyc);
@@ -1863,7 +1863,7 @@ end
 assign dff_bus_dat_r[31:0] = dff_do;
 assign dff_en = (dff_bus_stb & dff_bus_cyc);
 assign dff2_di = dff2_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	dff2_we = 4'd0;
 	dff2_we[0] = (((dff2_bus_sel[0] & dff2_bus_we) & dff2_bus_stb) & dff2_bus_cyc);
 	dff2_we[1] = (((dff2_bus_sel[1] & dff2_bus_we) & dff2_bus_stb) & dff2_bus_cyc);
@@ -1885,7 +1885,7 @@ assign flash_io3_do = 1'd0;
 assign flash_io2_oeb = 1'd1;
 assign flash_io3_oeb = 1'd1;
 assign mgmtsoc_litespisdrphycore_dq_oe = mgmtsoc_litespisdrphycore_sink_payload_mask;
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_dq_o = 1'd0;
 	case (mgmtsoc_litespisdrphycore_sink_payload_width)
 		1'd1: begin
@@ -1909,7 +1909,7 @@ assign mgmtsoc_litespisdrphycore_negedge = ((mgmtsoc_litespisdrphycore_en & mgmt
 assign mgmtsoc_litespisdrphycore_sample = (mgmtsoc_litespisdrphycore_cnt == mgmtsoc_litespisdrphycore_sample_cnt);
 assign mgmtsoc_litespisdrphycore_update = (mgmtsoc_litespisdrphycore_cnt == mgmtsoc_litespisdrphycore_update_cnt);
 assign mgmtsoc_litespisdrphycore_done = (mgmtsoc_litespisdrphycore_count == 1'd0);
-always @(*) begin
+always_comb begin
 	litespiphy_next_state = 2'd0;
 	litespiphy_next_state = litespiphy_state;
 	case (litespiphy_state)
@@ -1937,7 +1937,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_sink_ready = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -1953,7 +1953,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_en = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -1967,7 +1967,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_sr_cnt_litespiphy_next_value = 8'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -1986,7 +1986,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_sr_out_load = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -2002,7 +2002,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_sr_cnt_litespiphy_next_value_ce = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -2021,7 +2021,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_sr_out_shift = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -2037,7 +2037,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_sr_in_shift = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -2056,7 +2056,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_source_valid = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -2070,7 +2070,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespisdrphycore_source_last = 1'd0;
 	case (litespiphy_state)
 		1'd1: begin
@@ -2194,7 +2194,7 @@ assign litespi_rx_demux_sink_first = mgmtsoc_crossbar_sink_first;
 assign litespi_rx_demux_sink_last = mgmtsoc_crossbar_sink_last;
 assign litespi_rx_demux_sink_payload_data = mgmtsoc_crossbar_sink_payload_data;
 assign litespi_rx_demux_sel = litespi_grant;
-always @(*) begin
+always_comb begin
 	mgmtsoc_crossbar_cs = 1'd0;
 	case (litespi_grant)
 		1'd0: begin
@@ -2205,7 +2205,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_source_valid = 1'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2216,7 +2216,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_endpoint1_sink_ready = 1'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2226,7 +2226,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_source_first = 1'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2237,7 +2237,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_source_last = 1'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2248,7 +2248,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_source_payload_data = 32'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2259,7 +2259,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_source_payload_len = 6'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2270,7 +2270,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_source_payload_width = 4'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2281,7 +2281,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_source_payload_mask = 8'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2292,7 +2292,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_tx_mux_endpoint0_sink_ready = 1'd0;
 	case (litespi_tx_mux_sel)
 		1'd0: begin
@@ -2302,7 +2302,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_sink_ready = 1'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2313,7 +2313,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint0_source_valid = 1'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2323,7 +2323,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint0_source_first = 1'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2333,7 +2333,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint0_source_last = 1'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2343,7 +2343,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint0_source_payload_data = 32'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2353,7 +2353,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint1_source_valid = 1'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2363,7 +2363,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint1_source_first = 1'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2373,7 +2373,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint1_source_last = 1'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2383,7 +2383,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	litespi_rx_demux_endpoint1_source_payload_data = 32'd0;
 	case (litespi_rx_demux_sel)
 		1'd0: begin
@@ -2395,7 +2395,7 @@ always @(*) begin
 end
 assign mgmtsoc_litespimmap_spi_dummy_bits = mgmtsoc_litespimmap_storage;
 assign mgmtsoc_litespimmap_done = (mgmtsoc_litespimmap_count == 1'd0);
-always @(*) begin
+always_comb begin
 	litespi_next_state = 4'd0;
 	litespi_next_state = litespi_state;
 	case (litespi_state)
@@ -2454,7 +2454,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_bus_dat_r = 32'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2478,7 +2478,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_source_valid = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2505,7 +2505,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_burst_cs_litespi_next_value0 = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2531,7 +2531,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_burst_cs_litespi_next_value_ce0 = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2557,7 +2557,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_source_last = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2581,7 +2581,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_bus_ack = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2607,7 +2607,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_source_payload_data = 32'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2633,7 +2633,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_source_payload_len = 6'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2660,7 +2660,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_source_payload_width = 4'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2687,7 +2687,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_source_payload_mask = 8'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2714,7 +2714,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_burst_adr_litespi_next_value1 = 30'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2743,7 +2743,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_cs = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2781,7 +2781,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_burst_adr_litespi_next_value_ce1 = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2810,7 +2810,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_sink_ready = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2837,7 +2837,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_litespimmap_wait = 1'd0;
 	case (litespi_state)
 		1'd1: begin
@@ -2898,7 +2898,7 @@ assign spi_master_loopback = spi_master_mode1;
 assign spi_master_clk_rise = (spi_master_clk_divider1 == (spi_master_clk_divider0[15:1] - 1'd1));
 assign spi_master_clk_fall = (spi_master_clk_divider1 == (spi_master_clk_divider0 - 1'd1));
 assign spi_master_clk_divider0 = spimaster_storage;
-always @(*) begin
+always_comb begin
 	spimaster_next_state = 2'd0;
 	spimaster_next_state = spimaster_state;
 	case (spimaster_state)
@@ -2926,7 +2926,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_count_spimaster_next_value = 3'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -2943,7 +2943,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_done0 = 1'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -2960,7 +2960,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_count_spimaster_next_value_ce = 1'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -2977,7 +2977,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_irq = 1'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -2993,7 +2993,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_clk_enable = 1'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -3007,7 +3007,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_xfer_enable = 1'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -3025,7 +3025,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_mosi_latch = 1'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -3041,7 +3041,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	spi_master_miso_latch = 1'd0;
 	case (spimaster_state)
 		1'd1: begin
@@ -3058,7 +3058,7 @@ always @(*) begin
 	endcase
 end
 assign mprj_wb_iena = mprj_wb_iena_storage;
-always @(*) begin
+always_comb begin
 	rs232phy_rs232phytx_next_state = 1'd0;
 	rs232phy_rs232phytx_next_state = rs232phy_rs232phytx_state;
 	case (rs232phy_rs232phytx_state)
@@ -3076,7 +3076,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	sys_uart_tx_rs232phy_rs232phytx_next_value_ce1 = 1'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3092,7 +3092,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_tx_data_rs232phy_rs232phytx_next_value2 = 8'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3107,7 +3107,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_tx_sink_ready = 1'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3121,7 +3121,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_tx_data_rs232phy_rs232phytx_next_value_ce2 = 1'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3136,7 +3136,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_tx_enable = 1'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3146,7 +3146,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_tx_count_rs232phy_rs232phytx_next_value0 = 4'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3159,7 +3159,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_tx_count_rs232phy_rs232phytx_next_value_ce0 = 1'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3172,7 +3172,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	sys_uart_tx_rs232phy_rs232phytx_next_value1 = 1'd0;
 	case (rs232phy_rs232phytx_state)
 		1'd1: begin
@@ -3188,7 +3188,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	rs232phy_rs232phyrx_next_state = 1'd0;
 	rs232phy_rs232phyrx_next_state = rs232phy_rs232phyrx_state;
 	case (rs232phy_rs232phyrx_state)
@@ -3206,7 +3206,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_rx_data_rs232phy_rs232phyrx_next_value1 = 8'd0;
 	case (rs232phy_rs232phyrx_state)
 		1'd1: begin
@@ -3218,7 +3218,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_rx_data_rs232phy_rs232phyrx_next_value_ce1 = 1'd0;
 	case (rs232phy_rs232phyrx_state)
 		1'd1: begin
@@ -3230,7 +3230,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_rx_source_valid = 1'd0;
 	case (rs232phy_rs232phyrx_state)
 		1'd1: begin
@@ -3244,7 +3244,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_rx_source_payload_data = 8'd0;
 	case (rs232phy_rs232phyrx_state)
 		1'd1: begin
@@ -3258,7 +3258,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_rx_enable = 1'd0;
 	case (rs232phy_rs232phyrx_state)
 		1'd1: begin
@@ -3268,7 +3268,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_rx_count_rs232phy_rs232phyrx_next_value0 = 4'd0;
 	case (rs232phy_rs232phyrx_state)
 		1'd1: begin
@@ -3281,7 +3281,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uart_phy_rx_count_rs232phy_rs232phyrx_next_value_ce0 = 1'd0;
 	case (rs232phy_rs232phyrx_state)
 		1'd1: begin
@@ -3326,7 +3326,7 @@ assign uart_rxfull_status = (~uart_rx_fifo_sink_ready);
 assign uart_rx_trigger = uart_rx_fifo_source_valid;
 assign uart_tx0 = uart_tx_status;
 assign uart_tx1 = uart_tx_pending;
-always @(*) begin
+always_comb begin
 	uart_tx_clear = 1'd0;
 	if ((uart_pending_re & uart_pending_r[0])) begin
 		uart_tx_clear = 1'd1;
@@ -3334,7 +3334,7 @@ always @(*) begin
 end
 assign uart_rx0 = uart_rx_status;
 assign uart_rx1 = uart_rx_pending;
-always @(*) begin
+always_comb begin
 	uart_rx_clear = 1'd0;
 	if ((uart_pending_re & uart_pending_r[1])) begin
 		uart_rx_clear = 1'd1;
@@ -3357,7 +3357,7 @@ assign uart_tx_fifo_source_payload_data = uart_tx_fifo_fifo_out_payload_data;
 assign uart_tx_fifo_re = uart_tx_fifo_source_ready;
 assign uart_tx_fifo_syncfifo_re = (uart_tx_fifo_syncfifo_readable & ((~uart_tx_fifo_readable) | uart_tx_fifo_re));
 assign uart_tx_fifo_level1 = (uart_tx_fifo_level0 + uart_tx_fifo_readable);
-always @(*) begin
+always_comb begin
 	uart_tx_fifo_wrport_adr = 4'd0;
 	if (uart_tx_fifo_replace) begin
 		uart_tx_fifo_wrport_adr = (uart_tx_fifo_produce - 1'd1);
@@ -3387,7 +3387,7 @@ assign uart_rx_fifo_source_payload_data = uart_rx_fifo_fifo_out_payload_data;
 assign uart_rx_fifo_re = uart_rx_fifo_source_ready;
 assign uart_rx_fifo_syncfifo_re = (uart_rx_fifo_syncfifo_readable & ((~uart_rx_fifo_readable) | uart_rx_fifo_re));
 assign uart_rx_fifo_level1 = (uart_rx_fifo_level0 + uart_rx_fifo_readable);
-always @(*) begin
+always_comb begin
 	uart_rx_fifo_wrport_adr = 4'd0;
 	if (uart_rx_fifo_replace) begin
 		uart_rx_fifo_wrport_adr = (uart_rx_fifo_produce - 1'd1);
@@ -3408,7 +3408,7 @@ assign dbg_uart_reset = dbg_uart_done;
 assign dbg_uart_wishbone_adr = dbg_uart_address;
 assign dbg_uart_wishbone_dat_w = dbg_uart_data;
 assign dbg_uart_wishbone_sel = 4'd15;
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_sink_payload_data = 8'd0;
 	case (dbg_uart_bytes_count)
 		1'd0: begin
@@ -3426,7 +3426,7 @@ always @(*) begin
 	endcase
 end
 assign dbg_uart_tx_sink_last = ((dbg_uart_bytes_count == 2'd3) & (dbg_uart_words_count == (dbg_uart_length - 1'd1)));
-always @(*) begin
+always_comb begin
 	uartwishbonebridge_rs232phytx_next_state = 1'd0;
 	uartwishbonebridge_rs232phytx_next_state = uartwishbonebridge_rs232phytx_state;
 	case (uartwishbonebridge_rs232phytx_state)
@@ -3444,7 +3444,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_sink_ready = 1'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3458,7 +3458,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_data_uartwishbonebridge_rs232phytx_next_value2 = 8'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3473,7 +3473,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_data_uartwishbonebridge_rs232phytx_next_value_ce2 = 1'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3488,7 +3488,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_enable = 1'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3498,7 +3498,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_count_uartwishbonebridge_rs232phytx_next_value0 = 4'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3511,7 +3511,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_count_uartwishbonebridge_rs232phytx_next_value_ce0 = 1'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3524,7 +3524,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_dbg_uart_tx_uartwishbonebridge_rs232phytx_next_value1 = 1'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3540,7 +3540,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_dbg_uart_tx_uartwishbonebridge_rs232phytx_next_value_ce1 = 1'd0;
 	case (uartwishbonebridge_rs232phytx_state)
 		1'd1: begin
@@ -3556,7 +3556,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uartwishbonebridge_rs232phyrx_next_state = 1'd0;
 	uartwishbonebridge_rs232phyrx_next_state = uartwishbonebridge_rs232phyrx_state;
 	case (uartwishbonebridge_rs232phyrx_state)
@@ -3574,7 +3574,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_source_valid = 1'd0;
 	case (uartwishbonebridge_rs232phyrx_state)
 		1'd1: begin
@@ -3588,7 +3588,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_data_uartwishbonebridge_rs232phyrx_next_value1 = 8'd0;
 	case (uartwishbonebridge_rs232phyrx_state)
 		1'd1: begin
@@ -3600,7 +3600,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_data_uartwishbonebridge_rs232phyrx_next_value_ce1 = 1'd0;
 	case (uartwishbonebridge_rs232phyrx_state)
 		1'd1: begin
@@ -3612,7 +3612,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_source_payload_data = 8'd0;
 	case (uartwishbonebridge_rs232phyrx_state)
 		1'd1: begin
@@ -3626,7 +3626,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_enable = 1'd0;
 	case (uartwishbonebridge_rs232phyrx_state)
 		1'd1: begin
@@ -3636,7 +3636,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_count_uartwishbonebridge_rs232phyrx_next_value0 = 4'd0;
 	case (uartwishbonebridge_rs232phyrx_state)
 		1'd1: begin
@@ -3649,7 +3649,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_count_uartwishbonebridge_rs232phyrx_next_value_ce0 = 1'd0;
 	case (uartwishbonebridge_rs232phyrx_state)
 		1'd1: begin
@@ -3662,7 +3662,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	uartwishbonebridge_next_state = 3'd0;
 	uartwishbonebridge_next_state = uartwishbonebridge_state;
 	case (uartwishbonebridge_state)
@@ -3725,7 +3725,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_bytes_count_uartwishbonebridge_next_value0 = 2'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3754,7 +3754,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_bytes_count_uartwishbonebridge_next_value_ce0 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3783,7 +3783,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_wishbone_cyc = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3804,7 +3804,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_wishbone_stb = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3825,7 +3825,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_words_count_uartwishbonebridge_next_value1 = 8'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3853,7 +3853,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_wishbone_we = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3874,7 +3874,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_words_count_uartwishbonebridge_next_value_ce1 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3902,7 +3902,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_cmd_uartwishbonebridge_next_value2 = 8'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3924,7 +3924,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_cmd_uartwishbonebridge_next_value_ce2 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3946,7 +3946,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_length_uartwishbonebridge_next_value3 = 8'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3968,7 +3968,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_length_uartwishbonebridge_next_value_ce3 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -3990,7 +3990,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_address_uartwishbonebridge_next_value4 = 32'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4020,7 +4020,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_address_uartwishbonebridge_next_value_ce4 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4050,7 +4050,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_incr_uartwishbonebridge_next_value5 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4081,7 +4081,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_incr_uartwishbonebridge_next_value_ce5 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4112,7 +4112,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_tx_sink_valid = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4132,7 +4132,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_data_uartwishbonebridge_next_value6 = 32'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4157,7 +4157,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_is_ongoing = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4177,7 +4177,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_data_uartwishbonebridge_next_value_ce6 = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4202,7 +4202,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	dbg_uart_rx_source_ready = 1'd0;
 	case (uartwishbonebridge_state)
 		1'd1: begin
@@ -4237,7 +4237,7 @@ assign gpio_mode1_pad = gpio_mode1_storage;
 assign gpio_inenb_pad = (~gpio_ien_storage);
 assign gpio_outenb_pad = (~gpio_oe_storage);
 assign gpio_out_pad = gpio_out_storage;
-always @(*) begin
+always_comb begin
 	la_iena = 128'd0;
 	la_iena[0] = (~la_ien_storage[0]);
 	la_iena[1] = (~la_ien_storage[1]);
@@ -4368,7 +4368,7 @@ always @(*) begin
 	la_iena[126] = (~la_ien_storage[126]);
 	la_iena[127] = (~la_ien_storage[127]);
 end
-always @(*) begin
+always_comb begin
 	la_oenb = 128'd0;
 	la_oenb[0] = (~la_oe_storage[0]);
 	la_oenb[1] = (~la_oe_storage[1]);
@@ -4499,7 +4499,7 @@ always @(*) begin
 	la_oenb[126] = (~la_oe_storage[126]);
 	la_oenb[127] = (~la_oe_storage[127]);
 end
-always @(*) begin
+always_comb begin
 	la_output = 128'd0;
     $display($time, "=> 1st la_output=%x", la_output); //tony_debug
 	la_output[0] = la_out_storage[0];
@@ -4634,7 +4634,7 @@ always @(*) begin
 end
 assign spi_enabled = spi_enabled_storage;
 assign user_irq_ena = user_irq_ena_storage;
-always @(*) begin
+always_comb begin
 	gpioin0_gpioin0_trigger = 1'd0;
 	if (gpioin0_gpioin0_mode_storage) begin
 		gpioin0_gpioin0_trigger = (gpioin0_in_status ^ gpioin0_gpioin0_in_pads_n_d);
@@ -4644,7 +4644,7 @@ always @(*) begin
 end
 assign gpioin0_i00 = gpioin0_gpioin0_status;
 assign gpioin0_i01 = gpioin0_gpioin0_pending;
-always @(*) begin
+always_comb begin
 	gpioin0_gpioin0_clear = 1'd0;
 	if ((gpioin0_pending_re & gpioin0_pending_r)) begin
 		gpioin0_gpioin0_clear = 1'd1;
@@ -4652,7 +4652,7 @@ always @(*) begin
 end
 assign gpioin0_gpioin0_irq = (gpioin0_pending_status & gpioin0_enable_storage);
 assign gpioin0_gpioin0_status = gpioin0_gpioin0_trigger;
-always @(*) begin
+always_comb begin
 	gpioin1_gpioin1_trigger = 1'd0;
 	if (gpioin1_gpioin1_mode_storage) begin
 		gpioin1_gpioin1_trigger = (gpioin1_in_status ^ gpioin1_gpioin1_in_pads_n_d);
@@ -4662,7 +4662,7 @@ always @(*) begin
 end
 assign gpioin1_i00 = gpioin1_gpioin1_status;
 assign gpioin1_i01 = gpioin1_gpioin1_pending;
-always @(*) begin
+always_comb begin
 	gpioin1_gpioin1_clear = 1'd0;
 	if ((gpioin1_pending_re & gpioin1_pending_r)) begin
 		gpioin1_gpioin1_clear = 1'd1;
@@ -4670,7 +4670,7 @@ always @(*) begin
 end
 assign gpioin1_gpioin1_irq = (gpioin1_pending_status & gpioin1_enable_storage);
 assign gpioin1_gpioin1_status = gpioin1_gpioin1_trigger;
-always @(*) begin
+always_comb begin
 	gpioin2_gpioin2_trigger = 1'd0;
 	if (gpioin2_gpioin2_mode_storage) begin
 		gpioin2_gpioin2_trigger = (gpioin2_in_status ^ gpioin2_gpioin2_in_pads_n_d);
@@ -4680,7 +4680,7 @@ always @(*) begin
 end
 assign gpioin2_i00 = gpioin2_gpioin2_status;
 assign gpioin2_i01 = gpioin2_gpioin2_pending;
-always @(*) begin
+always_comb begin
 	gpioin2_gpioin2_clear = 1'd0;
 	if ((gpioin2_pending_re & gpioin2_pending_r)) begin
 		gpioin2_gpioin2_clear = 1'd1;
@@ -4688,7 +4688,7 @@ always @(*) begin
 end
 assign gpioin2_gpioin2_irq = (gpioin2_pending_status & gpioin2_enable_storage);
 assign gpioin2_gpioin2_status = gpioin2_gpioin2_trigger;
-always @(*) begin
+always_comb begin
 	gpioin3_gpioin3_trigger = 1'd0;
 	if (gpioin3_gpioin3_mode_storage) begin
 		gpioin3_gpioin3_trigger = (gpioin3_in_status ^ gpioin3_gpioin3_in_pads_n_d);
@@ -4698,7 +4698,7 @@ always @(*) begin
 end
 assign gpioin3_i00 = gpioin3_gpioin3_status;
 assign gpioin3_i01 = gpioin3_gpioin3_pending;
-always @(*) begin
+always_comb begin
 	gpioin3_gpioin3_clear = 1'd0;
 	if ((gpioin3_pending_re & gpioin3_pending_r)) begin
 		gpioin3_gpioin3_clear = 1'd1;
@@ -4706,7 +4706,7 @@ always @(*) begin
 end
 assign gpioin3_gpioin3_irq = (gpioin3_pending_status & gpioin3_enable_storage);
 assign gpioin3_gpioin3_status = gpioin3_gpioin3_trigger;
-always @(*) begin
+always_comb begin
 	gpioin4_gpioin4_trigger = 1'd0;
 	if (gpioin4_gpioin4_mode_storage) begin
 		gpioin4_gpioin4_trigger = (gpioin4_in_status ^ gpioin4_gpioin4_in_pads_n_d);
@@ -4716,7 +4716,7 @@ always @(*) begin
 end
 assign gpioin4_i00 = gpioin4_gpioin4_status;
 assign gpioin4_i01 = gpioin4_gpioin4_pending;
-always @(*) begin
+always_comb begin
 	gpioin4_gpioin4_clear = 1'd0;
 	if ((gpioin4_pending_re & gpioin4_pending_r)) begin
 		gpioin4_gpioin4_clear = 1'd1;
@@ -4724,7 +4724,7 @@ always @(*) begin
 end
 assign gpioin4_gpioin4_irq = (gpioin4_pending_status & gpioin4_enable_storage);
 assign gpioin4_gpioin4_status = gpioin4_gpioin4_trigger;
-always @(*) begin
+always_comb begin
 	gpioin5_gpioin5_trigger = 1'd0;
 	if (gpioin5_gpioin5_mode_storage) begin
 		gpioin5_gpioin5_trigger = (gpioin5_in_status ^ gpioin5_gpioin5_in_pads_n_d);
@@ -4734,7 +4734,7 @@ always @(*) begin
 end
 assign gpioin5_i00 = gpioin5_gpioin5_status;
 assign gpioin5_i01 = gpioin5_gpioin5_pending;
-always @(*) begin
+always_comb begin
 	gpioin5_gpioin5_clear = 1'd0;
 	if ((gpioin5_pending_re & gpioin5_pending_r)) begin
 		gpioin5_gpioin5_clear = 1'd1;
@@ -4745,7 +4745,7 @@ assign gpioin5_gpioin5_status = gpioin5_gpioin5_trigger;
 
 // Patrick Hack
 /*
-always @(*) begin
+always_comb begin
 	next_state = 1'd0;
 	next_state = state;
 	case (state)
@@ -4767,7 +4767,7 @@ always_comb begin
           next_state = mgmtsoc_wishbone_cyc & mgmtsoc_wishbone_stb;
 end
 
-always @(*) begin
+always_comb begin
 	mgmtsoc_dat_w = 32'd0;
 	case (state)
 		1'd1: begin
@@ -4777,7 +4777,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_wishbone_dat_r = 32'd0;
 	case (state)
 		1'd1: begin
@@ -4787,7 +4787,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_wishbone_ack = 1'd0;
 	case (state)
 		1'd1: begin
@@ -4797,7 +4797,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_adr = 14'd0;
 	case (state)
 		1'd1: begin
@@ -4809,7 +4809,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_we = 1'd0;
 	case (state)
 		1'd1: begin
@@ -4839,7 +4839,7 @@ assign mgmtsoc_ibus_ibus_err = (shared_err & (grant == 1'd0));
 assign mgmtsoc_dbus_dbus_err = (shared_err & (grant == 1'd1));
 assign dbg_uart_wishbone_err = (shared_err & (grant == 2'd2));
 assign request = {dbg_uart_wishbone_cyc, mgmtsoc_dbus_dbus_cyc, mgmtsoc_ibus_ibus_cyc};
-always @(*) begin
+always_comb begin
 	slave_sel = 7'd0;
 	slave_sel[0] = (shared_adr[29:6] == 24'd15732480);
 	slave_sel[1] = (shared_adr[29:8] == 1'd0);
@@ -4905,7 +4905,7 @@ assign mgmtsoc_litespimmap_bus_cyc = (shared_cyc & slave_sel[3]);
 assign mprj_cyc = (shared_cyc & slave_sel[4]);
 assign hk_cyc = (shared_cyc & slave_sel[5]);
 assign mgmtsoc_wishbone_cyc = (shared_cyc & slave_sel[6]);
-always @(*) begin
+always_comb begin
 	shared_ack = 1'd0;
 	shared_ack = ((((((mgmtsoc_vexriscv_debug_bus_ack | dff_bus_ack) | dff2_bus_ack) | mgmtsoc_litespimmap_bus_ack) | mprj_ack) | hk_ack) | mgmtsoc_wishbone_ack);
 	if (done) begin
@@ -4913,7 +4913,7 @@ always @(*) begin
 	end
 end
 assign shared_err = ((((((mgmtsoc_vexriscv_debug_bus_err | dff_bus_err) | dff2_bus_err) | mgmtsoc_litespimmap_bus_err) | mprj_err) | hk_err) | mgmtsoc_wishbone_err);
-always @(*) begin
+always_comb begin
 	shared_dat_r = 32'd0;
 	shared_dat_r = ((((((({32{slave_sel_r[0]}} & mgmtsoc_vexriscv_debug_bus_dat_r) | ({32{slave_sel_r[1]}} & dff_bus_dat_r)) | ({32{slave_sel_r[2]}} & dff2_bus_dat_r)) | ({32{slave_sel_r[3]}} & mgmtsoc_litespimmap_bus_dat_r)) | ({32{slave_sel_r[4]}} & mprj_dat_r)) | ({32{slave_sel_r[5]}} & hk_dat_r)) | ({32{slave_sel_r[6]}} & mgmtsoc_wishbone_dat_r));
 	if (done) begin
@@ -4921,7 +4921,7 @@ always @(*) begin
 	end
 end
 assign wait_1 = ((shared_stb & shared_cyc) & (~shared_ack));
-always @(*) begin
+always_comb begin
 	error = 1'd0;
 	if (done) begin
 		error = 1'd1;
@@ -4930,45 +4930,45 @@ end
 assign done = (count == 1'd0);
 assign csrbank0_sel = (interface0_bank_bus_adr[13:9] == 1'd0);
 assign csrbank0_reset0_r = interface0_bank_bus_dat_w[1:0];
-always @(*) begin
+always_comb begin
 	csrbank0_reset0_re = 1'd0;
 	if ((csrbank0_sel & (interface0_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank0_reset0_re = interface0_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank0_reset0_we = 1'd0;
 	if ((csrbank0_sel & (interface0_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank0_reset0_we = (~interface0_bank_bus_we);
 	end
 end
 assign csrbank0_scratch0_r = interface0_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank0_scratch0_we = 1'd0;
 	if ((csrbank0_sel & (interface0_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank0_scratch0_we = (~interface0_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank0_scratch0_re = 1'd0;
 	if ((csrbank0_sel & (interface0_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank0_scratch0_re = interface0_bank_bus_we;
 	end
 end
 assign csrbank0_bus_errors_r = interface0_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank0_bus_errors_re = 1'd0;
 	if ((csrbank0_sel & (interface0_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank0_bus_errors_re = interface0_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank0_bus_errors_we = 1'd0;
 	if ((csrbank0_sel & (interface0_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank0_bus_errors_we = (~interface0_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_soc_rst = 1'd0;
 	if (mgmtsoc_reset_re) begin
 		mgmtsoc_soc_rst = mgmtsoc_reset_storage[0];
@@ -4981,13 +4981,13 @@ assign csrbank0_bus_errors_w = mgmtsoc_bus_errors_status[31:0];
 assign mgmtsoc_bus_errors_we = csrbank0_bus_errors_we;
 assign csrbank1_sel = (interface1_bank_bus_adr[13:9] == 1'd1);
 assign csrbank1_out0_r = interface1_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank1_out0_we = 1'd0;
 	if ((csrbank1_sel & (interface1_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank1_out0_we = (~interface1_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank1_out0_re = 1'd0;
 	if ((csrbank1_sel & (interface1_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank1_out0_re = interface1_bank_bus_we;
@@ -4996,13 +4996,13 @@ end
 assign csrbank1_out0_w = debug_mode_storage;
 assign csrbank2_sel = (interface2_bank_bus_adr[13:9] == 2'd2);
 assign csrbank2_out0_r = interface2_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank2_out0_we = 1'd0;
 	if ((csrbank2_sel & (interface2_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank2_out0_we = (~interface2_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank2_out0_re = 1'd0;
 	if ((csrbank2_sel & (interface2_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank2_out0_re = interface2_bank_bus_we;
@@ -5011,65 +5011,65 @@ end
 assign csrbank2_out0_w = debug_oeb_storage;
 assign csrbank3_sel = (interface3_bank_bus_adr[13:9] == 2'd3);
 assign csrbank3_mmap_dummy_bits0_r = interface3_bank_bus_dat_w[7:0];
-always @(*) begin
+always_comb begin
 	csrbank3_mmap_dummy_bits0_re = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank3_mmap_dummy_bits0_re = interface3_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank3_mmap_dummy_bits0_we = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank3_mmap_dummy_bits0_we = (~interface3_bank_bus_we);
 	end
 end
 assign csrbank3_master_cs0_r = interface3_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank3_master_cs0_re = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank3_master_cs0_re = interface3_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank3_master_cs0_we = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank3_master_cs0_we = (~interface3_bank_bus_we);
 	end
 end
 assign csrbank3_master_phyconfig0_r = interface3_bank_bus_dat_w[23:0];
-always @(*) begin
+always_comb begin
 	csrbank3_master_phyconfig0_we = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank3_master_phyconfig0_we = (~interface3_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank3_master_phyconfig0_re = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank3_master_phyconfig0_re = interface3_bank_bus_we;
 	end
 end
 assign mgmtsoc_master_rxtx_r = interface3_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	mgmtsoc_master_rxtx_re = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 2'd3))) begin
 		mgmtsoc_master_rxtx_re = interface3_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	mgmtsoc_master_rxtx_we = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 2'd3))) begin
 		mgmtsoc_master_rxtx_we = (~interface3_bank_bus_we);
 	end
 end
 assign csrbank3_master_status_r = interface3_bank_bus_dat_w[1:0];
-always @(*) begin
+always_comb begin
 	csrbank3_master_status_re = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank3_master_status_re = interface3_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank3_master_status_we = 1'd0;
 	if ((csrbank3_sel & (interface3_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank3_master_status_we = (~interface3_bank_bus_we);
@@ -5081,7 +5081,7 @@ assign mgmtsoc_master_len = mgmtsoc_master_phyconfig_storage[7:0];
 assign mgmtsoc_master_width = mgmtsoc_master_phyconfig_storage[11:8];
 assign mgmtsoc_master_mask = mgmtsoc_master_phyconfig_storage[23:16];
 assign csrbank3_master_phyconfig0_w = mgmtsoc_master_phyconfig_storage[23:0];
-always @(*) begin
+always_comb begin
 	mgmtsoc_master_status_status = 2'd0;
 	mgmtsoc_master_status_status[0] = mgmtsoc_master_tx_ready;
 	mgmtsoc_master_status_status[1] = mgmtsoc_master_rx_ready;
@@ -5090,13 +5090,13 @@ assign csrbank3_master_status_w = mgmtsoc_master_status_status[1:0];
 assign mgmtsoc_master_status_we = csrbank3_master_status_we;
 assign csrbank4_sel = (interface4_bank_bus_adr[13:9] == 3'd4);
 assign csrbank4_clk_divisor0_r = interface4_bank_bus_dat_w[7:0];
-always @(*) begin
+always_comb begin
 	csrbank4_clk_divisor0_we = 1'd0;
 	if ((csrbank4_sel & (interface4_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank4_clk_divisor0_we = (~interface4_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank4_clk_divisor0_re = 1'd0;
 	if ((csrbank4_sel & (interface4_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank4_clk_divisor0_re = interface4_bank_bus_we;
@@ -5105,78 +5105,78 @@ end
 assign csrbank4_clk_divisor0_w = mgmtsoc_litespisdrphycore_storage[7:0];
 assign csrbank5_sel = (interface5_bank_bus_adr[13:9] == 3'd5);
 assign csrbank5_mode10_r = interface5_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank5_mode10_we = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank5_mode10_we = (~interface5_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank5_mode10_re = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank5_mode10_re = interface5_bank_bus_we;
 	end
 end
 assign csrbank5_mode00_r = interface5_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank5_mode00_re = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank5_mode00_re = interface5_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank5_mode00_we = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank5_mode00_we = (~interface5_bank_bus_we);
 	end
 end
 assign csrbank5_ien0_r = interface5_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank5_ien0_we = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank5_ien0_we = (~interface5_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank5_ien0_re = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank5_ien0_re = interface5_bank_bus_we;
 	end
 end
 assign csrbank5_oe0_r = interface5_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank5_oe0_we = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank5_oe0_we = (~interface5_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank5_oe0_re = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank5_oe0_re = interface5_bank_bus_we;
 	end
 end
 assign csrbank5_in_r = interface5_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank5_in_re = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank5_in_re = interface5_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank5_in_we = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank5_in_we = (~interface5_bank_bus_we);
 	end
 end
 assign csrbank5_out0_r = interface5_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank5_out0_we = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank5_out0_we = (~interface5_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank5_out0_re = 1'd0;
 	if ((csrbank5_sel & (interface5_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank5_out0_re = interface5_bank_bus_we;
@@ -5191,208 +5191,208 @@ assign gpio_in_we = csrbank5_in_we;
 assign csrbank5_out0_w = gpio_out_storage;
 assign csrbank6_sel = (interface6_bank_bus_adr[13:9] == 3'd6);
 assign csrbank6_ien3_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_ien3_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank6_ien3_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_ien3_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank6_ien3_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_ien2_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_ien2_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank6_ien2_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_ien2_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank6_ien2_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_ien1_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_ien1_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank6_ien1_we = (~interface6_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_ien1_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank6_ien1_re = interface6_bank_bus_we;
 	end
 end
 assign csrbank6_ien0_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_ien0_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank6_ien0_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_ien0_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank6_ien0_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_oe3_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_oe3_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank6_oe3_we = (~interface6_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_oe3_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank6_oe3_re = interface6_bank_bus_we;
 	end
 end
 assign csrbank6_oe2_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_oe2_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank6_oe2_we = (~interface6_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_oe2_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank6_oe2_re = interface6_bank_bus_we;
 	end
 end
 assign csrbank6_oe1_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_oe1_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank6_oe1_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_oe1_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank6_oe1_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_oe0_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_oe0_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd7))) begin
 		csrbank6_oe0_we = (~interface6_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_oe0_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 3'd7))) begin
 		csrbank6_oe0_re = interface6_bank_bus_we;
 	end
 end
 assign csrbank6_in3_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_in3_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd8))) begin
 		csrbank6_in3_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_in3_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd8))) begin
 		csrbank6_in3_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_in2_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_in2_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd9))) begin
 		csrbank6_in2_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_in2_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd9))) begin
 		csrbank6_in2_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_in1_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_in1_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd10))) begin
 		csrbank6_in1_we = (~interface6_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_in1_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd10))) begin
 		csrbank6_in1_re = interface6_bank_bus_we;
 	end
 end
 assign csrbank6_in0_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_in0_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd11))) begin
 		csrbank6_in0_we = (~interface6_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_in0_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd11))) begin
 		csrbank6_in0_re = interface6_bank_bus_we;
 	end
 end
 assign csrbank6_out3_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_out3_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd12))) begin
 		csrbank6_out3_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_out3_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd12))) begin
 		csrbank6_out3_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_out2_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_out2_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd13))) begin
 		csrbank6_out2_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_out2_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd13))) begin
 		csrbank6_out2_we = (~interface6_bank_bus_we);
 	end
 end
 assign csrbank6_out1_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_out1_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd14))) begin
 		csrbank6_out1_we = (~interface6_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_out1_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd14))) begin
 		csrbank6_out1_re = interface6_bank_bus_we;
 	end
 end
 assign csrbank6_out0_r = interface6_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank6_out0_re = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd15))) begin
 		csrbank6_out0_re = interface6_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank6_out0_we = 1'd0;
 	if ((csrbank6_sel & (interface6_bank_bus_adr[8:0] == 4'd15))) begin
 		csrbank6_out0_we = (~interface6_bank_bus_we);
@@ -5417,13 +5417,13 @@ assign csrbank6_out1_w = la_out_storage[63:32];
 assign csrbank6_out0_w = la_out_storage[31:0];
 assign csrbank7_sel = (interface7_bank_bus_adr[13:9] == 3'd7);
 assign csrbank7_out0_r = interface7_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank7_out0_re = 1'd0;
 	if ((csrbank7_sel & (interface7_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank7_out0_re = interface7_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank7_out0_we = 1'd0;
 	if ((csrbank7_sel & (interface7_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank7_out0_we = (~interface7_bank_bus_we);
@@ -5432,13 +5432,13 @@ end
 assign csrbank7_out0_w = mprj_wb_iena_storage;
 assign csrbank8_sel = (interface8_bank_bus_adr[13:9] == 4'd8);
 assign csrbank8_out0_r = interface8_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank8_out0_we = 1'd0;
 	if ((csrbank8_sel & (interface8_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank8_out0_we = (~interface8_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank8_out0_re = 1'd0;
 	if ((csrbank8_sel & (interface8_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank8_out0_re = interface8_bank_bus_we;
@@ -5447,97 +5447,97 @@ end
 assign csrbank8_out0_w = spi_enabled_storage;
 assign csrbank9_sel = (interface9_bank_bus_adr[13:9] == 4'd9);
 assign csrbank9_control0_r = interface9_bank_bus_dat_w[15:0];
-always @(*) begin
+always_comb begin
 	csrbank9_control0_we = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank9_control0_we = (~interface9_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank9_control0_re = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank9_control0_re = interface9_bank_bus_we;
 	end
 end
 assign csrbank9_status_r = interface9_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank9_status_re = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank9_status_re = interface9_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank9_status_we = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank9_status_we = (~interface9_bank_bus_we);
 	end
 end
 assign csrbank9_mosi0_r = interface9_bank_bus_dat_w[7:0];
-always @(*) begin
+always_comb begin
 	csrbank9_mosi0_re = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank9_mosi0_re = interface9_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank9_mosi0_we = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank9_mosi0_we = (~interface9_bank_bus_we);
 	end
 end
 assign csrbank9_miso_r = interface9_bank_bus_dat_w[7:0];
-always @(*) begin
+always_comb begin
 	csrbank9_miso_we = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank9_miso_we = (~interface9_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank9_miso_re = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank9_miso_re = interface9_bank_bus_we;
 	end
 end
 assign csrbank9_cs0_r = interface9_bank_bus_dat_w[16:0];
-always @(*) begin
+always_comb begin
 	csrbank9_cs0_we = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank9_cs0_we = (~interface9_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank9_cs0_re = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank9_cs0_re = interface9_bank_bus_we;
 	end
 end
 assign csrbank9_loopback0_r = interface9_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank9_loopback0_re = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank9_loopback0_re = interface9_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank9_loopback0_we = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank9_loopback0_we = (~interface9_bank_bus_we);
 	end
 end
 assign csrbank9_clk_divider0_r = interface9_bank_bus_dat_w[15:0];
-always @(*) begin
+always_comb begin
 	csrbank9_clk_divider0_we = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank9_clk_divider0_we = (~interface9_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank9_clk_divider0_re = 1'd0;
 	if ((csrbank9_sel & (interface9_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank9_clk_divider0_re = interface9_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	spi_master_start1 = 1'd0;
 	if (spi_master_control_re) begin
 		spi_master_start1 = spi_master_control_storage[0];
@@ -5559,104 +5559,104 @@ assign csrbank9_loopback0_w = spi_master_loopback_storage;
 assign csrbank9_clk_divider0_w = spimaster_storage[15:0];
 assign csrbank10_sel = (interface10_bank_bus_adr[13:9] == 4'd10);
 assign csrbank10_load0_r = interface10_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank10_load0_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank10_load0_re = interface10_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_load0_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank10_load0_we = (~interface10_bank_bus_we);
 	end
 end
 assign csrbank10_reload0_r = interface10_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank10_reload0_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank10_reload0_re = interface10_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_reload0_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank10_reload0_we = (~interface10_bank_bus_we);
 	end
 end
 assign csrbank10_en0_r = interface10_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank10_en0_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank10_en0_we = (~interface10_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_en0_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank10_en0_re = interface10_bank_bus_we;
 	end
 end
 assign csrbank10_update_value0_r = interface10_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank10_update_value0_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank10_update_value0_re = interface10_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_update_value0_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank10_update_value0_we = (~interface10_bank_bus_we);
 	end
 end
 assign csrbank10_value_r = interface10_bank_bus_dat_w[31:0];
-always @(*) begin
+always_comb begin
 	csrbank10_value_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank10_value_we = (~interface10_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_value_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank10_value_re = interface10_bank_bus_we;
 	end
 end
 assign csrbank10_ev_status_r = interface10_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank10_ev_status_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank10_ev_status_we = (~interface10_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_ev_status_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank10_ev_status_re = interface10_bank_bus_we;
 	end
 end
 assign csrbank10_ev_pending_r = interface10_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank10_ev_pending_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank10_ev_pending_re = interface10_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_ev_pending_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank10_ev_pending_we = (~interface10_bank_bus_we);
 	end
 end
 assign csrbank10_ev_enable0_r = interface10_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank10_ev_enable0_re = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd7))) begin
 		csrbank10_ev_enable0_re = interface10_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank10_ev_enable0_we = 1'd0;
 	if ((csrbank10_sel & (interface10_bank_bus_adr[8:0] == 3'd7))) begin
 		csrbank10_ev_enable0_we = (~interface10_bank_bus_we);
@@ -5678,104 +5678,104 @@ assign mgmtsoc_zero2 = mgmtsoc_enable_storage;
 assign csrbank10_ev_enable0_w = mgmtsoc_enable_storage;
 assign csrbank11_sel = (interface11_bank_bus_adr[13:9] == 4'd11);
 assign uart_rxtx_r = interface11_bank_bus_dat_w[7:0];
-always @(*) begin
+always_comb begin
 	uart_rxtx_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 1'd0))) begin
 		uart_rxtx_we = (~interface11_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	uart_rxtx_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 1'd0))) begin
 		uart_rxtx_re = interface11_bank_bus_we;
 	end
 end
 assign csrbank11_txfull_r = interface11_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank11_txfull_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank11_txfull_we = (~interface11_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank11_txfull_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank11_txfull_re = interface11_bank_bus_we;
 	end
 end
 assign csrbank11_rxempty_r = interface11_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank11_rxempty_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank11_rxempty_we = (~interface11_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank11_rxempty_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank11_rxempty_re = interface11_bank_bus_we;
 	end
 end
 assign csrbank11_ev_status_r = interface11_bank_bus_dat_w[1:0];
-always @(*) begin
+always_comb begin
 	csrbank11_ev_status_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank11_ev_status_re = interface11_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank11_ev_status_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank11_ev_status_we = (~interface11_bank_bus_we);
 	end
 end
 assign csrbank11_ev_pending_r = interface11_bank_bus_dat_w[1:0];
-always @(*) begin
+always_comb begin
 	csrbank11_ev_pending_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank11_ev_pending_re = interface11_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank11_ev_pending_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank11_ev_pending_we = (~interface11_bank_bus_we);
 	end
 end
 assign csrbank11_ev_enable0_r = interface11_bank_bus_dat_w[1:0];
-always @(*) begin
+always_comb begin
 	csrbank11_ev_enable0_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank11_ev_enable0_we = (~interface11_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank11_ev_enable0_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank11_ev_enable0_re = interface11_bank_bus_we;
 	end
 end
 assign csrbank11_txempty_r = interface11_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank11_txempty_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank11_txempty_re = interface11_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank11_txempty_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd6))) begin
 		csrbank11_txempty_we = (~interface11_bank_bus_we);
 	end
 end
 assign csrbank11_rxfull_r = interface11_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank11_rxfull_re = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd7))) begin
 		csrbank11_rxfull_re = interface11_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank11_rxfull_we = 1'd0;
 	if ((csrbank11_sel & (interface11_bank_bus_adr[8:0] == 3'd7))) begin
 		csrbank11_rxfull_we = (~interface11_bank_bus_we);
@@ -5785,14 +5785,14 @@ assign csrbank11_txfull_w = uart_txfull_status;
 assign uart_txfull_we = csrbank11_txfull_we;
 assign csrbank11_rxempty_w = uart_rxempty_status;
 assign uart_rxempty_we = csrbank11_rxempty_we;
-always @(*) begin
+always_comb begin
 	uart_status_status = 2'd0;
 	uart_status_status[0] = uart_tx0;
 	uart_status_status[1] = uart_rx0;
 end
 assign csrbank11_ev_status_w = uart_status_status[1:0];
 assign uart_status_we = csrbank11_ev_status_we;
-always @(*) begin
+always_comb begin
 	uart_pending_status = 2'd0;
 	uart_pending_status[0] = uart_tx1;
 	uart_pending_status[1] = uart_rx1;
@@ -5808,13 +5808,13 @@ assign csrbank11_rxfull_w = uart_rxfull_status;
 assign uart_rxfull_we = csrbank11_rxfull_we;
 assign csrbank12_sel = (interface12_bank_bus_adr[13:9] == 4'd12);
 assign csrbank12_out0_r = interface12_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank12_out0_we = 1'd0;
 	if ((csrbank12_sel & (interface12_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank12_out0_we = (~interface12_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank12_out0_re = 1'd0;
 	if ((csrbank12_sel & (interface12_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank12_out0_re = interface12_bank_bus_we;
@@ -5823,78 +5823,78 @@ end
 assign csrbank12_out0_w = uart_enabled_storage;
 assign csrbank13_sel = (interface13_bank_bus_adr[13:9] == 4'd13);
 assign csrbank13_in_r = interface13_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank13_in_we = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank13_in_we = (~interface13_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank13_in_re = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank13_in_re = interface13_bank_bus_we;
 	end
 end
 assign csrbank13_mode0_r = interface13_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank13_mode0_we = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank13_mode0_we = (~interface13_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank13_mode0_re = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank13_mode0_re = interface13_bank_bus_we;
 	end
 end
 assign csrbank13_edge0_r = interface13_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank13_edge0_re = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank13_edge0_re = interface13_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank13_edge0_we = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank13_edge0_we = (~interface13_bank_bus_we);
 	end
 end
 assign csrbank13_ev_status_r = interface13_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank13_ev_status_we = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank13_ev_status_we = (~interface13_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank13_ev_status_re = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank13_ev_status_re = interface13_bank_bus_we;
 	end
 end
 assign csrbank13_ev_pending_r = interface13_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank13_ev_pending_we = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank13_ev_pending_we = (~interface13_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank13_ev_pending_re = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank13_ev_pending_re = interface13_bank_bus_we;
 	end
 end
 assign csrbank13_ev_enable0_r = interface13_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank13_ev_enable0_re = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank13_ev_enable0_re = interface13_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank13_ev_enable0_we = 1'd0;
 	if ((csrbank13_sel & (interface13_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank13_ev_enable0_we = (~interface13_bank_bus_we);
@@ -5914,78 +5914,78 @@ assign gpioin0_i02 = gpioin0_enable_storage;
 assign csrbank13_ev_enable0_w = gpioin0_enable_storage;
 assign csrbank14_sel = (interface14_bank_bus_adr[13:9] == 4'd14);
 assign csrbank14_in_r = interface14_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank14_in_we = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank14_in_we = (~interface14_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank14_in_re = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank14_in_re = interface14_bank_bus_we;
 	end
 end
 assign csrbank14_mode0_r = interface14_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank14_mode0_re = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank14_mode0_re = interface14_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank14_mode0_we = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank14_mode0_we = (~interface14_bank_bus_we);
 	end
 end
 assign csrbank14_edge0_r = interface14_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank14_edge0_re = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank14_edge0_re = interface14_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank14_edge0_we = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank14_edge0_we = (~interface14_bank_bus_we);
 	end
 end
 assign csrbank14_ev_status_r = interface14_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank14_ev_status_we = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank14_ev_status_we = (~interface14_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank14_ev_status_re = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank14_ev_status_re = interface14_bank_bus_we;
 	end
 end
 assign csrbank14_ev_pending_r = interface14_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank14_ev_pending_re = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank14_ev_pending_re = interface14_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank14_ev_pending_we = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank14_ev_pending_we = (~interface14_bank_bus_we);
 	end
 end
 assign csrbank14_ev_enable0_r = interface14_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank14_ev_enable0_re = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank14_ev_enable0_re = interface14_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank14_ev_enable0_we = 1'd0;
 	if ((csrbank14_sel & (interface14_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank14_ev_enable0_we = (~interface14_bank_bus_we);
@@ -6005,78 +6005,78 @@ assign gpioin1_i02 = gpioin1_enable_storage;
 assign csrbank14_ev_enable0_w = gpioin1_enable_storage;
 assign csrbank15_sel = (interface15_bank_bus_adr[13:9] == 4'd15);
 assign csrbank15_in_r = interface15_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank15_in_we = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank15_in_we = (~interface15_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank15_in_re = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank15_in_re = interface15_bank_bus_we;
 	end
 end
 assign csrbank15_mode0_r = interface15_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank15_mode0_re = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank15_mode0_re = interface15_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank15_mode0_we = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank15_mode0_we = (~interface15_bank_bus_we);
 	end
 end
 assign csrbank15_edge0_r = interface15_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank15_edge0_we = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank15_edge0_we = (~interface15_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank15_edge0_re = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank15_edge0_re = interface15_bank_bus_we;
 	end
 end
 assign csrbank15_ev_status_r = interface15_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank15_ev_status_we = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank15_ev_status_we = (~interface15_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank15_ev_status_re = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank15_ev_status_re = interface15_bank_bus_we;
 	end
 end
 assign csrbank15_ev_pending_r = interface15_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank15_ev_pending_re = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank15_ev_pending_re = interface15_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank15_ev_pending_we = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank15_ev_pending_we = (~interface15_bank_bus_we);
 	end
 end
 assign csrbank15_ev_enable0_r = interface15_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank15_ev_enable0_we = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank15_ev_enable0_we = (~interface15_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank15_ev_enable0_re = 1'd0;
 	if ((csrbank15_sel & (interface15_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank15_ev_enable0_re = interface15_bank_bus_we;
@@ -6096,78 +6096,78 @@ assign gpioin2_i02 = gpioin2_enable_storage;
 assign csrbank15_ev_enable0_w = gpioin2_enable_storage;
 assign csrbank16_sel = (interface16_bank_bus_adr[13:9] == 5'd16);
 assign csrbank16_in_r = interface16_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank16_in_re = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank16_in_re = interface16_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank16_in_we = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank16_in_we = (~interface16_bank_bus_we);
 	end
 end
 assign csrbank16_mode0_r = interface16_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank16_mode0_re = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank16_mode0_re = interface16_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank16_mode0_we = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank16_mode0_we = (~interface16_bank_bus_we);
 	end
 end
 assign csrbank16_edge0_r = interface16_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank16_edge0_we = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank16_edge0_we = (~interface16_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank16_edge0_re = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank16_edge0_re = interface16_bank_bus_we;
 	end
 end
 assign csrbank16_ev_status_r = interface16_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank16_ev_status_re = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank16_ev_status_re = interface16_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank16_ev_status_we = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank16_ev_status_we = (~interface16_bank_bus_we);
 	end
 end
 assign csrbank16_ev_pending_r = interface16_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank16_ev_pending_re = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank16_ev_pending_re = interface16_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank16_ev_pending_we = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank16_ev_pending_we = (~interface16_bank_bus_we);
 	end
 end
 assign csrbank16_ev_enable0_r = interface16_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank16_ev_enable0_we = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank16_ev_enable0_we = (~interface16_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank16_ev_enable0_re = 1'd0;
 	if ((csrbank16_sel & (interface16_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank16_ev_enable0_re = interface16_bank_bus_we;
@@ -6187,78 +6187,78 @@ assign gpioin3_i02 = gpioin3_enable_storage;
 assign csrbank16_ev_enable0_w = gpioin3_enable_storage;
 assign csrbank17_sel = (interface17_bank_bus_adr[13:9] == 5'd17);
 assign csrbank17_in_r = interface17_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank17_in_re = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank17_in_re = interface17_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank17_in_we = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank17_in_we = (~interface17_bank_bus_we);
 	end
 end
 assign csrbank17_mode0_r = interface17_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank17_mode0_re = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank17_mode0_re = interface17_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank17_mode0_we = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank17_mode0_we = (~interface17_bank_bus_we);
 	end
 end
 assign csrbank17_edge0_r = interface17_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank17_edge0_we = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank17_edge0_we = (~interface17_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank17_edge0_re = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank17_edge0_re = interface17_bank_bus_we;
 	end
 end
 assign csrbank17_ev_status_r = interface17_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank17_ev_status_re = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank17_ev_status_re = interface17_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank17_ev_status_we = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank17_ev_status_we = (~interface17_bank_bus_we);
 	end
 end
 assign csrbank17_ev_pending_r = interface17_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank17_ev_pending_re = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank17_ev_pending_re = interface17_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank17_ev_pending_we = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank17_ev_pending_we = (~interface17_bank_bus_we);
 	end
 end
 assign csrbank17_ev_enable0_r = interface17_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank17_ev_enable0_we = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank17_ev_enable0_we = (~interface17_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank17_ev_enable0_re = 1'd0;
 	if ((csrbank17_sel & (interface17_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank17_ev_enable0_re = interface17_bank_bus_we;
@@ -6278,78 +6278,78 @@ assign gpioin4_i02 = gpioin4_enable_storage;
 assign csrbank17_ev_enable0_w = gpioin4_enable_storage;
 assign csrbank18_sel = (interface18_bank_bus_adr[13:9] == 5'd18);
 assign csrbank18_in_r = interface18_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank18_in_re = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank18_in_re = interface18_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank18_in_we = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank18_in_we = (~interface18_bank_bus_we);
 	end
 end
 assign csrbank18_mode0_r = interface18_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank18_mode0_we = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank18_mode0_we = (~interface18_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank18_mode0_re = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 1'd1))) begin
 		csrbank18_mode0_re = interface18_bank_bus_we;
 	end
 end
 assign csrbank18_edge0_r = interface18_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank18_edge0_we = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank18_edge0_we = (~interface18_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank18_edge0_re = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 2'd2))) begin
 		csrbank18_edge0_re = interface18_bank_bus_we;
 	end
 end
 assign csrbank18_ev_status_r = interface18_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank18_ev_status_re = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank18_ev_status_re = interface18_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank18_ev_status_we = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 2'd3))) begin
 		csrbank18_ev_status_we = (~interface18_bank_bus_we);
 	end
 end
 assign csrbank18_ev_pending_r = interface18_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank18_ev_pending_we = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank18_ev_pending_we = (~interface18_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank18_ev_pending_re = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 3'd4))) begin
 		csrbank18_ev_pending_re = interface18_bank_bus_we;
 	end
 end
 assign csrbank18_ev_enable0_r = interface18_bank_bus_dat_w[0];
-always @(*) begin
+always_comb begin
 	csrbank18_ev_enable0_we = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank18_ev_enable0_we = (~interface18_bank_bus_we);
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank18_ev_enable0_re = 1'd0;
 	if ((csrbank18_sel & (interface18_bank_bus_adr[8:0] == 3'd5))) begin
 		csrbank18_ev_enable0_re = interface18_bank_bus_we;
@@ -6369,13 +6369,13 @@ assign gpioin5_i02 = gpioin5_enable_storage;
 assign csrbank18_ev_enable0_w = gpioin5_enable_storage;
 assign csrbank19_sel = (interface19_bank_bus_adr[13:9] == 5'd19);
 assign csrbank19_out0_r = interface19_bank_bus_dat_w[2:0];
-always @(*) begin
+always_comb begin
 	csrbank19_out0_re = 1'd0;
 	if ((csrbank19_sel & (interface19_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank19_out0_re = interface19_bank_bus_we;
 	end
 end
-always @(*) begin
+always_comb begin
 	csrbank19_out0_we = 1'd0;
 	if ((csrbank19_sel & (interface19_bank_bus_adr[8:0] == 1'd0))) begin
 		csrbank19_out0_we = (~interface19_bank_bus_we);
@@ -6447,7 +6447,7 @@ assign interface17_bank_bus_dat_w = csr_interconnect_dat_w;
 assign interface18_bank_bus_dat_w = csr_interconnect_dat_w;
 assign interface19_bank_bus_dat_w = csr_interconnect_dat_w;
 assign csr_interconnect_dat_r = (((((((((((((((((((interface0_bank_bus_dat_r | interface1_bank_bus_dat_r) | interface2_bank_bus_dat_r) | interface3_bank_bus_dat_r) | interface4_bank_bus_dat_r) | interface5_bank_bus_dat_r) | interface6_bank_bus_dat_r) | interface7_bank_bus_dat_r) | interface8_bank_bus_dat_r) | interface9_bank_bus_dat_r) | interface10_bank_bus_dat_r) | interface11_bank_bus_dat_r) | interface12_bank_bus_dat_r) | interface13_bank_bus_dat_r) | interface14_bank_bus_dat_r) | interface15_bank_bus_dat_r) | interface16_bank_bus_dat_r) | interface17_bank_bus_dat_r) | interface18_bank_bus_dat_r) | interface19_bank_bus_dat_r);
-always @(*) begin
+always_comb begin
 	comb_array_muxed0 = 30'd0;
 	case (grant)
 		1'd0: begin
@@ -6461,7 +6461,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	comb_array_muxed1 = 32'd0;
 	case (grant)
 		1'd0: begin
@@ -6475,7 +6475,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	comb_array_muxed2 = 4'd0;
 	case (grant)
 		1'd0: begin
@@ -6489,7 +6489,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	comb_array_muxed3 = 1'd0;
 	case (grant)
 		1'd0: begin
@@ -6503,7 +6503,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	comb_array_muxed4 = 1'd0;
 	case (grant)
 		1'd0: begin
@@ -6517,7 +6517,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	comb_array_muxed5 = 1'd0;
 	case (grant)
 		1'd0: begin
@@ -6531,7 +6531,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	comb_array_muxed6 = 3'd0;
 	case (grant)
 		1'd0: begin
@@ -6545,7 +6545,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	comb_array_muxed7 = 2'd0;
 	case (grant)
 		1'd0: begin
@@ -6559,7 +6559,7 @@ always @(*) begin
 		end
 	endcase
 end
-always @(*) begin
+always_comb begin
 	sync_array_muxed = 1'd0;
 	case (spi_master_mosi_sel)
 		1'd0: begin
@@ -6595,7 +6595,7 @@ assign sdrio_clk_3 = sys_clk;
 assign uart_phy_rx_rx = multiregimpl0_regs1;
 assign dbg_uart_rx_rx = multiregimpl1_regs1;
 assign gpio_in_status = multiregimpl2_regs1;
-always @(*) begin
+always_comb begin
 	la_in_status = 128'd0;
 	la_in_status[0] = multiregimpl3_regs1;
 	la_in_status[1] = multiregimpl4_regs1;
