@@ -19,6 +19,10 @@
 // This include is relative to $CARAVEL_PATH (see Makefile)
 #include <defs.h>
 #include <stub.c>
+#ifdef USER_PROJ_IRQ0_EN
+#include <irq_vex.h>
+#endif
+
 #define UP_BASE (0x30000000)
 #define AA_BASE (0x30002000)
 #define IS_BASE (0x30003000)
@@ -43,6 +47,10 @@ void main()
 {
 	int j;
 
+  #ifdef USER_PROJ_IRQ0_EN	
+    int mask;
+  #endif
+  
 	/* Set up the housekeeping SPI to be connected internally so	*/
 	/* that external pin changes don't affect it.			*/
 
@@ -147,8 +155,6 @@ void main()
     }
     */
     
-
-
     /*
     // test112 - for soc CFG read and write to mailbox then send to fpga
     // 1. [FW] SOC CFG read and write to mailbox 
@@ -189,6 +195,7 @@ void main()
     while(value==0);
     */
     
+    /*
     // test113 - fpga to soc CFG write test
     // 1. [testbech] fpga to soc CFG write to AA_Internal_Reg_Offset + 0
     // 2. [FW] soc read AA_Internal_Reg_Offset + 0, if non zero then write the read_value to mailbox offset 4
@@ -201,8 +208,40 @@ void main()
     }
     while(value==0);
 
+    */
+    
+    
+    //test114 - fpga to soc mailbox write with interrupt test
+    // 1. [FW] init interrupt handler
+    // 1.A [FW] soc enable interrupt by set AA_Internal_Reg_Offset + 0 = 1
+    // 2. [testbech] fpga to soc CFG write to AA_MailBox_Reg_Offset + 0 = value
+    // 3. [FW] in isr read value from AA_MailBox_Reg_Offset + 0 and write to AA_MailBox_Reg_Offset + 4
+    // 4. [testbech] fpga check AA_MailBox_Reg_Offset + 4 = value
 
+    
+    #ifdef USER_PROJ_IRQ0_EN	
+      //REG_IS_BASE = 3;    
+      // unmask USER_IRQ_0_INTERRUPT
+      mask = irq_getmask();
+      mask |= 1 << USER_IRQ_0_INTERRUPT;
+      irq_setmask(mask);
+      // enable user_irq_0_ev_enable
+      user_irq_0_ev_enable_write(1);	
+      
+      //REG_IS_BASE = 3;    
+      //value = *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 );
+      //REG_IS_BASE = 3;    
+      //*(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 ) = value;
+      //REG_IS_BASE = 3;    
+      value = 1;
+      *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 )  = value; //set interrupt enable bit in AA
+      *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 )  = value; //set interrupt enable bit in AA
+      //REG_IS_BASE = 3;    
+    #endif
+    
+    
     while(1);
 }
+
 
 

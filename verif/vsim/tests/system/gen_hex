@@ -32,16 +32,18 @@ trap 'on_error' ERR
 if [ -e $tstn.c ]; then
   riscv32-unknown-elf-gcc -march=rv32i \
                           -mabi=ilp32 \
-                          -I../base \
+                          -I../$tstn \
                           -I../../../../../../fork/caravel_mgmt_soc_litex/verilog/dv \
                           -I../../../../../../fork/caravel_mgmt_soc_litex/verilog/dv/generated \
                           -I../../../../../../fork/caravel_mgmt_soc_litex/verilog/dv/firmware \
                           -Wa,-g \
-                          -Wl,-Bstatic,-T,../base/sections.lds,--strip-discarded,--no-warn-rwx-segments \
+                          -Wl,-Bstatic,-T,../$tstn/sections.lds,--strip-discarded,--no-warn-rwx-segments \
+                          -D__vexriscv__ \
+                          -DUSER_PROJ_IRQ0_EN \
                           -ffreestanding \
                           -nostdlib \
                           -o $tstn.elf \
-                          ../base/crt0_vex.S ../base/isr.c $tstn.c
+                          ../$tstn/crt0_vex.S ../$tstn/isr.c $tstn.c
 else
   if [ -e $tstn.asm ]; then
     riscv32-unknown-elf-as --use-non-free --out-fmt-ihx -m$FAMILY --verbose ./$tstn.c
@@ -54,9 +56,11 @@ fi
 
 if [ -e $tstn.elf ]; then
   riscv32-unknown-elf-objcopy -O verilog $tstn.elf $tstn.hex
+  riscv32-unknown-elf-objdump -D $tstn.elf > $tstn.dump.out
   # to fix flash base address
   sed -ie 's/@10/@00/g' $tstn.hex
 else
   echo "Error, $tstn.elf file not found"
   exit
 fi
+
