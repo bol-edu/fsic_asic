@@ -1248,7 +1248,7 @@ module VexRiscv (
     .reset                    (reset                                                      )  //i
   );
   `ifndef SYNTHESIS
-  always @(*) begin
+  always_comb begin
     case(_zz_memory_to_writeBack_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_memory_to_writeBack_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_memory_to_writeBack_ENV_CTRL_string = "XRET ";
@@ -1256,7 +1256,7 @@ module VexRiscv (
       default : _zz_memory_to_writeBack_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_memory_to_writeBack_ENV_CTRL_1)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_memory_to_writeBack_ENV_CTRL_1_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_memory_to_writeBack_ENV_CTRL_1_string = "XRET ";
@@ -1264,7 +1264,7 @@ module VexRiscv (
       default : _zz_memory_to_writeBack_ENV_CTRL_1_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_to_memory_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_execute_to_memory_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_execute_to_memory_ENV_CTRL_string = "XRET ";
@@ -1272,7 +1272,7 @@ module VexRiscv (
       default : _zz_execute_to_memory_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_to_memory_ENV_CTRL_1)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_execute_to_memory_ENV_CTRL_1_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_execute_to_memory_ENV_CTRL_1_string = "XRET ";
@@ -1280,7 +1280,7 @@ module VexRiscv (
       default : _zz_execute_to_memory_ENV_CTRL_1_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : decode_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : decode_ENV_CTRL_string = "XRET ";
@@ -1288,7 +1288,7 @@ module VexRiscv (
       default : decode_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_decode_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_decode_ENV_CTRL_string = "XRET ";
@@ -1296,7 +1296,7 @@ module VexRiscv (
       default : _zz_decode_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_decode_to_execute_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_decode_to_execute_ENV_CTRL_string = "XRET ";
@@ -1304,7 +1304,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_ENV_CTRL_1)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_decode_to_execute_ENV_CTRL_1_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_decode_to_execute_ENV_CTRL_1_string = "XRET ";
@@ -1312,7 +1312,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_ENV_CTRL_1_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_INC : decode_BRANCH_CTRL_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : decode_BRANCH_CTRL_string = "B   ";
@@ -1321,7 +1321,7 @@ module VexRiscv (
       default : decode_BRANCH_CTRL_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_INC : _zz_decode_BRANCH_CTRL_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : _zz_decode_BRANCH_CTRL_string = "B   ";
@@ -1330,7 +1330,7 @@ module VexRiscv (
       default : _zz_decode_BRANCH_CTRL_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_INC : _zz_decode_to_execute_BRANCH_CTRL_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : _zz_decode_to_execute_BRANCH_CTRL_string = "B   ";
@@ -1339,7 +1339,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_BRANCH_CTRL_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_BRANCH_CTRL_1)
       `BranchCtrlEnum_binary_sequential_INC : _zz_decode_to_execute_BRANCH_CTRL_1_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : _zz_decode_to_execute_BRANCH_CTRL_1_string = "B   ";
@@ -1348,7 +1348,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_BRANCH_CTRL_1_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_SHIFT_CTRL)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : decode_SHIFT_CTRL_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : decode_SHIFT_CTRL_string = "SLL_1    ";
@@ -1357,7 +1357,7 @@ module VexRiscv (
       default : decode_SHIFT_CTRL_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SHIFT_CTRL)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : _zz_decode_SHIFT_CTRL_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : _zz_decode_SHIFT_CTRL_string = "SLL_1    ";
@@ -1366,7 +1366,7 @@ module VexRiscv (
       default : _zz_decode_SHIFT_CTRL_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_SHIFT_CTRL)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : _zz_decode_to_execute_SHIFT_CTRL_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : _zz_decode_to_execute_SHIFT_CTRL_string = "SLL_1    ";
@@ -1375,7 +1375,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_SHIFT_CTRL_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_SHIFT_CTRL_1)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : _zz_decode_to_execute_SHIFT_CTRL_1_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : _zz_decode_to_execute_SHIFT_CTRL_1_string = "SLL_1    ";
@@ -1384,7 +1384,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_SHIFT_CTRL_1_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_ALU_BITWISE_CTRL)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : decode_ALU_BITWISE_CTRL_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : decode_ALU_BITWISE_CTRL_string = "OR_1 ";
@@ -1392,7 +1392,7 @@ module VexRiscv (
       default : decode_ALU_BITWISE_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ALU_BITWISE_CTRL)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : _zz_decode_ALU_BITWISE_CTRL_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : _zz_decode_ALU_BITWISE_CTRL_string = "OR_1 ";
@@ -1400,7 +1400,7 @@ module VexRiscv (
       default : _zz_decode_ALU_BITWISE_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_ALU_BITWISE_CTRL)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : _zz_decode_to_execute_ALU_BITWISE_CTRL_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : _zz_decode_to_execute_ALU_BITWISE_CTRL_string = "OR_1 ";
@@ -1408,7 +1408,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_ALU_BITWISE_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_ALU_BITWISE_CTRL_1)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : _zz_decode_to_execute_ALU_BITWISE_CTRL_1_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : _zz_decode_to_execute_ALU_BITWISE_CTRL_1_string = "OR_1 ";
@@ -1416,7 +1416,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_ALU_BITWISE_CTRL_1_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_SRC2_CTRL)
       `Src2CtrlEnum_binary_sequential_RS : decode_SRC2_CTRL_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : decode_SRC2_CTRL_string = "IMI";
@@ -1425,7 +1425,7 @@ module VexRiscv (
       default : decode_SRC2_CTRL_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SRC2_CTRL)
       `Src2CtrlEnum_binary_sequential_RS : _zz_decode_SRC2_CTRL_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : _zz_decode_SRC2_CTRL_string = "IMI";
@@ -1434,7 +1434,7 @@ module VexRiscv (
       default : _zz_decode_SRC2_CTRL_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_SRC2_CTRL)
       `Src2CtrlEnum_binary_sequential_RS : _zz_decode_to_execute_SRC2_CTRL_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : _zz_decode_to_execute_SRC2_CTRL_string = "IMI";
@@ -1443,7 +1443,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_SRC2_CTRL_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_SRC2_CTRL_1)
       `Src2CtrlEnum_binary_sequential_RS : _zz_decode_to_execute_SRC2_CTRL_1_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : _zz_decode_to_execute_SRC2_CTRL_1_string = "IMI";
@@ -1452,7 +1452,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_SRC2_CTRL_1_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_ALU_CTRL)
       `AluCtrlEnum_binary_sequential_ADD_SUB : decode_ALU_CTRL_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : decode_ALU_CTRL_string = "SLT_SLTU";
@@ -1460,7 +1460,7 @@ module VexRiscv (
       default : decode_ALU_CTRL_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ALU_CTRL)
       `AluCtrlEnum_binary_sequential_ADD_SUB : _zz_decode_ALU_CTRL_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : _zz_decode_ALU_CTRL_string = "SLT_SLTU";
@@ -1468,7 +1468,7 @@ module VexRiscv (
       default : _zz_decode_ALU_CTRL_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_ALU_CTRL)
       `AluCtrlEnum_binary_sequential_ADD_SUB : _zz_decode_to_execute_ALU_CTRL_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : _zz_decode_to_execute_ALU_CTRL_string = "SLT_SLTU";
@@ -1476,7 +1476,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_ALU_CTRL_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_ALU_CTRL_1)
       `AluCtrlEnum_binary_sequential_ADD_SUB : _zz_decode_to_execute_ALU_CTRL_1_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : _zz_decode_to_execute_ALU_CTRL_1_string = "SLT_SLTU";
@@ -1484,7 +1484,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_ALU_CTRL_1_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_SRC1_CTRL)
       `Src1CtrlEnum_binary_sequential_RS : decode_SRC1_CTRL_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : decode_SRC1_CTRL_string = "IMU         ";
@@ -1493,7 +1493,7 @@ module VexRiscv (
       default : decode_SRC1_CTRL_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SRC1_CTRL)
       `Src1CtrlEnum_binary_sequential_RS : _zz_decode_SRC1_CTRL_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : _zz_decode_SRC1_CTRL_string = "IMU         ";
@@ -1502,7 +1502,7 @@ module VexRiscv (
       default : _zz_decode_SRC1_CTRL_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_SRC1_CTRL)
       `Src1CtrlEnum_binary_sequential_RS : _zz_decode_to_execute_SRC1_CTRL_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : _zz_decode_to_execute_SRC1_CTRL_string = "IMU         ";
@@ -1511,7 +1511,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_SRC1_CTRL_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_to_execute_SRC1_CTRL_1)
       `Src1CtrlEnum_binary_sequential_RS : _zz_decode_to_execute_SRC1_CTRL_1_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : _zz_decode_to_execute_SRC1_CTRL_1_string = "IMU         ";
@@ -1520,7 +1520,7 @@ module VexRiscv (
       default : _zz_decode_to_execute_SRC1_CTRL_1_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(memory_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : memory_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : memory_ENV_CTRL_string = "XRET ";
@@ -1528,7 +1528,7 @@ module VexRiscv (
       default : memory_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_memory_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_memory_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_memory_ENV_CTRL_string = "XRET ";
@@ -1536,7 +1536,7 @@ module VexRiscv (
       default : _zz_memory_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : execute_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : execute_ENV_CTRL_string = "XRET ";
@@ -1544,7 +1544,7 @@ module VexRiscv (
       default : execute_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_execute_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_execute_ENV_CTRL_string = "XRET ";
@@ -1552,7 +1552,7 @@ module VexRiscv (
       default : _zz_execute_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(writeBack_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : writeBack_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : writeBack_ENV_CTRL_string = "XRET ";
@@ -1560,7 +1560,7 @@ module VexRiscv (
       default : writeBack_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_writeBack_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_writeBack_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_writeBack_ENV_CTRL_string = "XRET ";
@@ -1568,7 +1568,7 @@ module VexRiscv (
       default : _zz_writeBack_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_INC : execute_BRANCH_CTRL_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : execute_BRANCH_CTRL_string = "B   ";
@@ -1577,7 +1577,7 @@ module VexRiscv (
       default : execute_BRANCH_CTRL_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_INC : _zz_execute_BRANCH_CTRL_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : _zz_execute_BRANCH_CTRL_string = "B   ";
@@ -1586,7 +1586,7 @@ module VexRiscv (
       default : _zz_execute_BRANCH_CTRL_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_SHIFT_CTRL)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : execute_SHIFT_CTRL_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : execute_SHIFT_CTRL_string = "SLL_1    ";
@@ -1595,7 +1595,7 @@ module VexRiscv (
       default : execute_SHIFT_CTRL_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_SHIFT_CTRL)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : _zz_execute_SHIFT_CTRL_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : _zz_execute_SHIFT_CTRL_string = "SLL_1    ";
@@ -1604,7 +1604,7 @@ module VexRiscv (
       default : _zz_execute_SHIFT_CTRL_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_SRC2_CTRL)
       `Src2CtrlEnum_binary_sequential_RS : execute_SRC2_CTRL_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : execute_SRC2_CTRL_string = "IMI";
@@ -1613,7 +1613,7 @@ module VexRiscv (
       default : execute_SRC2_CTRL_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_SRC2_CTRL)
       `Src2CtrlEnum_binary_sequential_RS : _zz_execute_SRC2_CTRL_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : _zz_execute_SRC2_CTRL_string = "IMI";
@@ -1622,7 +1622,7 @@ module VexRiscv (
       default : _zz_execute_SRC2_CTRL_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_SRC1_CTRL)
       `Src1CtrlEnum_binary_sequential_RS : execute_SRC1_CTRL_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : execute_SRC1_CTRL_string = "IMU         ";
@@ -1631,7 +1631,7 @@ module VexRiscv (
       default : execute_SRC1_CTRL_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_SRC1_CTRL)
       `Src1CtrlEnum_binary_sequential_RS : _zz_execute_SRC1_CTRL_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : _zz_execute_SRC1_CTRL_string = "IMU         ";
@@ -1640,7 +1640,7 @@ module VexRiscv (
       default : _zz_execute_SRC1_CTRL_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_ALU_CTRL)
       `AluCtrlEnum_binary_sequential_ADD_SUB : execute_ALU_CTRL_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : execute_ALU_CTRL_string = "SLT_SLTU";
@@ -1648,7 +1648,7 @@ module VexRiscv (
       default : execute_ALU_CTRL_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_ALU_CTRL)
       `AluCtrlEnum_binary_sequential_ADD_SUB : _zz_execute_ALU_CTRL_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : _zz_execute_ALU_CTRL_string = "SLT_SLTU";
@@ -1656,7 +1656,7 @@ module VexRiscv (
       default : _zz_execute_ALU_CTRL_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_ALU_BITWISE_CTRL)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : execute_ALU_BITWISE_CTRL_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : execute_ALU_BITWISE_CTRL_string = "OR_1 ";
@@ -1664,7 +1664,7 @@ module VexRiscv (
       default : execute_ALU_BITWISE_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_execute_ALU_BITWISE_CTRL)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : _zz_execute_ALU_BITWISE_CTRL_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : _zz_execute_ALU_BITWISE_CTRL_string = "OR_1 ";
@@ -1672,7 +1672,7 @@ module VexRiscv (
       default : _zz_execute_ALU_BITWISE_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ENV_CTRL_1)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_decode_ENV_CTRL_1_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_decode_ENV_CTRL_1_string = "XRET ";
@@ -1680,7 +1680,7 @@ module VexRiscv (
       default : _zz_decode_ENV_CTRL_1_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_BRANCH_CTRL_1)
       `BranchCtrlEnum_binary_sequential_INC : _zz_decode_BRANCH_CTRL_1_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : _zz_decode_BRANCH_CTRL_1_string = "B   ";
@@ -1689,7 +1689,7 @@ module VexRiscv (
       default : _zz_decode_BRANCH_CTRL_1_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SHIFT_CTRL_1)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : _zz_decode_SHIFT_CTRL_1_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : _zz_decode_SHIFT_CTRL_1_string = "SLL_1    ";
@@ -1698,7 +1698,7 @@ module VexRiscv (
       default : _zz_decode_SHIFT_CTRL_1_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ALU_BITWISE_CTRL_1)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : _zz_decode_ALU_BITWISE_CTRL_1_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : _zz_decode_ALU_BITWISE_CTRL_1_string = "OR_1 ";
@@ -1706,7 +1706,7 @@ module VexRiscv (
       default : _zz_decode_ALU_BITWISE_CTRL_1_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SRC2_CTRL_1)
       `Src2CtrlEnum_binary_sequential_RS : _zz_decode_SRC2_CTRL_1_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : _zz_decode_SRC2_CTRL_1_string = "IMI";
@@ -1715,7 +1715,7 @@ module VexRiscv (
       default : _zz_decode_SRC2_CTRL_1_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ALU_CTRL_1)
       `AluCtrlEnum_binary_sequential_ADD_SUB : _zz_decode_ALU_CTRL_1_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : _zz_decode_ALU_CTRL_1_string = "SLT_SLTU";
@@ -1723,7 +1723,7 @@ module VexRiscv (
       default : _zz_decode_ALU_CTRL_1_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SRC1_CTRL_1)
       `Src1CtrlEnum_binary_sequential_RS : _zz_decode_SRC1_CTRL_1_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : _zz_decode_SRC1_CTRL_1_string = "IMU         ";
@@ -1732,7 +1732,7 @@ module VexRiscv (
       default : _zz_decode_SRC1_CTRL_1_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SRC1_CTRL_2)
       `Src1CtrlEnum_binary_sequential_RS : _zz_decode_SRC1_CTRL_2_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : _zz_decode_SRC1_CTRL_2_string = "IMU         ";
@@ -1741,7 +1741,7 @@ module VexRiscv (
       default : _zz_decode_SRC1_CTRL_2_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ALU_CTRL_2)
       `AluCtrlEnum_binary_sequential_ADD_SUB : _zz_decode_ALU_CTRL_2_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : _zz_decode_ALU_CTRL_2_string = "SLT_SLTU";
@@ -1749,7 +1749,7 @@ module VexRiscv (
       default : _zz_decode_ALU_CTRL_2_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SRC2_CTRL_2)
       `Src2CtrlEnum_binary_sequential_RS : _zz_decode_SRC2_CTRL_2_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : _zz_decode_SRC2_CTRL_2_string = "IMI";
@@ -1758,7 +1758,7 @@ module VexRiscv (
       default : _zz_decode_SRC2_CTRL_2_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ALU_BITWISE_CTRL_2)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : _zz_decode_ALU_BITWISE_CTRL_2_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : _zz_decode_ALU_BITWISE_CTRL_2_string = "OR_1 ";
@@ -1766,7 +1766,7 @@ module VexRiscv (
       default : _zz_decode_ALU_BITWISE_CTRL_2_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_SHIFT_CTRL_2)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : _zz_decode_SHIFT_CTRL_2_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : _zz_decode_SHIFT_CTRL_2_string = "SLL_1    ";
@@ -1775,7 +1775,7 @@ module VexRiscv (
       default : _zz_decode_SHIFT_CTRL_2_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_BRANCH_CTRL_2)
       `BranchCtrlEnum_binary_sequential_INC : _zz_decode_BRANCH_CTRL_2_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : _zz_decode_BRANCH_CTRL_2_string = "B   ";
@@ -1784,7 +1784,7 @@ module VexRiscv (
       default : _zz_decode_BRANCH_CTRL_2_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(_zz_decode_ENV_CTRL_7)
       `EnvCtrlEnum_binary_sequential_NONE : _zz_decode_ENV_CTRL_7_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : _zz_decode_ENV_CTRL_7_string = "XRET ";
@@ -1792,7 +1792,7 @@ module VexRiscv (
       default : _zz_decode_ENV_CTRL_7_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_to_execute_SRC1_CTRL)
       `Src1CtrlEnum_binary_sequential_RS : decode_to_execute_SRC1_CTRL_string = "RS          ";
       `Src1CtrlEnum_binary_sequential_IMU : decode_to_execute_SRC1_CTRL_string = "IMU         ";
@@ -1801,7 +1801,7 @@ module VexRiscv (
       default : decode_to_execute_SRC1_CTRL_string = "????????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_to_execute_ALU_CTRL)
       `AluCtrlEnum_binary_sequential_ADD_SUB : decode_to_execute_ALU_CTRL_string = "ADD_SUB ";
       `AluCtrlEnum_binary_sequential_SLT_SLTU : decode_to_execute_ALU_CTRL_string = "SLT_SLTU";
@@ -1809,7 +1809,7 @@ module VexRiscv (
       default : decode_to_execute_ALU_CTRL_string = "????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_to_execute_SRC2_CTRL)
       `Src2CtrlEnum_binary_sequential_RS : decode_to_execute_SRC2_CTRL_string = "RS ";
       `Src2CtrlEnum_binary_sequential_IMI : decode_to_execute_SRC2_CTRL_string = "IMI";
@@ -1818,7 +1818,7 @@ module VexRiscv (
       default : decode_to_execute_SRC2_CTRL_string = "???";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_to_execute_ALU_BITWISE_CTRL)
       `AluBitwiseCtrlEnum_binary_sequential_XOR_1 : decode_to_execute_ALU_BITWISE_CTRL_string = "XOR_1";
       `AluBitwiseCtrlEnum_binary_sequential_OR_1 : decode_to_execute_ALU_BITWISE_CTRL_string = "OR_1 ";
@@ -1826,7 +1826,7 @@ module VexRiscv (
       default : decode_to_execute_ALU_BITWISE_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_to_execute_SHIFT_CTRL)
       `ShiftCtrlEnum_binary_sequential_DISABLE_1 : decode_to_execute_SHIFT_CTRL_string = "DISABLE_1";
       `ShiftCtrlEnum_binary_sequential_SLL_1 : decode_to_execute_SHIFT_CTRL_string = "SLL_1    ";
@@ -1835,7 +1835,7 @@ module VexRiscv (
       default : decode_to_execute_SHIFT_CTRL_string = "?????????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_to_execute_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_INC : decode_to_execute_BRANCH_CTRL_string = "INC ";
       `BranchCtrlEnum_binary_sequential_B : decode_to_execute_BRANCH_CTRL_string = "B   ";
@@ -1844,7 +1844,7 @@ module VexRiscv (
       default : decode_to_execute_BRANCH_CTRL_string = "????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(decode_to_execute_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : decode_to_execute_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : decode_to_execute_ENV_CTRL_string = "XRET ";
@@ -1852,7 +1852,7 @@ module VexRiscv (
       default : decode_to_execute_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(execute_to_memory_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : execute_to_memory_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : execute_to_memory_ENV_CTRL_string = "XRET ";
@@ -1860,7 +1860,7 @@ module VexRiscv (
       default : execute_to_memory_ENV_CTRL_string = "?????";
     endcase
   end
-  always @(*) begin
+  always_comb begin
     case(memory_to_writeBack_ENV_CTRL)
       `EnvCtrlEnum_binary_sequential_NONE : memory_to_writeBack_ENV_CTRL_string = "NONE ";
       `EnvCtrlEnum_binary_sequential_XRET : memory_to_writeBack_ENV_CTRL_string = "XRET ";
@@ -1932,7 +1932,7 @@ module VexRiscv (
   assign memory_INSTRUCTION = execute_to_memory_INSTRUCTION;
   assign memory_BYPASSABLE_MEMORY_STAGE = execute_to_memory_BYPASSABLE_MEMORY_STAGE;
   assign writeBack_REGFILE_WRITE_VALID = memory_to_writeBack_REGFILE_WRITE_VALID;
-  always @(*) begin
+  always_comb begin
     _zz_execute_to_memory_REGFILE_WRITE_DATA = execute_REGFILE_WRITE_DATA;
     if(when_ShiftPlugins_l169) begin
       _zz_execute_to_memory_REGFILE_WRITE_DATA = _zz_execute_to_memory_REGFILE_WRITE_DATA_1;
@@ -1959,7 +1959,7 @@ module VexRiscv (
   assign execute_ALU_BITWISE_CTRL = _zz_execute_ALU_BITWISE_CTRL;
   assign _zz_lastStageRegFileWrite_payload_address = writeBack_INSTRUCTION;
   assign _zz_lastStageRegFileWrite_valid = writeBack_REGFILE_WRITE_VALID;
-  always @(*) begin
+  always_comb begin
     _zz_1 = 1'b0;
     if(lastStageRegFileWrite_valid) begin
       _zz_1 = 1'b1;
@@ -1967,7 +1967,7 @@ module VexRiscv (
   end
 
   assign decode_INSTRUCTION_ANTICIPATED = (decode_arbitration_isStuck ? decode_INSTRUCTION : IBusSimplePlugin_iBusRsp_output_payload_rsp_inst);
-  always @(*) begin
+  always_comb begin
     decode_REGFILE_WRITE_VALID = _zz_decode_ENV_CTRL_2[9];
     if(when_RegFilePlugin_l63) begin
       decode_REGFILE_WRITE_VALID = 1'b0;
@@ -1976,7 +1976,7 @@ module VexRiscv (
 
   assign decode_LEGAL_INSTRUCTION = ({((decode_INSTRUCTION & 32'h0000005f) == 32'h00000017),{((decode_INSTRUCTION & 32'h0000007f) == 32'h0000006f),{((decode_INSTRUCTION & 32'h0000106f) == 32'h00000003),{((decode_INSTRUCTION & _zz_decode_LEGAL_INSTRUCTION) == 32'h00001073),{(_zz_decode_LEGAL_INSTRUCTION_1 == _zz_decode_LEGAL_INSTRUCTION_2),{_zz_decode_LEGAL_INSTRUCTION_3,{_zz_decode_LEGAL_INSTRUCTION_4,_zz_decode_LEGAL_INSTRUCTION_5}}}}}}} != 20'h0);
   assign writeBack_MEMORY_STORE = memory_to_writeBack_MEMORY_STORE;
-  always @(*) begin
+  always_comb begin
     _zz_lastStageRegFileWrite_payload_data = writeBack_REGFILE_WRITE_DATA;
     if(when_DBusSimplePlugin_l558) begin
       _zz_lastStageRegFileWrite_payload_data = writeBack_DBusSimplePlugin_rspFormated;
@@ -1996,7 +1996,7 @@ module VexRiscv (
   assign execute_MEMORY_STORE = decode_to_execute_MEMORY_STORE;
   assign execute_MEMORY_ENABLE = decode_to_execute_MEMORY_ENABLE;
   assign execute_ALIGNEMENT_FAULT = (((dBus_cmd_payload_size == 2'b10) && (dBus_cmd_payload_address[1 : 0] != 2'b00)) || ((dBus_cmd_payload_size == 2'b01) && (dBus_cmd_payload_address[0 : 0] != 1'b0)));
-  always @(*) begin
+  always_comb begin
     _zz_memory_to_writeBack_FORMAL_PC_NEXT = memory_FORMAL_PC_NEXT;
     if(BranchPlugin_jumpInterface_valid) begin
       _zz_memory_to_writeBack_FORMAL_PC_NEXT = BranchPlugin_jumpInterface_payload;
@@ -2007,7 +2007,7 @@ module VexRiscv (
   assign decode_INSTRUCTION = IBusSimplePlugin_injector_decodeInput_payload_rsp_inst;
   assign writeBack_PC = memory_to_writeBack_PC;
   assign writeBack_INSTRUCTION = memory_to_writeBack_INSTRUCTION;
-  always @(*) begin
+  always_comb begin
     decode_arbitration_haltItself = 1'b0;
     case(switch_Fetcher_l362)
       3'b010 : begin
@@ -2018,7 +2018,7 @@ module VexRiscv (
     endcase
   end
 
-  always @(*) begin
+  always_comb begin
     decode_arbitration_haltByOther = 1'b0;
     if(when_HazardSimplePlugin_l113) begin
       decode_arbitration_haltByOther = 1'b1;
@@ -2031,7 +2031,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     decode_arbitration_removeIt = 1'b0;
     if(decodeExceptionPort_valid) begin
       decode_arbitration_removeIt = 1'b1;
@@ -2042,14 +2042,14 @@ module VexRiscv (
   end
 
   assign decode_arbitration_flushIt = 1'b0;
-  always @(*) begin
+  always_comb begin
     decode_arbitration_flushNext = 1'b0;
     if(decodeExceptionPort_valid) begin
       decode_arbitration_flushNext = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     execute_arbitration_haltItself = 1'b0;
     if(when_DBusSimplePlugin_l426) begin
       execute_arbitration_haltItself = 1'b1;
@@ -2066,14 +2066,14 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     execute_arbitration_haltByOther = 1'b0;
     if(when_DebugPlugin_l284) begin
       execute_arbitration_haltByOther = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     execute_arbitration_removeIt = 1'b0;
     if(CsrPlugin_selfException_valid) begin
       execute_arbitration_removeIt = 1'b1;
@@ -2083,7 +2083,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     execute_arbitration_flushIt = 1'b0;
     if(when_DebugPlugin_l284) begin
       if(when_DebugPlugin_l287) begin
@@ -2092,7 +2092,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     execute_arbitration_flushNext = 1'b0;
     if(CsrPlugin_selfException_valid) begin
       execute_arbitration_flushNext = 1'b1;
@@ -2104,7 +2104,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     memory_arbitration_haltItself = 1'b0;
     if(when_DBusSimplePlugin_l479) begin
       memory_arbitration_haltItself = 1'b1;
@@ -2112,7 +2112,7 @@ module VexRiscv (
   end
 
   assign memory_arbitration_haltByOther = 1'b0;
-  always @(*) begin
+  always_comb begin
     memory_arbitration_removeIt = 1'b0;
     if(_zz_when) begin
       memory_arbitration_removeIt = 1'b1;
@@ -2123,7 +2123,7 @@ module VexRiscv (
   end
 
   assign memory_arbitration_flushIt = 1'b0;
-  always @(*) begin
+  always_comb begin
     memory_arbitration_flushNext = 1'b0;
     if(BranchPlugin_jumpInterface_valid) begin
       memory_arbitration_flushNext = 1'b1;
@@ -2135,7 +2135,7 @@ module VexRiscv (
 
   assign writeBack_arbitration_haltItself = 1'b0;
   assign writeBack_arbitration_haltByOther = 1'b0;
-  always @(*) begin
+  always_comb begin
     writeBack_arbitration_removeIt = 1'b0;
     if(writeBack_arbitration_isFlushed) begin
       writeBack_arbitration_removeIt = 1'b1;
@@ -2143,7 +2143,7 @@ module VexRiscv (
   end
 
   assign writeBack_arbitration_flushIt = 1'b0;
-  always @(*) begin
+  always_comb begin
     writeBack_arbitration_flushNext = 1'b0;
     if(when_CsrPlugin_l1019) begin
       writeBack_arbitration_flushNext = 1'b1;
@@ -2157,7 +2157,7 @@ module VexRiscv (
   assign lastStagePc = writeBack_PC;
   assign lastStageIsValid = writeBack_arbitration_isValid;
   assign lastStageIsFiring = writeBack_arbitration_isFiring;
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_fetcherHalt = 1'b0;
     if(when_CsrPlugin_l922) begin
       IBusSimplePlugin_fetcherHalt = 1'b1;
@@ -2181,7 +2181,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_incomingInstruction = 1'b0;
     if(IBusSimplePlugin_iBusRsp_stages_1_input_valid) begin
       IBusSimplePlugin_incomingInstruction = 1'b1;
@@ -2194,14 +2194,14 @@ module VexRiscv (
   assign CsrPlugin_csrMapping_allowCsrSignal = 1'b0;
   assign CsrPlugin_csrMapping_readDataSignal = CsrPlugin_csrMapping_readDataInit;
   assign CsrPlugin_inWfi = 1'b0;
-  always @(*) begin
+  always_comb begin
     CsrPlugin_thirdPartyWake = 1'b0;
     if(DebugPlugin_haltIt) begin
       CsrPlugin_thirdPartyWake = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_jumpInterface_valid = 1'b0;
     if(when_CsrPlugin_l1019) begin
       CsrPlugin_jumpInterface_valid = 1'b1;
@@ -2211,7 +2211,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_jumpInterface_payload = 32'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
     if(when_CsrPlugin_l1019) begin
       CsrPlugin_jumpInterface_payload = {CsrPlugin_xtvec_base,2'b00};
@@ -2227,28 +2227,28 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_forceMachineWire = 1'b0;
     if(DebugPlugin_godmode) begin
       CsrPlugin_forceMachineWire = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_allowInterrupts = 1'b1;
     if(when_DebugPlugin_l316) begin
       CsrPlugin_allowInterrupts = 1'b0;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_allowException = 1'b1;
     if(DebugPlugin_godmode) begin
       CsrPlugin_allowException = 1'b0;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_allowEbreakException = 1'b1;
     if(DebugPlugin_allowEBreak) begin
       CsrPlugin_allowEbreakException = 1'b0;
@@ -2259,7 +2259,7 @@ module VexRiscv (
   assign IBusSimplePlugin_jump_pcLoad_valid = ({CsrPlugin_jumpInterface_valid,BranchPlugin_jumpInterface_valid} != 2'b00);
   assign _zz_IBusSimplePlugin_jump_pcLoad_payload = {BranchPlugin_jumpInterface_valid,CsrPlugin_jumpInterface_valid};
   assign IBusSimplePlugin_jump_pcLoad_payload = (_zz_IBusSimplePlugin_jump_pcLoad_payload_1[0] ? CsrPlugin_jumpInterface_payload : BranchPlugin_jumpInterface_payload);
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_fetchPc_correction = 1'b0;
     if(IBusSimplePlugin_jump_pcLoad_valid) begin
       IBusSimplePlugin_fetchPc_correction = 1'b1;
@@ -2268,7 +2268,7 @@ module VexRiscv (
 
   assign IBusSimplePlugin_fetchPc_output_fire = (IBusSimplePlugin_fetchPc_output_valid && IBusSimplePlugin_fetchPc_output_ready);
   assign IBusSimplePlugin_fetchPc_corrected = (IBusSimplePlugin_fetchPc_correction || IBusSimplePlugin_fetchPc_correctionReg);
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_fetchPc_pcRegPropagate = 1'b0;
     if(IBusSimplePlugin_iBusRsp_stages_1_input_ready) begin
       IBusSimplePlugin_fetchPc_pcRegPropagate = 1'b1;
@@ -2278,7 +2278,7 @@ module VexRiscv (
   assign when_Fetcher_l131 = (IBusSimplePlugin_fetchPc_correction || IBusSimplePlugin_fetchPc_pcRegPropagate);
   assign IBusSimplePlugin_fetchPc_output_fire_1 = (IBusSimplePlugin_fetchPc_output_valid && IBusSimplePlugin_fetchPc_output_ready);
   assign when_Fetcher_l131_1 = ((! IBusSimplePlugin_fetchPc_output_valid) && IBusSimplePlugin_fetchPc_output_ready);
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_fetchPc_pc = (IBusSimplePlugin_fetchPc_pcReg + _zz_IBusSimplePlugin_fetchPc_pc);
     if(IBusSimplePlugin_jump_pcLoad_valid) begin
       IBusSimplePlugin_fetchPc_pc = IBusSimplePlugin_jump_pcLoad_payload;
@@ -2287,7 +2287,7 @@ module VexRiscv (
     IBusSimplePlugin_fetchPc_pc[1] = 1'b0;
   end
 
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_fetchPc_flushed = 1'b0;
     if(IBusSimplePlugin_jump_pcLoad_valid) begin
       IBusSimplePlugin_fetchPc_flushed = 1'b1;
@@ -2301,7 +2301,7 @@ module VexRiscv (
   assign IBusSimplePlugin_iBusRsp_stages_0_input_valid = IBusSimplePlugin_fetchPc_output_valid;
   assign IBusSimplePlugin_fetchPc_output_ready = IBusSimplePlugin_iBusRsp_stages_0_input_ready;
   assign IBusSimplePlugin_iBusRsp_stages_0_input_payload = IBusSimplePlugin_fetchPc_output_payload;
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_iBusRsp_stages_0_halt = 1'b0;
     if(when_IBusSimplePlugin_l304) begin
       IBusSimplePlugin_iBusRsp_stages_0_halt = 1'b1;
@@ -2323,7 +2323,7 @@ module VexRiscv (
   assign _zz_IBusSimplePlugin_iBusRsp_stages_0_output_ready_1 = _zz_IBusSimplePlugin_iBusRsp_stages_0_output_ready_2;
   assign IBusSimplePlugin_iBusRsp_stages_1_input_valid = _zz_IBusSimplePlugin_iBusRsp_stages_0_output_ready_1;
   assign IBusSimplePlugin_iBusRsp_stages_1_input_payload = IBusSimplePlugin_fetchPc_pcReg;
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_iBusRsp_readyForError = 1'b1;
     if(IBusSimplePlugin_injector_decodeInput_valid) begin
       IBusSimplePlugin_iBusRsp_readyForError = 1'b0;
@@ -2350,7 +2350,7 @@ module VexRiscv (
   assign IBusSimplePlugin_pcValids_2 = IBusSimplePlugin_injector_nextPcCalc_valids_3;
   assign IBusSimplePlugin_pcValids_3 = IBusSimplePlugin_injector_nextPcCalc_valids_4;
   assign IBusSimplePlugin_injector_decodeInput_ready = (! decode_arbitration_isStuck);
-  always @(*) begin
+  always_comb begin
     decode_arbitration_isValid = IBusSimplePlugin_injector_decodeInput_valid;
     case(switch_Fetcher_l362)
       3'b010 : begin
@@ -2382,7 +2382,7 @@ module VexRiscv (
   assign IBusSimplePlugin_rspJoin_rspBuffer_c_io_pop_fire = (IBusSimplePlugin_rspJoin_rspBuffer_c_io_pop_valid && IBusSimplePlugin_rspJoin_rspBuffer_c_io_pop_ready);
   assign IBusSimplePlugin_pending_dec = IBusSimplePlugin_rspJoin_rspBuffer_c_io_pop_fire;
   assign IBusSimplePlugin_rspJoin_fetchRsp_pc = IBusSimplePlugin_iBusRsp_stages_1_output_payload;
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_rspJoin_fetchRsp_rsp_error = IBusSimplePlugin_rspJoin_rspBuffer_output_payload_error;
     if(when_IBusSimplePlugin_l375) begin
       IBusSimplePlugin_rspJoin_fetchRsp_rsp_error = 1'b0;
@@ -2409,7 +2409,7 @@ module VexRiscv (
   assign IBusSimplePlugin_iBusRsp_output_payload_rsp_inst = IBusSimplePlugin_rspJoin_join_payload_rsp_inst;
   assign IBusSimplePlugin_iBusRsp_output_payload_isRvc = IBusSimplePlugin_rspJoin_join_payload_isRvc;
   assign _zz_dBus_cmd_valid = 1'b0;
-  always @(*) begin
+  always_comb begin
     execute_DBusSimplePlugin_skipCmd = 1'b0;
     if(execute_ALIGNEMENT_FAULT) begin
       execute_DBusSimplePlugin_skipCmd = 1'b1;
@@ -2419,7 +2419,7 @@ module VexRiscv (
   assign dBus_cmd_valid = (((((execute_arbitration_isValid && execute_MEMORY_ENABLE) && (! execute_arbitration_isStuckByOthers)) && (! execute_arbitration_isFlushed)) && (! execute_DBusSimplePlugin_skipCmd)) && (! _zz_dBus_cmd_valid));
   assign dBus_cmd_payload_wr = execute_MEMORY_STORE;
   assign dBus_cmd_payload_size = execute_INSTRUCTION[13 : 12];
-  always @(*) begin
+  always_comb begin
     case(dBus_cmd_payload_size)
       2'b00 : begin
         _zz_dBus_cmd_payload_data = {{{execute_RS2[7 : 0],execute_RS2[7 : 0]},execute_RS2[7 : 0]},execute_RS2[7 : 0]};
@@ -2435,7 +2435,7 @@ module VexRiscv (
 
   assign dBus_cmd_payload_data = _zz_dBus_cmd_payload_data;
   assign when_DBusSimplePlugin_l426 = ((((execute_arbitration_isValid && execute_MEMORY_ENABLE) && (! dBus_cmd_ready)) && (! execute_DBusSimplePlugin_skipCmd)) && (! _zz_dBus_cmd_valid));
-  always @(*) begin
+  always_comb begin
     case(dBus_cmd_payload_size)
       2'b00 : begin
         _zz_execute_DBusSimplePlugin_formalMask = 4'b0001;
@@ -2452,7 +2452,7 @@ module VexRiscv (
   assign execute_DBusSimplePlugin_formalMask = (_zz_execute_DBusSimplePlugin_formalMask <<< dBus_cmd_payload_address[1 : 0]);
   assign dBus_cmd_payload_address = execute_SRC_ADD;
   assign when_DBusSimplePlugin_l479 = (((memory_arbitration_isValid && memory_MEMORY_ENABLE) && (! memory_MEMORY_STORE)) && ((! dBus_rsp_ready) || 1'b0));
-  always @(*) begin
+  always_comb begin
     DBusSimplePlugin_memoryExceptionPort_valid = 1'b0;
     if(when_DBusSimplePlugin_l486) begin
       DBusSimplePlugin_memoryExceptionPort_valid = 1'b1;
@@ -2465,7 +2465,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     DBusSimplePlugin_memoryExceptionPort_payload_code = 4'bxxxx;
     if(when_DBusSimplePlugin_l486) begin
       DBusSimplePlugin_memoryExceptionPort_payload_code = 4'b0101;
@@ -2478,7 +2478,7 @@ module VexRiscv (
   assign DBusSimplePlugin_memoryExceptionPort_payload_badAddr = memory_REGFILE_WRITE_DATA;
   assign when_DBusSimplePlugin_l486 = ((dBus_rsp_ready && dBus_rsp_error) && (! memory_MEMORY_STORE));
   assign when_DBusSimplePlugin_l512 = (! ((memory_arbitration_isValid && memory_MEMORY_ENABLE) && (1'b1 || (! memory_arbitration_isStuckByOthers))));
-  always @(*) begin
+  always_comb begin
     writeBack_DBusSimplePlugin_rspShifted = writeBack_MEMORY_READ_DATA;
     case(writeBack_MEMORY_ADDRESS_LOW)
       2'b01 : begin
@@ -2497,7 +2497,7 @@ module VexRiscv (
 
   assign switch_Misc_l200 = writeBack_INSTRUCTION[13 : 12];
   assign _zz_writeBack_DBusSimplePlugin_rspFormated = (writeBack_DBusSimplePlugin_rspShifted[7] && (! writeBack_INSTRUCTION[14]));
-  always @(*) begin
+  always_comb begin
     _zz_writeBack_DBusSimplePlugin_rspFormated_1[31] = _zz_writeBack_DBusSimplePlugin_rspFormated;
     _zz_writeBack_DBusSimplePlugin_rspFormated_1[30] = _zz_writeBack_DBusSimplePlugin_rspFormated;
     _zz_writeBack_DBusSimplePlugin_rspFormated_1[29] = _zz_writeBack_DBusSimplePlugin_rspFormated;
@@ -2526,7 +2526,7 @@ module VexRiscv (
   end
 
   assign _zz_writeBack_DBusSimplePlugin_rspFormated_2 = (writeBack_DBusSimplePlugin_rspShifted[15] && (! writeBack_INSTRUCTION[14]));
-  always @(*) begin
+  always_comb begin
     _zz_writeBack_DBusSimplePlugin_rspFormated_3[31] = _zz_writeBack_DBusSimplePlugin_rspFormated_2;
     _zz_writeBack_DBusSimplePlugin_rspFormated_3[30] = _zz_writeBack_DBusSimplePlugin_rspFormated_2;
     _zz_writeBack_DBusSimplePlugin_rspFormated_3[29] = _zz_writeBack_DBusSimplePlugin_rspFormated_2;
@@ -2546,7 +2546,7 @@ module VexRiscv (
     _zz_writeBack_DBusSimplePlugin_rspFormated_3[15 : 0] = writeBack_DBusSimplePlugin_rspShifted[15 : 0];
   end
 
-  always @(*) begin
+  always_comb begin
     case(switch_Misc_l200)
       2'b00 : begin
         writeBack_DBusSimplePlugin_rspFormated = _zz_writeBack_DBusSimplePlugin_rspFormated_1;
@@ -2588,28 +2588,28 @@ module VexRiscv (
   assign decode_RegFilePlugin_regFileReadAddress2 = decode_INSTRUCTION_ANTICIPATED[24 : 20];
   assign decode_RegFilePlugin_rs1Data = _zz_RegFilePlugin_regFile_port0;
   assign decode_RegFilePlugin_rs2Data = _zz_RegFilePlugin_regFile_port1;
-  always @(*) begin
+  always_comb begin
     lastStageRegFileWrite_valid = (_zz_lastStageRegFileWrite_valid && writeBack_arbitration_isFiring);
     if(_zz_2) begin
       lastStageRegFileWrite_valid = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     lastStageRegFileWrite_payload_address = _zz_lastStageRegFileWrite_payload_address[11 : 7];
     if(_zz_2) begin
       lastStageRegFileWrite_payload_address = 5'h0;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     lastStageRegFileWrite_payload_data = _zz_lastStageRegFileWrite_payload_data;
     if(_zz_2) begin
       lastStageRegFileWrite_payload_data = 32'h0;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     case(execute_ALU_BITWISE_CTRL)
       `AluBitwiseCtrlEnum_binary_sequential_AND_1 : begin
         execute_IntAluPlugin_bitwise = (execute_SRC1 & execute_SRC2);
@@ -2623,7 +2623,7 @@ module VexRiscv (
     endcase
   end
 
-  always @(*) begin
+  always_comb begin
     case(execute_ALU_CTRL)
       `AluCtrlEnum_binary_sequential_BITWISE : begin
         _zz_execute_REGFILE_WRITE_DATA = execute_IntAluPlugin_bitwise;
@@ -2637,7 +2637,7 @@ module VexRiscv (
     endcase
   end
 
-  always @(*) begin
+  always_comb begin
     case(execute_SRC1_CTRL)
       `Src1CtrlEnum_binary_sequential_RS : begin
         _zz_execute_SRC1 = execute_RS1;
@@ -2655,7 +2655,7 @@ module VexRiscv (
   end
 
   assign _zz_execute_SRC2_1 = execute_INSTRUCTION[31];
-  always @(*) begin
+  always_comb begin
     _zz_execute_SRC2_2[19] = _zz_execute_SRC2_1;
     _zz_execute_SRC2_2[18] = _zz_execute_SRC2_1;
     _zz_execute_SRC2_2[17] = _zz_execute_SRC2_1;
@@ -2679,7 +2679,7 @@ module VexRiscv (
   end
 
   assign _zz_execute_SRC2_3 = _zz__zz_execute_SRC2_3[11];
-  always @(*) begin
+  always_comb begin
     _zz_execute_SRC2_4[19] = _zz_execute_SRC2_3;
     _zz_execute_SRC2_4[18] = _zz_execute_SRC2_3;
     _zz_execute_SRC2_4[17] = _zz_execute_SRC2_3;
@@ -2702,7 +2702,7 @@ module VexRiscv (
     _zz_execute_SRC2_4[0] = _zz_execute_SRC2_3;
   end
 
-  always @(*) begin
+  always_comb begin
     case(execute_SRC2_CTRL)
       `Src2CtrlEnum_binary_sequential_RS : begin
         _zz_execute_SRC2_5 = execute_RS2;
@@ -2719,7 +2719,7 @@ module VexRiscv (
     endcase
   end
 
-  always @(*) begin
+  always_comb begin
     execute_SrcPlugin_addSub = _zz_execute_SrcPlugin_addSub;
     if(execute_SRC2_FORCE_ZERO) begin
       execute_SrcPlugin_addSub = execute_SRC1;
@@ -2732,7 +2732,7 @@ module VexRiscv (
   assign execute_LightShifterPlugin_shiftInput = (execute_LightShifterPlugin_isActive ? memory_REGFILE_WRITE_DATA : execute_SRC1);
   assign execute_LightShifterPlugin_done = (execute_LightShifterPlugin_amplitude[4 : 1] == 4'b0000);
   assign when_ShiftPlugins_l169 = ((execute_arbitration_isValid && execute_LightShifterPlugin_isShift) && (execute_SRC2[4 : 0] != 5'h0));
-  always @(*) begin
+  always_comb begin
     case(execute_SHIFT_CTRL)
       `ShiftCtrlEnum_binary_sequential_SLL_1 : begin
         _zz_execute_to_memory_REGFILE_WRITE_DATA_1 = (execute_LightShifterPlugin_shiftInput <<< 1);
@@ -2745,7 +2745,7 @@ module VexRiscv (
 
   assign when_ShiftPlugins_l175 = (! execute_arbitration_isStuckByOthers);
   assign when_ShiftPlugins_l184 = (! execute_LightShifterPlugin_done);
-  always @(*) begin
+  always_comb begin
     HazardSimplePlugin_src0Hazard = 1'b0;
     if(HazardSimplePlugin_writeBackBuffer_valid) begin
       if(HazardSimplePlugin_addr0Match) begin
@@ -2778,7 +2778,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     HazardSimplePlugin_src1Hazard = 1'b0;
     if(HazardSimplePlugin_writeBackBuffer_valid) begin
       if(HazardSimplePlugin_addr1Match) begin
@@ -2833,7 +2833,7 @@ module VexRiscv (
   assign when_HazardSimplePlugin_l113 = (decode_arbitration_isValid && (HazardSimplePlugin_src0Hazard || HazardSimplePlugin_src1Hazard));
   assign execute_BranchPlugin_eq = (execute_SRC1 == execute_SRC2);
   assign switch_Misc_l200_1 = execute_INSTRUCTION[14 : 12];
-  always @(*) begin
+  always_comb begin
     casez(switch_Misc_l200_1)
       3'b000 : begin
         _zz_execute_BRANCH_DO = execute_BranchPlugin_eq;
@@ -2850,7 +2850,7 @@ module VexRiscv (
     endcase
   end
 
-  always @(*) begin
+  always_comb begin
     case(execute_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_INC : begin
         _zz_execute_BRANCH_DO_1 = 1'b0;
@@ -2869,7 +2869,7 @@ module VexRiscv (
 
   assign execute_BranchPlugin_branch_src1 = ((execute_BRANCH_CTRL == `BranchCtrlEnum_binary_sequential_JALR) ? execute_RS1 : execute_PC);
   assign _zz_execute_BranchPlugin_branch_src2 = _zz__zz_execute_BranchPlugin_branch_src2[19];
-  always @(*) begin
+  always_comb begin
     _zz_execute_BranchPlugin_branch_src2_1[10] = _zz_execute_BranchPlugin_branch_src2;
     _zz_execute_BranchPlugin_branch_src2_1[9] = _zz_execute_BranchPlugin_branch_src2;
     _zz_execute_BranchPlugin_branch_src2_1[8] = _zz_execute_BranchPlugin_branch_src2;
@@ -2884,7 +2884,7 @@ module VexRiscv (
   end
 
   assign _zz_execute_BranchPlugin_branch_src2_2 = execute_INSTRUCTION[31];
-  always @(*) begin
+  always_comb begin
     _zz_execute_BranchPlugin_branch_src2_3[19] = _zz_execute_BranchPlugin_branch_src2_2;
     _zz_execute_BranchPlugin_branch_src2_3[18] = _zz_execute_BranchPlugin_branch_src2_2;
     _zz_execute_BranchPlugin_branch_src2_3[17] = _zz_execute_BranchPlugin_branch_src2_2;
@@ -2908,7 +2908,7 @@ module VexRiscv (
   end
 
   assign _zz_execute_BranchPlugin_branch_src2_4 = _zz__zz_execute_BranchPlugin_branch_src2_4[11];
-  always @(*) begin
+  always_comb begin
     _zz_execute_BranchPlugin_branch_src2_5[18] = _zz_execute_BranchPlugin_branch_src2_4;
     _zz_execute_BranchPlugin_branch_src2_5[17] = _zz_execute_BranchPlugin_branch_src2_4;
     _zz_execute_BranchPlugin_branch_src2_5[16] = _zz_execute_BranchPlugin_branch_src2_4;
@@ -2930,7 +2930,7 @@ module VexRiscv (
     _zz_execute_BranchPlugin_branch_src2_5[0] = _zz_execute_BranchPlugin_branch_src2_4;
   end
 
-  always @(*) begin
+  always_comb begin
     case(execute_BRANCH_CTRL)
       `BranchCtrlEnum_binary_sequential_JAL : begin
         _zz_execute_BranchPlugin_branch_src2_6 = {{_zz_execute_BranchPlugin_branch_src2_1,{{{execute_INSTRUCTION[31],execute_INSTRUCTION[19 : 12]},execute_INSTRUCTION[20]},execute_INSTRUCTION[30 : 21]}},1'b0};
@@ -2951,7 +2951,7 @@ module VexRiscv (
   assign BranchPlugin_branchExceptionPort_valid = ((memory_arbitration_isValid && memory_BRANCH_DO) && BranchPlugin_jumpInterface_payload[1]);
   assign BranchPlugin_branchExceptionPort_payload_code = 4'b0000;
   assign BranchPlugin_branchExceptionPort_payload_badAddr = BranchPlugin_jumpInterface_payload;
-  always @(*) begin
+  always_comb begin
     CsrPlugin_privilege = 2'b11;
     if(CsrPlugin_forceMachineWire) begin
       CsrPlugin_privilege = 2'b11;
@@ -2967,7 +2967,7 @@ module VexRiscv (
   assign CsrPlugin_exceptionPortCtrl_exceptionTargetPrivilege = ((CsrPlugin_privilege < CsrPlugin_exceptionPortCtrl_exceptionTargetPrivilegeUncapped) ? CsrPlugin_exceptionPortCtrl_exceptionTargetPrivilegeUncapped : CsrPlugin_privilege);
   assign _zz_CsrPlugin_exceptionPortCtrl_exceptionContext_code = {BranchPlugin_branchExceptionPort_valid,DBusSimplePlugin_memoryExceptionPort_valid};
   assign _zz_CsrPlugin_exceptionPortCtrl_exceptionContext_code_1 = _zz__zz_CsrPlugin_exceptionPortCtrl_exceptionContext_code_1[0];
-  always @(*) begin
+  always_comb begin
     CsrPlugin_exceptionPortCtrl_exceptionValids_decode = CsrPlugin_exceptionPortCtrl_exceptionValidsRegs_decode;
     if(decodeExceptionPort_valid) begin
       CsrPlugin_exceptionPortCtrl_exceptionValids_decode = 1'b1;
@@ -2977,7 +2977,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_exceptionPortCtrl_exceptionValids_execute = CsrPlugin_exceptionPortCtrl_exceptionValidsRegs_execute;
     if(CsrPlugin_selfException_valid) begin
       CsrPlugin_exceptionPortCtrl_exceptionValids_execute = 1'b1;
@@ -2987,7 +2987,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_exceptionPortCtrl_exceptionValids_memory = CsrPlugin_exceptionPortCtrl_exceptionValidsRegs_memory;
     if(_zz_when) begin
       CsrPlugin_exceptionPortCtrl_exceptionValids_memory = 1'b1;
@@ -2997,7 +2997,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_exceptionPortCtrl_exceptionValids_writeBack = CsrPlugin_exceptionPortCtrl_exceptionValidsRegs_writeBack;
     if(writeBack_arbitration_isFlushed) begin
       CsrPlugin_exceptionPortCtrl_exceptionValids_writeBack = 1'b0;
@@ -3024,7 +3024,7 @@ module VexRiscv (
   assign when_CsrPlugin_l980_1 = (! memory_arbitration_isStuck);
   assign when_CsrPlugin_l980_2 = (! writeBack_arbitration_isStuck);
   assign when_CsrPlugin_l985 = ((! CsrPlugin_pipelineLiberator_active) || decode_arbitration_removeIt);
-  always @(*) begin
+  always_comb begin
     CsrPlugin_pipelineLiberator_done = CsrPlugin_pipelineLiberator_pcValids_2;
     if(when_CsrPlugin_l991) begin
       CsrPlugin_pipelineLiberator_done = 1'b0;
@@ -3036,21 +3036,21 @@ module VexRiscv (
 
   assign when_CsrPlugin_l991 = ({CsrPlugin_exceptionPortCtrl_exceptionValidsRegs_writeBack,{CsrPlugin_exceptionPortCtrl_exceptionValidsRegs_memory,CsrPlugin_exceptionPortCtrl_exceptionValidsRegs_execute}} != 3'b000);
   assign CsrPlugin_interruptJump = ((CsrPlugin_interrupt_valid && CsrPlugin_pipelineLiberator_done) && CsrPlugin_allowInterrupts);
-  always @(*) begin
+  always_comb begin
     CsrPlugin_targetPrivilege = CsrPlugin_interrupt_targetPrivilege;
     if(CsrPlugin_hadException) begin
       CsrPlugin_targetPrivilege = CsrPlugin_exceptionPortCtrl_exceptionTargetPrivilege;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_trapCause = CsrPlugin_interrupt_code;
     if(CsrPlugin_hadException) begin
       CsrPlugin_trapCause = CsrPlugin_exceptionPortCtrl_exceptionContext_code;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_xtvec_mode = 2'bxx;
     case(CsrPlugin_targetPrivilege)
       2'b11 : begin
@@ -3061,7 +3061,7 @@ module VexRiscv (
     endcase
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_xtvec_base = 30'bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
     case(CsrPlugin_targetPrivilege)
       2'b11 : begin
@@ -3078,7 +3078,7 @@ module VexRiscv (
   assign contextSwitching = CsrPlugin_jumpInterface_valid;
   assign when_CsrPlugin_l1116 = ({(writeBack_arbitration_isValid && (writeBack_ENV_CTRL == `EnvCtrlEnum_binary_sequential_XRET)),{(memory_arbitration_isValid && (memory_ENV_CTRL == `EnvCtrlEnum_binary_sequential_XRET)),(execute_arbitration_isValid && (execute_ENV_CTRL == `EnvCtrlEnum_binary_sequential_XRET))}} != 3'b000);
   assign execute_CsrPlugin_blockedBySideEffects = (({writeBack_arbitration_isValid,memory_arbitration_isValid} != 2'b00) || 1'b0);
-  always @(*) begin
+  always_comb begin
     execute_CsrPlugin_illegalAccess = 1'b1;
     if(execute_CsrPlugin_csr_768) begin
       execute_CsrPlugin_illegalAccess = 1'b0;
@@ -3126,7 +3126,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     execute_CsrPlugin_illegalInstruction = 1'b0;
     if(when_CsrPlugin_l1136) begin
       if(when_CsrPlugin_l1137) begin
@@ -3135,14 +3135,14 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_selfException_valid = 1'b0;
     if(when_CsrPlugin_l1144) begin
       CsrPlugin_selfException_valid = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     CsrPlugin_selfException_payload_code = 4'bxxxx;
     if(when_CsrPlugin_l1144) begin
       case(CsrPlugin_privilege)
@@ -3160,14 +3160,14 @@ module VexRiscv (
   assign when_CsrPlugin_l1136 = (execute_arbitration_isValid && (execute_ENV_CTRL == `EnvCtrlEnum_binary_sequential_XRET));
   assign when_CsrPlugin_l1137 = (CsrPlugin_privilege < execute_INSTRUCTION[29 : 28]);
   assign when_CsrPlugin_l1144 = (execute_arbitration_isValid && (execute_ENV_CTRL == `EnvCtrlEnum_binary_sequential_ECALL));
-  always @(*) begin
+  always_comb begin
     execute_CsrPlugin_writeInstruction = ((execute_arbitration_isValid && execute_IS_CSR) && execute_CSR_WRITE_OPCODE);
     if(when_CsrPlugin_l1297) begin
       execute_CsrPlugin_writeInstruction = 1'b0;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     execute_CsrPlugin_readInstruction = ((execute_arbitration_isValid && execute_IS_CSR) && execute_CSR_READ_OPCODE);
     if(when_CsrPlugin_l1297) begin
       execute_CsrPlugin_readInstruction = 1'b0;
@@ -3179,7 +3179,7 @@ module VexRiscv (
   assign CsrPlugin_csrMapping_hazardFree = (! execute_CsrPlugin_blockedBySideEffects);
   assign execute_CsrPlugin_readToWriteData = CsrPlugin_csrMapping_readDataSignal;
   assign switch_Misc_l200_2 = execute_INSTRUCTION[13];
-  always @(*) begin
+  always_comb begin
     case(switch_Misc_l200_2)
       1'b0 : begin
         _zz_CsrPlugin_csrMapping_writeDataSignal = execute_SRC1;
@@ -3198,7 +3198,7 @@ module VexRiscv (
   assign externalInterrupt = (_zz_CsrPlugin_csrMapping_readDataInit_1 != 32'h0);
   assign when_DebugPlugin_l225 = (DebugPlugin_haltIt && (! DebugPlugin_isPipBusy));
   assign DebugPlugin_allowEBreak = (DebugPlugin_debugUsed && (! DebugPlugin_disableEbreak));
-  always @(*) begin
+  always_comb begin
     debug_bus_cmd_ready = 1'b1;
     if(debug_bus_cmd_valid) begin
       case(switch_DebugPlugin_l256)
@@ -3213,7 +3213,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     debug_bus_rsp_data = DebugPlugin_busReadDataReg;
     if(when_DebugPlugin_l244) begin
       debug_bus_rsp_data[0] = DebugPlugin_resetIt;
@@ -3225,7 +3225,7 @@ module VexRiscv (
   end
 
   assign when_DebugPlugin_l244 = (! _zz_when_DebugPlugin_l244);
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_injectionPort_valid = 1'b0;
     if(debug_bus_cmd_valid) begin
       case(switch_DebugPlugin_l256)
@@ -3353,7 +3353,7 @@ module VexRiscv (
   assign when_Pipeline_l154_1 = ((! execute_arbitration_isStuck) && (! execute_arbitration_removeIt));
   assign when_Pipeline_l151_2 = ((! writeBack_arbitration_isStuck) || writeBack_arbitration_removeIt);
   assign when_Pipeline_l154_2 = ((! memory_arbitration_isStuck) && (! memory_arbitration_removeIt));
-  always @(*) begin
+  always_comb begin
     IBusSimplePlugin_injectionPort_ready = 1'b0;
     case(switch_Fetcher_l362)
       3'b100 : begin
@@ -3375,7 +3375,7 @@ module VexRiscv (
   assign when_CsrPlugin_l1264_6 = (! execute_arbitration_isStuck);
   assign when_CsrPlugin_l1264_7 = (! execute_arbitration_isStuck);
   assign when_CsrPlugin_l1264_8 = (! execute_arbitration_isStuck);
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_2 = 32'h0;
     if(execute_CsrPlugin_csr_768) begin
       _zz_CsrPlugin_csrMapping_readDataInit_2[12 : 11] = CsrPlugin_mstatus_MPP;
@@ -3384,7 +3384,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_3 = 32'h0;
     if(execute_CsrPlugin_csr_836) begin
       _zz_CsrPlugin_csrMapping_readDataInit_3[11 : 11] = CsrPlugin_mip_MEIP;
@@ -3393,7 +3393,7 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_4 = 32'h0;
     if(execute_CsrPlugin_csr_772) begin
       _zz_CsrPlugin_csrMapping_readDataInit_4[11 : 11] = CsrPlugin_mie_MEIE;
@@ -3402,14 +3402,14 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_5 = 32'h0;
     if(execute_CsrPlugin_csr_833) begin
       _zz_CsrPlugin_csrMapping_readDataInit_5[31 : 0] = CsrPlugin_mepc;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_6 = 32'h0;
     if(execute_CsrPlugin_csr_834) begin
       _zz_CsrPlugin_csrMapping_readDataInit_6[31 : 31] = CsrPlugin_mcause_interrupt;
@@ -3417,21 +3417,21 @@ module VexRiscv (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_7 = 32'h0;
     if(execute_CsrPlugin_csr_835) begin
       _zz_CsrPlugin_csrMapping_readDataInit_7[31 : 0] = CsrPlugin_mtval;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_8 = 32'h0;
     if(execute_CsrPlugin_csr_3008) begin
       _zz_CsrPlugin_csrMapping_readDataInit_8[31 : 0] = _zz_CsrPlugin_csrMapping_readDataInit;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     _zz_CsrPlugin_csrMapping_readDataInit_9 = 32'h0;
     if(execute_CsrPlugin_csr_4032) begin
       _zz_CsrPlugin_csrMapping_readDataInit_9[31 : 0] = _zz_CsrPlugin_csrMapping_readDataInit_1;
@@ -3441,7 +3441,7 @@ module VexRiscv (
   assign CsrPlugin_csrMapping_readDataInit = (((_zz_CsrPlugin_csrMapping_readDataInit_2 | _zz_CsrPlugin_csrMapping_readDataInit_3) | (_zz_CsrPlugin_csrMapping_readDataInit_4 | _zz_CsrPlugin_csrMapping_readDataInit_5)) | ((_zz_CsrPlugin_csrMapping_readDataInit_6 | _zz_CsrPlugin_csrMapping_readDataInit_7) | (_zz_CsrPlugin_csrMapping_readDataInit_8 | _zz_CsrPlugin_csrMapping_readDataInit_9)));
   assign when_CsrPlugin_l1297 = (CsrPlugin_privilege < execute_CsrPlugin_csrAddress[9 : 8]);
   assign when_CsrPlugin_l1302 = ((! execute_arbitration_isValid) || (! execute_IS_CSR));
-  always @(*) begin
+  always_comb begin
     iBus_cmd_ready = iBus_cmd_m2sPipe_ready;
     if(when_Stream_l342) begin
       iBus_cmd_ready = 1'b1;
@@ -3473,7 +3473,7 @@ module VexRiscv (
   assign dBusWishbone_ADR = (dBus_cmd_halfPipe_payload_address >>> 2);
   assign dBusWishbone_CTI = 3'b000;
   assign dBusWishbone_BTE = 2'b00;
-  always @(*) begin
+  always_comb begin
     case(dBus_cmd_halfPipe_payload_size)
       2'b00 : begin
         _zz_dBusWishbone_SEL = 4'b0001;
@@ -3487,7 +3487,7 @@ module VexRiscv (
     endcase
   end
 
-  always @(*) begin
+  always_comb begin
     dBusWishbone_SEL = (_zz_dBusWishbone_SEL <<< dBus_cmd_halfPipe_payload_address[1 : 0]);
     if(when_DBusSimplePlugin_l189) begin
       dBusWishbone_SEL = 4'b1111;
@@ -4185,21 +4185,21 @@ module StreamFifoLowLatency (
   wire                when_Stream_l1008;
   reg        [32:0]   _zz_io_pop_payload_error_1;
 
-  always @(*) begin
+  always_comb begin
     when_Phase_l623 = 1'b0;
     if(pushing) begin
       when_Phase_l623 = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     pushPtr_willIncrement = 1'b0;
     if(pushing) begin
       pushPtr_willIncrement = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     pushPtr_willClear = 1'b0;
     if(io_flush) begin
       pushPtr_willClear = 1'b1;
@@ -4208,14 +4208,14 @@ module StreamFifoLowLatency (
 
   assign pushPtr_willOverflowIfInc = 1'b1;
   assign pushPtr_willOverflow = (pushPtr_willOverflowIfInc && pushPtr_willIncrement);
-  always @(*) begin
+  always_comb begin
     popPtr_willIncrement = 1'b0;
     if(popping) begin
       popPtr_willIncrement = 1'b1;
     end
   end
 
-  always @(*) begin
+  always_comb begin
     popPtr_willClear = 1'b0;
     if(io_flush) begin
       popPtr_willClear = 1'b1;
@@ -4231,7 +4231,7 @@ module StreamFifoLowLatency (
   assign popping = (io_pop_valid && io_pop_ready);
   assign io_push_ready = (! full);
   assign when_Stream_l995 = (! empty);
-  always @(*) begin
+  always_comb begin
     if(when_Stream_l995) begin
       io_pop_valid = 1'b1;
     end else begin
@@ -4240,7 +4240,7 @@ module StreamFifoLowLatency (
   end
 
   assign _zz_io_pop_payload_error = _zz_io_pop_payload_error_1;
-  always @(*) begin
+  always_comb begin
     if(when_Stream_l995) begin
       io_pop_payload_error = _zz_io_pop_payload_error[0];
     end else begin
@@ -4248,7 +4248,7 @@ module StreamFifoLowLatency (
     end
   end
 
-  always @(*) begin
+  always_comb begin
     if(when_Stream_l995) begin
       io_pop_payload_inst = _zz_io_pop_payload_error[32 : 1];
     end else begin
