@@ -42,8 +42,8 @@
 // --------------------------------------------------------
 // define only one of below items
 // --------------------------------------------------------
-`define SYSTEM_test111 1
-//`define SYSTEM_test112 1
+//`define SYSTEM_test111 1
+`define SYSTEM_test112 1
 //`define SYSTEM_test103 1
 //`define SYSTEM_test104 1
 //`define SYSTEM_test113 1
@@ -239,6 +239,10 @@ module top_bench #( parameter BITS=32,
     `ifdef SYSTEM_test111
     test111();
     `endif //SYSTEM_test111
+
+    `ifdef SYSTEM_test112
+    test112();
+    `endif //SYSTEM_test112
     
     `ifdef SYSTEM_test103
     test103();
@@ -277,7 +281,7 @@ module top_bench #( parameter BITS=32,
     do begin
         repeat_cnt = repeat_cnt + 1;
         repeat (1000) @(posedge clock);
-        $display("%t MSG %m, +1000 cycles, finish_flag=%b,  repeat_cnt=%d", $time, finish_flag, repeat_cnt);
+        $display("%t MSG %m, +1000 cycles, finish_flag=%b,  repeat_cnt=%04d", $time, finish_flag, repeat_cnt);
     end
     while(finish_flag == 0 && repeat_cnt <= 100 );
 
@@ -291,7 +295,7 @@ module top_bench #( parameter BITS=32,
       $display("%c[0m",27);
     end
 		else begin
-			$display($time, "=> Final result [PASS], check_cnt = %d, error_cnt = %d", check_cnt, error_cnt);
+			$display($time, "=> Final result [PASS], check_cnt = %d, error_cnt = %04d", check_cnt, error_cnt);
     end
 		$display("=============================================================================================");
 		$display("=============================================================================================");
@@ -391,8 +395,9 @@ module top_bench #( parameter BITS=32,
     wait_and_check_soc_to_fpga_mailbox_write_event();
     soc_to_fpga_mailbox_write_data_expect_value = 32'h3; 
     wait_and_check_soc_to_fpga_mailbox_write_event();
-
-  end
+    
+    finish_flag = 1;
+    end
   `endif //SYSTEM_test112
 
 
@@ -542,20 +547,8 @@ module top_bench #( parameter BITS=32,
 		end
 	endtask
 
-	task test111;		//test111_soc_to_fpga_mailbox_write
-    // test111 - for soc CFG write to mailbox 
-    // 1. [FW] SOC CFG write to mailbox 
-    // 1.A [testbech] check soc_to_fpga_mailbox_write 
-
-		begin
-			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
-				$display("test111: test111_soc_to_fpga_mailbox_write - loop %02d", i);
-				fork 
-					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
-					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
-				join
-				#40;
-
+  task init_fpga_as;
+    begin
 				fpga_as_to_is_init();
 				
 				//soc_cc_is_enable=1;
@@ -585,6 +578,44 @@ module top_bench #( parameter BITS=32,
 				#200;
 
 				#200;
+    end
+	endtask
+  
+	task test111;		//test111_soc_to_fpga_mailbox_write
+    // test111 - for soc CFG write to mailbox 
+    // 1. [FW] SOC CFG write to mailbox 
+    // 1.A [testbech] check soc_to_fpga_mailbox_write 
+
+		begin
+			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
+				$display("test111: test111_soc_to_fpga_mailbox_write - loop %02d", i);
+				fork 
+					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
+					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
+				join
+				#40;
+        init_fpga_as();
+
+			end
+		end
+	endtask
+
+	task test112;		
+    // test112 - for_soc_CFG_read_and_write_to_mailbox_then_send_to_fpga
+    // 1. [FW] SOC CFG read and write to mailbox 
+    // 1.A [testbech] check soc_to_fpga_mailbox_write 
+    //SOC internal register read/write test and update the result to mailbox, testbench check the data when received the mail box write.
+
+		begin
+			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
+				$display("test111: for_soc_CFG_read_and_write_to_mailbox_then_send_to_fpga - loop %02d", i);
+				fork 
+					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
+					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
+				join
+				#40;
+        init_fpga_as();
+
 			end
 		end
 	endtask
