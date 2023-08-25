@@ -38,8 +38,8 @@
 // --------------------------------------------------------
 //#define SYSTEM_test111 1
 //#define SYSTEM_test112 1
-#define SYSTEM_test103 1
-//#define SYSTEM_test104 1
+//#define SYSTEM_test103 1
+#define SYSTEM_test104 1
 //#define SYSTEM_test113 1
 //#define SYSTEM_test114 1
 // --------------------------------------------------------
@@ -198,7 +198,7 @@ void main()
     // 2. [HW] SOC return CFG read cpl to fpga, (FW code only need to init REG_IS_BASE)
     // 2.A [testbech] check CFG read cpl in fpga
 	
-	/* FW code do nothing here for test103*/ 
+	/* FW code do nothing here for test103 */ 
     #endif  //SYSTEM_test103 
 	
     #ifdef SYSTEM_test104 
