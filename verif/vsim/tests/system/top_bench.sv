@@ -39,6 +39,16 @@
 `include "libs.ref/sky130_fd_io/verilog/sky130_ef_io__gpiov2_pad_wrapped.v"
 
 */
+// --------------------------------------------------------
+// define only one of below items
+// --------------------------------------------------------
+`define SYSTEM_test111 1
+//`define SYSTEM_test112 1
+//`define SYSTEM_test103 1
+//`define SYSTEM_test104 1
+//`define SYSTEM_test113 1
+//`define SYSTEM_test114 1
+
 
 // `include "defines.v
 // `include "__uprj_netlists.v"
@@ -84,7 +94,6 @@ module top_bench #( parameter BITS=32,
 		localparam TID_UP_UP = 2'b00;
 		localparam TID_UP_AA = 2'b01;
 		localparam TID_UP_LA = 2'b10;
-		localparam AREA2_IO_PAD_BASE = 19;
 
   wire        gpio;
   wire [37:0] mprj_io;
@@ -165,6 +174,8 @@ module top_bench #( parameter BITS=32,
 	event soc_to_fpga_axilite_read_cpl_event;
 
 	reg [31:0] error_cnt;
+	reg [31:0] check_cnt;
+  reg finish_flag;
   
   wire [11:0] checkbits;
   assign      checkbits = uut.mprj_io_out[32:21];
@@ -225,39 +236,62 @@ module top_bench #( parameter BITS=32,
 
 
    initial begin
+    `ifdef SYSTEM_test111
+    test111();
+    `endif //SYSTEM_test111
     
-    //test111();
-    //test103();
-    //test104();
-    //test113();
+    `ifdef SYSTEM_test103
+    test103();
+    `endif //SYSTEM_test103
+
+    `ifdef SYSTEM_test104
+    test104();
+    `endif //SYSTEM_test104
+
+
+    `ifdef SYSTEM_test113
+    test113();
+    `endif //SYSTEM_test113
+
+    `ifdef SYSTEM_test114
     test114();
+    `endif //SYSTEM_test114
+
     end
 
   wire ioclk;
   assign ioclk = io_clk;
 
+  reg [31:0] repeat_cnt;
+  
   initial begin
     $timeformat (-9, 3, " ns", 13);
   //$dumpfile("top_bench.vcd");
   //$dumpvars(0, top_bench);
     error_cnt = 0;
+    check_cnt = 0;
+    finish_flag = 0;
+    repeat_cnt = 0;
 
 
-    repeat (100) begin
-      repeat (1000) @(posedge clock);
-      $display("%t MSG %m, +1000 cycles ", $time);
+    do begin
+        repeat_cnt = repeat_cnt + 1;
+        repeat (1000) @(posedge clock);
+        $display("%t MSG %m, +1000 cycles, finish_flag=%b,  repeat_cnt=%d", $time, finish_flag, repeat_cnt);
     end
+    while(finish_flag == 0 && repeat_cnt <= 100 );
+
 
 		$display("=============================================================================================");
 		$display("=============================================================================================");
 		$display("=============================================================================================");
 		if (error_cnt != 0 ) begin
       $display("%c[1;31m",27);
-			$display($time, "=> Final result [FAILED], error_cnt = %x, please search [ERROR] in the log", error_cnt);
+			$display($time, "=> Final result [FAILED], check_cnt = %d, error_cnt = %d, please search [ERROR] in the log", check_cnt, error_cnt);
       $display("%c[0m",27);
     end
 		else begin
-			$display($time, "=> Final result [PASS], error_cnt = %x", error_cnt);
+			$display($time, "=> Final result [PASS], check_cnt = %d, error_cnt = %d", check_cnt, error_cnt);
     end
 		$display("=============================================================================================");
 		$display("=============================================================================================");
@@ -317,10 +351,10 @@ module top_bench #( parameter BITS=32,
 		end
 	end
 
+  
+
+  `ifdef SYSTEM_test111
   reg [31:0] idx5;
-
-/*
-
   initial begin		
 
     // test111 - for soc CFG write to mailbox 
@@ -336,11 +370,12 @@ module top_bench #( parameter BITS=32,
       soc_to_fpga_mailbox_write_data_expect_value = 32'ha5a5_a5a5; 
       wait_and_check_soc_to_fpga_mailbox_write_event();
     end
+    finish_flag = 1;
 
   end
-*/
+  `endif //SYSTEM_test111
   
-/*
+  `ifdef SYSTEM_test112
     // test112 - for soc CFG read and write to mailbox then send to fpga
     // 1. [FW] SOC CFG read and write to mailbox 
     // 1.A [testbech] check soc_to_fpga_mailbox_write 
@@ -358,8 +393,7 @@ module top_bench #( parameter BITS=32,
     wait_and_check_soc_to_fpga_mailbox_write_event();
 
   end
-  
-*/
+  `endif //SYSTEM_test112
 
 
   wire VDD3V3;
@@ -1032,20 +1066,25 @@ module top_bench #( parameter BITS=32,
       wait(soc_to_fpga_mailbox_write_event.triggered);
 			$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event");
 			//Address part
+      check_cnt = check_cnt + 1;
 			if ( soc_to_fpga_mailbox_write_addr_expect_value !== soc_to_fpga_mailbox_write_addr_captured[27:0]) begin
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_addr_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[27:0]=%x", soc_to_fpga_mailbox_write_addr_expect_value, soc_to_fpga_mailbox_write_addr_captured[27:0]);
 				error_cnt = error_cnt + 1;
 			end	
 			else
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[27:0]=%x", soc_to_fpga_mailbox_write_addr_expect_value, soc_to_fpga_mailbox_write_addr_captured[27:0]);
+
 			//BE part
+      check_cnt = check_cnt + 1;
 			if ( soc_to_fpga_mailbox_write_addr_BE_expect_value !== soc_to_fpga_mailbox_write_addr_captured[31:28]) begin
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_addr_BE_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[31:28]=%x", soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_addr_captured[31:28]);
 				error_cnt = error_cnt + 1;
 			end	
 			else
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[31:28]=%x", soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_addr_captured[31:28]);
+
 			//data part
+      check_cnt = check_cnt + 1;
 			if (soc_to_fpga_mailbox_write_data_expect_value !== soc_to_fpga_mailbox_write_data_captured) begin
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_data_expect_value=%x, soc_to_fpga_mailbox_write_data_captured=%x", soc_to_fpga_mailbox_write_data_expect_value, soc_to_fpga_mailbox_write_data_captured);
 				error_cnt = error_cnt + 1;
@@ -1089,5 +1128,6 @@ module top_bench #( parameter BITS=32,
 endmodule // top_bench
 
 `default_nettype wire
+
 
 
