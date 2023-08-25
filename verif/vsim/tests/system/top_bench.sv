@@ -46,8 +46,8 @@
 //`define SYSTEM_test112 1
 //`define SYSTEM_test103 1
 //`define SYSTEM_test104 1
-`define SYSTEM_test113 1
-//`define SYSTEM_test114 1
+//`define SYSTEM_test113 1
+`define SYSTEM_test114 1
 
 
 // `include "defines.v
@@ -550,21 +550,20 @@ module top_bench #( parameter BITS=32,
   task init_fpga_as;
     begin
 				#40;
+
 				fpga_as_to_is_init();
 				
 				//soc_cc_is_enable=1;
 				fpga_cc_is_enable=1;
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 1);				//ioserdes rxen
-					fpga_cfg_write(0,1,1,0);
-				join
-				//$display($time, "=> soc rxen_ctl=1");
-				$display($time, "=> fpga rxen_ctl=1");
 
 				#400;
 				$display($time, "=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen");
         wait(uut.mprj.u_fsic.U_IO_SERDES0.rxen);
 				$display($time, "=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1");
+
+				fpga_cfg_write(0,1,1,0);
+				$display($time, "=> fpga rxen_ctl=1");
+        
 				repeat(4) @(posedge fpga_coreclk);
 				fork 
 					//soc_is_cfg_write(0, 4'b0001, 3);				//ioserdes txen
@@ -742,40 +741,14 @@ module top_bench #( parameter BITS=32,
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
-				#40;
-
-				fpga_as_to_is_init();
-				
-				//soc_cc_is_enable=1;
-				fpga_cc_is_enable=1;
-
-				#400;
-				$display($time, "=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen");
-        wait(uut.mprj.u_fsic.U_IO_SERDES0.rxen);
-				$display($time, "=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1");
-
-				fpga_cfg_write(0,1,1,0);
-				$display($time, "=> fpga rxen_ctl=1");
-        
-				repeat(4) @(posedge fpga_coreclk);
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 3);				//ioserdes txen
-					fpga_cfg_write(0,3,1,0);
-				join
-				//$display($time, "=> soc txen_ctl=1");
-				$display($time, "=> fpga txen_ctl=1");
-
-				#200;
-				fpga_as_is_tdata = 32'h5a5a5a5a;
-				#40;
-				#200;
+        init_fpga_as();
 				$display($time, "=> wait uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0] (interrupt enable bit)");
         wait(uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]); //wait interrupt enable bit = 1
 				$display($time, "=> detect uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]=1");
 				test114_fpga_to_soc_CFG_write();		//target to AA_MailBox_Reg_Offset
-
 				#200;
 			end
+      finish_flag=1;
 		end
 
 	endtask
