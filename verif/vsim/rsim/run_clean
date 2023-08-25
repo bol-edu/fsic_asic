@@ -1,2 +1,30 @@
+#!/bin/bash
+
+function rm_files {
+  target=$1
+	rm -f  $target/.system.dump.out.swp
+	rm -f  $target/as.help
+	rm -f  $target/gcc.help
+	rm -f  $target/ld.help
+	rm -f  $target/system.dump.out
+	rm -f  $target/system.elf
+	rm -f  $target/system.hex
+	rm -f  $target/system.hexe
+	rm -f  $target/$target.dump.out
+	rm -f  $target/$target.elf
+	rm -f  $target/$target.hex
+	rm -f  $target/$target.hexe
+}
+
 rm -rf xsim.dir/ *.log *.pb *.jou *.wdb
 rm -f *.vcd *.hex
+
+cd ../tests
+rm_files system
+rm_files system_test111
+rm_files system_test112
+rm_files system_test103
+rm_files system_test104
+rm_files system_test113
+rm_files system_test114
+cd ../rsim
