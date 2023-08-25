@@ -43,8 +43,8 @@
 // define only one of below items
 // --------------------------------------------------------
 //`define SYSTEM_test111 1
-`define SYSTEM_test112 1
-//`define SYSTEM_test103 1
+//`define SYSTEM_test112 1
+`define SYSTEM_test103 1
 //`define SYSTEM_test104 1
 //`define SYSTEM_test113 1
 //`define SYSTEM_test114 1
@@ -549,6 +549,7 @@ module top_bench #( parameter BITS=32,
 
   task init_fpga_as;
     begin
+				#40;
 				fpga_as_to_is_init();
 				
 				//soc_cc_is_enable=1;
@@ -576,8 +577,6 @@ module top_bench #( parameter BITS=32,
 				fpga_as_is_tdata = 32'h5a5a5a5a;
 				#40;
 				#200;
-
-				#200;
     end
 	endtask
   
@@ -593,9 +592,7 @@ module top_bench #( parameter BITS=32,
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
-				#40;
         init_fpga_as();
-
 			end
 		end
 	endtask
@@ -613,9 +610,7 @@ module top_bench #( parameter BITS=32,
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
-				#40;
         init_fpga_as();
-
 			end
 		end
 	endtask
@@ -632,39 +627,11 @@ module top_bench #( parameter BITS=32,
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
-				#40;
-
-				fpga_as_to_is_init();
-				
-				//soc_cc_is_enable=1;
-				fpga_cc_is_enable=1;
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 1);				//ioserdes rxen
-					fpga_cfg_write(0,1,1,0);
-				join
-				//$display($time, "=> soc rxen_ctl=1");
-				$display($time, "=> fpga rxen_ctl=1");
-
-				#400;
-				$display($time, "=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen");
-        wait(uut.mprj.u_fsic.U_IO_SERDES0.rxen);
-				$display($time, "=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1");
-				repeat(4) @(posedge fpga_coreclk);
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 3);				//ioserdes txen
-					fpga_cfg_write(0,3,1,0);
-				join
-				//$display($time, "=> soc txen_ctl=1");
-				$display($time, "=> fpga txen_ctl=1");
-
-				#200;
-				fpga_as_is_tdata = 32'h5a5a5a5a;
-				#40;
-				#200;
+        init_fpga_as();
 				test103_fpga_to_soc_cfg_read();
-
 				#200;
 			end
+      finish_flag=1;
 		end
 	endtask
 
@@ -967,7 +934,9 @@ module top_bench #( parameter BITS=32,
 				$display($time, "=> test103_fpga_to_soc_cfg_read : got soc_to_fpga_axilite_read_cpl_event");
 
 				$display($time, "=> test103_fpga_to_soc_cfg_read : soc_to_fpga_axilite_read_cpl_captured=%x", soc_to_fpga_axilite_read_cpl_captured);
+        
 				//Data part
+        check_cnt = check_cnt + 1;
 				if ( soc_to_fpga_axilite_read_cpl_expect_value !== soc_to_fpga_axilite_read_cpl_captured) begin
 					$display($time, "=> test103_fpga_to_soc_cfg_read [ERROR] soc_to_fpga_axilite_read_cpl_expect_value=%x, soc_to_fpga_axilite_read_cpl_captured[27:0]=%x", soc_to_fpga_axilite_read_cpl_expect_value, soc_to_fpga_axilite_read_cpl_captured[27:0]);
 					error_cnt = error_cnt + 1;
@@ -1159,6 +1128,7 @@ module top_bench #( parameter BITS=32,
 endmodule // top_bench
 
 `default_nettype wire
+
 
 
 
