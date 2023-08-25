@@ -187,6 +187,7 @@ void main()
     //Step 1. read io_serdes_base + 0
     value = *(volatile uint32_t*)(io_serdes_base + 0);
     *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 0 )= value;        //write to AA_MailBox_Reg_Offset + 0
+    value = *(volatile uint32_t*)(io_serdes_base + 0);
     #endif  //SYSTEM_test112 
     
 	
