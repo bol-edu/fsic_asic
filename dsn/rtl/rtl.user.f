@@ -18,7 +18,8 @@
    ../../dsn/rtl/axil_axis.sv
 
 // axis_switch
-   ../../dsn/rtl/axis_switch.v
+//   ../../dsn/rtl/axis_switch.v
+   ../../dsn/rtl/sw_caravel.v
 
 // config_ctrl
    ../../dsn/rtl/config_ctrl.v
