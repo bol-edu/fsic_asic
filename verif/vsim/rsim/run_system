@@ -1,0 +1,40 @@
+#!/bin/bash 
+cd ../tests
+
+target="system_test111"
+cp -r system $target
+sed -e 's/^\/\/`define\s*SYSTEM_test111\s*1/`define SYSTEM_test111 1/' system/top_bench.sv > $target/top_bench.sv
+sed -e 's/^\/\/#define\s*SYSTEM_test111\s*1/#define SYSTEM_test111 1/' system/system.c > $target/$target.c
+
+target="system_test112"
+cp -r system $target
+sed -e 's/^\/\/`define\s*SYSTEM_test112\s*1/`define SYSTEM_test112 1/' system/top_bench.sv > $target/top_bench.sv
+sed -e 's/^\/\/#define\s*SYSTEM_test112\s*1/#define SYSTEM_test112 1/' system/system.c > $target/$target.c
+
+target="system_test103"
+cp -r system $target
+sed -e 's/^\/\/`define\s*SYSTEM_test103\s*1/`define SYSTEM_test103 1/' system/top_bench.sv > $target/top_bench.sv
+sed -e 's/^\/\/#define\s*SYSTEM_test103\s*1/#define SYSTEM_test103 1/' system/system.c > $target/$target.c
+
+target="system_test104"
+cp -r system $target
+sed -e 's/^\/\/`define\s*SYSTEM_test104\s*1/`define SYSTEM_test104 1/' system/top_bench.sv > $target/top_bench.sv
+sed -e 's/^\/\/#define\s*SYSTEM_test104\s*1/#define SYSTEM_test104 1/' system/system.c > $target/$target.c
+
+target="system_test113"
+cp -r system $target
+sed -e 's/^\/\/`define\s*SYSTEM_test113\s*1/`define SYSTEM_test113 1/' system/top_bench.sv > $target/top_bench.sv
+sed -e 's/^\/\/#define\s*SYSTEM_test113\s*1/#define SYSTEM_test113 1/' system/system.c > $target/$target.c
+
+target="system_test114"
+cp -r system $target
+sed -e 's/^\/\/`define\s*SYSTEM_test114\s*1/`define SYSTEM_test114 1/' system/top_bench.sv > $target/top_bench.sv
+sed -e 's/^\/\/#define\s*SYSTEM_test114\s*1/#define SYSTEM_test114 1/' system/system.c > $target/$target.c
+
+cd ../rsim
+./run_xsim system_test111
+./run_xsim system_test112
+./run_xsim system_test103
+./run_xsim system_test104
+./run_xsim system_test113
+./run_xsim system_test114

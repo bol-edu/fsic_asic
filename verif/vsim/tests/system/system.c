@@ -19,6 +19,10 @@
 // This include is relative to $CARAVEL_PATH (see Makefile)
 #include <defs.h>
 #include <stub.c>
+#ifdef USER_PROJ_IRQ0_EN
+#include <irq_vex.h>
+#endif
+
 #define UP_BASE (0x30000000)
 #define AA_BASE (0x30002000)
 #define IS_BASE (0x30003000)
@@ -29,6 +33,15 @@
 #define  AA_MailBox_Reg_Offset (0x000)
 #define  AA_Internal_Reg_Offset (0x100)
 
+// --------------------------------------------------------
+// define only one of below items
+// --------------------------------------------------------
+//#define SYSTEM_test111 1
+//#define SYSTEM_test112 1
+//#define SYSTEM_test103 1
+//#define SYSTEM_test104 1
+//#define SYSTEM_test113 1
+//#define SYSTEM_test114 1
 // --------------------------------------------------------
 
 /*
@@ -43,6 +56,10 @@ void main()
 {
 	int j;
 
+  #ifdef USER_PROJ_IRQ0_EN	
+    int mask;
+  #endif
+  
 	/* Set up the housekeeping SPI to be connected internally so	*/
 	/* that external pin changes don't affect it.			*/
 
@@ -136,7 +153,7 @@ void main()
     uint32_t value;
     uint32_t io_serdes_base = IS_BASE;
 
-    /*
+    #ifdef SYSTEM_test111 
     // test111 - for soc CFG write to mailbox 
     // 1. [FW] SOC CFG write to mailbox 
     // 1.A [testbech] check soc_to_fpga_mailbox_write 
@@ -145,11 +162,9 @@ void main()
       *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + i )= 0x5a5a5a5a;
       *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + i )= 0xa5a5a5a5;
     }
-    */
+    #endif  //SYSTEM_test111 
     
-
-
-    /*
+    #ifdef SYSTEM_test112 
     // test112 - for soc CFG read and write to mailbox then send to fpga
     // 1. [FW] SOC CFG read and write to mailbox 
     // 1.A [testbech] check soc_to_fpga_mailbox_write 
@@ -172,9 +187,21 @@ void main()
     //Step 1. read io_serdes_base + 0
     value = *(volatile uint32_t*)(io_serdes_base + 0);
     *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 0 )= value;        //write to AA_MailBox_Reg_Offset + 0
-    */
+    value = *(volatile uint32_t*)(aa_base + AA_MailBox_Reg_Offset + 0 );        //read it to flush last write
+
+    #endif  //SYSTEM_test112 
     
-    /*
+	
+    #ifdef SYSTEM_test103
+    // test103 - test103_fpga_to_soc_cfg_read
+    // 1. [testbech] fpga to soc CFG read
+    // 2. [HW] SOC return CFG read cpl to fpga, (FW code only need to init REG_IS_BASE)
+    // 2.A [testbech] check CFG read cpl in fpga
+	
+	/* FW code do nothing here for test103 */ 
+    #endif  //SYSTEM_test103 
+	
+    #ifdef SYSTEM_test104 
     // test104 - fpga to soc mailbox loopback test
     // 1. [testbech] fpga to soc mialbox write to offset 0
     // 2. [FW] soc read mailbox offset 0, if non zero then write the read_value to mailbox offset 4
@@ -187,8 +214,9 @@ void main()
       }
     }
     while(value==0);
-    */
+    #endif  //SYSTEM_test104 
     
+    #ifdef SYSTEM_test113 
     // test113 - fpga to soc CFG write test
     // 1. [testbech] fpga to soc CFG write to AA_Internal_Reg_Offset + 0
     // 2. [FW] soc read AA_Internal_Reg_Offset + 0, if non zero then write the read_value to mailbox offset 4
@@ -201,8 +229,48 @@ void main()
     }
     while(value==0);
 
+    #endif  //SYSTEM_test113 
+    
+    
+    #ifdef SYSTEM_test114
+    //test114 - fpga to soc mailbox write with interrupt test
+    // 1. [FW] init interrupt handler
+    // 1.A [FW] soc enable interrupt by set AA_Internal_Reg_Offset + 0 = 1
+    // 2. [testbech] fpga to soc CFG write to AA_MailBox_Reg_Offset + 0 = value
+    // 3. [FW] in isr read value from AA_MailBox_Reg_Offset + 0 and write to AA_MailBox_Reg_Offset + 4
+    // 4. [testbech] fpga check AA_MailBox_Reg_Offset + 4 = value
 
+    
+    #ifdef USER_PROJ_IRQ0_EN	
+      //REG_IS_BASE = 3;    
+      // unmask USER_IRQ_0_INTERRUPT
+      mask = irq_getmask();
+      mask |= 1 << USER_IRQ_0_INTERRUPT;
+      irq_setmask(mask);
+      // enable user_irq_0_ev_enable
+      user_irq_0_ev_enable_write(1);
+      
+      //set user_irq_ena for user_irq[0]
+      value = 1;
+      user_irq_ena_out_write(value);
+      
+      //REG_IS_BASE = 3;    
+      //value = *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 );
+      //REG_IS_BASE = 3;    
+      //*(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 ) = value;
+      //REG_IS_BASE = 3;    
+      value = 1;
+      *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 )  = value; //set interrupt enable bit in AA
+      *(volatile uint32_t*)(aa_base + AA_Internal_Reg_Offset + 0 )  = value; //set interrupt enable bit in AA
+      //REG_IS_BASE = 3;    
+    #endif
+    #endif  //SYSTEM_test114 
+    
+    
     while(1);
 }
+
+
+
 
 

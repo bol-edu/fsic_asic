@@ -1,0 +1,1 @@
+sections.caravel_mgmt_soc_litex.lds

@@ -39,6 +39,16 @@
 `include "libs.ref/sky130_fd_io/verilog/sky130_ef_io__gpiov2_pad_wrapped.v"
 
 */
+// --------------------------------------------------------
+// define only one of below items
+// --------------------------------------------------------
+//`define SYSTEM_test111 1
+//`define SYSTEM_test112 1
+//`define SYSTEM_test103 1
+//`define SYSTEM_test104 1
+//`define SYSTEM_test113 1
+//`define SYSTEM_test114 1
+
 
 // `include "defines.v
 // `include "__uprj_netlists.v"
@@ -84,7 +94,6 @@ module top_bench #( parameter BITS=32,
 		localparam TID_UP_UP = 2'b00;
 		localparam TID_UP_AA = 2'b01;
 		localparam TID_UP_LA = 2'b10;
-		localparam AREA2_IO_PAD_BASE = 19;
 
   wire        gpio;
   wire [37:0] mprj_io;
@@ -165,6 +174,8 @@ module top_bench #( parameter BITS=32,
 	event soc_to_fpga_axilite_read_cpl_event;
 
 	reg [31:0] error_cnt;
+	reg [31:0] check_cnt;
+  reg finish_flag;
   
   wire [11:0] checkbits;
   assign      checkbits = uut.mprj_io_out[32:21];
@@ -225,38 +236,66 @@ module top_bench #( parameter BITS=32,
 
 
    initial begin
+    `ifdef SYSTEM_test111
+    test111();
+    `endif //SYSTEM_test111
+
+    `ifdef SYSTEM_test112
+    test112();
+    `endif //SYSTEM_test112
     
-    //test111();
-    //test103();
-    //test104();
+    `ifdef SYSTEM_test103
+    test103();
+    `endif //SYSTEM_test103
+
+    `ifdef SYSTEM_test104
+    test104();
+    `endif //SYSTEM_test104
+
+
+    `ifdef SYSTEM_test113
     test113();
+    `endif //SYSTEM_test113
+
+    `ifdef SYSTEM_test114
+    test114();
+    `endif //SYSTEM_test114
+
     end
 
   wire ioclk;
   assign ioclk = io_clk;
 
+  reg [31:0] repeat_cnt;
+  
   initial begin
     $timeformat (-9, 3, " ns", 13);
   //$dumpfile("top_bench.vcd");
   //$dumpvars(0, top_bench);
     error_cnt = 0;
+    check_cnt = 0;
+    finish_flag = 0;
+    repeat_cnt = 0;
 
 
-    repeat (50) begin
-      repeat (1000) @(posedge clock);
-      $display("%t MSG %m, +1000 cycles ", $time);
+    do begin
+        repeat_cnt = repeat_cnt + 1;
+        repeat (1000) @(posedge clock);
+        $display("%t MSG %m, +1000 cycles, finish_flag=%b,  repeat_cnt=%04d", $time, finish_flag, repeat_cnt);
     end
+    while(finish_flag == 0 && repeat_cnt <= 100 );
+
 
 		$display("=============================================================================================");
 		$display("=============================================================================================");
 		$display("=============================================================================================");
 		if (error_cnt != 0 ) begin
       $display("%c[1;31m",27);
-			$display($time, "=> Final result [FAILED], error_cnt = %x, please search [ERROR] in the log", error_cnt);
+			$display($time, "=> Final result [FAILED], check_cnt = %d, error_cnt = %d, please search [ERROR] in the log", check_cnt, error_cnt);
       $display("%c[0m",27);
     end
 		else begin
-			$display($time, "=> Final result [PASS], error_cnt = %x", error_cnt);
+			$display($time, "=> Final result [PASS], check_cnt = %d, error_cnt = %04d", check_cnt, error_cnt);
     end
 		$display("=============================================================================================");
 		$display("=============================================================================================");
@@ -316,10 +355,10 @@ module top_bench #( parameter BITS=32,
 		end
 	end
 
+  
+
+  `ifdef SYSTEM_test111
   reg [31:0] idx5;
-
-/*
-
   initial begin		
 
     // test111 - for soc CFG write to mailbox 
@@ -335,11 +374,12 @@ module top_bench #( parameter BITS=32,
       soc_to_fpga_mailbox_write_data_expect_value = 32'ha5a5_a5a5; 
       wait_and_check_soc_to_fpga_mailbox_write_event();
     end
+    finish_flag = 1;
 
   end
-*/
+  `endif //SYSTEM_test111
   
-/*
+  `ifdef SYSTEM_test112
     // test112 - for soc CFG read and write to mailbox then send to fpga
     // 1. [FW] SOC CFG read and write to mailbox 
     // 1.A [testbech] check soc_to_fpga_mailbox_write 
@@ -355,10 +395,10 @@ module top_bench #( parameter BITS=32,
     wait_and_check_soc_to_fpga_mailbox_write_event();
     soc_to_fpga_mailbox_write_data_expect_value = 32'h3; 
     wait_and_check_soc_to_fpga_mailbox_write_event();
-
-  end
-  
-*/
+    
+    finish_flag = 1;
+    end
+  `endif //SYSTEM_test112
 
 
   wire VDD3V3;
@@ -507,35 +547,23 @@ module top_bench #( parameter BITS=32,
 		end
 	endtask
 
-	task test111;		//test111_soc_to_fpga_mailbox_write
-    // test111 - for soc CFG write to mailbox 
-    // 1. [FW] SOC CFG write to mailbox 
-    // 1.A [testbech] check soc_to_fpga_mailbox_write 
-
-		begin
-			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
-				$display("test111: test111_soc_to_fpga_mailbox_write - loop %02d", i);
-				fork 
-					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
-					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
-				join
+  task init_fpga_as;
+    begin
 				#40;
 
 				fpga_as_to_is_init();
 				
 				//soc_cc_is_enable=1;
 				fpga_cc_is_enable=1;
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 1);				//ioserdes rxen
-					fpga_cfg_write(0,1,1,0);
-				join
-				//$display($time, "=> soc rxen_ctl=1");
-				$display($time, "=> fpga rxen_ctl=1");
 
 				#400;
 				$display($time, "=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen");
         wait(uut.mprj.u_fsic.U_IO_SERDES0.rxen);
 				$display($time, "=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1");
+
+				fpga_cfg_write(0,1,1,0);
+				$display($time, "=> fpga rxen_ctl=1");
+        
 				repeat(4) @(posedge fpga_coreclk);
 				fork 
 					//soc_is_cfg_write(0, 4'b0001, 3);				//ioserdes txen
@@ -548,8 +576,40 @@ module top_bench #( parameter BITS=32,
 				fpga_as_is_tdata = 32'h5a5a5a5a;
 				#40;
 				#200;
+    end
+	endtask
+  
+	task test111;		//test111_soc_to_fpga_mailbox_write
+    // test111 - for soc CFG write to mailbox 
+    // 1. [FW] SOC CFG write to mailbox 
+    // 1.A [testbech] check soc_to_fpga_mailbox_write 
 
-				#200;
+		begin
+			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
+				$display("test111: test111_soc_to_fpga_mailbox_write - loop %02d", i);
+				fork 
+					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
+					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
+				join
+        init_fpga_as();
+			end
+		end
+	endtask
+
+	task test112;		
+    // test112 - for_soc_CFG_read_and_write_to_mailbox_then_send_to_fpga
+    // 1. [FW] SOC CFG read and write to mailbox 
+    // 1.A [testbech] check soc_to_fpga_mailbox_write 
+    //SOC internal register read/write test and update the result to mailbox, testbench check the data when received the mail box write.
+
+		begin
+			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
+				$display("test111: for_soc_CFG_read_and_write_to_mailbox_then_send_to_fpga - loop %02d", i);
+				fork 
+					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
+					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
+				join
+        init_fpga_as();
 			end
 		end
 	endtask
@@ -566,39 +626,11 @@ module top_bench #( parameter BITS=32,
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
-				#40;
-
-				fpga_as_to_is_init();
-				
-				//soc_cc_is_enable=1;
-				fpga_cc_is_enable=1;
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 1);				//ioserdes rxen
-					fpga_cfg_write(0,1,1,0);
-				join
-				//$display($time, "=> soc rxen_ctl=1");
-				$display($time, "=> fpga rxen_ctl=1");
-
-				#400;
-				$display($time, "=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen");
-        wait(uut.mprj.u_fsic.U_IO_SERDES0.rxen);
-				$display($time, "=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1");
-				repeat(4) @(posedge fpga_coreclk);
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 3);				//ioserdes txen
-					fpga_cfg_write(0,3,1,0);
-				join
-				//$display($time, "=> soc txen_ctl=1");
-				$display($time, "=> fpga txen_ctl=1");
-
-				#200;
-				fpga_as_is_tdata = 32'h5a5a5a5a;
-				#40;
-				#200;
+        init_fpga_as();
 				test103_fpga_to_soc_cfg_read();
-
 				#200;
 			end
+      finish_flag=1;
 		end
 	endtask
 
@@ -614,39 +646,11 @@ module top_bench #( parameter BITS=32,
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
-				#40;
-
-				fpga_as_to_is_init();
-				
-				//soc_cc_is_enable=1;
-				fpga_cc_is_enable=1;
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 1);				//ioserdes rxen
-					fpga_cfg_write(0,1,1,0);
-				join
-				//$display($time, "=> soc rxen_ctl=1");
-				$display($time, "=> fpga rxen_ctl=1");
-
-				#400;
-				$display($time, "=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen");
-        wait(uut.mprj.u_fsic.U_IO_SERDES0.rxen);
-				$display($time, "=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1");
-				repeat(4) @(posedge fpga_coreclk);
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 3);				//ioserdes txen
-					fpga_cfg_write(0,3,1,0);
-				join
-				//$display($time, "=> soc txen_ctl=1");
-				$display($time, "=> fpga txen_ctl=1");
-
-				#200;
-				fpga_as_is_tdata = 32'h5a5a5a5a;
-				#40;
-				#200;
+        init_fpga_as();
 				test104_fpga_to_soc_mail_box_write();		//target to AA
-
 				#200;
 			end
+      finish_flag=1;
 		end
 
 	endtask
@@ -687,39 +691,11 @@ module top_bench #( parameter BITS=32,
 					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
-				#40;
-
-				fpga_as_to_is_init();
-				
-				//soc_cc_is_enable=1;
-				fpga_cc_is_enable=1;
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 1);				//ioserdes rxen
-					fpga_cfg_write(0,1,1,0);
-				join
-				//$display($time, "=> soc rxen_ctl=1");
-				$display($time, "=> fpga rxen_ctl=1");
-
-				#400;
-				$display($time, "=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen");
-        wait(uut.mprj.u_fsic.U_IO_SERDES0.rxen);
-				$display($time, "=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1");
-				repeat(4) @(posedge fpga_coreclk);
-				fork 
-					//soc_is_cfg_write(0, 4'b0001, 3);				//ioserdes txen
-					fpga_cfg_write(0,3,1,0);
-				join
-				//$display($time, "=> soc txen_ctl=1");
-				$display($time, "=> fpga txen_ctl=1");
-
-				#200;
-				fpga_as_is_tdata = 32'h5a5a5a5a;
-				#40;
-				#200;
+        init_fpga_as();
 				test113_fpga_to_soc_CFG_write();		//target to AA_Internal_Reg_Offset
-
 				#200;
 			end
+      finish_flag=1;
 		end
 
 	endtask
@@ -747,7 +723,75 @@ module top_bench #( parameter BITS=32,
 		end
 	endtask
 
+	task test114;   //fpga to soc mailbox write with interrupt test
+    //test114 - fpga to soc mailbox write with interrupt test
+    // 1. [FW] init interrupt handler
+    // 1.A [FW] soc enable interrupt by set AA_Internal_Reg_Offset + 0 = 1
+    // 2. [testbech] fpga to soc CFG write to AA_MailBox_Reg_Offset + 0 = value
+    // 3. [FW] in isr read value from AA_MailBox_Reg_Offset + 0 and write to AA_MailBox_Reg_Offset + 4
+    // 4. [testbech] fpga check AA_MailBox_Reg_Offset + 4 = value
+		begin
+		`ifdef USER_PROJ_IRQ0_EN
+			$display("USER_PROJ_IRQ0 Test");
+		`endif 		
+    
+			for (i=0;i<CoreClkPhaseLoop;i=i+1) begin
+				$display("test114: TX/RX test - loop %02d", i);
+				fork 
+					//soc_apply_reset(40+i*10, 40);			//change coreclk phase in soc
+					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
+				join
+        init_fpga_as();
+				$display($time, "=> wait uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0] (interrupt enable bit)");
+        wait(uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]); //wait interrupt enable bit = 1
+				$display($time, "=> detect uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]=1");
+				test114_fpga_to_soc_CFG_write();		//target to AA_MailBox_Reg_Offset
+				#200;
+			end
+      finish_flag=1;
+		end
 
+	endtask
+
+	task test114_fpga_to_soc_CFG_write;
+		//FPGA to SOC Axilite test
+		begin
+			@ (posedge fpga_coreclk);
+			fpga_as_is_tready <= 1;
+			
+			$display($time, "=> test114_fpga_to_soc_CFG_write start");
+      fpga_axilite_write_addr = FPGA_to_SOC_AA_BASE + AA_MailBox_Reg_Offset + 0;
+
+      soc_to_fpga_mailbox_write_addr_expect_value = FPGA_to_SOC_AA_BASE + AA_MailBox_Reg_Offset + 4;
+      soc_to_fpga_mailbox_write_addr_BE_expect_value = 4'b1111;
+      soc_to_fpga_mailbox_write_data_expect_value = 32'h1; 
+
+    // 1. [testbech] fpga to soc CFG write to AA_MailBox_Reg_Offset + 0
+    // 2.A [testbech] check soc to fpga mailbox write to offset 4 in fpga
+
+			fpga_axilite_write(fpga_axilite_write_addr, soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_data_expect_value);
+			$display($time, "=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = %x, be=%x, data = %x", fpga_axilite_write_addr, soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_data_expect_value);
+      wait_and_check_soc_to_fpga_mailbox_write_event();
+			$display($time, "=> test114_fpga_to_soc_CFG_write wait 320us");
+      			repeat(8000) @(posedge fpga_coreclk); //wait 320us
+
+      fpga_axilite_write_addr = FPGA_to_SOC_AA_BASE + AA_MailBox_Reg_Offset + 0;
+      soc_to_fpga_mailbox_write_addr_expect_value = FPGA_to_SOC_AA_BASE + AA_MailBox_Reg_Offset + 4;
+      soc_to_fpga_mailbox_write_addr_BE_expect_value = 4'b1111;
+      soc_to_fpga_mailbox_write_data_expect_value = 32'h5a5a_5a5a; 
+
+    // 1. [testbech] fpga to soc CFG write to AA_MailBox_Reg_Offset + 0
+    // 2.A [testbech] check soc to fpga mailbox write to offset 4 in fpga
+
+			fpga_axilite_write(fpga_axilite_write_addr, soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_data_expect_value);
+			$display($time, "=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = %x, be=%x, data = %x", fpga_axilite_write_addr, soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_data_expect_value);
+      wait_and_check_soc_to_fpga_mailbox_write_event();
+
+			$display($time, "=> test114_fpga_to_soc_CFG_write done");
+      
+      
+		end
+	endtask
 
 	task fpga_axilite_write;
 		input [27:0] address;
@@ -807,7 +851,9 @@ module top_bench #( parameter BITS=32,
 				$display($time, "=> test103_fpga_to_soc_cfg_read : got soc_to_fpga_axilite_read_cpl_event");
 
 				$display($time, "=> test103_fpga_to_soc_cfg_read : soc_to_fpga_axilite_read_cpl_captured=%x", soc_to_fpga_axilite_read_cpl_captured);
+        
 				//Data part
+        check_cnt = check_cnt + 1;
 				if ( soc_to_fpga_axilite_read_cpl_expect_value !== soc_to_fpga_axilite_read_cpl_captured) begin
 					$display($time, "=> test103_fpga_to_soc_cfg_read [ERROR] soc_to_fpga_axilite_read_cpl_expect_value=%x, soc_to_fpga_axilite_read_cpl_captured[27:0]=%x", soc_to_fpga_axilite_read_cpl_expect_value, soc_to_fpga_axilite_read_cpl_captured[27:0]);
 					error_cnt = error_cnt + 1;
@@ -937,20 +983,25 @@ module top_bench #( parameter BITS=32,
       wait(soc_to_fpga_mailbox_write_event.triggered);
 			$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event");
 			//Address part
+      check_cnt = check_cnt + 1;
 			if ( soc_to_fpga_mailbox_write_addr_expect_value !== soc_to_fpga_mailbox_write_addr_captured[27:0]) begin
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_addr_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[27:0]=%x", soc_to_fpga_mailbox_write_addr_expect_value, soc_to_fpga_mailbox_write_addr_captured[27:0]);
 				error_cnt = error_cnt + 1;
 			end	
 			else
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[27:0]=%x", soc_to_fpga_mailbox_write_addr_expect_value, soc_to_fpga_mailbox_write_addr_captured[27:0]);
+
 			//BE part
+      check_cnt = check_cnt + 1;
 			if ( soc_to_fpga_mailbox_write_addr_BE_expect_value !== soc_to_fpga_mailbox_write_addr_captured[31:28]) begin
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_addr_BE_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[31:28]=%x", soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_addr_captured[31:28]);
 				error_cnt = error_cnt + 1;
 			end	
 			else
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=%x, soc_to_fpga_mailbox_write_addr_captured[31:28]=%x", soc_to_fpga_mailbox_write_addr_BE_expect_value, soc_to_fpga_mailbox_write_addr_captured[31:28]);
+
 			//data part
+      check_cnt = check_cnt + 1;
 			if (soc_to_fpga_mailbox_write_data_expect_value !== soc_to_fpga_mailbox_write_data_captured) begin
 				$display($time, "=> wait_and_check_soc_to_fpga_mailbox_write_event [ERROR] soc_to_fpga_mailbox_write_data_expect_value=%x, soc_to_fpga_mailbox_write_data_captured=%x", soc_to_fpga_mailbox_write_data_expect_value, soc_to_fpga_mailbox_write_data_captured);
 				error_cnt = error_cnt + 1;
@@ -994,6 +1045,7 @@ module top_bench #( parameter BITS=32,
 endmodule // top_bench
 
 `default_nettype wire
+
 
 
 

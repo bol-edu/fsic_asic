@@ -178,6 +178,7 @@ trap 'on_error' ERR
 
 xvlog -d SIM \
       -d CPU_TRACE \
+      -d USER_PROJ_IRQ0_EN\
       -d DUNIT_DELAY=#1 \
       -d  UNIT_DELAY=#1 \
       -d FUNCTIONAL \
@@ -231,3 +232,4 @@ else
 fi
 
 # xsim caravel_tb_elab -R
+
