@@ -17,18 +17,18 @@ function help() {
 # $1 source file list
 # $2 target directory
 function cp_file_list() {
-  echo "enter cp_file_list()"  
+  # echo "enter cp_file_list()"  
   rtld=`pwd`
-  echo "pwd = rtld = $rtld"
+  # echo "pwd = rtld = $rtld"
   src_fl=$1
   trg_dr=$2
-  echo "src_fl = $src_fl"
-  echo "trg_dr = $trg_dr"
-  enter_flag="0"
-  echo "init enter_flag = $enter_flag"
+  # echo "src_fl = $src_fl"
+  # echo "trg_dr = $trg_dr"
+  # enter_flag=0
+  # echo "init enter_flag = $enter_flag"
   while read -r line || [ -n "$line" ]
   do
-    # enter_flag="1"
+    # enter_flag=1
     # echo "set enter_flag = $enter_flag"
     # echo $line
     if [[ "$line" =~ ^\s*\/\/ ]] ; then
@@ -109,6 +109,10 @@ function cp_file_list() {
     fi
   done < $src_fl
   # echo "check enter_flag = $enter_flag"
+  # if [ $enter_flag == 0 ]; then
+  #   echo "detect enter_flag = 0"
+  #   exit
+  # fi
   # echo "exit cp_file_list()"  
 }
 
