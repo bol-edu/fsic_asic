@@ -1,5 +1,8 @@
 #!/bin/bash 
 
+# enable bash debug by remove the comment for set -xv
+# set -xv
+
 # source /mnt/sdb2/CAD/Xilinx/Vivado/2021.2/settings64.sh
 # source /home/CAD/Xilinx/Vitis/Vivado/2022.2/settings64.sh
 

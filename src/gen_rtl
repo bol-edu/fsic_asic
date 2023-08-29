@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# enable bash debug by remove the comment for set -xv
+# set -xv
+
 year=`date +%Y`
 mont=`date +%m`
 days=`date +%d`
