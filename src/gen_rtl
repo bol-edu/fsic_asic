@@ -17,15 +17,27 @@ function help() {
 # $1 source file list
 # $2 target directory
 function cp_file_list() {
+  echo "enter cp_file_list()"  
+  rtld=`pwd`
+  echo "pwd = rtld = $rtld"
   src_fl=$1
   trg_dr=$2
-  while read -r line
+  echo "src_fl = $src_fl"
+  echo "trg_dr = $trg_dr"
+  enter_flag="0"
+  echo "init enter_flag = $enter_flag"
+  while read -r line || [ -n "$line" ]
   do
+    # enter_flag="1"
+    # echo "set enter_flag = $enter_flag"
+    # echo $line
     if [[ "$line" =~ ^\s*\/\/ ]] ; then
+      # echo "line include //"
       continue
     fi
 
     if [ "$line" == "" ] ; then
+      # echo "line is empty"
       continue
     fi
 
@@ -40,51 +52,55 @@ function cp_file_list() {
 
       dos2unix $flst
  
-    # echo "===="
+      # echo "===="
       dirn=`dirname $flst`
-    # echo $flst
       filn=`basename $flst`
-    # echo $dirn 
-    # rtld=`pwd`
-    # $rtld=$rtld
+      rtld=`pwd`
+      # echo "flst = $flst"
+      # echo "dirn = $dirn"
+      # echo "filn = $filn"
+      # echo "pwd = rtld = $rtld"
+      # echo "run cp_file_list $filn $trg_dr"
       pushd . > /dev/null ; cd $dirn ; cp_file_list $filn $trg_dr ; popd > /dev/null
-    # echo "===="
+      # echo "===="
     else
-    # if [ ! -e $line ]; then
-    #   echo "File: $line not exist"
-    #   exit
-    # fi
-    # echo "Not Found -f"
-    # src=`eval echo $line`
+      if [ ! -e $line ]; then
+        echo "File: $line not exist"
+        exit
+      fi
+      # echo "Not Found -f"
+      # src=`eval echo $line`
+      # echo $line
       src=`eval echo $line`
       curd=`pwd`
       # echo $src $curd
       if [ ! -f $src ]; then
-      # echo "+++++++"
-      # echo $line
+        # echo "+++++++"
+        # echo $line
         curd=`pwd`
-      # echo $src
-      # ls -al
-      # ls $src
-      # ls $line
-      # echo "File: $src not exist at $curd"
+        # echo $src
+        # ls -al
+        # ls $src
+        # ls $line
+        echo "File: $src not exist at $curd"
         echo -n "File: "
         echo -n $src
         echo " not exist at $curd"
-      # echo "+++++++"
+        echo "+++++++"
         exit
       fi
-    # echo $src
-    # echo "++++++++++++++"
+      # echo $src
+      # echo "++++++++++++++"
       srf=`basename $src`
-    # echo $srf
-    # echo "++++++++++++++"
+      # echo $srf
+      # echo "++++++++++++++"
+      # echo "cp -f $src $trg_dr"
       cp -f $src $trg_dr
-    # curd=`pwd`
-    # echo "++++++++++++++"
-    # ls -al $src
-    # echo "$curd"
-    # echo "++++++++++++++"
+      # curd=`pwd`
+      # echo "++++++++++++++"
+      # ls -al $src
+      # echo "$curd"
+      # echo "++++++++++++++"
       #+ do post-processing here
       sed -i -e "/Release/s/MMDDYYYY/$date/"  $trg_dr/$srf
     # sed -i -e "/default_nettype/s/^/\/\/ /" $trg_dr/$srf
@@ -92,6 +108,8 @@ function cp_file_list() {
       chmod 0444 $trg_dr/$srf
     fi
   done < $src_fl
+  # echo "check enter_flag = $enter_flag"
+  # echo "exit cp_file_list()"  
 }
 
 
@@ -140,7 +158,7 @@ fi
 # echo "====================================="
 
 
-while read -r line
+while read -r line || [ -n "$line" ]
 do
 # echo "-------------------------------------"
 # echo $line
