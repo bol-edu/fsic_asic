@@ -57,7 +57,7 @@ function add_io_wire {
   else
     curd=`pwd`
     echo "File: $trgf not found at $curd"
-    exit
+    exit 1
   fi
 }
 
@@ -82,9 +82,12 @@ function add_io_wire {
 # rm -f counter_la.elf
 
 
+# enable trap for detect error in xvlog, xelab, gen_hex 
+trap 'on_error' ERR
+
 # pushd . ; cd ../../../src ; ./gen_rtl src.f      ../dsn/rtl  ; popd
-  pushd . ; cd ../../../src ; ./gen_rtl src.user.f ../dsn/rtl  ; popd
-# pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ../dsn/gate ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl src.user.f ../dsn/rtl  ; popd
+  pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ../dsn/gate ; popd
 
 
 # ----------------------------------------------------------------------
@@ -164,18 +167,18 @@ if [ -e ../tests/$testname/bench_ini.svh ]; then
  cp ../tests/$testname/bench_ini.svh ./
 else
  echo "File: ../tests/$testname/bench_ini.svh not found"
- exit
+ exit 1
 fi
 
 if [ -e ../tests/$testname/bench_vec.svh ]; then
  cp ../tests/$testname/bench_vec.svh ./
 else
  echo "File: ../tests/$testname/bench_vec.svh not found"
- exit
+ exit 1
 fi
 
 # enable trap for detect error in xvlog, xelab, gen_hex 
-trap 'on_error' ERR
+# trap 'on_error' ERR
 
 # FUNCTIONAL, USE_POWER_PINS : defined macro flag used in I/O Library
 
@@ -207,7 +210,7 @@ if [ -e ../tests/$testname/$testname.c ]; then
  pushd . ; cd ../tests/$testname ; ./gen_hex ; popd
 else
  echo "File: ../tests/$testname/$testname.c not found"
- exit
+ exit 1
 fi
 
 if [ -e ../tests/$testname/$testname.hex ]; then
@@ -215,7 +218,7 @@ if [ -e ../tests/$testname/$testname.hex ]; then
  cp ../tests/$testname/$testname.hex  ./riscv.hex
 else
  echo "File: ../tests/$testname/$testname.hex not found, CPU image compile failed"
- exit
+ exit 1
 fi
 
 # run RTL simulation

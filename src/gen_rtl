@@ -50,7 +50,7 @@ function cp_file_list() {
       if [ ! -f $flst ]; then
         curd=`pwd`
         echo "Filelist: $flst not exist at $curd"
-        exit
+        exit 1
       fi
 
       dos2unix $flst
@@ -69,7 +69,7 @@ function cp_file_list() {
     else
       if [ ! -e $line ]; then
         echo "File: $line not exist"
-        exit
+        exit 1
       fi
       # echo "Not Found -f"
       # src=`eval echo $line`
@@ -90,7 +90,7 @@ function cp_file_list() {
         echo -n $src
         echo " not exist at $curd"
         echo "+++++++"
-        exit
+        exit 1
       fi
       # echo $src
       # echo "++++++++++++++"
@@ -114,7 +114,7 @@ function cp_file_list() {
   # echo "check enter_flag = $enter_flag"
   # if [ $enter_flag == 0 ]; then
   #   echo "detect enter_flag = 0"
-  #   exit
+  #   exit 1
   # fi
   # echo "exit cp_file_list()"  
 }
@@ -133,7 +133,7 @@ if [ $# -lt 1 ]; then
 else
   if [[ "$1" =~ '-h' ]]; then
     help
-    exit
+    exit 1
   else
     srcf=$1
     tdir=$2
@@ -143,7 +143,7 @@ else
     pwd
 #   if [ "$dirn" != "." ]; then
 #     echo "source file can only be local"
-#     exit
+#     exit 1
 #   fi
   fi
 fi
@@ -153,7 +153,7 @@ if [ -f $fnam ]; then
   srcf=$fnam
 else
   echo "File: $srcf not exist"
-  exit
+  exit 1
 fi
 
 
@@ -204,7 +204,7 @@ do
     if [ ! -f $flst ]; then
       curd=`pwd`
       echo "Filelist: $flst not exist at $curd"
-      exit
+      exit 1
     fi
 
     dos2unix $flst
@@ -226,14 +226,14 @@ do
   else
   # if [ ! -f $line ]; then
   #   echo "File: $line not exist"
-  #   exit
+  #   exit 1
   # fi
   # echo "Not Found -f"
     src=`eval echo $line`
     if [ ! -f $src ]; then
       curd=`pwd`
       echo "File: $src not exist at $curd"
-      exit
+      exit 1
     fi
   # echo $src
   # echo "---------"
