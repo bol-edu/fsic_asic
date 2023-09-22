@@ -33,7 +33,8 @@
    ../../dsn/rtl/fsic_io_serdes_rx.v
 
 // logic_analyzer
-   ../../dsn/rtl/logic_anlz.dummy_io.vd
+   ../../dsn/rtl/LogicAnalyzer.v
+   ../../dsn/rtl/Sram.v
 
 // mprj_io
    ../../dsn/rtl/mprj_io.sv
