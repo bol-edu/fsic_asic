@@ -41,6 +41,10 @@
 
 // user_subsys
    ../../dsn/rtl/user_subsys.all.v
+   ../../dsn/rtl/user_prj0.v
+   ../../dsn/rtl/user_prj1.v
+   ../../dsn/rtl/user_prj2.v
+   ../../dsn/rtl/user_prj3.v
 
    ../../dsn/rtl/fsic.vo
    ../../dsn/rtl/user_project_wrapper.v
