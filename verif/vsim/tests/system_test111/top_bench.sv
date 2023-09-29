@@ -160,7 +160,7 @@ module top_bench #( parameter BITS=32,
 	wire [1:0] fpga_is_as_tuser;
 	wire fpga_is_as_tready;		//when remote side axis switch Rxfifo size <= threshold then is_as_tready=0, this flow control mechanism is for notify local side do not provide data with as_is_tvalid=1
 
-  reg [27:0] fpga_axilite_write_addr;
+	reg [27:0] fpga_axilite_write_addr;
 
 	reg[27:0] soc_to_fpga_mailbox_write_addr_expect_value;
 	reg[3:0] soc_to_fpga_mailbox_write_addr_BE_expect_value;
@@ -169,6 +169,8 @@ module top_bench #( parameter BITS=32,
 	reg [31:0] soc_to_fpga_mailbox_write_data_captured;
 	event soc_to_fpga_mailbox_write_event;
 
+    reg stream_data_addr_or_data; //0: address, 1: data, use to identify the write transaction from AA.
+	
 	reg [31:0] soc_to_fpga_axilite_read_cpl_expect_value;
 	reg [31:0] soc_to_fpga_axilite_read_cpl_captured;
 	event soc_to_fpga_axilite_read_cpl_event;
@@ -338,18 +340,28 @@ module top_bench #( parameter BITS=32,
 
 
 	initial begin		//when soc cfg write to AA, then AA in soc generate soc_to_fpga_mailbox_write, 
+		stream_data_addr_or_data = 0;
 		while (1) begin
+			//New AA version, all stream data with last = 1. 
 			@(posedge fpga_coreclk);
-			if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_AA && fpga_is_as_tuser == TUSER_AXILITE_WRITE && fpga_is_as_tlast == 0) begin
-				$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
-				soc_to_fpga_mailbox_write_addr_captured = fpga_is_as_tdata ;		//use block assignment
-				$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
-				@(posedge fpga_coreclk);
-				$display($time, "=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
-				soc_to_fpga_mailbox_write_data_captured = fpga_is_as_tdata ;		//use block assignment
-				$display($time, "=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
-				->> soc_to_fpga_mailbox_write_event;
-				$display($time, "=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event");
+			if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_AA && fpga_is_as_tuser == TUSER_AXILITE_WRITE && fpga_is_as_tlast == 1) begin
+				if(stream_data_addr_or_data == 1'b0) begin
+					//Address
+					$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
+					soc_to_fpga_mailbox_write_addr_captured = fpga_is_as_tdata ;		//use block assignment
+					$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
+                    //Next should be data
+                    stream_data_addr_or_data = 1; 
+                end else begin
+                    //Data
+					$display($time, "=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
+					soc_to_fpga_mailbox_write_data_captured = fpga_is_as_tdata ;		//use block assignment
+					$display($time, "=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
+					->> soc_to_fpga_mailbox_write_event;
+					$display($time, "=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event");
+                    //Next should be address
+                    stream_data_addr_or_data = 0;
+				end	
 
 			end	
 		end
@@ -1045,6 +1057,7 @@ module top_bench #( parameter BITS=32,
 endmodule // top_bench
 
 `default_nettype wire
+
 
 
 

@@ -2,8 +2,8 @@
 # xsim v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Sep 29 12:27:05 2023
-# Process ID: 188888
+# Start of session at: Fri Sep 29 14:14:51 2023
+# Process ID: 261487
 # Current directory: /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim
 # Command line: xsim -mode tcl -source {xsim.dir/caravel_asic/xsim_script.tcl}
 # Log file: /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim/xsim.log
@@ -18,6 +18,65 @@ WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_data_in was not found i
 WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_oenb was not found in the design.
 WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_data_out was not found in the design.
 WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_up_data was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_wstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_waddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_rstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_raddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_rdone was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_start was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_nordy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_done was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_tlast was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_wr_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_wr_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_rd_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_rd_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_clear was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_last was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_data_in was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_data_out was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_wr_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_wr_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_rd_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_rd_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_clear was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_last was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_data_in was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_data_out was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_trans_typ was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/enough_ls_data was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/enough_ss_data was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/read_padding_zero was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_waddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_raddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_wdata was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_wstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_tdata was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_tuser was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_tdata_old was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/ss_data_cnt was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_LS_WIDTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_LS_DEPTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_SS_WIDTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_SS_DEPTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_wstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_wdone was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_rstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_rdone was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_start was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_nordy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_done was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_tlast was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_waddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_raddr was not found in the design.
 source log_wave.tcl
 ## log_wave -quiet -verbose -recursive *
 ## run all
@@ -74,94 +133,94 @@ test111: test111_soc_to_fpga_mailbox_write - loop 00
   3000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0030
   3100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0031
   3200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0032
-             3213463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =xxxxxxxx, fpga_is_as_tdata=f0002000
-             3213463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002000
-             3213563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =xxxxxxxx, fpga_is_as_tdata=5a5a5a5a
-             3213563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
-             3213563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             3213563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             3213563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002000, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002000
-             3213563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             3213563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
+             3213563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =xxxxxxxx, fpga_is_as_tdata=f0002000
+             3213563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002000
+             3214163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =xxxxxxxx, fpga_is_as_tdata=5a5a5a5a
+             3214163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
+             3214163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             3214163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             3214163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002000, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002000
+             3214163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             3214163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
 -----------------
   3300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0033
-             3307463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002000
-             3307463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002000
-             3307563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
-             3307563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
-             3307563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             3307563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             3307563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002000, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002000
-             3307563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             3307563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
+             3307563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002000
+             3307563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002000
+             3308163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
+             3308163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
+             3308163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             3308163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             3308163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002000, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002000
+             3308163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             3308163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
 -----------------
   3400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0034
   3500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0035
-             3509463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002004
-             3509463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
-             3509563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=5a5a5a5a
-             3509563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
-             3509563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             3509563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             3509563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
-             3509563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             3509563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
+             3509563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002000, fpga_is_as_tdata=f0002004
+             3509563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
+             3510163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=5a5a5a5a
+             3510163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
+             3510163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             3510163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             3510163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
+             3510163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             3510163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
 -----------------
   3600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0036
-             3603463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
-             3603463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
-             3603563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
-             3603563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
-             3603563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             3603563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             3603563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
-             3603563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             3603563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
+             3603563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
+             3603563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
+             3604163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
+             3604163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
+             3604163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             3604163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             3604163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
+             3604163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             3604163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
 -----------------
   3700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0037
   3800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0038
-             3805463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002008
-             3805463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f0002008
-             3805563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=5a5a5a5a
-             3805563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
-             3805563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             3805563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             3805563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002008, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002008
-             3805563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             3805563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
+             3805563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002008
+             3805563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f0002008
+             3806163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=5a5a5a5a
+             3806163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
+             3806163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             3806163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             3806163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002008, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002008
+             3806163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             3806163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
 -----------------
-             3899463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f0002008
-             3899463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f0002008
-             3899563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
-             3899563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
-             3899563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             3899563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             3899563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002008, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002008
-             3899563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             3899563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
+             3899563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f0002008
+             3899563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f0002008
+             3900163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
+             3900163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
+             3900163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             3900163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             3900163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002008, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002008
+             3900163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             3900163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
 -----------------
   3900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0039
   4000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0040
   4100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0041
-             4101463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f000200c
-             4101463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f000200c, fpga_is_as_tdata=f000200c
-             4101563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=5a5a5a5a
-             4101563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
-             4101563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             4101563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             4101563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=000200c, soc_to_fpga_mailbox_write_addr_captured[27:0]=000200c
-             4101563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             4101563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
+             4101563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002008, fpga_is_as_tdata=f000200c
+             4101563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f000200c, fpga_is_as_tdata=f000200c
+             4102163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=5a5a5a5a
+             4102163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
+             4102163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             4102163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             4102163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=000200c, soc_to_fpga_mailbox_write_addr_captured[27:0]=000200c
+             4102163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             4102163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
 -----------------
-             4195463=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f000200c, fpga_is_as_tdata=f000200c
-             4195463=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f000200c, fpga_is_as_tdata=f000200c
-             4195563=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
-             4195563=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
-             4195563=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             4195563=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             4195563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=000200c, soc_to_fpga_mailbox_write_addr_captured[27:0]=000200c
-             4195563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             4195563=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
+             4195563=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f000200c, fpga_is_as_tdata=f000200c
+             4195563=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f000200c, fpga_is_as_tdata=f000200c
+             4196163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=a5a5a5a5
+             4196163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =a5a5a5a5, fpga_is_as_tdata=a5a5a5a5
+             4196163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             4196163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             4196163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=000200c, soc_to_fpga_mailbox_write_addr_captured[27:0]=000200c
+             4196163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             4196163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=a5a5a5a5, soc_to_fpga_mailbox_write_data_captured=a5a5a5a5
 -----------------
   4200450.000ns MSG top_bench, +1000 cycles, finish_flag=1,  repeat_cnt=0042
 =============================================================================================
@@ -171,8 +230,8 @@ test111: test111_soc_to_fpga_mailbox_write - loop 00
 =============================================================================================
 =============================================================================================
 =============================================================================================
-$finish called at time : 4200450 ns : File "/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/tests/system_test111/top_bench.sv" Line 307
-run: Time (s): cpu = 00:02:20 ; elapsed = 00:02:27 . Memory (MB): peak = 2037.621 ; gain = 0.000 ; free physical = 5250 ; free virtual = 57465
+$finish called at time : 4200450 ns : File "/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/tests/system_test111/top_bench.sv" Line 309
+run: Time (s): cpu = 00:02:23 ; elapsed = 00:02:31 . Memory (MB): peak = 2037.621 ; gain = 0.000 ; free physical = 5084 ; free virtual = 57486
 ## quit
-INFO: xsimkernel Simulation Memory Usage: 338844 KB (Peak: 338844 KB), Simulation CPU Usage: 82940 ms
-INFO: [Common 17-206] Exiting xsim at Fri Sep 29 12:29:57 2023...
+INFO: xsimkernel Simulation Memory Usage: 338744 KB (Peak: 338744 KB), Simulation CPU Usage: 88870 ms
+INFO: [Common 17-206] Exiting xsim at Fri Sep 29 14:17:46 2023...

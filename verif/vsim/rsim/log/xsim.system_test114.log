@@ -2,8 +2,8 @@
 # xsim v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri Sep 29 12:40:02 2023
-# Process ID: 200109
+# Start of session at: Fri Sep 29 14:27:59 2023
+# Process ID: 272966
 # Current directory: /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim
 # Command line: xsim -mode tcl -source {xsim.dir/caravel_asic/xsim_script.tcl}
 # Log file: /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim/xsim.log
@@ -18,6 +18,65 @@ WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_data_in was not found i
 WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_oenb was not found in the design.
 WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_data_out was not found in the design.
 WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_up_data was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_wstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_waddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_rstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_raddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_rdone was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_start was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_nordy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_done was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_tlast was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_wr_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_wr_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_rd_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_rd_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_clear was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_last was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_data_in was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ls_data_out was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_wr_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_wr_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_rd_vld was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_rd_rdy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_clear was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_last was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_data_in was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_ss_data_out was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_trans_typ was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/enough_ls_data was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/enough_ss_data was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/read_padding_zero was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_waddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_raddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_wdata was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_wstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_tdata was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_tuser was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/fifo_out_tdata_old was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/ss_data_cnt was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_LS_WIDTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_LS_DEPTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_SS_WIDTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FIFO_SS_DEPTH was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_wstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_wdone was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_rstart was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_rdone was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_start was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_nordy was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_done was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_tlast was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_tstrb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_tkeep was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_waddr was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_raddr was not found in the design.
 source log_wave.tcl
 ## log_wave -quiet -verbose -recursive *
 ## run all
@@ -89,9 +148,9 @@ test114: TX/RX test - loop 00
   4300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0043
   4400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0044
   4500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0045
-             4599550=> detect uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]=1
-             4599563=> test114_fpga_to_soc_CFG_write start
-             4599763=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = 0002000, be=f, data = 00000001
+             4599750=> detect uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]=1
+             4599763=> test114_fpga_to_soc_CFG_write start
+             4599963=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = 0002000, be=f, data = 00000001
   4600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0046
   4700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0047
   4800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0048
@@ -105,17 +164,17 @@ test114: TX/RX test - loop 00
   5600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0056
   5700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0057
   5800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0058
-             5801063=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =xxxxxxxx, fpga_is_as_tdata=f0002004
-             5801063=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
-             5801163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =xxxxxxxx, fpga_is_as_tdata=00000001
-             5801163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =00000001, fpga_is_as_tdata=00000001
-             5801163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
-             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=00000001, soc_to_fpga_mailbox_write_data_captured=00000001
+             5801363=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =xxxxxxxx, fpga_is_as_tdata=f0002004
+             5801363=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
+             5801963=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =xxxxxxxx, fpga_is_as_tdata=00000001
+             5801963=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =00000001, fpga_is_as_tdata=00000001
+             5801963=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             5801963=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             5801963=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
+             5801963=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             5801963=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=00000001, soc_to_fpga_mailbox_write_data_captured=00000001
 -----------------
-             5801263=> test114_fpga_to_soc_CFG_write wait 320us
+             5802063=> test114_fpga_to_soc_CFG_write wait 320us
   5900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0059
   6000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0060
   6100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0061
@@ -124,7 +183,7 @@ test114: TX/RX test - loop 00
   6400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0064
   6500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0065
   6600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0066
-             6601463=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = 0002000, be=f, data = 5a5a5a5a
+             6602263=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = 0002000, be=f, data = 5a5a5a5a
   6700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0067
   6800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0068
   6900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0069
@@ -139,15 +198,15 @@ test114: TX/RX test - loop 00
   7800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0078
              7805363=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
              7805363=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
-             7805463=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =00000001, fpga_is_as_tdata=5a5a5a5a
-             7805463=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
-             7805463=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
-             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
-             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
-             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
-             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
+             7806463=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =00000001, fpga_is_as_tdata=5a5a5a5a
+             7806463=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
+             7806463=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             7806463=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             7806463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
+             7806463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             7806463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
 -----------------
-             7805563=> test114_fpga_to_soc_CFG_write done
+             7806563=> test114_fpga_to_soc_CFG_write done
   7900450.000ns MSG top_bench, +1000 cycles, finish_flag=1,  repeat_cnt=0079
 =============================================================================================
 =============================================================================================
@@ -156,8 +215,8 @@ test114: TX/RX test - loop 00
 =============================================================================================
 =============================================================================================
 =============================================================================================
-$finish called at time : 7900450 ns : File "/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/tests/system_test114/top_bench.sv" Line 307
-run: Time (s): cpu = 00:04:43 ; elapsed = 00:04:51 . Memory (MB): peak = 2037.621 ; gain = 0.000 ; free physical = 2293 ; free virtual = 57458
+$finish called at time : 7900450 ns : File "/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/tests/system_test114/top_bench.sv" Line 309
+run: Time (s): cpu = 00:04:46 ; elapsed = 00:04:55 . Memory (MB): peak = 2037.621 ; gain = 0.000 ; free physical = 2047 ; free virtual = 57424
 ## quit
-INFO: xsimkernel Simulation Memory Usage: 338856 KB (Peak: 338856 KB), Simulation CPU Usage: 159080 ms
-INFO: [Common 17-206] Exiting xsim at Fri Sep 29 12:45:18 2023...
+INFO: xsimkernel Simulation Memory Usage: 338756 KB (Peak: 338756 KB), Simulation CPU Usage: 164490 ms
+INFO: [Common 17-206] Exiting xsim at Fri Sep 29 14:33:19 2023...
