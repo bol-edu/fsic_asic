@@ -1,0 +1,163 @@
+#-----------------------------------------------------------
+# xsim v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Fri Sep 29 12:40:02 2023
+# Process ID: 200109
+# Current directory: /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim
+# Command line: xsim -mode tcl -source {xsim.dir/caravel_asic/xsim_script.tcl}
+# Log file: /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim/xsim.log
+# Journal file: /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim/xsim.jou
+# Running On: ubuntu5, OS: Linux, CPU Frequency: 2200.000 MHz, CPU Physical cores: 32, Host memory: 67323 MB
+#-----------------------------------------------------------
+source xsim.dir/caravel_asic/xsim_script.tcl
+# xsim {caravel_asic} -autoloadwcfg -tclbatch {log_wave.tcl}
+Time resolution is 1 ps
+open_wave_config /home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim/caravel_asic.wcfg
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_data_in was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_oenb was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_data_out was not found in the design.
+WARNING: Simulation object /top_bench/uut/mprj/u_fsic/la_up_data was not found in the design.
+source log_wave.tcl
+## log_wave -quiet -verbose -recursive *
+## run all
+Reading riscv.hex
+riscv.hex loaded into memory
+Memory 5 bytes = 0x6f 0x00 0x00 0x0b 0x13
+USER_PROJ_IRQ0 Test
+test114: TX/RX test - loop 00
+        0.000ns MSG top_bench, cpu_exec.log generated
+                   0=> 1st la_output=00000000000000000000000000000000
+                   0=> 2nd la_output=00000000000000000000000000000001
+                  40=> fpga POR Assert
+                  40=> fpga reset Assert
+                  80=> fpga POR De-Assert
+                 120=> fpga reset De-Assert
+                 550=> 1st la_output=00000000000000000000000000000000
+                 550=> 2nd la_output=00000000000000000000000000000000
+                 563=> fpga_as_to_is_init done
+      800.000ns MSG top_bench, Chip Reset# is released 
+                 963=> wait uut.mprj.u_fsic.U_IO_SERDES0.rxen
+   100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0001
+   200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0002
+   300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0003
+   400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0004
+   500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0005
+   600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0006
+   700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0007
+   800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0008
+   900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0009
+  1000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0010
+  1100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0011
+  1200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0012
+  1300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0013
+  1400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0014
+  1500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0015
+  1600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0016
+  1700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0017
+  1800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0018
+  1900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0019
+  2000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0020
+  2100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0021
+  2200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0022
+  2300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0023
+  2400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0024
+  2500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0025
+  2600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0026
+  2700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0027
+  2800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0028
+  2900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0029
+             2942275=> detect uut.mprj.u_fsic.U_IO_SERDES0.rxen=1
+             2942363=> fpga_cfg_write : fpga_axi_awaddr=0000, fpga_axi_awvalid=1, fpga_axi_awready=1, fpga_axi_wdata=00000001, axi_wstrb=1, fpga_axi_wvalid=1, fpga_axi_wready=1
+             2942363=> fpga rxen_ctl=1
+             2942863=> fpga_cfg_write : fpga_axi_awaddr=0000, fpga_axi_awvalid=1, fpga_axi_awready=1, fpga_axi_wdata=00000003, axi_wstrb=1, fpga_axi_wvalid=1, fpga_axi_wready=1
+             2942863=> fpga txen_ctl=1
+             2943303=> wait uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0] (interrupt enable bit)
+  3000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0030
+  3100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0031
+  3200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0032
+  3300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0033
+  3400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0034
+  3500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0035
+  3600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0036
+  3700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0037
+  3800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0038
+  3900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0039
+  4000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0040
+  4100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0041
+  4200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0042
+  4300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0043
+  4400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0044
+  4500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0045
+             4599550=> detect uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]=1
+             4599563=> test114_fpga_to_soc_CFG_write start
+             4599763=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = 0002000, be=f, data = 00000001
+  4600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0046
+  4700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0047
+  4800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0048
+  4900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0049
+  5000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0050
+  5100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0051
+  5200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0052
+  5300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0053
+  5400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0054
+  5500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0055
+  5600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0056
+  5700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0057
+  5800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0058
+             5801063=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =xxxxxxxx, fpga_is_as_tdata=f0002004
+             5801063=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
+             5801163=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =xxxxxxxx, fpga_is_as_tdata=00000001
+             5801163=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =00000001, fpga_is_as_tdata=00000001
+             5801163=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
+             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             5801163=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=00000001, soc_to_fpga_mailbox_write_data_captured=00000001
+-----------------
+             5801263=> test114_fpga_to_soc_CFG_write wait 320us
+  5900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0059
+  6000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0060
+  6100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0061
+  6200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0062
+  6300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0063
+  6400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0064
+  6500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0065
+  6600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0066
+             6601463=> test114_fpga_to_soc_CFG_write fpga_axilite_write_addr = 0002000, be=f, data = 5a5a5a5a
+  6700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0067
+  6800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0068
+  6900450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0069
+  7000450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0070
+  7100450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0071
+  7200450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0072
+  7300450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0073
+  7400450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0074
+  7500450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0075
+  7600450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0076
+  7700450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0077
+  7800450.000ns MSG top_bench, +1000 cycles, finish_flag=0,  repeat_cnt=0078
+             7805363=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
+             7805363=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =f0002004, fpga_is_as_tdata=f0002004
+             7805463=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =00000001, fpga_is_as_tdata=5a5a5a5a
+             7805463=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =5a5a5a5a, fpga_is_as_tdata=5a5a5a5a
+             7805463=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event
+             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event : got soc_to_fpga_mailbox_write_event
+             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_expect_value=0002004, soc_to_fpga_mailbox_write_addr_captured[27:0]=0002004
+             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_addr_BE_expect_value=f, soc_to_fpga_mailbox_write_addr_captured[31:28]=f
+             7805463=> wait_and_check_soc_to_fpga_mailbox_write_event [PASS] soc_to_fpga_mailbox_write_data_expect_value=5a5a5a5a, soc_to_fpga_mailbox_write_data_captured=5a5a5a5a
+-----------------
+             7805563=> test114_fpga_to_soc_CFG_write done
+  7900450.000ns MSG top_bench, +1000 cycles, finish_flag=1,  repeat_cnt=0079
+=============================================================================================
+=============================================================================================
+=============================================================================================
+             7900450=> Final result [PASS], check_cnt =          6, error_cnt = 0000
+=============================================================================================
+=============================================================================================
+=============================================================================================
+$finish called at time : 7900450 ns : File "/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/tests/system_test114/top_bench.sv" Line 307
+run: Time (s): cpu = 00:04:43 ; elapsed = 00:04:51 . Memory (MB): peak = 2037.621 ; gain = 0.000 ; free physical = 2293 ; free virtual = 57458
+## quit
+INFO: xsimkernel Simulation Memory Usage: 338856 KB (Peak: 338856 KB), Simulation CPU Usage: 159080 ms
+INFO: [Common 17-206] Exiting xsim at Fri Sep 29 12:45:18 2023...
