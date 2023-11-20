@@ -121,10 +121,7 @@ void main()
         reg_mprj_io_9  = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
         reg_mprj_io_8  = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
   #else //USER_PROJECT_SIDEBAND_SUPPORT	
-        //reg_mprj_io_37 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //IO_CLK from FPGA
-        reg_mprj_io_36 = GPIO_MODE_MGMT_STD_OUTPUT;
-        reg_mprj_io_35 = GPIO_MODE_MGMT_STD_OUTPUT;
-        reg_mprj_io_34 = GPIO_MODE_MGMT_STD_OUTPUT;
+        reg_mprj_io_34 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //IO_CLK from FPGA
         reg_mprj_io_33 = GPIO_MODE_USER_STD_OUTPUT;           //TX_CLK
         reg_mprj_io_32 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
 
