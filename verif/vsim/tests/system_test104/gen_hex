@@ -40,6 +40,7 @@ if [ -e $tstn.c ]; then
                           -Wl,-Bstatic,-T,../$tstn/sections.lds,--strip-discarded,--no-warn-rwx-segments \
                           -D__vexriscv__ \
                           -DUSER_PROJ_IRQ0_EN \
+                          -DUSER_PROJECT_SIDEBAND_SUPPORT \
                           -ffreestanding \
                           -nostdlib \
                           -o $tstn.elf \

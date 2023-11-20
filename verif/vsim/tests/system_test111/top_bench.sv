@@ -60,7 +60,8 @@
 `include "project_define.svh"
 
 module top_bench #( parameter BITS=32,
-		parameter pSERIALIO_WIDTH   = 12,
+    parameter pUSER_PROJECT_SIDEBAND_WIDTH   = 5,
+		parameter pSERIALIO_WIDTH   = 13,
 		parameter pADDR_WIDTH   = 15,
 		parameter pDATA_WIDTH   = 32,
 		parameter IOCLK_Period	= 10,
@@ -94,6 +95,14 @@ module top_bench #( parameter BITS=32,
 		localparam TID_UP_UP = 2'b00;
 		localparam TID_UP_AA = 2'b01;
 		localparam TID_UP_LA = 2'b10;
+    
+    localparam BASE_OFFSET = 8;
+    localparam RXD_OFFSET = BASE_OFFSET;
+    localparam RXCLK_OFFSET = RXD_OFFSET + pSERIALIO_WIDTH;
+    localparam TXD_OFFSET = RXCLK_OFFSET + 1;
+    localparam TXCLK_OFFSET = TXD_OFFSET + pSERIALIO_WIDTH;
+    localparam IOCLK_OFFSET = TXCLK_OFFSET + 1;
+    localparam TXRX_WIDTH = IOCLK_OFFSET - BASE_OFFSET + 1;
 
   wire        gpio;
   wire [37:0] mprj_io;
@@ -136,6 +145,9 @@ module top_bench #( parameter BITS=32,
 	wire fpga_txclk;
 	
 	reg [pDATA_WIDTH-1:0] fpga_as_is_tdata;
+  `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+    reg [pUSER_PROJECT_SIDEBAND_WIDTH-1:0] fpga_as_is_tupsb;
+  `endif
 	reg [3:0] fpga_as_is_tstrb;
 	reg [3:0] fpga_as_is_tkeep;
 	reg fpga_as_is_tlast;
@@ -152,6 +164,9 @@ module top_bench #( parameter BITS=32,
 //	wire fpga_Serial_Data_Out_tlast_tvalid_tready;		//flowcontrol
 
 	wire [pDATA_WIDTH-1:0] fpga_is_as_tdata;
+  `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+    wire [pUSER_PROJECT_SIDEBAND_WIDTH-1:0] fpga_is_as_tupsb;
+  `endif
 	wire [3:0] fpga_is_as_tstrb;
 	wire [3:0] fpga_is_as_tkeep;
 	wire fpga_is_as_tlast;
@@ -160,7 +175,7 @@ module top_bench #( parameter BITS=32,
 	wire [1:0] fpga_is_as_tuser;
 	wire fpga_is_as_tready;		//when remote side axis switch Rxfifo size <= threshold then is_as_tready=0, this flow control mechanism is for notify local side do not provide data with as_is_tvalid=1
 
-	reg [27:0] fpga_axilite_write_addr;
+  reg [27:0] fpga_axilite_write_addr;
 
 	reg[27:0] soc_to_fpga_mailbox_write_addr_expect_value;
 	reg[3:0] soc_to_fpga_mailbox_write_addr_BE_expect_value;
@@ -168,9 +183,8 @@ module top_bench #( parameter BITS=32,
 	reg [31:0] soc_to_fpga_mailbox_write_addr_captured;
 	reg [31:0] soc_to_fpga_mailbox_write_data_captured;
 	event soc_to_fpga_mailbox_write_event;
+  reg stream_data_addr_or_data; //0: address, 1: data, use to identify the write transaction from AA.
 
-    reg stream_data_addr_or_data; //0: address, 1: data, use to identify the write transaction from AA.
-	
 	reg [31:0] soc_to_fpga_axilite_read_cpl_expect_value;
 	reg [31:0] soc_to_fpga_axilite_read_cpl_captured;
 	event soc_to_fpga_axilite_read_cpl_event;
@@ -228,13 +242,36 @@ module top_bench #( parameter BITS=32,
   // TBD
   assign #2 rx_dat = 12'h000;
 
+// MPRJ_IO PIN PLANNING when pSERIALIO_WIDTH=13
+// --------------------------------
+// [20: 8]  I   RXD
+// [   21]  I   RXCLK
 
-    assign mprj_io[37] = io_clk;
-    assign mprj_io[20] = fpga_txclk;
-    assign mprj_io[19:8] = fpga_serial_txd;
+// --------------------------------
+// [34:22]  O   TXD
+// [   35]  O   TXCLK
 
-    assign soc_txclk = mprj_io[33];
-    assign soc_serial_txd = mprj_io[32:21];
+// --------------------------------
+// [   36]  I   IO_CLK
+
+// MPRJ_IO PIN PLANNING when pSERIALIO_WIDTH=12
+// --------------------------------
+// [19: 8]  I   RXD
+// [   20]  I   RXCLK
+
+// --------------------------------
+// [32:21]  O   TXD
+// [   33]  O   TXCLK
+
+// --------------------------------
+// [   34]  I   IO_CLK
+
+    assign mprj_io[IOCLK_OFFSET] = io_clk;
+    assign mprj_io[RXCLK_OFFSET] = fpga_txclk;
+    assign mprj_io[RXD_OFFSET +: pSERIALIO_WIDTH] = fpga_serial_txd;
+
+    assign soc_txclk = mprj_io[TXCLK_OFFSET];
+    assign soc_serial_txd = mprj_io[TXD_OFFSET +: pSERIALIO_WIDTH];
 
 
    initial begin
@@ -340,28 +377,28 @@ module top_bench #( parameter BITS=32,
 
 
 	initial begin		//when soc cfg write to AA, then AA in soc generate soc_to_fpga_mailbox_write, 
-		stream_data_addr_or_data = 0;
+    stream_data_addr_or_data = 0;
 		while (1) begin
-			//New AA version, all stream data with last = 1. 
 			@(posedge fpga_coreclk);
-			if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_AA && fpga_is_as_tuser == TUSER_AXILITE_WRITE && fpga_is_as_tlast == 1) begin
-				if(stream_data_addr_or_data == 1'b0) begin
-					//Address
-					$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
-					soc_to_fpga_mailbox_write_addr_captured = fpga_is_as_tdata ;		//use block assignment
-					$display($time, "=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
-                    //Next should be data
-                    stream_data_addr_or_data = 1; 
-                end else begin
-                    //Data
-					$display($time, "=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
-					soc_to_fpga_mailbox_write_data_captured = fpga_is_as_tdata ;		//use block assignment
-					$display($time, "=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
-					->> soc_to_fpga_mailbox_write_event;
-					$display($time, "=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event");
-                    //Next should be address
-                    stream_data_addr_or_data = 0;
-				end	
+			//New AA version, all stream data with last = 1.  
+      if (fpga_is_as_tvalid == 1 && fpga_is_as_tid == TID_UP_AA && fpga_is_as_tuser == TUSER_AXILITE_WRITE && fpga_is_as_tlast == 1) begin
+        if(stream_data_addr_or_data == 1'b0) begin
+            //Address
+            $display($time, "=> get soc_to_fpga_mailbox_write_addr_captured be : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
+            soc_to_fpga_mailbox_write_addr_captured = fpga_is_as_tdata ;		//use block assignment
+            $display($time, "=> get soc_to_fpga_mailbox_write_addr_captured af : soc_to_fpga_mailbox_write_addr_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_addr_captured, fpga_is_as_tdata);
+            //Next should be data
+            stream_data_addr_or_data = 1; 
+        end else begin
+            //Data
+            $display($time, "=> get soc_to_fpga_mailbox_write_data_captured be : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
+            soc_to_fpga_mailbox_write_data_captured = fpga_is_as_tdata ;		//use block assignment
+            $display($time, "=> get soc_to_fpga_mailbox_write_data_captured af : soc_to_fpga_mailbox_write_data_captured =%x, fpga_is_as_tdata=%x", soc_to_fpga_mailbox_write_data_captured, fpga_is_as_tdata);
+            #0 -> soc_to_fpga_mailbox_write_event;
+            $display($time, "=> soc_to_fpga_mailbox_write_data_captured : send soc_to_fpga_mailbox_write_event");                    
+            //Next should be address
+            stream_data_addr_or_data = 0;
+        end
 
 			end	
 		end
@@ -478,6 +515,7 @@ module top_bench #( parameter BITS=32,
 	);
 
 	fpga  #(
+		.pUSER_PROJECT_SIDEBAND_WIDTH(pUSER_PROJECT_SIDEBAND_WIDTH),
 		.pSERIALIO_WIDTH(pSERIALIO_WIDTH),
 		.pADDR_WIDTH(pADDR_WIDTH),
 		.pDATA_WIDTH(pDATA_WIDTH),
@@ -518,6 +556,9 @@ module top_bench #( parameter BITS=32,
 
 
 		.as_is_tdata(fpga_as_is_tdata),
+    `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+      .as_is_tupsb  (fpga_as_is_tupsb),
+    `endif
 		.as_is_tstrb(fpga_as_is_tstrb),
 		.as_is_tkeep(fpga_as_is_tkeep),
 		.as_is_tlast(fpga_as_is_tlast),
@@ -528,6 +569,9 @@ module top_bench #( parameter BITS=32,
 		.serial_txd(fpga_serial_txd),
 		.serial_rxd(soc_serial_txd),
 		.is_as_tdata(fpga_is_as_tdata),
+    `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+      .is_as_tupsb  (fpga_is_as_tupsb),
+    `endif
 		.is_as_tstrb(fpga_is_as_tstrb),
 		.is_as_tkeep(fpga_is_as_tkeep),
 		.is_as_tlast(fpga_is_as_tlast),
@@ -586,6 +630,9 @@ module top_bench #( parameter BITS=32,
 
 				#200;
 				fpga_as_is_tdata = 32'h5a5a5a5a;
+        `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+          fpga_as_is_tupsb = 5'h00;
+        `endif
 				#40;
 				#200;
     end
@@ -951,6 +998,9 @@ module top_bench #( parameter BITS=32,
 			//init fpga as to is signal, set fpga_as_is_tready = 1 for receives data from soc
 			@ (posedge fpga_coreclk);
 			fpga_as_is_tdata <=  32'h0;
+      `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+        fpga_as_is_tupsb <= 5'h00;
+      `endif
 			fpga_as_is_tstrb <=  4'b0000;
 			fpga_as_is_tkeep <=  4'b0000;
 			fpga_as_is_tid <=  TID_DN_UP;

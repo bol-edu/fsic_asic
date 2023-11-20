@@ -186,6 +186,7 @@ xvlog -d SIM \
       -d  UNIT_DELAY=#1 \
       -d FUNCTIONAL \
       -d USE_POWER_PINS \
+      -d USER_PROJECT_SIDEBAND_SUPPORT \
       -sv \
       -f ../env/bfm.lib.f \
       -f ../env/bfm.sys.f \

@@ -87,6 +87,40 @@ void main()
 	// logic analyzer probes.
 	// I/O 6 is configured for the UART Tx line
 
+  #ifdef USER_PROJECT_SIDEBAND_SUPPORT	
+        reg_mprj_io_36 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //IO_CLK from FPGA
+        reg_mprj_io_35 = GPIO_MODE_USER_STD_OUTPUT;           //TX_CLK
+        reg_mprj_io_34 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_33 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_32 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+
+
+        reg_mprj_io_31 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_30 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_29 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_28 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_27 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_26 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_25 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_24 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_23 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_22 = GPIO_MODE_USER_STD_OUTPUT;           //TXD
+        reg_mprj_io_21 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RX_CLK
+        reg_mprj_io_20 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_19 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_18 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_17 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_16 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+
+        reg_mprj_io_15 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_14 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_13 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_12 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_11 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_10 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_9  = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+        reg_mprj_io_8  = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+  #else //USER_PROJECT_SIDEBAND_SUPPORT	
         //reg_mprj_io_37 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //IO_CLK from FPGA
         reg_mprj_io_36 = GPIO_MODE_MGMT_STD_OUTPUT;
         reg_mprj_io_35 = GPIO_MODE_MGMT_STD_OUTPUT;
@@ -120,6 +154,8 @@ void main()
         reg_mprj_io_10 = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
         reg_mprj_io_9  = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
         reg_mprj_io_8  = GPIO_MODE_USER_STD_INPUT_PULLDOWN;   //RXD
+  
+  #endif //USER_PROJECT_SIDEBAND_SUPPORT	
 
         
         //mprj_io_0 ~ mprj_io_7 CANNOT control here
@@ -269,6 +305,7 @@ void main()
     
     while(1);
 }
+
 
 
 

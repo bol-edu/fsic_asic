@@ -20,7 +20,8 @@
 
 
 module fpga #(
-		parameter pSERIALIO_WIDTH   = 12,
+    parameter pUSER_PROJECT_SIDEBAND_WIDTH   = 5,
+		parameter pSERIALIO_WIDTH   = 13,
 		parameter pADDR_WIDTH   = 15,
 		parameter pDATA_WIDTH   = 32,
 		parameter pRxFIFO_DEPTH = 5,
@@ -61,6 +62,9 @@ module fpga #(
 
 		//TX path
 		input wire 	[pDATA_WIDTH-1:0] as_is_tdata,
+    `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+      input wire   [pUSER_PROJECT_SIDEBAND_WIDTH-1:0] as_is_tupsb,
+    `endif
 		input wire 	[(pDATA_WIDTH/8)-1:0] as_is_tstrb,
 		input wire 	[(pDATA_WIDTH/8)-1:0] as_is_tkeep,
 		input wire 	as_is_tlast,
@@ -77,6 +81,9 @@ module fpga #(
 		input  wire  [pSERIALIO_WIDTH-1: 0] serial_rxd,
 
 		output wire 	[pDATA_WIDTH-1:0] is_as_tdata,
+    `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+      output wire   [pUSER_PROJECT_SIDEBAND_WIDTH-1:0] is_as_tupsb,
+    `endif
 		output wire 	[(pDATA_WIDTH/8)-1:0] is_as_tstrb,
 		output wire 	[(pDATA_WIDTH/8)-1:0] is_as_tkeep,
 		output wire 	is_as_tlast,
@@ -94,7 +101,8 @@ module fpga #(
 
 
 
-IO_SERDES #(.pSERIALIO_WIDTH( 12 ),
+IO_SERDES #(.pUSER_PROJECT_SIDEBAND_WIDTH( pUSER_PROJECT_SIDEBAND_WIDTH ),
+            .pSERIALIO_WIDTH( pSERIALIO_WIDTH ),
             .pADDR_WIDTH( pADDR_WIDTH ),
             .pDATA_WIDTH( 32 ),
             .pRxFIFO_DEPTH( 5 ),
@@ -105,6 +113,9 @@ IO_SERDES #(.pSERIALIO_WIDTH( 12 ),
                                                   .axi_rdata    (axi_rdata_axi_rdata3),    // O  32
                                                   .axi_rvalid   (axi_rvalid_axi_rvalid3),  // O  
                                                   .is_as_tdata  (is_as_tdata),             // O  32
+                                                  `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+                                                    .is_as_tupsb  (is_as_tupsb),           // O  5
+                                                  `endif
                                                   .is_as_tstrb  (is_as_tstrb),             // O  4
                                                   .is_as_tkeep  (is_as_tkeep),             // O  4
                                                   .is_as_tlast  (is_as_tlast),             // O  
@@ -122,6 +133,9 @@ IO_SERDES #(.pSERIALIO_WIDTH( 12 ),
                                                   .axi_rready   (axi_rready_s_rready),     // I  
                                                   .cc_is_enable (cc_is_enable),            // I  
                                                   .as_is_tdata  (as_is_tdata),             // I  32
+                                                  `ifdef USER_PROJECT_SIDEBAND_SUPPORT
+                                                    .as_is_tupsb  (as_is_tupsb),           // I  5
+                                                  `endif
                                                   .as_is_tstrb  (as_is_tstrb),             // I  4
                                                   .as_is_tkeep  (as_is_tkeep),             // I  4
                                                   .as_is_tlast  (as_is_tlast),             // I  
@@ -142,5 +156,6 @@ IO_SERDES #(.pSERIALIO_WIDTH( 12 ),
 
 	
 endmodule
+
 
 
