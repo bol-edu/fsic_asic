@@ -37,16 +37,23 @@
    ../../dsn/rtl/Sram.v
 
 // mprj_io
-   ../../dsn/rtl/mprj_io.sv
+   ../../dsn/rtl/fsic_mprj_io.v
 
 // user_subsys
-   ../../dsn/rtl/user_subsys.all.v
+   ../../dsn/rtl/user_subsys.v
+   ../../dsn/rtl/axil_slav.v
+   ../../dsn/rtl/axis_mstr.v
+   ../../dsn/rtl/axis_slav.v
+   ../../dsn/rtl/irq_mux.v
+   ../../dsn/rtl/la_mux.v
    ../../dsn/rtl/user_prj0.v
+   ../../dsn/rtl/concat_EdgeDetect_Top_fsic.wire.v
+   ../../dsn/rtl/spram.wire.v
    ../../dsn/rtl/user_prj1.v
    ../../dsn/rtl/user_prj2.v
    ../../dsn/rtl/user_prj3.v
 
-   ../../dsn/rtl/fsic.vo
+   ../../dsn/rtl/fsic.v
    ../../dsn/rtl/user_project_wrapper.v
 // -------------------------------------------------
   
