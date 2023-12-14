@@ -1,4 +1,4 @@
-Two Steps:
+# for run bas and system_testxxx in Two Steps:
 
 1. ./run_xsim test_name
    Example: 
@@ -6,3 +6,7 @@ Two Steps:
 
 
 2. ./open_wave
+
+
+# for run edge_detect
+$ ./run_xsim_edge edge_detect

@@ -1,0 +1,240 @@
+#!/bin/bash 
+
+# enable bash debug by remove the comment for set -xv
+# set -xv
+
+# source /mnt/sdb2/CAD/Xilinx/Vivado/2021.2/settings64.sh
+# source /home/CAD/Xilinx/Vitis/Vivado/2022.2/settings64.sh
+
+xpath=`which xvlog`
+if [ "$xpath" == "" ]; then
+  echo "Could not found xvlog in current path environment"
+else
+  xpath=`echo $xpath | sed -e 's/bin\/xvlog/settings64.sh/'`
+# echo $xpath
+  source $xpath
+fi
+
+if [ $# -lt 1 ]; then
+  echo "No test name!"
+  echo "Example:"
+  echo "  run_simv basic"
+  exit 1
+fi
+
+on_error(){
+  echo "error occurred run_xsim"
+  exit 1
+}
+
+function add_input_wire {
+  trgf=$1
+  sed -e "s/^\s*input\s*/ input wire /" $trgf > /tmp/tmp.v
+  cp -f /tmp/tmp.v                      $trgf
+  rm /tmp/tmp.v
+}
+
+function add_inout_wire {
+  trgf=$1
+  sed -e "s/^\s*inout\s*/ inout wire /" $trgf > /tmp/tmp.v
+  cp -f /tmp/tmp.v                      $trgf
+  rm /tmp/tmp.v
+}
+
+function add_output_wire {
+  trgf=$1
+  port=$2
+  sed -e "s/^\s*output\s*$port/ output wire $port/" $trgf > /tmp/tmp.v
+  cp -f /tmp/tmp.v                                  $trgf
+  rm /tmp/tmp.v
+}
+
+function add_io_wire {
+  trgf=$1
+  fnam=`basename -s .v $trgf`
+  if [ -e $trgf ]; then
+    ./add_wire.pl $fnam.v  > $fnam.wire.v
+  else
+    curd=`pwd`
+    echo "File: $trgf not found at $curd"
+    exit
+  fi
+}
+
+
+
+# rm -f risc_v.hex
+# rm -rf xsim.dir/ *.log *.pb *.jou *.wdb
+
+# riscv32-unknown-elf-gcc -Wl,--no-warn-rwx-segments -g \
+#	-I../../firmware \
+#	-march=rv32i \
+#       -mabi=ilp32 \
+#       -D__vexriscv__ \
+#	-Wl,-Bstatic,-T,../../firmware/sections.lds,--strip-discarded \
+#	-ffreestanding -nostdlib -o counter_la.elf ../../firmware/crt0_vex.S ../../firmware/isr.c counter_la.c
+
+# riscv32-unknown-elf-objcopy -O verilog counter_la.elf risc_v.hex
+
+# to fix flash base address
+# sed -ie 's/@10/@00/g' risc_v.hex
+
+# rm -f counter_la.elf
+
+
+# pushd . ; cd ../../../src ; ./gen_rtl src.f      ../dsn/rtl  ; popd
+  pushd . ; cd ../../../src ; ./gen_rtl src.user.f ../dsn/rtl  ; popd
+# pushd . ; cd ../../../src ; ./gen_rtl src.gate.f ../dsn/gate ; popd
+
+
+# ----------------------------------------------------------------------
+# do some massage to collected code here
+# add_input_wire  ../../../dsn/rtl/debug_regs.v
+
+# add_input_wire  ../../../dsn/rtl/housekeeping_spi.v
+# add_output_wire ../../../dsn/rtl/housekeeping_spi.v SDO
+# add_output_wire ../../../dsn/rtl/housekeeping_spi.v pass_thru_mgmt_reset
+# add_output_wire ../../../dsn/rtl/housekeeping_spi.v pass_thru_user_reset
+ 
+# add_input_wire  ../../../dsn/rtl/digital_pll_controller.v
+# add_input_wire  ../../../dsn/rtl/ring_osc2x13.v
+# add_output_wire ../../../dsn/rtl/ring_osc2x13.v out
+
+# add_input_wire  ../../../dsn/rtl/clock_div.v
+# add_output_wire ../../../dsn/rtl/clock_div.v out
+
+# add_inout_wire  ../../../dsn/rtl/constant_block.v
+# add_output_wire ../../../dsn/rtl/constant_block.v one
+# add_output_wire ../../../dsn/rtl/constant_block.v zero
+
+  cd ../../../dsn/rtl
+# add_io_wire debug_regs.v
+# add_io_wire __user_project_wrapper.v
+# add_io_wire housekeeping_spi.v
+  add_io_wire housekeeping.v
+  add_io_wire mgmt_protect_hv.v
+  add_io_wire mgmt_protect.v
+  add_io_wire clock_div.v
+  add_io_wire caravel_clocking.v
+  add_io_wire buff_flash_clkrst.v
+# add_io_wire ring_osc2x13.v
+# add_io_wire digital_pll_controller.v
+  add_io_wire mgmt_core_wrapper.v
+  add_io_wire digital_pll.v
+  add_io_wire gpio_logic_high.v
+  add_io_wire gpio_signal_buffering.v
+  add_io_wire mprj_logic_high.v
+  add_io_wire mprj2_logic_high.v
+  add_io_wire pads.v
+  add_io_wire mprj_io_buffer.v
+  add_io_wire mprj_io.v
+  add_io_wire chip_io.v
+  add_io_wire gpio_defaults_block.v
+  add_io_wire gpio_control_block.v
+  add_io_wire constant_block.v
+  add_io_wire user_id_programming.v
+  add_io_wire simple_por.v
+  add_io_wire xres_buf.v
+  add_io_wire spare_logic_block.v
+  add_io_wire caravel_power_routing.v
+  add_io_wire copyright_block.v
+  add_io_wire caravel_motto.v
+  add_io_wire caravel_logo.v
+  add_io_wire open_source.v
+  add_io_wire user_id_textblock.v
+  add_io_wire caravel_core.v
+  add_io_wire caravel.v
+
+  sed -i "s/^\s*X\s*,// ; 29s/endif/endif\n        X/" xres_buf.wire.v
+
+  cd ../../verif/vsim/rsim
+
+# ----------------------------------------------------------------------
+# chg_fp down ../../../rtl/rtl.f  ./rtl.f
+# sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.f      > ./rtl.f
+  sed -e "s/\.\.\//..\/..\//" ../../../dsn/rtl/rtl.user.f > ./rtl.f
+
+#     -sourcelibdir ../../../ \
+#     -sourcelibext .v \
+
+testname=$1
+
+# copy test case environment setting
+if [ -e ../tests/$testname/bench_ini.svh ]; then
+ cp ../tests/$testname/bench_ini.svh ./
+else
+ echo "File: ../tests/$testname/bench_ini.svh not found"
+ exit
+fi
+
+if [ -e ../tests/$testname/bench_vec.svh ]; then
+ cp ../tests/$testname/bench_vec.svh ./
+else
+ echo "File: ../tests/$testname/bench_vec.svh not found"
+ exit
+fi
+
+# enable trap for detect error in xvlog, xelab, gen_hex 
+trap 'on_error' ERR
+
+# FUNCTIONAL, USE_POWER_PINS : defined macro flag used in I/O Library
+
+xvlog -d SIM \
+      -d CPU_TRACE \
+      -d USER_PROJ_IRQ0_EN\
+      -d DUNIT_DELAY=#1 \
+      -d  UNIT_DELAY=#1 \
+      -d FUNCTIONAL \
+      -d USE_POWER_PINS \
+      -d USER_PROJECT_SIDEBAND_SUPPORT \
+      -d USE_EDGEDETECT_IP \
+      -sv \
+      -f ../env/bfm.lib.f \
+      -f ../env/bfm.sys.f \
+      -f ../env/bfm.dsn.f \
+      -f ./rtl.f \
+      -i ../../../dsn/rtl \
+      -i ../env \
+      ../tests/$testname/top_bench.sv -log xvlog.log
+
+ss_name=caravel_asic
+
+xelab --timescale 1ns/10ps -debug typical -top top_bench -snapshot $ss_name
+
+# generate CPU boot image
+if [ -e ../tests/$testname/$testname.c ]; then
+ if [ -e ../tests/$testname/$testname.hex ]; then
+  rm ../tests/$testname/$testname.hex
+ fi 
+ pushd . ; cd ../tests/$testname ; ./gen_hex ; popd
+else
+ echo "File: ../tests/$testname/$testname.c not found"
+ exit
+fi
+
+if [ -e ../tests/$testname/$testname.hex ]; then
+ # loaded by BFM: spiflash
+ cp ../tests/$testname/$testname.hex  ./riscv.hex
+else
+ echo "File: ../tests/$testname/$testname.hex not found, CPU image compile failed"
+ exit
+fi
+
+# run RTL simulation
+# add --tl for zero simulation time debug
+if [ -e ./xsim.dir/$ss_name/xsimk ]; then
+  if [ -e riscv.hex ]; then
+  # xsim $ss_name --wdb caravel_asic.wdb -R
+  # -R means run all;quit
+  # xsim $ss_name -R --tclbatch log_wave.tcl
+    xsim $ss_name    --tclbatch log_wave.tcl
+    mv xsim.log xsim.$testname.log
+  else
+    echo "File: riscv.hex not found, failed at last stage"
+  fi
+else
+  echo "XSIM snapshot $ss_name not found"
+fi
+
+# xsim caravel_tb_elab -R
+
