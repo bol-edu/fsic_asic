@@ -195,12 +195,11 @@ xvlog -d SIM \
       -i ../../../dsn/rtl \
       -i ../env \
       -v 2   \
-      -work tony_test   \
       ../tests/$testname/top_bench.sv -log xvlog.log
 
 ss_name=caravel_asic
 
-xelab --timescale 1ns/10ps -debug typical tony_test.top_bench -snapshot $ss_name
+xelab --timescale 1ns/10ps -debug typical top_bench -snapshot $ss_name
 
 # generate CPU boot image
 if [ -e ../tests/$testname/$testname.c ]; then
