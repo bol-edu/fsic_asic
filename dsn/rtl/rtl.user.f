@@ -114,5 +114,5 @@
    ../../dsn/rtl/empty_macro.v
    ../../dsn/rtl/manual_power_connections.v
 
-   ../../dsn/rtl/caravel_core.wire.v
+//   ../../dsn/rtl/caravel_core.wire.v
    ../../dsn/rtl/caravel.wire.v

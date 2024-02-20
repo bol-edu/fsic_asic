@@ -107,7 +107,6 @@ module mgmt_protect (
 	wire mprj_vdd_logic1;
 	wire mprj2_vdd_logic1;
 
-
 	wire [127:0] la_data_in_mprj_bar;
 	wire [2:0] user_irq_bar;
 

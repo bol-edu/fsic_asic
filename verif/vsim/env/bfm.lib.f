@@ -61,4 +61,5 @@
 
 
    -sourcelibfile ../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v
+  //../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v
    -sourcelibfile ../models/cell/skywater/0.13/sky130_ef_io/sky130_ef_io.v
