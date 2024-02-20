@@ -194,6 +194,7 @@ xvlog -d SIM \
       -f ./rtl.f \
       -i ../../../dsn/rtl \
       -i ../env \
+      -v2   \
       ../tests/$testname/top_bench.sv -log xvlog.log
 
 ss_name=caravel_asic
