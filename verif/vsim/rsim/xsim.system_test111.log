@@ -2,8 +2,8 @@
 # xsim v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Tue Feb 20 14:41:56 2024
-# Process ID: 247710
+# Start of session at: Tue Feb 20 14:57:21 2024
+# Process ID: 260409
 # Current directory: /ADATA2T/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim
 # Command line: xsim -mode tcl -source {xsim.dir/caravel_asic/xsim_script.tcl}
 # Log file: /ADATA2T/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/rsim/xsim.log
@@ -198,7 +198,7 @@ test111: test111_soc_to_fpga_mailbox_write - loop 00
 =============================================================================================
 =============================================================================================
 $finish called at time : 4200450 ns : File "/ADATA2T/home/tonyho/workspace/fsic/fsic_asic/verif/vsim/tests/system_test111/top_bench.sv" Line 350
-run: Time (s): cpu = 00:02:20 ; elapsed = 00:02:28 . Memory (MB): peak = 2037.625 ; gain = 0.000 ; free physical = 538 ; free virtual = 56685
+run: Time (s): cpu = 00:02:21 ; elapsed = 00:02:31 . Memory (MB): peak = 2037.625 ; gain = 0.000 ; free physical = 1841 ; free virtual = 56593
 ## quit
-INFO: xsimkernel Simulation Memory Usage: 338740 KB (Peak: 338740 KB), Simulation CPU Usage: 83460 ms
-INFO: [Common 17-206] Exiting xsim at Tue Feb 20 14:44:49 2024...
+INFO: xsimkernel Simulation Memory Usage: 338740 KB (Peak: 338740 KB), Simulation CPU Usage: 88810 ms
+INFO: [Common 17-206] Exiting xsim at Tue Feb 20 15:00:17 2024...
