@@ -902,65 +902,6 @@ INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_sc_hd__buf'
 INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_sc_hd__nor2'
 INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_sc_hd__mux2'
 INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_sc_hd__dfbbp'
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/sky130_ef_io/sky130_ef_io.v" into library library 2
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vccd_hvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vccd_lvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vdda_lvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vdda_hvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vddio_lvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vddio_hvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssd_lvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssd_hvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssio_lvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssio_hvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssa_lvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssa_hvc_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__corner_pad
-INFO: [VRFC 10-311] analyzing module sky130_fd_io__com_bus_slice
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__com_bus_slice_1um
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__com_bus_slice_5um
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__com_bus_slice_10um
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__com_bus_slice_20um
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__gpiov2_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vddio_hvc_clamped_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssio_hvc_clamped_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vdda_hvc_clamped_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssa_hvc_clamped_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vccd_lvc_clamped_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssd_lvc_clamped_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vccd_lvc_clamped2_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssd_lvc_clamped2_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vccd_lvc_clamped3_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__vssd_lvc_clamped3_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__top_power_hvc
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__analog_pad
-INFO: [VRFC 10-311] analyzing module sky130_ef_io__gpiov2_pad_wrapped
-INFO: [VRFC 10-311] analyzing module sky130_ef_sc_hd__decap_12
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__corner_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vddio_hvc_clamped_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vssio_hvc_clamped_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vdda_hvc_clamped_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vssa_hvc_clamped_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vccd_lvc_clamped_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vssd_lvc_clamped_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vccd_lvc_clamped3_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__vssd_lvc_clamped3_pad'
-INFO: [VRFC 10-2855]       Resolving module 'sky130_ef_io__gpiov2_pad_wrapped'
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_power_hvc_wpadv2/sky130_fd_io__top_power_hvc_wpadv2.v" into library library 2
-INFO: [VRFC 10-311] analyzing module sky130_fd_io__top_power_hvc_wpadv2
-INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_io__top_power_hvc_wpadv2'
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_power_lvc_wpad/sky130_fd_io__top_power_lvc_wpad.v" into library library 2
-INFO: [VRFC 10-311] analyzing module sky130_fd_io__top_power_lvc_wpad
-INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_io__top_power_lvc_wpad'
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_ground_hvc_wpad/sky130_fd_io__top_ground_hvc_wpad.v" into library library 2
-INFO: [VRFC 10-311] analyzing module sky130_fd_io__top_ground_hvc_wpad
-INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_io__top_ground_hvc_wpad'
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_ground_lvc_wpad/sky130_fd_io__top_ground_lvc_wpad.v" into library library 2
-INFO: [VRFC 10-311] analyzing module sky130_fd_io__top_ground_lvc_wpad
-INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_io__top_ground_lvc_wpad'
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_io/latest/cells/top_gpiov2/sky130_fd_io__top_gpiov2.v" into library library 2
-INFO: [VRFC 10-311] analyzing module sky130_fd_io__top_gpiov2
-INFO: [VRFC 10-2855]       Resolving module 'sky130_fd_io__top_gpiov2'
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_sc_hd/latest/models/udp_pwrgood_pp_pg/sky130_fd_sc_hd__udp_pwrgood_pp_pg.v" into library library 2
 INFO: [VRFC 10-2855]       Resolving primitive 'sky130_fd_sc_hd__udp_pwrgood_pp_pg'
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_sc_hd/latest/models/udp_pwrgood_pp_p/sky130_fd_sc_hd__udp_pwrgood_pp_p.v" into library library 2
@@ -977,3 +918,7 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/
 INFO: [VRFC 10-2855]       Resolving primitive 'sky130_fd_sc_hd__udp_mux_4to2'
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/pdk/sky130_fd_sc_hd/latest/models/udp_mux_2to1/sky130_fd_sc_hd__udp_mux_2to1.v" into library library 2
 INFO: [VRFC 10-2855]       Resolving primitive 'sky130_fd_sc_hd__udp_mux_2to1'
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v" into library library 2
+INFO: [VRFC 10-311] analyzing module sky130_ef_sc_hd__decap_12
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v" into library library 2
+INFO: [VRFC 10-311] analyzing module sky130_ef_sc_hd__decap_12
