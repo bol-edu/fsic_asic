@@ -60,7 +60,7 @@
    --include      ../models/cell/skywater/0.13/pdk/sky130_fd_sc_hvl/latest/models/udp_pwrgood_pp_g
 
 
-  -sourcelibfile ../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v
+  //-sourcelibfile ../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v
   //../models/cell/skywater/0.13/sky130_fd_sc_hd/sky130_fd_sc_hd_wire.v
    //-sourcelibfile ../models/cell/skywater/0.13/sky130_ef_io/sky130_ef_io.v
-   ../models/cell/skywater/0.13/sky130_ef_io/sky130_ef_io.v
+   //../models/cell/skywater/0.13/sky130_ef_io/sky130_ef_io.v
