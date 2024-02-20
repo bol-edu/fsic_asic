@@ -188,7 +188,6 @@ xvlog -d SIM \
       -d USE_POWER_PINS \
       -d USER_PROJECT_SIDEBAND_SUPPORT \
       -sv \
-      -f ../env/bfm.lib.f \
       -f ../env/bfm.sys.f \
       -f ../env/bfm.dsn.f \
       -f ./rtl.f \
@@ -196,6 +195,7 @@ xvlog -d SIM \
       -i ../env \
       ../tests/$testname/top_bench.sv -log xvlog.log
 
+      #-f ../env/bfm.lib.f \
 ss_name=caravel_asic
 
 xelab --timescale 1ns/10ps -debug typical -top top_bench -snapshot $ss_name
