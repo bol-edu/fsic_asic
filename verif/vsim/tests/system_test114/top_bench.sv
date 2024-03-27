@@ -805,9 +805,9 @@ module top_bench #( parameter BITS=32,
 					fpga_apply_reset(40,40);		//fix coreclk phase in fpga
 				join
         init_fpga_as();
-				$display($time, "=> wait uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0] (interrupt enable bit)");
-        wait(uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]); //wait interrupt enable bit = 1
-				$display($time, "=> detect uut.mprj.u_fsic.U_AXIL_AXIS0.axi_ctrl_logic.aa_regs[0][0]=1");
+				$display($time, "=> wait uut.mprj.u_fsic.U_AXIL_AXIS0.intr_enable (interrupt enable bit)");
+        wait(uut.mprj.u_fsic.U_AXIL_AXIS0.intr_enable); //wait interrupt enable bit = 1
+				$display($time, "=> detect uut.mprj.u_fsic.U_AXIL_AXIS0.intr_enable=1");
 				test114_fpga_to_soc_CFG_write();		//target to AA_MailBox_Reg_Offset
 				#200;
 			end

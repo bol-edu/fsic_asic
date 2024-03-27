@@ -10,12 +10,13 @@
 // ../../dsn/rtl/__user_project_wrapper.v
 // ------------------------------------------------
 // axilite_axis
-   ../../dsn/rtl/axilite_master.sv
-   ../../dsn/rtl/axilite_slave.sv
-   ../../dsn/rtl/axis_master.sv
-   ../../dsn/rtl/axis_slave.sv
-   ../../dsn/rtl/axi_ctrl_logic.sv
-   ../../dsn/rtl/axil_axis.sv
+//   ../../dsn/rtl/axilite_master.sv
+//   ../../dsn/rtl/axilite_slave.sv
+//   ../../dsn/rtl/axis_master.sv
+//   ../../dsn/rtl/axis_slave.sv
+//   ../../dsn/rtl/axi_ctrl_logic.sv
+//   ../../dsn/rtl/axil_axis.sv
+   ../../dsn/rtl/axil_axis.v
 
 // axis_switch
 //   ../../dsn/rtl/axis_switch.v

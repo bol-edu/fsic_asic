@@ -3,29 +3,28 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="caravel_asic.wdb" id="1">
+      <db_ref path="caravel_asic.ok.wdb" id="1">
          <top_modules>
             <top_module name="top_bench" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2,929,810.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="2,932,320.001 ns"></ZoomEndTime>
-      <Cursor1Time time="2,931,100.000 ns"></Cursor1Time>
+      <ZoomStartTime time="2,933,362.500 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,933,982.501 ns"></ZoomEndTime>
+      <Cursor1Time time="2,933,562.500 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="370"></NameColumnWidth>
-      <ValueColumnWidth column_width="149"></ValueColumnWidth>
+      <ValueColumnWidth column_width="153"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="52" />
+   <WVObjectSize size="48" />
    <wave_markers>
       <marker label="" time="8773262500" />
       <marker label="" time="8773550000" />
       <marker label="" time="8774450000" />
-      <marker label="" time="350050000" />
       <marker label="" time="2929962500" />
-      <marker label="" time="2930450000" />
+      <marker label="" time="2933562500" />
    </wave_markers>
    <wvobject type="group" fp_name="group77">
       <obj_property name="label">Chip_Top</obj_property>
@@ -66,215 +65,96 @@
       <wvobject type="group" fp_name="group1348">
          <obj_property name="label">FPGA</obj_property>
          <obj_property name="DisplayName">label</obj_property>
-         <wvobject type="logic" fp_name="/top_bench/fpga_rst">
-            <obj_property name="ElementShortName">fpga_rst</obj_property>
-            <obj_property name="ObjectShortName">fpga_rst</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/fpga_rst">
+         <obj_property name="ElementShortName">fpga_rst</obj_property>
+         <obj_property name="ObjectShortName">fpga_rst</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/fpga_resetb">
+         <obj_property name="ElementShortName">fpga_resetb</obj_property>
+         <obj_property name="ObjectShortName">fpga_resetb</obj_property>
+      </wvobject>
+      <wvobject type="group" fp_name="group1387">
+         <obj_property name="label">w addr</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/top_bench/fpga_coreclk">
+            <obj_property name="ElementShortName">fpga_coreclk</obj_property>
+            <obj_property name="ObjectShortName">fpga_coreclk</obj_property>
          </wvobject>
-         <wvobject type="logic" fp_name="/top_bench/fpga_resetb">
-            <obj_property name="ElementShortName">fpga_resetb</obj_property>
-            <obj_property name="ObjectShortName">fpga_resetb</obj_property>
+         <wvobject type="logic" fp_name="/top_bench/fpga_cc_is_enable">
+            <obj_property name="ElementShortName">fpga_cc_is_enable</obj_property>
+            <obj_property name="ObjectShortName">fpga_cc_is_enable</obj_property>
          </wvobject>
-         <wvobject type="group" fp_name="group3153">
-            <obj_property name="label">IS</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
-            <wvobject type="logic" fp_name="/top_bench/fpga_fsic/axi_reset_n">
-               <obj_property name="ElementShortName">axi_reset_n</obj_property>
-               <obj_property name="ObjectShortName">axi_reset_n</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/top_bench/fpga_fsic/axi_clk">
-               <obj_property name="ElementShortName">axi_clk</obj_property>
-               <obj_property name="ObjectShortName">axi_clk</obj_property>
-            </wvobject>
-            <wvobject type="group" fp_name="group3138">
-               <obj_property name="label">AXIL</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject type="group" fp_name="group1387">
-                  <obj_property name="label">AW</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_awvalid">
-                     <obj_property name="ElementShortName">fpga_axi_awvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_awvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_awready">
-                     <obj_property name="ElementShortName">fpga_axi_awready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_awready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_awaddr">
-                     <obj_property name="ElementShortName">fpga_axi_awaddr[14:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_awaddr[14:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1388">
-                  <obj_property name="label">W</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_wvalid">
-                     <obj_property name="ElementShortName">fpga_axi_wvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_wready">
-                     <obj_property name="ElementShortName">fpga_axi_wready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_wdata">
-                     <obj_property name="ElementShortName">fpga_axi_wdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_wstrb">
-                     <obj_property name="ElementShortName">fpga_axi_wstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wstrb[3:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1389">
-                  <obj_property name="label">AR</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_arvalid">
-                     <obj_property name="ElementShortName">fpga_axi_arvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_arvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_arready">
-                     <obj_property name="ElementShortName">fpga_axi_arready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_arready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_araddr">
-                     <obj_property name="ElementShortName">fpga_axi_araddr[14:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_araddr[14:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1390">
-                  <obj_property name="label">R</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_rvalid">
-                     <obj_property name="ElementShortName">fpga_axi_rvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_rvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_rdata">
-                     <obj_property name="ElementShortName">fpga_axi_rdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_rdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_rready">
-                     <obj_property name="ElementShortName">fpga_axi_rready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_rready</obj_property>
-                  </wvobject>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="group3152">
-               <obj_property name="label">AXIS</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject type="group" fp_name="group1391">
-                  <obj_property name="label">AS to IS from AA sm</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tvalid">
-                     <obj_property name="ElementShortName">fpga_as_is_tvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tready">
-                     <obj_property name="ElementShortName">fpga_is_as_tready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tready</obj_property>
-                  </wvobject>
-                  <wvobject type="group" fp_name="group1880">
-                     <obj_property name="label">FPGA is_as_tready</obj_property>
-                     <obj_property name="DisplayName">label</obj_property>
-                     <obj_property name="isExpanded"></obj_property>
-                     <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/rx_received_data">
-                        <obj_property name="ElementShortName">rx_received_data</obj_property>
-                        <obj_property name="ObjectShortName">rx_received_data</obj_property>
-                     </wvobject>
-                     <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/is_as_tready_remote">
-                        <obj_property name="ElementShortName">is_as_tready_remote</obj_property>
-                        <obj_property name="ObjectShortName">is_as_tready_remote</obj_property>
-                        <obj_property name="CustomSignalColor">#FF0000</obj_property>
-                        <obj_property name="UseCustomSignalColor">true</obj_property>
-                     </wvobject>
-                     <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/is_as_tready">
-                        <obj_property name="ElementShortName">is_as_tready</obj_property>
-                        <obj_property name="ObjectShortName">is_as_tready</obj_property>
-                     </wvobject>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tdata">
-                     <obj_property name="ElementShortName">fpga_as_is_tdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tstrb">
-                     <obj_property name="ElementShortName">fpga_as_is_tstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tstrb[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tkeep">
-                     <obj_property name="ElementShortName">fpga_as_is_tkeep[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tkeep[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tlast">
-                     <obj_property name="ElementShortName">fpga_as_is_tlast</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tlast</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tid">
-                     <obj_property name="ElementShortName">fpga_as_is_tid[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tid[1:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tuser">
-                     <obj_property name="ElementShortName">fpga_as_is_tuser[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tuser[1:0]</obj_property>
-                     <obj_property name="isExpanded"></obj_property>
-                  </wvobject>
-                  <wvobject type="group" fp_name="group1397">
-                     <obj_property name="label">FLOW CONTROL</obj_property>
-                     <obj_property name="DisplayName">label</obj_property>
-                     <wvobject type="array" fp_name="/top_bench/fpga_as_is_tuser">
-                        <obj_property name="ElementShortName">fpga_as_is_tuser[1:0]</obj_property>
-                        <obj_property name="ObjectShortName">fpga_as_is_tuser[1:0]</obj_property>
-                     </wvobject>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tready">
-                     <obj_property name="ElementShortName">fpga_as_is_tready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tready</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1392">
-                  <obj_property name="label">IS to AS to AA ss</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_coreclk">
-                     <obj_property name="ElementShortName">fpga_coreclk</obj_property>
-                     <obj_property name="ObjectShortName">fpga_coreclk</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tvalid">
-                     <obj_property name="ElementShortName">fpga_is_as_tvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tdata">
-                     <obj_property name="ElementShortName">fpga_is_as_tdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tstrb">
-                     <obj_property name="ElementShortName">fpga_is_as_tstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tstrb[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tkeep">
-                     <obj_property name="ElementShortName">fpga_is_as_tkeep[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tkeep[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tlast">
-                     <obj_property name="ElementShortName">fpga_is_as_tlast</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tlast</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tid">
-                     <obj_property name="ElementShortName">fpga_is_as_tid[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tid[1:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tuser">
-                     <obj_property name="ElementShortName">fpga_is_as_tuser[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tuser[1:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-            </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_awvalid">
+            <obj_property name="ElementShortName">fpga_axi_awvalid</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_awvalid</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_awready">
+            <obj_property name="ElementShortName">fpga_axi_awready</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_awready</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_axi_awaddr">
+            <obj_property name="ElementShortName">fpga_axi_awaddr[14:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_awaddr[14:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group1388">
+         <obj_property name="label">w data</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_wvalid">
+            <obj_property name="ElementShortName">fpga_axi_wvalid</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_wvalid</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_wready">
+            <obj_property name="ElementShortName">fpga_axi_wready</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_wready</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_axi_wdata">
+            <obj_property name="ElementShortName">fpga_axi_wdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_wdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_axi_wstrb">
+            <obj_property name="ElementShortName">fpga_axi_wstrb[3:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_wstrb[3:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group1389">
+         <obj_property name="label">r addr</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_arvalid">
+            <obj_property name="ElementShortName">fpga_axi_arvalid</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_arvalid</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_arready">
+            <obj_property name="ElementShortName">fpga_axi_arready</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_arready</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_axi_araddr">
+            <obj_property name="ElementShortName">fpga_axi_araddr[14:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_araddr[14:0]</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group1390">
+         <obj_property name="label">r data</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_rvalid">
+            <obj_property name="ElementShortName">fpga_axi_rvalid</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_rvalid</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_axi_rdata">
+            <obj_property name="ElementShortName">fpga_axi_rdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_rdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_axi_rready">
+            <obj_property name="ElementShortName">fpga_axi_rready</obj_property>
+            <obj_property name="ObjectShortName">fpga_axi_rready</obj_property>
          </wvobject>
       </wvobject>
       <wvobject type="group" fp_name="group1386">
          <obj_property name="label">TX RX</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/top_bench/ioclk">
             <obj_property name="ElementShortName">ioclk</obj_property>
             <obj_property name="ObjectShortName">ioclk</obj_property>
@@ -343,9 +223,120 @@
             </wvobject>
          </wvobject>
       </wvobject>
+      <wvobject type="group" fp_name="group1391">
+         <obj_property name="label">AS to IS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/top_bench/fpga_coreclk">
+            <obj_property name="ElementShortName">fpga_coreclk</obj_property>
+            <obj_property name="ObjectShortName">fpga_coreclk</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tvalid">
+            <obj_property name="ElementShortName">fpga_as_is_tvalid</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tvalid</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tready">
+            <obj_property name="ElementShortName">fpga_is_as_tready</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tready</obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="group1880">
+            <obj_property name="label">FPGA is_as_tready</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+            <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/rx_received_data">
+               <obj_property name="ElementShortName">rx_received_data</obj_property>
+               <obj_property name="ObjectShortName">rx_received_data</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/is_as_tready_remote">
+               <obj_property name="ElementShortName">is_as_tready_remote</obj_property>
+               <obj_property name="ObjectShortName">is_as_tready_remote</obj_property>
+               <obj_property name="CustomSignalColor">#FF0000</obj_property>
+               <obj_property name="UseCustomSignalColor">true</obj_property>
+            </wvobject>
+            <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/is_as_tready">
+               <obj_property name="ElementShortName">is_as_tready</obj_property>
+               <obj_property name="ObjectShortName">is_as_tready</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_as_is_tdata">
+            <obj_property name="ElementShortName">fpga_as_is_tdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_as_is_tstrb">
+            <obj_property name="ElementShortName">fpga_as_is_tstrb[3:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tstrb[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_as_is_tkeep">
+            <obj_property name="ElementShortName">fpga_as_is_tkeep[3:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tkeep[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tlast">
+            <obj_property name="ElementShortName">fpga_as_is_tlast</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tlast</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_as_is_tid">
+            <obj_property name="ElementShortName">fpga_as_is_tid[1:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tid[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_as_is_tuser">
+            <obj_property name="ElementShortName">fpga_as_is_tuser[1:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tuser[1:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="group" fp_name="group1397">
+            <obj_property name="label">FLOW CONTROL</obj_property>
+            <obj_property name="DisplayName">label</obj_property>
+            <wvobject type="array" fp_name="/top_bench/fpga_as_is_tuser">
+               <obj_property name="ElementShortName">fpga_as_is_tuser[1:0]</obj_property>
+               <obj_property name="ObjectShortName">fpga_as_is_tuser[1:0]</obj_property>
+            </wvobject>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tready">
+            <obj_property name="ElementShortName">fpga_as_is_tready</obj_property>
+            <obj_property name="ObjectShortName">fpga_as_is_tready</obj_property>
+         </wvobject>
+      </wvobject>
+      <wvobject type="group" fp_name="group1392">
+         <obj_property name="label">IS to AS</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/top_bench/fpga_coreclk">
+            <obj_property name="ElementShortName">fpga_coreclk</obj_property>
+            <obj_property name="ObjectShortName">fpga_coreclk</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tvalid">
+            <obj_property name="ElementShortName">fpga_is_as_tvalid</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tvalid</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_is_as_tdata">
+            <obj_property name="ElementShortName">fpga_is_as_tdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_is_as_tstrb">
+            <obj_property name="ElementShortName">fpga_is_as_tstrb[3:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tstrb[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_is_as_tkeep">
+            <obj_property name="ElementShortName">fpga_is_as_tkeep[3:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tkeep[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tlast">
+            <obj_property name="ElementShortName">fpga_is_as_tlast</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tlast</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_is_as_tid">
+            <obj_property name="ElementShortName">fpga_is_as_tid[1:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tid[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/fpga_is_as_tuser">
+            <obj_property name="ElementShortName">fpga_is_as_tuser[1:0]</obj_property>
+            <obj_property name="ObjectShortName">fpga_is_as_tuser[1:0]</obj_property>
+         </wvobject>
+      </wvobject>
       <wvobject type="group" fp_name="group1795">
          <obj_property name="label">FPGA IS</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/ioclk">
             <obj_property name="ElementShortName">ioclk</obj_property>
             <obj_property name="ObjectShortName">ioclk</obj_property>
@@ -1028,6 +1019,7 @@
    <wvobject type="group" fp_name="group2929">
       <obj_property name="label">mgmt_core</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="array" fp_name="/top_bench/uut/soc/core/la_out_storage">
          <obj_property name="ElementShortName">la_out_storage[127:0]</obj_property>
          <obj_property name="ObjectShortName">la_out_storage[127:0]</obj_property>
@@ -8149,6 +8141,7 @@
    <wvobject type="group" fp_name="group1049">
       <obj_property name="label">U_FSIC io</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/io_out">
          <obj_property name="ElementShortName">io_out[37:0]</obj_property>
          <obj_property name="ObjectShortName">io_out[37:0]</obj_property>
@@ -8165,6 +8158,7 @@
    <wvobject type="group" fp_name="group1052">
       <obj_property name="label">padframe mprj_pads</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
       <wvobject type="array" fp_name="/top_bench/uut/padframe/mprj_pads/oeb">
          <obj_property name="ElementShortName">oeb[37:0]</obj_property>
          <obj_property name="ObjectShortName">oeb[37:0]</obj_property>
@@ -11071,6 +11065,293 @@
          <obj_property name="label">axi_ctrl_logic</obj_property>
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="isExpanded"></obj_property>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/axi_aclk">
+            <obj_property name="ElementShortName">axi_aclk</obj_property>
+            <obj_property name="ObjectShortName">axi_aclk</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/axi_aresetn">
+            <obj_property name="ElementShortName">axi_aresetn</obj_property>
+            <obj_property name="ObjectShortName">axi_aresetn</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/axi_interrupt">
+            <obj_property name="ElementShortName">axi_interrupt</obj_property>
+            <obj_property name="ObjectShortName">axi_interrupt</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_wstart">
+            <obj_property name="ElementShortName">bk_lm_wstart</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_wstart</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_waddr">
+            <obj_property name="ElementShortName">bk_lm_waddr[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_waddr[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_wdata">
+            <obj_property name="ElementShortName">bk_lm_wdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_wdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_wstrb">
+            <obj_property name="ElementShortName">bk_lm_wstrb[3:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_wstrb[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_wdone">
+            <obj_property name="ElementShortName">bk_lm_wdone</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_wdone</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_rstart">
+            <obj_property name="ElementShortName">bk_lm_rstart</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_rstart</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_raddr">
+            <obj_property name="ElementShortName">bk_lm_raddr[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_raddr[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_rdata">
+            <obj_property name="ElementShortName">bk_lm_rdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_rdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_lm_rdone">
+            <obj_property name="ElementShortName">bk_lm_rdone</obj_property>
+            <obj_property name="ObjectShortName">bk_lm_rdone</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_wdata">
+            <obj_property name="ElementShortName">bk_ls_wdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_ls_wdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_wstrb">
+            <obj_property name="ElementShortName">bk_ls_wstrb[3:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_ls_wstrb[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ls_rdata">
+            <obj_property name="ElementShortName">bk_ls_rdata[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_ls_rdata[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_data">
+            <obj_property name="ElementShortName">bk_sm_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_sm_data[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_sm_user">
+            <obj_property name="ElementShortName">bk_sm_user[1:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_sm_user[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_data">
+            <obj_property name="ElementShortName">bk_ss_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_ss_data[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_user">
+            <obj_property name="ElementShortName">bk_ss_user[1:0]</obj_property>
+            <obj_property name="ObjectShortName">bk_ss_user[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_ready">
+            <obj_property name="ElementShortName">bk_ss_ready</obj_property>
+            <obj_property name="ObjectShortName">bk_ss_ready</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/bk_ss_valid">
+            <obj_property name="ElementShortName">bk_ss_valid</obj_property>
+            <obj_property name="ObjectShortName">bk_ss_valid</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/axi_state">
+            <obj_property name="ElementShortName">axi_state[2:0]</obj_property>
+            <obj_property name="ObjectShortName">axi_state[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/axi_next_state">
+            <obj_property name="ElementShortName">axi_next_state[2:0]</obj_property>
+            <obj_property name="ObjectShortName">axi_next_state[2:0]</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/next_trans">
+            <obj_property name="ElementShortName">next_trans</obj_property>
+            <obj_property name="ObjectShortName">next_trans</obj_property>
+         </wvobject>
+         <wvobject type="other" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/last_trans">
+            <obj_property name="ElementShortName">last_trans</obj_property>
+            <obj_property name="ObjectShortName">last_trans</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/next_ls">
+            <obj_property name="ElementShortName">next_ls</obj_property>
+            <obj_property name="ObjectShortName">next_ls</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/next_ss">
+            <obj_property name="ElementShortName">next_ss</obj_property>
+            <obj_property name="ObjectShortName">next_ss</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/wr_mb">
+            <obj_property name="ElementShortName">wr_mb</obj_property>
+            <obj_property name="ObjectShortName">wr_mb</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/rd_mb">
+            <obj_property name="ElementShortName">rd_mb</obj_property>
+            <obj_property name="ObjectShortName">rd_mb</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/wr_aa">
+            <obj_property name="ElementShortName">wr_aa</obj_property>
+            <obj_property name="ObjectShortName">wr_aa</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/rd_aa">
+            <obj_property name="ElementShortName">rd_aa</obj_property>
+            <obj_property name="ObjectShortName">rd_aa</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/rd_unsupp">
+            <obj_property name="ElementShortName">rd_unsupp</obj_property>
+            <obj_property name="ObjectShortName">rd_unsupp</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/trig_sm_wr">
+            <obj_property name="ElementShortName">trig_sm_wr</obj_property>
+            <obj_property name="ObjectShortName">trig_sm_wr</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/trig_sm_rd">
+            <obj_property name="ElementShortName">trig_sm_rd</obj_property>
+            <obj_property name="ObjectShortName">trig_sm_rd</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/do_nothing">
+            <obj_property name="ElementShortName">do_nothing</obj_property>
+            <obj_property name="ObjectShortName">do_nothing</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/decide_done">
+            <obj_property name="ElementShortName">decide_done</obj_property>
+            <obj_property name="ObjectShortName">decide_done</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/trig_int">
+            <obj_property name="ElementShortName">trig_int</obj_property>
+            <obj_property name="ObjectShortName">trig_int</obj_property>
+            <obj_property name="CustomSignalColor">#FF0000</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/sync_trig_int">
+            <obj_property name="ElementShortName">sync_trig_int</obj_property>
+            <obj_property name="ObjectShortName">sync_trig_int</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/axi_interrupt_done">
+            <obj_property name="ElementShortName">axi_interrupt_done</obj_property>
+            <obj_property name="ObjectShortName">axi_interrupt_done</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/sync_trig_sm_wr">
+            <obj_property name="ElementShortName">sync_trig_sm_wr</obj_property>
+            <obj_property name="ObjectShortName">sync_trig_sm_wr</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/sync_trig_sm_rd">
+            <obj_property name="ElementShortName">sync_trig_sm_rd</obj_property>
+            <obj_property name="ObjectShortName">sync_trig_sm_rd</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/trig_lm_rd">
+            <obj_property name="ElementShortName">trig_lm_rd</obj_property>
+            <obj_property name="ObjectShortName">trig_lm_rd</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/send_bk_done">
+            <obj_property name="ElementShortName">send_bk_done</obj_property>
+            <obj_property name="ObjectShortName">send_bk_done</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/trig_lm_wr">
+            <obj_property name="ElementShortName">trig_lm_wr</obj_property>
+            <obj_property name="ObjectShortName">trig_lm_wr</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/sync_trig_lm_rd">
+            <obj_property name="ElementShortName">sync_trig_lm_rd</obj_property>
+            <obj_property name="ObjectShortName">sync_trig_lm_rd</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/rd_ss_complete">
+            <obj_property name="ElementShortName">rd_ss_complete</obj_property>
+            <obj_property name="ObjectShortName">rd_ss_complete</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/ls_rd_data_bk">
+            <obj_property name="ElementShortName">ls_rd_data_bk</obj_property>
+            <obj_property name="ObjectShortName">ls_rd_data_bk</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/ls_wr_data_done">
+            <obj_property name="ElementShortName">ls_wr_data_done</obj_property>
+            <obj_property name="ObjectShortName">ls_wr_data_done</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/get_next_data_ss">
+            <obj_property name="ElementShortName">get_next_data_ss</obj_property>
+            <obj_property name="ObjectShortName">get_next_data_ss</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/ss_wr_data_done">
+            <obj_property name="ElementShortName">ss_wr_data_done</obj_property>
+            <obj_property name="ObjectShortName">ss_wr_data_done</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/wstrb_ss">
+            <obj_property name="ElementShortName">wstrb_ss[3:0]</obj_property>
+            <obj_property name="ObjectShortName">wstrb_ss[3:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/addr_ss">
+            <obj_property name="ElementShortName">addr_ss[27:0]</obj_property>
+            <obj_property name="ObjectShortName">addr_ss[27:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/data_ss">
+            <obj_property name="ElementShortName">data_ss[31:0]</obj_property>
+            <obj_property name="ObjectShortName">data_ss[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/lm_rd_cnt">
+            <obj_property name="ElementShortName">lm_rd_cnt[1:0]</obj_property>
+            <obj_property name="ObjectShortName">lm_rd_cnt[1:0]</obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/lm_rd_bk_sent">
+            <obj_property name="ElementShortName">lm_rd_bk_sent</obj_property>
+            <obj_property name="ObjectShortName">lm_rd_bk_sent</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/aa_index">
+            <obj_property name="ElementShortName">aa_index[9:0]</obj_property>
+            <obj_property name="ObjectShortName">aa_index[9:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/mb_index">
+            <obj_property name="ElementShortName">mb_index[9:0]</obj_property>
+            <obj_property name="ObjectShortName">mb_index[9:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/data_return">
+            <obj_property name="ElementShortName">data_return[31:0]</obj_property>
+            <obj_property name="ObjectShortName">data_return[31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/mb_regs">
+            <obj_property name="ElementShortName">mb_regs[7:0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">mb_regs[7:0][31:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/aa_regs">
+            <obj_property name="ElementShortName">aa_regs[1:0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">aa_regs[1:0][31:0]</obj_property>
+            <obj_property name="isExpanded"></obj_property>
+         </wvobject>
+         <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/mb_int_en">
+            <obj_property name="ElementShortName">mb_int_en</obj_property>
+            <obj_property name="ObjectShortName">mb_int_en</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/MB_SUPP_LOW">
+            <obj_property name="ElementShortName">MB_SUPP_LOW[14:0]</obj_property>
+            <obj_property name="ObjectShortName">MB_SUPP_LOW[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/MB_SUPP_HIGH">
+            <obj_property name="ElementShortName">MB_SUPP_HIGH[14:0]</obj_property>
+            <obj_property name="ObjectShortName">MB_SUPP_HIGH[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/AA_SUPP_LOW">
+            <obj_property name="ElementShortName">AA_SUPP_LOW[14:0]</obj_property>
+            <obj_property name="ObjectShortName">AA_SUPP_LOW[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/AA_SUPP_HIGH">
+            <obj_property name="ElementShortName">AA_SUPP_HIGH[14:0]</obj_property>
+            <obj_property name="ObjectShortName">AA_SUPP_HIGH[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/AA_UNSUPP_HIGH">
+            <obj_property name="ElementShortName">AA_UNSUPP_HIGH[14:0]</obj_property>
+            <obj_property name="ObjectShortName">AA_UNSUPP_HIGH[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FPGA_USER_WP_0">
+            <obj_property name="ElementShortName">FPGA_USER_WP_0[14:0]</obj_property>
+            <obj_property name="ObjectShortName">FPGA_USER_WP_0[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FPGA_USER_WP_1">
+            <obj_property name="ElementShortName">FPGA_USER_WP_1[14:0]</obj_property>
+            <obj_property name="ObjectShortName">FPGA_USER_WP_1[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FPGA_USER_WP_2">
+            <obj_property name="ElementShortName">FPGA_USER_WP_2[14:0]</obj_property>
+            <obj_property name="ObjectShortName">FPGA_USER_WP_2[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/FPGA_USER_WP_3">
+            <obj_property name="ElementShortName">FPGA_USER_WP_3[14:0]</obj_property>
+            <obj_property name="ObjectShortName">FPGA_USER_WP_3[14:0]</obj_property>
+         </wvobject>
+         <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_ctrl_logic/CARAVEL_BASE">
+            <obj_property name="ElementShortName">CARAVEL_BASE[31:0]</obj_property>
+            <obj_property name="ObjectShortName">CARAVEL_BASE[31:0]</obj_property>
+         </wvobject>
       </wvobject>
       <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/mb_irq">
          <obj_property name="ElementShortName">mb_irq</obj_property>
@@ -11091,6 +11372,78 @@
       <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axis_rst_n">
          <obj_property name="ElementShortName">axis_rst_n</obj_property>
          <obj_property name="ObjectShortName">axis_rst_n</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_wstart">
+         <obj_property name="ElementShortName">bk_lm_wstart</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_wstart</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_wdone">
+         <obj_property name="ElementShortName">bk_lm_wdone</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_wdone</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_rstart">
+         <obj_property name="ElementShortName">bk_lm_rstart</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_rstart</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_rdone">
+         <obj_property name="ElementShortName">bk_lm_rdone</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_rdone</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_ready">
+         <obj_property name="ElementShortName">bk_ss_ready</obj_property>
+         <obj_property name="ObjectShortName">bk_ss_ready</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_valid">
+         <obj_property name="ElementShortName">bk_ss_valid</obj_property>
+         <obj_property name="ObjectShortName">bk_ss_valid</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_user">
+         <obj_property name="ElementShortName">bk_sm_user[1:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_sm_user[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_user">
+         <obj_property name="ElementShortName">bk_ss_user[1:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_ss_user[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_wstrb">
+         <obj_property name="ElementShortName">bk_lm_wstrb[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_wstrb[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_wstrb">
+         <obj_property name="ElementShortName">bk_ls_wstrb[3:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_ls_wstrb[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_waddr">
+         <obj_property name="ElementShortName">bk_lm_waddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_waddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_wdata">
+         <obj_property name="ElementShortName">bk_lm_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_raddr">
+         <obj_property name="ElementShortName">bk_lm_raddr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_raddr[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_lm_rdata">
+         <obj_property name="ElementShortName">bk_lm_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_lm_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_wdata">
+         <obj_property name="ElementShortName">bk_ls_wdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_ls_wdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ls_rdata">
+         <obj_property name="ElementShortName">bk_ls_rdata[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_ls_rdata[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_sm_data">
+         <obj_property name="ElementShortName">bk_sm_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_sm_data[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/bk_ss_data">
+         <obj_property name="ElementShortName">bk_ss_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">bk_ss_data[31:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/pADDR_WIDTH">
          <obj_property name="ElementShortName">pADDR_WIDTH[31:0]</obj_property>
@@ -11119,6 +11472,14 @@
       <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/axi_clk">
          <obj_property name="ElementShortName">axi_clk</obj_property>
          <obj_property name="ObjectShortName">axi_clk</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/RD_IDLE">
+         <obj_property name="ElementShortName">RD_IDLE</obj_property>
+         <obj_property name="ObjectShortName">RD_IDLE</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/RD_ADDR_DONE">
+         <obj_property name="ElementShortName">RD_ADDR_DONE</obj_property>
+         <obj_property name="ObjectShortName">RD_ADDR_DONE</obj_property>
       </wvobject>
       <wvobject type="group" fp_name="group3044">
          <obj_property name="label">R addr</obj_property>
@@ -11273,6 +11634,94 @@
          <obj_property name="ElementShortName">uck2_rst_n</obj_property>
          <obj_property name="ObjectShortName">uck2_rst_n</obj_property>
       </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/dat_in_rsc_dat">
+         <obj_property name="ElementShortName">dat_in_rsc_dat[33:0]</obj_property>
+         <obj_property name="ObjectShortName">dat_in_rsc_dat[33:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/dat_out_rsc_dat">
+         <obj_property name="ElementShortName">dat_out_rsc_dat[33:0]</obj_property>
+         <obj_property name="ObjectShortName">dat_out_rsc_dat[33:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram0_en">
+         <obj_property name="ElementShortName">ram0_en</obj_property>
+         <obj_property name="ObjectShortName">ram0_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram0_q">
+         <obj_property name="ElementShortName">ram0_q[63:0]</obj_property>
+         <obj_property name="ObjectShortName">ram0_q[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram0_we">
+         <obj_property name="ElementShortName">ram0_we</obj_property>
+         <obj_property name="ObjectShortName">ram0_we</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram0_d">
+         <obj_property name="ElementShortName">ram0_d[63:0]</obj_property>
+         <obj_property name="ObjectShortName">ram0_d[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram0_adr">
+         <obj_property name="ElementShortName">ram0_adr[6:0]</obj_property>
+         <obj_property name="ObjectShortName">ram0_adr[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram1_en">
+         <obj_property name="ElementShortName">ram1_en</obj_property>
+         <obj_property name="ObjectShortName">ram1_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram1_q">
+         <obj_property name="ElementShortName">ram1_q[63:0]</obj_property>
+         <obj_property name="ObjectShortName">ram1_q[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram1_we">
+         <obj_property name="ElementShortName">ram1_we</obj_property>
+         <obj_property name="ObjectShortName">ram1_we</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram1_d">
+         <obj_property name="ElementShortName">ram1_d[63:0]</obj_property>
+         <obj_property name="ObjectShortName">ram1_d[63:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/ram1_adr">
+         <obj_property name="ElementShortName">ram1_adr[6:0]</obj_property>
+         <obj_property name="ObjectShortName">ram1_adr[6:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/reg_widthIn">
+         <obj_property name="ElementShortName">reg_widthIn[9:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_widthIn[9:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/reg_heightIn">
+         <obj_property name="ElementShortName">reg_heightIn[8:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_heightIn[8:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/reg_sw_in">
+         <obj_property name="ElementShortName">reg_sw_in</obj_property>
+         <obj_property name="ObjectShortName">reg_sw_in</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/reg_rst">
+         <obj_property name="ElementShortName">reg_rst</obj_property>
+         <obj_property name="ObjectShortName">reg_rst</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/crc32_stream_in">
+         <obj_property name="ElementShortName">crc32_stream_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">crc32_stream_in[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/crc32_stream_out">
+         <obj_property name="ElementShortName">crc32_stream_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">crc32_stream_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/edgedetect_done">
+         <obj_property name="ElementShortName">edgedetect_done</obj_property>
+         <obj_property name="ObjectShortName">edgedetect_done</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/reg_crc32_stream_in">
+         <obj_property name="ElementShortName">reg_crc32_stream_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_crc32_stream_in[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/reg_crc32_stream_out">
+         <obj_property name="ElementShortName">reg_crc32_stream_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">reg_crc32_stream_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/reg_edgedetect_done">
+         <obj_property name="ElementShortName">reg_edgedetect_done</obj_property>
+         <obj_property name="ObjectShortName">reg_edgedetect_done</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/awvalid_in">
          <obj_property name="ElementShortName">awvalid_in</obj_property>
          <obj_property name="ObjectShortName">awvalid_in</obj_property>
@@ -11292,6 +11741,30 @@
       <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/wready_out">
          <obj_property name="ElementShortName">wready_out</obj_property>
          <obj_property name="ObjectShortName">wready_out</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/rdata_tmp">
+         <obj_property name="ElementShortName">rdata_tmp[31:0]</obj_property>
+         <obj_property name="ObjectShortName">rdata_tmp[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/rvalid_out">
+         <obj_property name="ElementShortName">rvalid_out</obj_property>
+         <obj_property name="ObjectShortName">rvalid_out</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/rd_state">
+         <obj_property name="ElementShortName">rd_state</obj_property>
+         <obj_property name="ObjectShortName">rd_state</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/rd_next_state">
+         <obj_property name="ElementShortName">rd_next_state</obj_property>
+         <obj_property name="ObjectShortName">rd_next_state</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/rd_addr">
+         <obj_property name="ElementShortName">rd_addr[11:0]</obj_property>
+         <obj_property name="ObjectShortName">rd_addr[11:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/dat_in_rsc_rdy">
+         <obj_property name="ElementShortName">dat_in_rsc_rdy</obj_property>
+         <obj_property name="ObjectShortName">dat_in_rsc_rdy</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_USER_SUBSYS0/U_USRPRJ0/pUSER_PROJECT_SIDEBAND_WIDTH">
          <obj_property name="ElementShortName">pUSER_PROJECT_SIDEBAND_WIDTH[31:0]</obj_property>
@@ -11844,656 +12317,6 @@
       <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/AXIS_SW0/WIDTH">
          <obj_property name="ElementShortName">WIDTH[31:0]</obj_property>
          <obj_property name="ObjectShortName">WIDTH[31:0]</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject type="group" fp_name="group3061">
-      <obj_property name="label">RAM256</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/RAM256/CLK">
-         <obj_property name="ElementShortName">CLK</obj_property>
-         <obj_property name="ObjectShortName">CLK</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/RAM256/EN0">
-         <obj_property name="ElementShortName">EN0</obj_property>
-         <obj_property name="ObjectShortName">EN0</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/A0">
-         <obj_property name="ElementShortName">A0[7:0]</obj_property>
-         <obj_property name="ObjectShortName">A0[7:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/WE0">
-         <obj_property name="ElementShortName">WE0[3:0]</obj_property>
-         <obj_property name="ObjectShortName">WE0[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/Di0">
-         <obj_property name="ElementShortName">Di0[31:0]</obj_property>
-         <obj_property name="ObjectShortName">Di0[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/Do0">
-         <obj_property name="ElementShortName">Do0[31:0]</obj_property>
-         <obj_property name="ObjectShortName">Do0[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/SEL0">
-         <obj_property name="ElementShortName">SEL0[1:0]</obj_property>
-         <obj_property name="ObjectShortName">SEL0[1:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/Do0_pre">
-         <obj_property name="ElementShortName">Do0_pre[1:0][31:0]</obj_property>
-         <obj_property name="ObjectShortName">Do0_pre[1:0][31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/USE_LATCH">
-         <obj_property name="ElementShortName">USE_LATCH[31:0]</obj_property>
-         <obj_property name="ObjectShortName">USE_LATCH[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM256/WSIZE">
-         <obj_property name="ElementShortName">WSIZE[31:0]</obj_property>
-         <obj_property name="ObjectShortName">WSIZE[31:0]</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject type="group" fp_name="group3097">
-      <obj_property name="label">RAM128</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/RAM128/VGND">
-         <obj_property name="ElementShortName">VGND</obj_property>
-         <obj_property name="ObjectShortName">VGND</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/RAM128/VPWR">
-         <obj_property name="ElementShortName">VPWR</obj_property>
-         <obj_property name="ObjectShortName">VPWR</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/RAM128/CLK">
-         <obj_property name="ElementShortName">CLK</obj_property>
-         <obj_property name="ObjectShortName">CLK</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/RAM128/EN0">
-         <obj_property name="ElementShortName">EN0</obj_property>
-         <obj_property name="ObjectShortName">EN0</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM128/A0">
-         <obj_property name="ElementShortName">A0[6:0]</obj_property>
-         <obj_property name="ObjectShortName">A0[6:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM128/WE0">
-         <obj_property name="ElementShortName">WE0[3:0]</obj_property>
-         <obj_property name="ObjectShortName">WE0[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM128/Di0">
-         <obj_property name="ElementShortName">Di0[31:0]</obj_property>
-         <obj_property name="ObjectShortName">Di0[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/RAM128/Do0">
-         <obj_property name="ElementShortName">Do0[31:0]</obj_property>
-         <obj_property name="ObjectShortName">Do0[31:0]</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject type="group" fp_name="group3072">
-      <obj_property name="label">core</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_CYC">
-         <obj_property name="ElementShortName">iBusWishbone_CYC</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_CYC</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_STB">
-         <obj_property name="ElementShortName">iBusWishbone_STB</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_STB</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_ACK">
-         <obj_property name="ElementShortName">iBusWishbone_ACK</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_ACK</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_WE">
-         <obj_property name="ElementShortName">iBusWishbone_WE</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_WE</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_ADR">
-         <obj_property name="ElementShortName">iBusWishbone_ADR[29:0]</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_ADR[29:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_DAT_MISO">
-         <obj_property name="ElementShortName">iBusWishbone_DAT_MISO[31:0]</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_DAT_MISO[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_DAT_MOSI">
-         <obj_property name="ElementShortName">iBusWishbone_DAT_MOSI[31:0]</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_DAT_MOSI[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_SEL">
-         <obj_property name="ElementShortName">iBusWishbone_SEL[3:0]</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_SEL[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_ERR">
-         <obj_property name="ElementShortName">iBusWishbone_ERR</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_ERR</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_CTI">
-         <obj_property name="ElementShortName">iBusWishbone_CTI[2:0]</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_CTI[2:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/iBusWishbone_BTE">
-         <obj_property name="ElementShortName">iBusWishbone_BTE[1:0]</obj_property>
-         <obj_property name="ObjectShortName">iBusWishbone_BTE[1:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_CYC">
-         <obj_property name="ElementShortName">dBusWishbone_CYC</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_CYC</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_STB">
-         <obj_property name="ElementShortName">dBusWishbone_STB</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_STB</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_ACK">
-         <obj_property name="ElementShortName">dBusWishbone_ACK</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_ACK</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_WE">
-         <obj_property name="ElementShortName">dBusWishbone_WE</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_WE</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_ADR">
-         <obj_property name="ElementShortName">dBusWishbone_ADR[29:0]</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_ADR[29:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_DAT_MISO">
-         <obj_property name="ElementShortName">dBusWishbone_DAT_MISO[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_DAT_MISO[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_DAT_MOSI">
-         <obj_property name="ElementShortName">dBusWishbone_DAT_MOSI[31:0]</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_DAT_MOSI[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_SEL">
-         <obj_property name="ElementShortName">dBusWishbone_SEL[3:0]</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_SEL[3:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_ERR">
-         <obj_property name="ElementShortName">dBusWishbone_ERR</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_ERR</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_CTI">
-         <obj_property name="ElementShortName">dBusWishbone_CTI[2:0]</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_CTI[2:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/top_bench/uut/soc/core/VexRiscv/dBusWishbone_BTE">
-         <obj_property name="ElementShortName">dBusWishbone_BTE[1:0]</obj_property>
-         <obj_property name="ObjectShortName">dBusWishbone_BTE[1:0]</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject type="group" fp_name="group3072">
-      <obj_property name="label">debug AA</obj_property>
-      <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="group" fp_name="group1348">
-         <obj_property name="label">FPGA</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-         <wvobject type="logic" fp_name="/top_bench/fpga_rst">
-            <obj_property name="ElementShortName">fpga_rst</obj_property>
-            <obj_property name="ObjectShortName">fpga_rst</obj_property>
-         </wvobject>
-         <wvobject type="logic" fp_name="/top_bench/fpga_resetb">
-            <obj_property name="ElementShortName">fpga_resetb</obj_property>
-            <obj_property name="ObjectShortName">fpga_resetb</obj_property>
-         </wvobject>
-         <wvobject type="group" fp_name="group3153">
-            <obj_property name="label">IS</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <wvobject type="logic" fp_name="/top_bench/fpga_fsic/axi_reset_n">
-               <obj_property name="ElementShortName">axi_reset_n</obj_property>
-               <obj_property name="ObjectShortName">axi_reset_n</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/top_bench/fpga_fsic/axi_clk">
-               <obj_property name="ElementShortName">axi_clk</obj_property>
-               <obj_property name="ObjectShortName">axi_clk</obj_property>
-            </wvobject>
-            <wvobject type="group" fp_name="group3138">
-               <obj_property name="label">AXIL</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="group" fp_name="group1387">
-                  <obj_property name="label">AW</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_awvalid">
-                     <obj_property name="ElementShortName">fpga_axi_awvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_awvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_awready">
-                     <obj_property name="ElementShortName">fpga_axi_awready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_awready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_awaddr">
-                     <obj_property name="ElementShortName">fpga_axi_awaddr[14:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_awaddr[14:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1388">
-                  <obj_property name="label">W</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_wvalid">
-                     <obj_property name="ElementShortName">fpga_axi_wvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_wready">
-                     <obj_property name="ElementShortName">fpga_axi_wready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_wdata">
-                     <obj_property name="ElementShortName">fpga_axi_wdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_wstrb">
-                     <obj_property name="ElementShortName">fpga_axi_wstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_wstrb[3:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1389">
-                  <obj_property name="label">AR</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_arvalid">
-                     <obj_property name="ElementShortName">fpga_axi_arvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_arvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_arready">
-                     <obj_property name="ElementShortName">fpga_axi_arready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_arready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_araddr">
-                     <obj_property name="ElementShortName">fpga_axi_araddr[14:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_araddr[14:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1390">
-                  <obj_property name="label">R</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_rvalid">
-                     <obj_property name="ElementShortName">fpga_axi_rvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_rvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_axi_rdata">
-                     <obj_property name="ElementShortName">fpga_axi_rdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_rdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_axi_rready">
-                     <obj_property name="ElementShortName">fpga_axi_rready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_axi_rready</obj_property>
-                  </wvobject>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="group3152">
-               <obj_property name="label">AXIS</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject type="group" fp_name="group1391">
-                  <obj_property name="label">AS to IS from AA sm</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tvalid">
-                     <obj_property name="ElementShortName">fpga_as_is_tvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tready">
-                     <obj_property name="ElementShortName">fpga_is_as_tready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tready</obj_property>
-                  </wvobject>
-                  <wvobject type="group" fp_name="group1880">
-                     <obj_property name="label">FPGA is_as_tready</obj_property>
-                     <obj_property name="DisplayName">label</obj_property>
-                     <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/rx_received_data">
-                        <obj_property name="ElementShortName">rx_received_data</obj_property>
-                        <obj_property name="ObjectShortName">rx_received_data</obj_property>
-                     </wvobject>
-                     <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/is_as_tready_remote">
-                        <obj_property name="ElementShortName">is_as_tready_remote</obj_property>
-                        <obj_property name="ObjectShortName">is_as_tready_remote</obj_property>
-                        <obj_property name="CustomSignalColor">#FF0000</obj_property>
-                        <obj_property name="UseCustomSignalColor">true</obj_property>
-                     </wvobject>
-                     <wvobject type="logic" fp_name="/top_bench/fpga_fsic/U_IO_SERDES0/is_as_tready">
-                        <obj_property name="ElementShortName">is_as_tready</obj_property>
-                        <obj_property name="ObjectShortName">is_as_tready</obj_property>
-                     </wvobject>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tdata">
-                     <obj_property name="ElementShortName">fpga_as_is_tdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tstrb">
-                     <obj_property name="ElementShortName">fpga_as_is_tstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tstrb[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tkeep">
-                     <obj_property name="ElementShortName">fpga_as_is_tkeep[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tkeep[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tlast">
-                     <obj_property name="ElementShortName">fpga_as_is_tlast</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tlast</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tid">
-                     <obj_property name="ElementShortName">fpga_as_is_tid[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tid[1:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_as_is_tuser">
-                     <obj_property name="ElementShortName">fpga_as_is_tuser[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tuser[1:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="group" fp_name="group1397">
-                     <obj_property name="label">FLOW CONTROL</obj_property>
-                     <obj_property name="DisplayName">label</obj_property>
-                     <wvobject type="array" fp_name="/top_bench/fpga_as_is_tuser">
-                        <obj_property name="ElementShortName">fpga_as_is_tuser[1:0]</obj_property>
-                        <obj_property name="ObjectShortName">fpga_as_is_tuser[1:0]</obj_property>
-                     </wvobject>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_as_is_tready">
-                     <obj_property name="ElementShortName">fpga_as_is_tready</obj_property>
-                     <obj_property name="ObjectShortName">fpga_as_is_tready</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1392">
-                  <obj_property name="label">IS to AS to AA ss</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_coreclk">
-                     <obj_property name="ElementShortName">fpga_coreclk</obj_property>
-                     <obj_property name="ObjectShortName">fpga_coreclk</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tvalid">
-                     <obj_property name="ElementShortName">fpga_is_as_tvalid</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tdata">
-                     <obj_property name="ElementShortName">fpga_is_as_tdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tstrb">
-                     <obj_property name="ElementShortName">fpga_is_as_tstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tstrb[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tkeep">
-                     <obj_property name="ElementShortName">fpga_is_as_tkeep[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tkeep[3:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/fpga_is_as_tlast">
-                     <obj_property name="ElementShortName">fpga_is_as_tlast</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tlast</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tid">
-                     <obj_property name="ElementShortName">fpga_is_as_tid[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tid[1:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/fpga_is_as_tuser">
-                     <obj_property name="ElementShortName">fpga_is_as_tuser[1:0]</obj_property>
-                     <obj_property name="ObjectShortName">fpga_is_as_tuser[1:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-            </wvobject>
-         </wvobject>
-      </wvobject>
-      <wvobject type="group" fp_name="group3213">
-         <obj_property name="label">SOC</obj_property>
-         <obj_property name="DisplayName">label</obj_property>
-         <obj_property name="isExpanded"></obj_property>
-         <wvobject type="group" fp_name="group1221">
-            <obj_property name="label">AA</obj_property>
-            <obj_property name="DisplayName">label</obj_property>
-            <obj_property name="isExpanded"></obj_property>
-            <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_clk">
-               <obj_property name="ElementShortName">axi_clk</obj_property>
-               <obj_property name="ObjectShortName">axi_clk</obj_property>
-            </wvobject>
-            <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_reset_n">
-               <obj_property name="ElementShortName">axi_reset_n</obj_property>
-               <obj_property name="ObjectShortName">axi_reset_n</obj_property>
-            </wvobject>
-            <wvobject type="group" fp_name="group1302">
-               <obj_property name="label">ls</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/axi_clk">
-                  <obj_property name="ElementShortName">axi_clk</obj_property>
-                  <obj_property name="ObjectShortName">axi_clk</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/cc_aa_enable">
-                  <obj_property name="ElementShortName">cc_aa_enable</obj_property>
-                  <obj_property name="ObjectShortName">cc_aa_enable</obj_property>
-               </wvobject>
-               <wvobject type="group" fp_name="group1306">
-                  <obj_property name="label">AW</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_awvalid">
-                     <obj_property name="ElementShortName">s_awvalid</obj_property>
-                     <obj_property name="ObjectShortName">s_awvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_awready">
-                     <obj_property name="ElementShortName">s_awready</obj_property>
-                     <obj_property name="ObjectShortName">s_awready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_awaddr">
-                     <obj_property name="ElementShortName">s_awaddr[14:0]</obj_property>
-                     <obj_property name="ObjectShortName">s_awaddr[14:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1309">
-                  <obj_property name="label">W</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_wready">
-                     <obj_property name="ElementShortName">s_wready</obj_property>
-                     <obj_property name="ObjectShortName">s_wready</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_wvalid">
-                     <obj_property name="ElementShortName">s_wvalid</obj_property>
-                     <obj_property name="ObjectShortName">s_wvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_wdata">
-                     <obj_property name="ElementShortName">s_wdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">s_wdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_wstrb">
-                     <obj_property name="ElementShortName">s_wstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">s_wstrb[3:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1307">
-                  <obj_property name="label">AR</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_arvalid">
-                     <obj_property name="ElementShortName">s_arvalid</obj_property>
-                     <obj_property name="ObjectShortName">s_arvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_arready">
-                     <obj_property name="ElementShortName">s_arready</obj_property>
-                     <obj_property name="ObjectShortName">s_arready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_araddr">
-                     <obj_property name="ElementShortName">s_araddr[14:0]</obj_property>
-                     <obj_property name="ObjectShortName">s_araddr[14:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group1308">
-                  <obj_property name="label">R</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_rvalid">
-                     <obj_property name="ElementShortName">s_rvalid</obj_property>
-                     <obj_property name="ObjectShortName">s_rvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_rready">
-                     <obj_property name="ElementShortName">s_rready</obj_property>
-                     <obj_property name="ObjectShortName">s_rready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/s_rdata">
-                     <obj_property name="ElementShortName">s_rdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">s_rdata[31:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="group1311">
-               <obj_property name="label">ss</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tvalid">
-                  <obj_property name="ElementShortName">as_aa_tvalid</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tvalid</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tready">
-                  <obj_property name="ElementShortName">aa_as_tready</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tready</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tdata">
-                  <obj_property name="ElementShortName">as_aa_tdata[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tdata[31:0]</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tstrb">
-                  <obj_property name="ElementShortName">as_aa_tstrb[3:0]</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tstrb[3:0]</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tkeep">
-                  <obj_property name="ElementShortName">as_aa_tkeep[3:0]</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tkeep[3:0]</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tlast">
-                  <obj_property name="ElementShortName">as_aa_tlast</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tlast</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tuser">
-                  <obj_property name="ElementShortName">as_aa_tuser[1:0]</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tuser[1:0]</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="group1303">
-               <obj_property name="label">lm</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject type="group" fp_name="group3134">
-                  <obj_property name="label">AW</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_awvalid">
-                     <obj_property name="ElementShortName">m_awvalid</obj_property>
-                     <obj_property name="ObjectShortName">m_awvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_awready">
-                     <obj_property name="ElementShortName">m_awready</obj_property>
-                     <obj_property name="ObjectShortName">m_awready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_awaddr">
-                     <obj_property name="ElementShortName">m_awaddr[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">m_awaddr[31:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group3135">
-                  <obj_property name="label">W</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_wvalid">
-                     <obj_property name="ElementShortName">m_wvalid</obj_property>
-                     <obj_property name="ObjectShortName">m_wvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_wready">
-                     <obj_property name="ElementShortName">m_wready</obj_property>
-                     <obj_property name="ObjectShortName">m_wready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_wdata">
-                     <obj_property name="ElementShortName">m_wdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">m_wdata[31:0]</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_wstrb">
-                     <obj_property name="ElementShortName">m_wstrb[3:0]</obj_property>
-                     <obj_property name="ObjectShortName">m_wstrb[3:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group3136">
-                  <obj_property name="label">AR</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_arvalid">
-                     <obj_property name="ElementShortName">m_arvalid</obj_property>
-                     <obj_property name="ObjectShortName">m_arvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_arready">
-                     <obj_property name="ElementShortName">m_arready</obj_property>
-                     <obj_property name="ObjectShortName">m_arready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_araddr">
-                     <obj_property name="ElementShortName">m_araddr[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">m_araddr[31:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-               <wvobject type="group" fp_name="group3137">
-                  <obj_property name="label">R</obj_property>
-                  <obj_property name="DisplayName">label</obj_property>
-                  <obj_property name="isExpanded"></obj_property>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_rvalid">
-                     <obj_property name="ElementShortName">m_rvalid</obj_property>
-                     <obj_property name="ObjectShortName">m_rvalid</obj_property>
-                  </wvobject>
-                  <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_rready">
-                     <obj_property name="ElementShortName">m_rready</obj_property>
-                     <obj_property name="ObjectShortName">m_rready</obj_property>
-                  </wvobject>
-                  <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/m_rdata">
-                     <obj_property name="ElementShortName">m_rdata[31:0]</obj_property>
-                     <obj_property name="ObjectShortName">m_rdata[31:0]</obj_property>
-                  </wvobject>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="group1310">
-               <obj_property name="label">sm</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tvalid">
-                  <obj_property name="ElementShortName">aa_as_tvalid</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tvalid</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tready">
-                  <obj_property name="ElementShortName">as_aa_tready</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tready</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tdata">
-                  <obj_property name="ElementShortName">aa_as_tdata[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tdata[31:0]</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tstrb">
-                  <obj_property name="ElementShortName">aa_as_tstrb[3:0]</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tstrb[3:0]</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tkeep">
-                  <obj_property name="ElementShortName">aa_as_tkeep[3:0]</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tkeep[3:0]</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tlast">
-                  <obj_property name="ElementShortName">aa_as_tlast</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tlast</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tuser">
-                  <obj_property name="ElementShortName">aa_as_tuser[1:0]</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tuser[1:0]</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject type="group" fp_name="group3208">
-               <obj_property name="label">debug aa_as_tdata</obj_property>
-               <obj_property name="DisplayName">label</obj_property>
-               <obj_property name="isExpanded"></obj_property>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/ss_sm_cyc">
-                  <obj_property name="ElementShortName">ss_sm_cyc</obj_property>
-                  <obj_property name="ObjectShortName">ss_sm_cyc</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/ss_aa_reg">
-                  <obj_property name="ElementShortName">ss_aa_reg</obj_property>
-                  <obj_property name="ObjectShortName">ss_aa_reg</obj_property>
-               </wvobject>
-               <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/ss_aa_reg_latch">
-                  <obj_property name="ElementShortName">ss_aa_reg_latch</obj_property>
-                  <obj_property name="ObjectShortName">ss_aa_reg_latch</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/as_aa_tdata">
-                  <obj_property name="ElementShortName">as_aa_tdata[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">as_aa_tdata[31:0]</obj_property>
-               </wvobject>
-               <wvobject type="array" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/aa_as_tdata">
-                  <obj_property name="ElementShortName">aa_as_tdata[31:0]</obj_property>
-                  <obj_property name="ObjectShortName">aa_as_tdata[31:0]</obj_property>
-               </wvobject>
-            </wvobject>
-            <wvobject type="logic" fp_name="/top_bench/uut/mprj/u_fsic/U_AXIL_AXIS0/mb_irq">
-               <obj_property name="ElementShortName">mb_irq</obj_property>
-               <obj_property name="ObjectShortName">mb_irq</obj_property>
-            </wvobject>
-         </wvobject>
       </wvobject>
    </wvobject>
 </wave_config>
