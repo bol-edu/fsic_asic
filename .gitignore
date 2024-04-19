@@ -1,0 +1,8 @@
+.gitignore
+//dsn/rtl/*
+dsn/gate/*
+dsn/rtl/*.wire.v
+verif/vsim/rsim/*
+verif/vsim/tests/*
+vtags.db/
+
